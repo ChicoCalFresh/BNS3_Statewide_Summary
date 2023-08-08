@@ -1,0 +1,178 @@
+---
+title: "Mental Health"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+source("common_code.R")
+```
+
+The following questions were asked in regards to students feelings about their mental health. This includes if they have experienced any increased mental stress, if they have sought out services to help them, and how often they have felt certain types of mental stress over the past two weeks.
+
+## "Mental Health Feelings"
+
+**Over the last two weeks, how often have you been bothered by the following problems?**
+
+```{r}
+#| fig-height: 8
+#| fig-width: 8.5
+questions <- bns %>% select(starts_with("q108_"))
+names(questions) <- c("Feeling nervous, anxious, or on edge",
+                      "Not being able to stop or control worrying",
+                      "Worrying too much about different things",
+                      "Trouble relaxing",
+                      "Being so restless that it is hard to sit still",
+                      "Becoming easily annoyed or irritable",
+                      "Feeling afraid, as if something awful might happen")
+
+plot_likert(questions,
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 4,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+**Over the last two weeks, how often have you been bothered by the following problems?**
+
+```{r}
+#| fig-height: 8
+#| fig-width: 8.5
+questions <- bns %>% select(starts_with("q109_"))
+names(questions) <- c("Little interest or pleasure in doing things ",
+                      "Feeling down, depressed, or hopeless ",
+                      "Trouble falling or staying asleep, or sleeping too much ",
+                      "Feeling tired or having little energy ",
+                      "Poor appetite or overeating",
+                      "Feeling bad about yourself -or that you are a failure or have let yourself or your family down",
+                      "Trouble concentrating on things, such as reading the newspaper or watching television",
+                      "Moving or speaking so slowly that other people could have noticed. Or the opposite -being so fidgety or restless that you have been moving around a lot more than usual",
+                      "Thoughts that you be better off dead, or of hurting yourself")
+
+plot_likert(questions,
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 4,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+**Which statement best describes how you are feeling right now? `r print_n_reporting("q110")`**
+
+```{r}
+plot_frq(bns$q110, ylim=c(0,300), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+```
+
+Of the `r unname(sum(table(bns$q110)))` students, `r unname(table(bns$q110)[1])` reported feeling safe while `r unname(table(bns$q110)[2])` reported having suicidal thoughts, but were not planning on hurting themselves.
+
+## Mental Health Services
+
+**Do you have access to mental health services on your campus? `r print_n_reporting("q113")`**
+
+```{r}
+plot_frq(bns$q113, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+```
+
+Of the `r unname(sum(table(bns$q113)))` students, the majority (`r unname(table(bns$q113)['Yes'])`) said yes to having access to on campus mental health services. Roughly one fourth of students were unsure, and a smaller minority stated they did not have access to on campus mental health services.
+
+**Have you used any of these campus-based mental health services within the last 12 months?**
+
+```{r}
+plot_frq(bns$q114, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+```
+
+The vast majority of students (`r unname(table(bns$q114)['No'])`) responded "No" to using any of the on campus based mental health services within the last 12 months. Only `r unname(table(bns$q114)['Yes'])` reported using the mental health service offered by their campus in the last 12 months.
+
+```{r}
+question <- "counseling"
+
+qlabel <- c("Counseling (one-on-one)",
+            "Counseling (drop-in)",
+            "Counseling (group)",
+            "Other support services")
+
+
+
+
+counseling_vars <- prep_binary_vars(question, qlabel) ## Issues here
+
+
+
+# Plot table of Percentages
+counseling_vars %>%
+select(Measure = xlab, "Yes (%)" = pct_lab) %>%
+kable() %>% kable_styling(bootstrap_options = "striped")
+```
+
+**Based on your experiences with one-on-one counseling, please respond to the following statements:**
+
+```{r}
+questions2 <- bns %>% select(starts_with("q116_"))
+names(questions2) <- c("It was easy to access services",
+            "The wait time from when I contacted to when I could be seen was acceptable",
+            "Staff were friendly and I felt welcomed",
+            "The support I received was what I wanted",
+            "The support I received helped me",
+            "I was able to schedule a follow-up if needed ",
+            "I would recommend these services to someone else")
+
+plot_likert(questions2,
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+**What best describes your reason(s) for not using campus-based mental health services?**
+
+```{r}
+question <- "no_mhs"
+qlabel <- c("I haven't needed these services",
+            "I don't know what services are available",
+            "I don't know how to access these services",
+            "I had trouble finding the location or getting contact information for these services",
+            "I'm not sure how to pay for these services or if my insurance covers it",
+            "I cannot afford these services",
+            "I couldn't get an appointment",
+            "I have mental health support off campus",
+            "I find support in other places",
+            "I was afraid others would find out I was seeking help",
+            "I am embarrassed to say I need help",
+            "I don't believe in therapy",
+            "I don't think these services will help")
+
+nomhs_vars <- prep_binary_vars(question, qlabel)
+
+# Plot table of percentages
+nomhs_vars %>% 
+  select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+  kable() %>% kable_styling(bootstrap_options = "striped")
+```
+
+**What statement(s) best describe why you might feel unsure about your ability to access mental health services on campus?**
+
+```{r}
+question <- "access_mhs"
+qlabel <- c("I'm not sure what these kinds of services are",
+            "I haven't needed these services, so I haven't looked into them",
+            "I don't know what services are available",
+            "I haven't heard anyone talking about these services",
+            "I don't believe in therapy, so I haven't looked into them",
+            "I don't know where to find information about them, so I'm not sure about what they are"
+            )
+
+access_mhs_vars <- prep_binary_vars(question, qlabel)
+
+# Plot table of percentages
+access_mhs_vars %>% 
+  select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+  kable() %>% kable_styling(bootstrap_options = "striped")
+```

@@ -1,0 +1,82 @@
+---
+title: "Food Security"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+source("common_code.R")
+```
+
+The following questions were asked in regard to students' feelings towards food security due to a lack of or no money. Students were asked in they had to cut or skip meals (and how often), went entire days without eating, and other situations due to a lack of money.\[\^1\] Students were also asked how they handled situations when they had run out of money for food, and if they had gotten any assistance.
+
+<br>
+
+## Food Eaten in Household
+
+**For the following statements, please state whether they were often true, sometimes true, or never true for you/your household in the last 30 days.**
+
+*Household is determined by the number of people you purchase and prepare food with. This may or may not include your roommates.*
+
+```{r}
+questions <- bns %>% select(q64, q65)
+names(questions) <- c("I/We worried whether food would run out before I/we got money to buy more.",
+                      "The food that I/we bought just didn’t last, and I/we didn’t have money to get more.")
+plot_likert(questions,
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 3,
+            geom.colors = likert.pal.3,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+### Food Insecurity
+
+The following was determined using the two item food insecurity screening questions. If a student answered "sometimes true" or "often true" to either question, they were considered to be food insecure `r print_n_reporting("food_insecure_2item")`:
+
+-   "I/We worried whether food would run out before I/we got money to buy more."
+-   "The food that I/we bought just didn't last, and I/we didn't have money to get more."
+
+::: row
+::: col-md-7
+```{r}
+#| fig-height: 3.5
+#| fig-width: 4.5
+bns <- bns %>% mutate(two.item = case_when(food_insecure_2item == 0 ~ "No",
+                                           food_insecure_2item == 1 ~ "Yes",
+                                           TRUE ~ as.character(food_insecure_2item)))
+plot_frq(bns$two.item, ylim=c(0,1250)) + xlab('Food Insecure') + ylab("Frequency")
+```
+:::
+
+::: col-md-4
+Of the survey participants, the data indicates that the majority of them are considered to be food insecure (`r unname(table(bns$two.item)['Yes'])` people). There are `r unname(table(bns$two.item)['No'])` survey participants not considered to be food insecure, meaning they answered "never true" to the above question criteria.
+:::
+:::
+
+<br>
+
+## Ran Out of Money
+
+**In the last 30 days, if you ran out of money for food, what did you do? (choose all that apply):**
+
+```{r}
+question <- "fs"
+qlabel <- c("I did not run out of money for food",
+            "My friends, family or roommates gave me money for groceries.",
+            "My friends, family or roommates fed me or took me out to eat.",
+            "I started skipping meals.",
+            "I went to the food pantry or other free food organizations.",
+            "I can get free food/meals from my work.",
+            "I used my credit card (not debit card) to buy food.",
+            "Other")
+
+food_vars <- prep_binary_vars(question, qlabel) # %>% slice(-8) drop "other" since 0
+
+# Plot table of percentages
+food_vars %>% 
+  select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+  kable() %>% kable_styling(bootstrap_options = "striped")
+```

@@ -1,0 +1,224 @@
+---
+title: "Eating Habits"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+source("common_code.R")
+
+```
+
+This section examines students' eating habits. Students were asked about their cooking habits, access to kitchens, access to storing food, fruit and vegetable intake, sugar sweetened beverage intake, fast food intake, alcohol intake, and confidence in cooking.
+
+## Current Eating/Cooking Habits
+
+**For each of the following statements, indicate how strongly you agree or disagree about your current eating and cooking habits:**
+
+```{r}
+#| fig-height: 8
+#| fig-width: 7
+#| eval: false
+
+# Reverse factor order for some questions and swap positive wording to negative and vice versa
+
+bns <- bns %>% mutate_at(c('q76_1', 'q76_3', 'q76_4', 'q76_5', 'q76_6', 'q76_7', 'q76_8', 'q76_9'), fct_rev) %>% mutate_at(c('q76_1', 'q76_3', 'q76_4', 'q76_5', 'q76_6', 'q76_7', 'q76_8', 'q76_9'), recode, "Strongly agree" = "Strongly disagree", "Agree" = "Disagree", "Strongly disagree" = "Strongly agree", "Disagree" = "Agree")
+```
+
+```{r}
+#| fig-height: 8
+#| fig-width: 7
+questions <- bns %>% select(starts_with("q76_"))
+names(questions) <- c("I regularly have access to a kitchen where I can prepare meals.",
+                      "I have a secure place to store fresh food and pantry items.",
+                      "I have enough room to store food items.",
+                      "Thinking about food is not stressful/ does not cause anxiety.",
+                      "I do not wish I had more food to eat.",
+                      "I do not always skip meals.",
+                      "I cook or shop for food.",
+                      "Someone cooks at home.",
+                      "I regularly think about my eating/food habits.") # Drop "regularly"?
+plot_likert(questions,
+            grid.range = c(1.5, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+**Figure 8.1:** The majority of students have access to kitchens and storing food. Only `r likert_percent_positive(bns$q76_5)` of students did not wish they had more food to eat and only `r likert_percent_positive(bns$q76_6)` did not always skip meals.
+
+<br />
+
+## Daily Fruit & Vegetable Consumption
+
+**How many servings of fruits and vegetables do you usually consume per day? (not including fruit juices)**
+
+*1 serving= 1 medium piece of fruit; 1/2 cup fresh, frozen, or canned fruits/vegetables; 1 cup salad greens; or 1/4 cup dried fruit.* **`r print_n_reporting("q77")`**
+
+::: {.column width="55%"}
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+
+bns$q77 <- recode(bns$q77, "0 servings per day" = "0 servings", "1-2 servings per day" = "1-2 servings", "3-4 servings per day" = "3-4 servings", "5 or more servings per day" = "5+ servings" )
+
+plot_frq(bns$q77, geom.colors = chc_blue) + xlab('Daily Fruit & Vegetable Servings') + ylab("Count")
+
+```
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="30%"}
+**Figure 8.2:** The majority of students reported eating `r names(sort(table(bns$q77), decreasing = TRUE))[1]` servings per day (`r percent(unname(prop.table(table(bns$q77))["1-2 servings"]), .1)`). Only `r percent(unname(prop.table(table(bns$q77))["5+ servings"]), .1)` of students are meeting the recommended 5 or more servings of fruits and vegetables per day.
+:::
+
+<br />
+
+## Daily Sugar Sweetened Beverage Intake
+
+**How many ounces of regular soda/cola/pop, sports drink, or energy drinks do you consume each day? `r print_n_reporting("q78")`**
+
+::: {.column width="30%"}
+**Figure 8.3:** A large number of students reported drinking `r names(sort(table(bns$q78), decreasing = TRUE))[1]` per day (`r percent(unname(prop.table(table(bns$q78))["1-8 ounces"]), .1)`). More than half of the students drank at least 1 serving of sugar sweetened beverages per day (`r percent(1 - unname(prop.table(table(bns$q78))["Zero"]), .1)`).
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="55%"}
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+
+bns$q78 <- recode(bns$q78, "Zero" = "Zero",
+                   "1-8 ounces" = "1-8", 
+                   "9-16 ounces" = "9-16",  
+                   "17-24 ounces" =  "17-24", 
+                   "25-36 ounces" = "25-36",
+                  "37-48 ounces" = "37-48", 
+                  "49-56 ounces" =  "49-56", 
+                  "57-64 ounces" = "57-64", 
+                  "64 ounces or more" = "64+")
+
+plot_frq(bns$q78, geom.colors = chc_blue) + xlab('Daily Sugar Sweetened Beverage Intake (Ounces)') + ylab("Count") 
+
+```
+:::
+
+<br />
+
+## Weekly Fast Food Intake
+
+**How frequently do you eat from fast food restaurants, convenience stores, or vending machines for a meal or meal replacement? `r print_n_reporting("q79")`**
+
+::: {.column width="55%"}
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+
+bns$q79 <- recode(bns$q79, "Zero" = "Zero times", 
+                   "1-2 times per week" = "1-2 times", 
+                   "3-4 times per week" = "3-4 times",
+                   "5-6 times per week" = "5-6 times",
+                   "7-8 times per week" = "7-8 times", 
+                   "9-10 times per week" = "9-10 times", 
+                   "11 times or more per week" = "11+ times")
+
+plot_frq(bns$q79, geom.colors = chc_blue) + xlab('Weekly Fast Food Intake') + ylab("Count")
+```
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="30%"}
+**Figure 8.4:** More than half of the students reported eating fast food `r names(sort(table(bns$q79), decreasing = TRUE))[1]` per week (`r percent(unname(prop.table(table(bns$q79))["1-2 times"]), .1)`). The majority of students (`r percent(1 - unname(prop.table(table(bns$q79))["Zero times"]), .1)`) reported eating fast food at least once per week.
+:::
+
+<br />
+
+## Weekly Alcohol Intake
+
+**How often do you consume at least one serving of alcohol?** *e.g. 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol* **`r print_n_reporting("q80")`**
+
+::: {.column width="30%"}
+**Figure 8.5:** The majority of students reported drinking zero days per week (`r percent(unname(prop.table(table(bns$q80))["Zero"]), .1)`) while `r percent(1 - unname(prop.table(table(bns$q80))["Zero"]), .1)` reported drinking at least one day per week.
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="55%"}
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+
+levels(bns$q80) <- gsub(" per week", "", levels(bns$q80))
+bns$q80 <- recode(bns$q80, "Zero" = "Zero days")
+
+
+plot_frq(bns$q80, geom.colors = chc_blue) + xlab('Weekly Alcohol Intake') + ylab("Count")
+
+```
+:::
+
+<br />
+
+## Alcohol Servings Consumed
+
+**Typically, how many servings of alcohol do you consume when you drink alcohol?** *e.g. 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol* **`r print_n_reporting("q81")`**
+
+::: {.column width="55%"}
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+
+
+
+plot_frq(bns$q81, geom.colors = chc_blue) + xlab('Alcohol Servings Consumed When Drinking') + ylab("Count")
+
+```
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="30%"}
+**Figure 8.6:** Of the students that reported drinking at least once per week, `r percent(unname(prop.table(table(bns$q81))["1-2 servings"]), .1)` of students reported drinking 1-2 servings when they drink while `r percent(unname(prop.table(table(bns$q81))["5 or more servings"]), .1)` reported drinking 5 or more servings.
+:::
+
+<br />
+
+## Cooking Confidence
+
+**The following questions pertain to how comfortable you feel about buying or preparing food:**
+
+```{r}
+#| fig-width: 8
+
+questions <- bns %>% select(starts_with("q82_"))
+names(questions) <- c("How confident are you that you can use the same healthy ingredient in more than one meal?",
+                      "How confident are you that you can use basic cooking skills, like cutting fruits and vegetables, measuring out ingredients, or following a recipe?",
+                      "How confident are you that you can buy healthy foods for your family on a budget?",
+                      "How confident are you that you can cook healthy foods for your family on a budget?")
+plot_likert(questions,
+            grid.range = c(1.4, 1.0),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+**Figure 8.7:** Overall, the majority of students feel confident in their cooking habits. A notable `r confident_scale_percent_negative(bns$q82_3)` of students were not confident in buying healthy foods on a budget and `r confident_scale_percent_negative(bns$q82_4)` of students were not confident that they can cook healthy foods for their family on a budget.

@@ -1,0 +1,41 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "BNS Statewide"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      #- href: Personal_Demographics.qmd
+        #text: Personal Demographics
+      - href: Student_Demographics.qmd
+        text: Student Demographics
+      - href: Workload.qmd
+        text: Workload
+      #- href: Housing.qmd
+        #text: Housing
+      #- href: Participation.qmd
+       # text: Participation
+     # - href: Impact.qmd
+      #  text: Impact
+     # - href: Food_Security.qmd
+      #  text: Food Security
+     # - href: Graph_Styles.qmd
+      #  text: Graph Styles
+      #- href: Eating_Habits.qmd
+       # text: Eating Habits
+      #- href: Physical_Activity.qmd
+      #  text: Physical Activity
+      #- href: Mental_Health.qmd
+      #  text: Mental Health
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
