@@ -8,8 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      #- href: Personal_Demographics.qmd
-        #text: Personal Demographics
+      - href: Personal_Demographics.qmd
+        text: Personal Demographics
       - href: Student_Demographics.qmd
         text: Student Demographics
       - href: Workload.qmd
