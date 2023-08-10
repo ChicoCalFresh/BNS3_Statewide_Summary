@@ -7,6 +7,55 @@
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   },
   {
+    "objectID": "Personal_Demographics.html",
+    "href": "Personal_Demographics.html",
+    "title": "Personal Demographics",
+    "section": "",
+    "text": "The following set of questions were asked in regards to the students’ personal demographics. This includes the students’ age at the time of the survey (2020), ethnicities they identify as, and the number of dependents they are responsible for taking care of. They were also asked about parents’ education, which will help us identify first generation college students based on certain criteria."
+  },
+  {
+    "objectID": "Personal_Demographics.html#age",
+    "href": "Personal_Demographics.html#age",
+    "title": "Personal Demographics",
+    "section": "Age",
+    "text": "Age\nThe following was determined by taking the difference between birth date and the time at which the survey was completed (n=2110, 100% of 2110 reporting).\n\n\n\n\n\n\n\n\n\nThe age for participants in the survey range from 18 to 72 at the time of completion, with the majority of participants being between 20-30 years old. The average age of a participant in this survey is 24.6 years old."
+  },
+  {
+    "objectID": "Personal_Demographics.html#gender-identity",
+    "href": "Personal_Demographics.html#gender-identity",
+    "title": "Personal Demographics",
+    "section": "Gender Identity",
+    "text": "Gender Identity\nWhat is your gender identity? (n=2094, 99% of 2110 reporting).\n\n\n\n\n\n\n\n\n\n\n\n\n\nOf the survey participants, 1642 of them identify as a woman, 407 identify as a man, and 27 identify as gender non-binary. There are also survey participants who preferred not to answer."
+  },
+  {
+    "objectID": "Personal_Demographics.html#ethnicity",
+    "href": "Personal_Demographics.html#ethnicity",
+    "title": "Personal Demographics",
+    "section": "Ethnicity",
+    "text": "Ethnicity\nIn the US Census, Hispanic Origins are not races. Do you identify as Hispanic or Latino or Spanish Origin? (n=2070, 98% of 2110 reporting).\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe define Hispanic Origin to include: Mexican, Mexican American, Chicano, Puerto Rican, or another Hispanic/Latino/Spanish origin. The data indicates that the majority of survey participants identify as some type of Hispanic Origins (1436 people), while around a quarter of them do not identify as having Hispanic Origins (634 people)."
+  },
+  {
+    "objectID": "Personal_Demographics.html#race",
+    "href": "Personal_Demographics.html#race",
+    "title": "Personal Demographics",
+    "section": "Race",
+    "text": "Race\nWhat race do you identify as? Select all that apply (n=2110, 100% of 2110 reporting). Note that races were collapsed from an original 14 options down to 5 broad groups defined by census.gov.\n\n\n\n\n\n\nYes (%)\n\n\n\n\nWhite\n859 (40.7%)\n\n\nPrefer not to answer race\n755 (35.8%)\n\n\nAsian\n321 (15.2%)\n\n\nBlack or African American\n167 (7.9%)\n\n\nAmerican Indian and Alaska Native\n106 (5.0%)\n\n\nNative Hawaiian and Other Pacific Islander\n40 (1.9%)"
+  },
+  {
+    "objectID": "Personal_Demographics.html#dependents",
+    "href": "Personal_Demographics.html#dependents",
+    "title": "Personal Demographics",
+    "section": "Dependents",
+    "text": "Dependents\nIf you have dependents, then how many of them receive more than 50% of their financial support from you? (n=600, 28% of 2110 reporting).\n\n\n\n\n\n\n\n\n\nThe majority of survey participants claim to provide more than 50% of financial support to at least one dependent (493 people)."
+  },
+  {
+    "objectID": "Personal_Demographics.html#parents-education",
+    "href": "Personal_Demographics.html#parents-education",
+    "title": "Personal Demographics",
+    "section": "Parents Education",
+    "text": "Parents Education\nWhat is the highest level of education completed by your parents/guardians? (n=2083, 99% of 2110 reporting).\n\n\n\n\n\n\n\n\n\nNote: Variables filled with yellow above are used to show the conditions used to build the First Generation variable.\nThe highest level of education completed by most survey participants parents is “Less than high school” (719). 584 survey participants claim their parents highest level is “High school diploma or GED”, and 394 claim their parents highest level is “Some college”. Only a minority of survey participants have parents who have some type of college level degree.\n\nFirst Generation\nNote: students with parents education identified as “Other/Unknown” were not marked as first gen or not since they could not be determined. (n=2017, 96% of 2110 reporting).\n\n\n\n\n\n\n\n\n\n\n\n\n\nAccording to figure 1.11, we can see that 1892 survey participants are considered as First Generation College students and 125 survey participants are not considered First Generation College students.\n\n\nAs defined by the University of California, we define first generation students as “working to be part of the first generation in their families to earn a four-year university degree”. This means based upon parents education, students in the data set are considered first generation if their parents do not have a Bachelor’s or Master’s degree from a four-year university. From the Parents Education graph, all bars highlighted as yellow are considered first gen, while all bars in blue are not (excluding Other/Unknown)."
+  },
+  {
     "objectID": "Student_Demographics.html",
     "href": "Student_Demographics.html",
     "title": "Student Demographics",
