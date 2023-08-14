@@ -8,8 +8,7 @@ library(questionr)
 library(gridExtra)
 library(ggpubr)
 library(scales)
-# install.packages("devtools")
-# devtools::install_github("hadley/emo")
+
 
 # Global options
 opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE, cache=FALSE, 
@@ -31,10 +30,6 @@ likert.pal.6[3] <- "#b2b5a8"
 
 chc_blue <- "#336699"
 
-campus.colors <- rainbow(12)
-
-emoji.1 <- emo::ji("school")
-emoji.2 <- emo::ji("bar_chart")
 
 # Helper functions
 
@@ -46,6 +41,8 @@ display.text <- function(data, var){
     kable_styling(full_width = FALSE, 
                   bootstrap_options =c("striped", "responsive", "hover", "condensed"))
 }
+
+
 
 ## Print number of respondents and percent they compose (non-missing) - use this for general bns questions.
 print_n_reporting <- function(x) {
@@ -71,24 +68,6 @@ get_perct <- function(x, value) {
          " (", percent(mean(x==value, na.rm = TRUE), accuracy=.1), ")")
 }
 
-# prepare multiple binary variables to be displayed as  N(%)
-# get vector of sum(!is.na(x)) for each variable. then paste0(rnames, "n = ", n) -- pull this from the binary_table function
-
-binary_table_prep <- function(var, row.names, col.name) {
-  tmp <- bns %>% 
-    select(all_of({{var}})) %>%
-    pivot_longer(everything(), names_to = "v", values_to = 'marked') %>%
-    group_by(v) %>% 
-    summarize(n = sum(!is.na(marked)), 
-              x = sum(marked, na.rm=TRUE)) %>% 
-    mutate(pct = percent(x/n), 
-           lab = paste0(x, " (", pct, ")")) %>%
-    select(-x, -n, -pct)
-  names(tmp)[2] <- col.name
-  tmp[,1] <- row.names
-  return(tmp)
-}
-
 
 ## Create table of percentages for single multiple choice question (ex: Housing - Current Housing Situation)
 question_table <- function(question, values, cnames) {
@@ -103,17 +82,41 @@ question_table <- function(question, values, cnames) {
   temp_df %>% kable() %>% kable_styling(bootstrap_options = "striped") %>% column_spec(2, width='3.5cm')
 }
 
-## Show percentage of students who selected given value of multiple binary variables (ex: Student Demographics - Identifiers)
-binary_table <- function(var, value, rnames, punc) {
+
+# Binary Indicators ----
+
+## prepare multiple binary variables to be displayed as N(%) in a table
+
+## Show percentage of students who selected A GIVEN VALUE (e.g. "Yes") across multiple binary variables (ex: Student Demographics - Identifiers)
+binary_table <- function(var, value, row.names, punc = ".") {
   tmp <- as.data.frame(t(bns[var]))
   tmp2 <- data.frame(Freq=apply(tmp, 1, function(x, value) sum(x == value, na.rm=TRUE), value))
   n.s <- apply(tmp, 1, function(x) sum(!is.na(x))) # get this
   tmp2$label <- paste0(tmp2$Freq, " (", unname(percent(tmp2$Freq/n.s, accuracy=.1)), ")")
-  rownames(tmp2) <- paste0(rnames, " (n = ", n.s, ")", punc) # get this
+  rownames(tmp2) <- paste0(rnames, " (n = ", n.s, ")", punc) 
   tmp2 <- tmp2 %>% arrange(desc(Freq)) %>% select(-Freq)
   colnames(tmp2) <- "Yes (%)"
   tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped") %>% column_spec(2, width='3.5cm')
 }
+
+## Show percentage of students who selected YES == 1 across multiple binary variables (ex: Personal Demographics - Ethnicity)
+prep_binary_vars <- function(question, xlabels, punc = " ") {
+  bns %>%  summarize(across(contains(question),
+                            list(x = ~ sum(.x, na.rm=TRUE),  # count how many 1's
+                                 n = ~ sum(!is.na(.x))), # count how many non-missing values
+                            .names = "{.fn}_{.col}")) %>% # specify the new variable names according to which function it's using
+    pivot_longer(everything()) %>% # rshape to long format to have one variable for name, and one for value
+    mutate(str = substr(name, 1, 1), # extract x and n from the 'name', 
+           #name = gsub(paste0("x_", question, "_|n_", question, "_"), "", name)) %>% # clean variable name (keep actual variable in context)
+           name = gsub("x_|n_", "", name)) %>% 
+    pivot_wider(id_cols = name, values_from = value, names_from = str) %>% # pivot back wide so one column for x and one for n
+    mutate(pct = x/n, # calculate percent and label
+           pct_lab = paste0(x, "\n(", percent(pct, accuracy=.1),")"), 
+           xlab = paste0(xlabels, " (n = ", n, ")", punc), 
+           xlab = fct_reorder(xlab, desc(x))) %>% arrange(desc(x))
+}
+
+
 
 
 ## Plot columns from multiple questions (plots the value from binary table iver)(ex: Food Secutiry - More Eating Situations)
@@ -127,23 +130,8 @@ binary_plot <- function(var, value, rnames) {
     scale_x_discrete(labels=label_wrap(28)) + ylab('') + xlab('')
 }
 
-## Plot "select all" question indicator variables (ex: Personal Demographics - Ethnicity)
-prep_binary_vars <- function(question, xlabels) {
-  bns %>%  summarize(across(contains(question),
-                            list(x = ~ sum(.x, na.rm=TRUE),  # count how many 1's
-                                 n = ~ sum(!is.na(.x))), # count how many non-missing values
-                            .names = "{.fn}_{.col}")) %>% # specify the new variable names according to which function it's using
-    pivot_longer(everything()) %>% # rshape to long format to have one variable for name, and one for value
-    mutate(str = substr(name, 1, 1), # extract x and n from the 'name', 
-           name = gsub(paste0("x_", question, "_|n_", question, "_"), "", name)) %>% # clean variable name (keep actual variable in context)
-    pivot_wider(id_cols = name, values_from = value, names_from = str) %>% # pivot back wide so one column for x and one for n
-    mutate(pct = x/n, # calculate percent and label
-           pct_lab = paste0(x, "\n(", percent(pct, accuracy=.1),")"), 
-           xlab = xlabels, 
-           xlab = fct_reorder(xlab, desc(x))) %>% arrange(desc(x))
-}
 
-
+# Likert Helpers ----
 
 # Number of students who Agree and Strongly agree likert questions
 likert_n_positive <- function(x) {
@@ -175,7 +163,7 @@ confident_scale_percent_negative <- function(x) {
 }
 
 
-# Load data
+# Load data ----
 bns <- readRDS(here::here("../../02. Data Analysis/BNS3-statewide/data", "bns3_statewide_clean.rds")) |> filter(!is.na(school))
 
 

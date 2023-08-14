@@ -10,7 +10,6 @@ source("common_code.R")
 
 The following questions were asked in regards to criteria laid out by the CalFresh Requirements. This includes U.S. citizenship (or lawful permanent resident), receiving Cal Grant A/B, and receiving food from a campus meal plan. Household size and monthly income is also looked at and broken down into a chart to show CalFresh eligibility. Students were also determined to be eligible or not for CalFresh based on their responses to these criteria questions.
 
-# Participation
 
 **Pick all Basic Needs Programs and Services that you participate in (mark all that apply):**
 
@@ -128,7 +127,7 @@ huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %
 -   The person is between the ages 18 to 49.\
 -   The person is at least a part-time student (6 units per semester for the three campuses in this survey).\
 -   The person is either a U.S. citizen or lawful permanent resident.\
--   Does not get more than half of their meals from meals plans (\< 11 per week or none).\
+-   Does not get more than half of their meals from meals plans (less than 11 per week or none).\
 -   Identifies as an EOP student.\
 -   Falls under the household size/income from the [Department of Social Services](https://www.cdss.ca.gov/inforesources/cdss-programs/calfresh/eligibility-and-issuance-requirements#income) requirements.
 

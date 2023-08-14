@@ -11,6 +11,20 @@ editor_options:
 
 ```{r, include=FALSE}
 source("common_code.R")
+bns <- bns %>%
+  mutate(school_split = fct_collapse(school,
+                                     "CC" = c("Allan Hancock Community College",
+                                              "Butte CC",
+                                              "Clovis CC",
+                                              "Mt. SAC CC",
+                                              "Palo Verde CC"),
+                                     "State" = c("Cal State LA",
+                                                 "Cal State San Bernardino",
+                                                 "CSU Bakersfield",
+                                                 "CSU Dominguez Hills",
+                                                 "Sacramento State",
+                                                 "San Francisco State"),
+                                     "UC" = c("UC Berkeley")))
 ```
 
 The following set of questions were asked in regards to the students' academic demographic. This includes information such as what Cal State University they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of student they are (transfer, international, etc.) to help identify students.
@@ -31,6 +45,7 @@ The following set of questions were asked in regards to the students' academic d
 plot_frq(bns$school, ylim=c(0,450), wrap.labels =, hjust = -.2, vjust = "center" ) + xlab('') + ylab("Frequency") + coord_flip()
 ```
 
+Twelve campuses participated in this statewide survey. Of the twelve campuses, five were community colleges, six were California State Universities, and one was a University of California. The majority of students (`r unname(table(bns$school_split)[2])`) were currently enrolled in a state school. Fewer students (`r unname(table(bns$school_split)[1])`) reported enrollment in a community college, and a small minority (`r unname(table(bns$school_split)[3])`) reported enrollment in a UC.
 <br>
 
 consider using ggdotchart and color/org by sector https://rpkgs.datanovia.com/ggpubr/reference/ggdotchart.html
@@ -56,6 +71,9 @@ plot_frq(tmp, wrap.labels = 8, ylim=c(0,750)) + xlab('Class Standing') +
   ylab("Frequency")
 ```
 
+The Statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` respondents, there were `r unname(table(tmp)[1])` freshmen, `r unname(table(tmp)[2])` sophomores,
+`r unname(table(tmp)[3])` juniors, and `r unname(table(tmp)[4])` seniors.
+
 ## Major
 
 **Which of the following categories best describes your major? `r print_n_reporting('q16')`**
@@ -72,7 +90,7 @@ plot_frq(bns$q16, ylim=c(0,875), wrap.labels = 16, sort.frq = 'desc') + xlab('')
 
 *NOTE: Science, Technology, Engineering and Math (STEM) was shortened for the figure above, but also includes the following majors: Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition.*
 
-The majority of students in the data seem to be majoring in some type of `r names(sort(table(bns$q16), decreasing=TRUE)[1])` program (`r unname(sort(table(bns$q16), decreasing=TRUE)[1])` people). `r unname(sort(table(bns$q16), decreasing=TRUE)[2])` of the students are `r names(sort(table(bns$q16), decreasing=TRUE)[2])` majors. Students were also given the option of "Other" to fill in a major if it did not fall into one of the above categories and of the `r unname(sort(table(bns$q16), decreasing=TRUE)['Other (Please specify):'])` who selected this, `r unname(colSums(!is.na(bns))['q16_6_text'])` gave their responses below.
+The majority of students in the data seem to be majoring in some type of `r names(sort(table(bns$q16), decreasing=TRUE)[1])` program (`r unname(sort(table(bns$q16), decreasing=TRUE)[1])` people). `r unname(sort(table(bns$q16), decreasing=TRUE)[2])` of the students are `r names(sort(table(bns$q16), decreasing=TRUE)[2])` majors.
 
 <br />
 
@@ -121,7 +139,7 @@ gghistogram(bns, x = "q18", add = "mean", fill = chc_blue, alpha = 1) +
 # cutoff at 30?
 ```
 
-The average number of units that a survey participant in this data is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The data indicates that the majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occuring.
+The average number of units a student is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The data indicates that the majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occuring.
 
 <br />
 

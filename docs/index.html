@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BNS Statewide - BNS_Statewide_Website</title>
+<title>BNS Statewide - Exploring Patterns of Basic Needs in College Students</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -93,6 +59,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -130,6 +98,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./Workload.html" rel="" target="">
  <span class="menu-text">Workload</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Housing.html" rel="" target="">
+ <span class="menu-text">Housing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Participation.html" rel="" target="">
+ <span class="menu-text">Participation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Impact.html" rel="" target="">
+ <span class="menu-text">Impact</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Food_Security.html" rel="" target="">
+ <span class="menu-text">Food Security</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Graph_Styles.qmd" rel="" target="">
+ <span class="menu-text">Graph Styles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Eating_Habits.html" rel="" target="">
+ <span class="menu-text">Eating Habits</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Physical_Activity.html" rel="" target="">
+ <span class="menu-text">Physical Activity</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Mental_Health.html" rel="" target="">
+ <span class="menu-text">Mental Health</span></a>
+  </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
 </div>
@@ -142,14 +142,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#r-emojimagnifying_glass_tilted_right-how-to-use-this-website" id="toc-r-emojimagnifying_glass_tilted_right-how-to-use-this-website" class="nav-link active" data-scroll-target="#r-emojimagnifying_glass_tilted_right-how-to-use-this-website"><code>r emo::ji("magnifying_glass_tilted_right")</code> How to use this website</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BNS_Statewide_Website</h1>
+<h1 class="title">Exploring Patterns of Basic Needs in College Students</h1>
 </div>
 
 
@@ -164,16 +170,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<section id="statewide-2110-eop-students-from-allan-hancock-community-college-butte-community-college-clovis-community-college-mt.-sac-community-college-palo-verde-community-college-csu-bakersfield-csu-dominguez-hills-csu-la-csu-sacramento-csu-san-bernadino-csu-san-francisco-and-uc-berkley." class="level4">
+<h4 class="anchored" data-anchor-id="statewide-2110-eop-students-from-allan-hancock-community-college-butte-community-college-clovis-community-college-mt.-sac-community-college-palo-verde-community-college-csu-bakersfield-csu-dominguez-hills-csu-la-csu-sacramento-csu-san-bernadino-csu-san-francisco-and-uc-berkley.">Statewide: 2110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU LA, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkley.</h4>
+<p>Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The <a href="https://www.csuchico.edu/chc/">Center for Healthy Communities</a> (CHC) developed the <strong>Basic Needs Student Success Survey (BNS3)</strong> and administered it to undergraduate students participating in the <a href="https://www2.calstate.edu/attend/student-services/eop">Educational Opportunity Program (EOP)</a> at <a href="https://www.csuchico.edu/eop/">Chico State</a>, <a href="https://www.fresnostate.edu/studentaffairs/eop/abouteop.html">Fresno State</a> and <a href="https://www.csun.edu/csun-eop">CSU, Northridge</a> from November 25<span class="math inline">\(^{th}\)</span>, 2020 to March 24<span class="math inline">\(^{th}\)</span>, 2021. The EOP office assisted in the recruitment and provided computers for students to take the survey. Participants were given a $25 gift card for their participation. EOP students were identified as the target population for this survey based upon their low-income and first-generation student status, which indicates a higher probability of CalFresh eligibility.</p>
+<p>The purpose of this second cross-sectional pilot study was to revise the BNS3 tool and validate student perception of the following:</p>
+<ol type="1">
+<li>The impact of receiving <a href="https://www.csuchico.edu/calfresh/index.shtml">CalFresh</a> assistance.</li>
+<li>The impact of utilization of the campus food pantry on their health, nutrition, cooking confidence, time management and academic performance.</li>
+</ol>
+<p>This report provides a top level descriptive analysis of each question in the survey. Researchers and campus staff are encouraged to review the information in this analysis to formulate additional research questions and hypotheses.</p>
+<p><strong>Disclaimer on Missing Data:</strong> Students were allowed to select answers such as “Prefer not to answer” or “I don’t know” as responses to every question asked. These answers were then converted to missing values, denoted as <em>NA</em>, and this is the cause of the missing data for certain questions (not 100% of respondents reporting). The total number of non-missing responses (and percentage of the total data) are provided for each question.</p>
+<p><br></p>
+</section>
+<section id="r-emojimagnifying_glass_tilted_right-how-to-use-this-website" class="level3">
+<h3 class="anchored" data-anchor-id="r-emojimagnifying_glass_tilted_right-how-to-use-this-website"><a href="Instructions.html"><code>r emo::ji("magnifying_glass_tilted_right")</code> How to use this website</a></h3>
+<p><em>Click above for instructions on how to navigate the website and interpret graphs.</em></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

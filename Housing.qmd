@@ -42,15 +42,12 @@ qlabel <- c("Finances changed due to lost (or reduced) on-campus job.",
             "Other")
 
 
-
 ch_barrier_vars <- prep_binary_vars(question, qlabel)
-
-
 
 # Plot table of Percentages
 ch_barrier_vars %>%
-select(Measure = xlab, "Yes (%)" = pct_lab) %>%
-kable() %>% kable_styling(bootstrap_options = "striped")
+  select(Measure = xlab, "Yes (%)" = pct_lab) %>%
+  kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
 ## Living Near College
@@ -78,6 +75,9 @@ There are `r unname(table(bns$q24)['No'])` people that participated in the surve
 **Which best describes your current housing situation?**
 
 ```{r}
+## see if you can convert this to binary_table
+
+
 #Trouble with question labels and matching
 cnames <- c('Current Housing Situation', 'Yes (%)')
 # qs <- unique(bns[['q25']]) %>% na.omit()
@@ -101,7 +101,10 @@ rnames <- c('Was there a rent or mortgage increase that made it difficult to pay
             'Have you been evicted',
             'Have you had to stay in a hostile housing environment or abusive relationship because you had no other place to live')
 
-binary_table(questions, "Yes", rnames, "?")
+binary_table(var = questions, 
+             value = "Yes", 
+             row.names = rnames, 
+             punc = "?")
 ```
 
 **In the last 12 months, what barriers have you experienced in accessing housing?**
@@ -119,16 +122,9 @@ qlabel <- c("Lack of co-signer",
             "Other",
             "I have not experienced barriers related to accessing housing")
 
-
-
-h_barrier_vars <- prep_binary_vars(question, qlabel) ## Issues here
-
-
-
-# Plot table of Percentages
-h_barrier_vars %>%
-select(Measure = xlab, "Yes (%)" = pct_lab) %>%
-kable() %>% kable_styling(bootstrap_options = "striped")
+prep_binary_vars(question, qlabel) %>%
+  select(Measure = xlab, "Yes (%)" = pct_lab) %>%
+  kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
 ```{r}
@@ -165,39 +161,41 @@ questions_na <- paste0('q36_', 1:12, '_na')
 
 rnames <- c('Campus or University Housing',
             'Sorority/Fraternity house',
-            'In a rented or owned house, mobile home, or apartment 
- (alone or with roommates or friends)',
-            'In a rented or owned house, mobile home, or apartment 
-            with my family (parent, guardian, relative or caretaker)', 'At a shelter',
-            'Temporarily staying with a relative, friend or couch surfing until I find other housing', 'Temporarily at a hotel or motel without a permanent home to return to (not on vacation or business travel)', 'In a transitional housing or independent living program', 'At a group home such as halfway house or residential program for mental health or substance abuse', 'Outdoor location such as street, sidewalk, alley, park, etc.', 'In a car, truck, van, RV or camper',
- 'In a closed area/space with a roof not meant for human habitation such as an abandoned building, garage, tent, etc.')
+            'In a rented or owned house, mobile home, or apartment (alone or with roommates or friends)',
+            'In a rented or owned house, mobile home, or apartment with my family (parent, guardian, relative or caretaker)', 
+            'At a shelter',
+            'Temporarily staying with a relative, friend or couch surfing until I find other housing',
+            'Temporarily at a hotel or motel without a permanent home to return to (not on vacation or business travel)', 
+            'In a transitional housing or independent living program', 
+            'At a group home such as halfway house or residential program for mental health or substance abuse', 
+            'Outdoor location such as street, sidewalk, alley, park, etc.', 'In a car, truck, van, RV or camper',
+            'In a closed area/space with a roof not meant for human habitation such as an abandoned building, garage, tent, etc.')
  
  
- 
- 
-get.month.vars  <- binary_table_prep(var = questions_month, 
-                  row.names = rnames, 
-                  col.name = "Last 30 days")
 
-get.year.vars  <- binary_table_prep(var = questions_year, 
-                  row.names = rnames, 
-                  col.name = "In the past 12 months")
+get.month.vars <- prep_binary_vars(question = questions_month, 
+                                   xlabels = rnames) %>%
+  select(xlab, `Last 30 days` = pct_lab) %>% 
+  mutate(xlab = gsub("\\(n = .{4}\\)", "", xlab))
 
-get.na.vars  <- binary_table_prep(var = questions_na, 
-                  row.names = rnames, 
-                  col.name = "Not Applicable")
+get.year.vars <- prep_binary_vars(question = questions_year, 
+                                   xlabels = rnames) %>%
+  select(xlab, `In the past 12 months` = pct_lab)%>% 
+  mutate(xlab = gsub("\\(n = .{4}\\)", "", xlab))
+
+get.na.vars <- prep_binary_vars(question = questions_na, 
+                                   xlabels = rnames) %>%
+  select(xlab, `Not Applicable` = pct_lab)%>% 
+  mutate(xlab = gsub("\\(n = .{4}\\)", "", xlab))
 
 
-out.housing <- full_join(get.month.vars, get.year.vars) %>%
-  full_join(get.na.vars)
-
-out.housing %>% 
+full_join(get.month.vars, get.year.vars) %>%
+  full_join(get.na.vars) %>% 
+  rename(Location = xlab) %>%
   kable() %>% 
   kable_styling(bootstrap_options = "striped") %>% 
-  column_spec(1, bold = T, border_right = T, width='5cm') 
+  column_spec(1, bold = T, border_right = T, width='10cm') 
 
-# figure out how to rename column 1 before kable 
- 
 ```
 
 ## Unstable Housing

@@ -57,14 +57,15 @@ We can see that the majority of survey participants (`r unname(table(bns$unpaid_
 
 ## Unpaid Caregiving Hours
 
-**Estimate the number of hours you spend each week on unpaid family obligations (for example, taking care of younger siblings, preparing family meals, running errands for the family, etc.). `r print_n_reporting('caregiving_hours')`**
+**Estimate the number of hours you spend each week on unpaid family obligations (for example, taking care of younger siblings, preparing family meals, running errands for the family, etc.) `r print_n_reporting('caregiving_hours')`**
 
 ```{r}
+bns$bin <- ifelse(bns$caregiving_hours > 0, 1, 0)
 gghistogram(bns, x = "caregiving_hours", add = "mean", fill = chc_blue, alpha = 1) + 
   xlab("Caregiving Hours") + ylab("Frequency")
 ```
 
-The data indicates that the majority of survey participants do spend some time each week caring for family members. A minority (`r unname(table(bns$caregiving_hours)['0'])`) of participants estimated that they spent 0 hours per week for family obligations. There are also around the same number of participants who estimated they work full-time (40 or more hours per week) on these family obligations. Below is a breakdown of these unpaid hours spent on family obligations each week.
+The data indicates that the majority of survey participants (`r table(bns$bin)['1']`) do spend some time each week caring for family members. A minority (`r unname(table(bns$caregiving_hours)['0'])`) of participants estimated that they spent 0 hours per week for family obligations. There are also around the same number of participants who estimated they work full-time (40 or more hours per week) on these family obligations. Below is a breakdown of these unpaid hours spent on family obligations each week.
 
 <br>
 
