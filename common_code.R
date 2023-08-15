@@ -45,7 +45,8 @@ display.text <- function(data, var){
 
 
 ## Print number of respondents and percent they compose (non-missing) - use this for general bns questions.
-print_n_reporting <- function(x) {
+## Data frame defaults to bns, y argument can be used to specify a different data frame
+print_n_reporting <- function(x) { 
   paste0("(n=", 
          sum(!is.na(bns[[x]])), ", ", 
          percent(mean(!is.na(bns[[x]])), accuracy=1), " of ", nrow(bns), " reporting)."
@@ -60,6 +61,13 @@ print_n_reporting_tmp <- function(x) {
   )
 }
 
+## Print number of respondents and percent they compose (non-missing) - use this for tmp2 data frames.
+print_n_reporting_tmp2 <- function(x) {
+  paste0("(n=", 
+         sum(!is.na(tmp2[[x]])), ", ", 
+         percent(sum(!is.na(tmp2[[x]]))/nrow(bns), accuracy=1), " of ", nrow(bns), " reporting)."
+  )
+}
 
 
 ## Get percent for variable for given value (ex: Housing - Sleeping Places)

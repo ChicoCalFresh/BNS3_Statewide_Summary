@@ -10,7 +10,7 @@ source("common_code.R")
 
 The following questions were asked in regards to students feelings about their mental health. This includes if they have experienced any increased mental stress, if they have sought out services to help them, and how often they have felt certain types of mental stress over the past two weeks.
 
-## "Mental Health Feelings"
+## Mental Health Feelings
 
 **Over the last two weeks, how often have you been bothered by the following problems?**
 

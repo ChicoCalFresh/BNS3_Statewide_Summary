@@ -8,11 +8,9 @@ editor_options:
 source("common_code.R")
 ```
 
-The following questions were asked in regards to the participation and impact of Basic Needs programs and services on students lives. Students were asked to evaluate how they feel these programs have benefited them both academically and non-academically, as well as barriers/reasons in regards to why they are not using certain programs. This includes programs such as CalFresh, Food Pantries, Meal Programs, Medi-Cal (also known as Medi-Cade in the United States), and Emergency Housing Services.
+The following questions were asked in regards to the impact of Basic Needs programs and services on students lives. Students were asked to evaluate how they feel these programs have benefited them both academically and non-academically, as well as barriers/reasons in regards to why they are not using certain programs. This includes programs such as CalFresh, Food Pantries, Medi-Cal (also known as Medi-Cade in the United States), and Emergency Housing Services.
 
 <br>
-
-## Impact of CalFresh
 
 ## CalFresh EBT
 

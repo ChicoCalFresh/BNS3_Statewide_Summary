@@ -1,5 +1,10 @@
 ---
 title: "Participation"
+output: 
+  html_document: 
+    toc: yes
+    toc_float: yes
+    css: styles.css
 editor_options: 
   chunk_output_type: console
 ---
@@ -9,7 +14,6 @@ source("common_code.R")
 ```
 
 The following questions were asked in regards to criteria laid out by the CalFresh Requirements. This includes U.S. citizenship (or lawful permanent resident), receiving Cal Grant A/B, and receiving food from a campus meal plan. Household size and monthly income is also looked at and broken down into a chart to show CalFresh eligibility. Students were also determined to be eligible or not for CalFresh based on their responses to these criteria questions.
-
 
 **Pick all Basic Needs Programs and Services that you participate in (mark all that apply):**
 
@@ -141,5 +145,7 @@ plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`,  ylim=c(0,1600)) 
   xlab('Likely Eligible for CalFresh') + ylab("Frequency")
 ```
 :::
+
+We can see that the majority of participants are most likely eligible for CalFresh (`r unname(table(bns$calfresh_eligible)['1'])` people), while `r unname(table(bns$calfresh_eligible)['0'])` people are most likely to not be eligible for these benefits.
 
 <div class = "col-md-5">

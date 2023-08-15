@@ -1,5 +1,10 @@
 ---
 title: "Workload"
+output: 
+  html_document: 
+    toc: yes
+    toc_float: yes
+    css: styles.css
 editor_options: 
   chunk_output_type: console
 ---
@@ -65,7 +70,7 @@ gghistogram(bns, x = "caregiving_hours", add = "mean", fill = chc_blue, alpha = 
   xlab("Caregiving Hours") + ylab("Frequency")
 ```
 
-The data indicates that the majority of survey participants (`r table(bns$bin)['1']`) do spend some time each week caring for family members. A minority (`r unname(table(bns$caregiving_hours)['0'])`) of participants estimated that they spent 0 hours per week for family obligations. There are also around the same number of participants who estimated they work full-time (40 or more hours per week) on these family obligations. Below is a breakdown of these unpaid hours spent on family obligations each week.
+The data indicates that the majority of survey participants (`r table(bns$bin)['1']`) do spend some time each week caring for family members. A minority (`r unname(table(bns$caregiving_hours)['0'])`) of participants estimated that they spent 0 hours per week for family obligations. `r unname(table(bns$caregiving_hours > 40)[2])` participants reported 40 or more hours per week on these family obligations. Below is a breakdown of these unpaid hours spent on family obligations each week.
 
 <br>
 

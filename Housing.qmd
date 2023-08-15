@@ -78,7 +78,6 @@ There are `r unname(table(bns$q24)['No'])` people that participated in the surve
 ## see if you can convert this to binary_table
 
 
-#Trouble with question labels and matching
 cnames <- c('Current Housing Situation', 'Yes (%)')
 # qs <- unique(bns[['q25']]) %>% na.omit()
 qs <- names(table(bns$q25))
@@ -126,6 +125,10 @@ prep_binary_vars(question, qlabel) %>%
   select(Measure = xlab, "Yes (%)" = pct_lab) %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
+
+The majority of students (`r unname(table(bns$housing_barrier_none))[2]`) reported not experiencing barriers to housing in the last 12 months. Among the students who did experience barriers to housing, lack of deposit funds (`r unname(table(bns$housing_barrier_deposit_funds))['1']` students\`) was most common.
+
+<br />
 
 ```{r}
 #| fig-height: 4.3
