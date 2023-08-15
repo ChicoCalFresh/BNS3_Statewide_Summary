@@ -1,22 +1,31 @@
 ---
 title: "Exploring Patterns of Basic Needs in College Students"
+format: 
+  html:
+    toc: no
 ---
 
-#### Statewide: 2110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU LA, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkley.
+## Overview
+Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) at 13 colleges across the CSU, CCC and UC systems from November 25$^{th}$, 2020 to March 24$^{th}$, 2021. 
 
-Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) at [Chico State](https://www.csuchico.edu/eop/), [Fresno State](https://www.fresnostate.edu/studentaffairs/eop/abouteop.html) and [CSU, Northridge](https://www.csun.edu/csun-eop) from November 25$^{th}$, 2020 to March 24$^{th}$, 2021. The EOP office assisted in the recruitment and provided computers for students to take the survey. Participants were given a \$25 gift card for their participation. EOP students were identified as the target population for this survey based upon their low-income and first-generation student status, which indicates a higher probability of CalFresh eligibility.
+The EOP office assisted in the recruitment and provided computers for students to take the survey. Participants were given a \$25 gift card for their participation. EOP students were identified as the target population for this survey based upon their low-income and first-generation student status, which indicates a higher probability of CalFresh eligibility.
 
-The purpose of this second cross-sectional pilot study was to revise the BNS3 tool and validate student perception of the following:  
+The purpose of this second cross-sectional pilot study (update) was to revise the BNS3 tool and validate student perception of the following:
 
-1. The impact of receiving [CalFresh](https://www.csuchico.edu/calfresh/index.shtml) assistance.
-2. The impact of utilization of the campus food pantry on their health, nutrition, cooking
-confidence, time management and academic performance. 
+1.  The impact of receiving [CalFresh](https://www.csuchico.edu/calfresh/index.shtml) assistance.
+2.  The impact of utilization of the campus food pantry on their health, nutrition, cooking confidence, time management and academic performance.
 
 This report provides a top level descriptive analysis of each question in the survey. Researchers and campus staff are encouraged to review the information in this analysis to formulate additional research questions and hypotheses.
 
-**Disclaimer on Missing Data:** Students were allowed to select answers such as "Prefer not to answer" or "I don't know" as responses to every question asked. These answers were then converted to missing values, denoted as *NA*, and this is the cause of the missing data for certain questions (not 100% of respondents reporting). The total number of non-missing responses (and percentage of the total data) are provided for each question. 
+## Participants
+
+We surveyed 2,110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU LA, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley. 
+
+
+**Disclaimer on Missing Data:** Students were allowed to select answers such as "Prefer not to answer" or "I don't know" as responses to every question asked. These answers were then converted to missing values, denoted as *NA*, and this is the cause of the missing data for certain questions (not 100% of respondents reporting). The total number of non-missing responses (and percentage of the total data) are provided for each question.
 
 <br />
 
-### [`r emo::ji("magnifying_glass_tilted_right")` How to use this website](Instructions.html)
+### [How to use this website](Instructions.html)
+
 *Click above for instructions on how to navigate the website and interpret graphs.*

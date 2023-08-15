@@ -15,8 +15,6 @@ The following questions were asked in regards to students feelings about their m
 **Over the last two weeks, how often have you been bothered by the following problems?**
 
 ```{r}
-#| fig-height: 8
-#| fig-width: 8.5
 questions <- bns %>% select(starts_with("q108_"))
 names(questions) <- c("Feeling nervous, anxious, or on edge",
                       "Not being able to stop or control worrying",
@@ -112,6 +110,8 @@ kable() %>% kable_styling(bootstrap_options = "striped")
 **Based on your experiences with one-on-one counseling, please respond to the following statements:**
 
 ```{r}
+#| fig-height: 5
+#| fig-width: 6
 questions2 <- bns %>% select(starts_with("q116_"))
 names(questions2) <- c("It was easy to access services",
             "The wait time from when I contacted to when I could be seen was acceptable",

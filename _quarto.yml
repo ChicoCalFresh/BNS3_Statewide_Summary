@@ -17,7 +17,7 @@ website:
       - href: Housing.qmd
         text: Housing
       - href: Participation.qmd
-        text: Participation
+        text: CalFresh
       - href: Impact.qmd
         text: Impact
       - href: Food_Security.qmd

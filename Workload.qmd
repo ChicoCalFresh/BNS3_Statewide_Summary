@@ -31,7 +31,9 @@ gghistogram(bns, x = "paid_work_hours", add = "mean", fill = chc_blue, alpha = 1
   xlab("Paid Hours Per Week") + ylab("Frequency")
 ```
 
-The data indicates that the majority of survey participants work either part-time or not at all. Only a small number `r nrow(bns$paid_work_hours >= 40)` of participants are considered to be working full-time (40 or more hours per week). Below is a breakdown of the exact paid hours worked by survey participants.
+Respondents stated a wide range of paid hours per week, with 50% of them reporting between <insert IQR here> hours, with an average of X and median of X. 
+
+The majority of survey participants work either part-time or not at all. Only a small number `r NROW(bns$paid_work_hours >= 40)` of participants are considered to be working full-time (40 or more hours per week). Below is a breakdown of the exact paid hours worked by survey participants.
 
 <br>
 
@@ -126,7 +128,9 @@ The below graphs breaks down if a person meets the workload requirements based s
 -   Unpaid Workload - working 20+ weekly hours at a unpaid position.
 -   Total Workload - working 20+ weekly hours in total (combination of academic, paid, and unpaid).
 
+<!---
 *Note: people with a workload of 0 hours were included in the graph and analysis.*
+--->
 
 ```{r}
 tmp <- tmp2

@@ -1,12 +1,14 @@
 ---
-title: "Personal Demographics"
+title: "Demographics"
 ---
 
 ```{r, include=FALSE}
 source("common_code.R")
 ```
 
-The following set of questions were asked in regards to the students' personal demographics. This includes the students' age at the time of the survey (2020), ethnicities they identify as, and the number of dependents they are responsible for taking care of. They were also asked about parents' education, which will help us identify first generation college students based on certain criteria.
+# Personal Demographics
+
+The following set of questions were asked in regards to the students' personal demographics. This includes the students' age, ethnicities they identify with, and the number of dependents they are responsible for taking care of. They were also asked about parents' education, which will help us identify first generation college students based on certain criteria.
 
 ## Age
 
@@ -176,3 +178,9 @@ According to figure 1.11, we can see that `r unname(sort(table(bns$firstgen), de
 :::
 
 As defined by the [University of California](https://www.universityofcalifornia.edu/sites/default/files/First-Generation%20Student%20Success%20at%20UC%208-2017.pdf), we define first generation students as "working to be part of the first generation in their families to earn a four-year university degree". This means based upon parents education, students in the data set are considered first generation if their parents do not have a Bachelor's or Master's degree from a four-year university. From the *Parents Education* graph, all bars highlighted as yellow are considered first gen, while all bars in blue are not (excluding Other/Unknown).
+
+# Academic Characteristics
+
+
+put other page stuff here. 
+

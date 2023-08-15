@@ -27,7 +27,7 @@ bns <- bns %>%
                                      "UC" = c("UC Berkeley")))
 ```
 
-The following set of questions were asked in regards to the students' academic demographic. This includes information such as what Cal State University they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of student they are (transfer, international, etc.) to help identify students.
+The following set of questions were asked in regards to the students' academic status. This includes information such as what college they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of student they are (transfer, international, etc.) to help identify students.
 
 <br>
 
@@ -42,13 +42,13 @@ The following set of questions were asked in regards to the students' academic d
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
-plot_frq(bns$school, ylim=c(0,450), wrap.labels =, hjust = -.2, vjust = "center" ) + xlab('') + ylab("Frequency") + coord_flip()
+plot_frq(bns$school, ylim=c(0,450), hjust = -.2, vjust = "center",
+         coord.flip = TRUE) + xlab('') + ylab("Frequency")
 ```
 
-Twelve campuses participated in this statewide survey. Of the twelve campuses, five were community colleges, six were California State Universities, and one was a University of California. The majority of students (`r unname(table(bns$school_split)[2])`) were currently enrolled in a state school. Fewer students (`r unname(table(bns$school_split)[1])`) reported enrollment in a community college, and a small minority (`r unname(table(bns$school_split)[3])`) reported enrollment in a UC.
-<br>
+Twelve campuses participated in this statewide survey. Of the twelve campuses, five were community colleges, six were California State Universities, and one was a University of California. The majority of students (`r unname(table(bns$school_split)[2])`) were currently enrolled in a state school. Fewer students (`r unname(table(bns$school_split)[1])`) reported enrollment in a community college, and a small minority (`r unname(table(bns$school_split)[3])`) reported enrollment in a UC. <br>
 
-consider using ggdotchart and color/org by sector https://rpkgs.datanovia.com/ggpubr/reference/ggdotchart.html
+consider using ggdotchart and color/org by sector https://rpkgs.datanovia.com/ggpubr/reference/ggdotchart.html (this is a note for Robin and Saul to do. leave it.)
 
 ## Class Standing
 
@@ -71,8 +71,7 @@ plot_frq(tmp, wrap.labels = 8, ylim=c(0,750)) + xlab('Class Standing') +
   ylab("Frequency")
 ```
 
-The Statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` respondents, there were `r unname(table(tmp)[1])` freshmen, `r unname(table(tmp)[2])` sophomores,
-`r unname(table(tmp)[3])` juniors, and `r unname(table(tmp)[4])` seniors.
+The Statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` respondents, there were `r unname(table(tmp)[1])` freshmen, `r unname(table(tmp)[2])` sophomores, `r unname(table(tmp)[3])` juniors, and `r unname(table(tmp)[4])` seniors.
 
 ## Major
 
@@ -98,29 +97,16 @@ The majority of students in the data seem to be majoring in some type of `r name
 
 **What is your approximate overall grade point average (GPA)? `r print_n_reporting('q17')`**
 
-*Note:* Any reports of a GPA over 4 were rounded down to 4.
-
-::: row
-::: col-md-7
 ```{r}
 #| fig-height: 4
 #| fig-width: 5.5
 bns$gpa_fac <- cut(bns$q17, breaks = c(0, 1.5, 2.0, 2.5, 3.0, 3.5, 5.0), labels = c("1.5 or less", "1.51-2.0", "2.01-2.5", "2.51-3.0", "3.01-3.5", "3.51 or above"), ordered_result = TRUE, include.lowest = TRUE)
+
 plot_frq(bns$gpa_fac) + xlab('GPA') + ylab("Frequency")
-
-bns$q17 <- ifelse(bns$q17 > 5, 5, bns$q17)
-gghistogram(bns, x = "q17", add = "mean", fill = chc_blue, alpha=1) + xlab("GPA") + ylab("Frequency")
-
-## a <- ifelse((bns$q17>5) & (!is.na(bns$q17)), bns$q17, 1)
-## b <- ifelse((bns$q17 > 3) & (bns$q17 <= 3.5), 1, 0) %>% na.omit()
-
-# Outliers for GPA (write in click up)
-# Drop values > 4? Cutoff at 5?
 ```
 
-The average overall GPA for students is `r round(mean(bns$q17, na.rm = TRUE), 2)`, while the median is `r round(median(bns$q17, na.rm = TRUE), 2)`. The data suggests the majority of students have a GPA greater than 3.0.
-:::
-:::
+The average overall GPA for students is `r round(mean(bns$q17, na.rm = TRUE), 2)`, while the median is `r round(median(bns$q17, na.rm = TRUE), 2)`. The majority (`r percent(sum(prop.table(table(bns$gpa_fac))[5:6]), accuracy = .1)`) of students have a GPA greater than 3.0.
+
 
 <br />
 
@@ -139,7 +125,7 @@ gghistogram(bns, x = "q18", add = "mean", fill = chc_blue, alpha = 1) +
 # cutoff at 30?
 ```
 
-The average number of units a student is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The data indicates that the majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occuring.
+The average number of units a student is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The data indicates that the majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occurring.
 
 <br />
 
@@ -172,5 +158,5 @@ questions <- paste0('q14_', 3:4)
 rnames <- c('I identify as a student with a disability',
           'I receive services through my campus for a disability')
             
-binary_table(questions, "Yes", rnames, ".")
+binary_table(questions, "Yes", rnames, "")
 ```

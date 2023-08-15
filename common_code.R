@@ -8,7 +8,7 @@ library(questionr)
 library(gridExtra)
 library(ggpubr)
 library(scales)
-
+# library(huxtable) # only used once in CalFresh 
 
 # Global options
 opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE, cache=FALSE, 
