@@ -8,7 +8,7 @@ source("common_code.R")
 
 # Personal Demographics
 
-The following set of questions were asked in regards to the students' personal demographics. This includes the students' age, ethnicities they identify with, and the number of dependents they are responsible for taking care of. They were also asked about parents' education, which will help us identify first generation college students based on certain criteria.
+The following set of questions were asked in regards to the students' personal demographics. This includes the students' age, ethnicities they identify with, and the number of dependents they are responsible for taking care of. They were also asked about parents' education, which will help us identify first generation college students.
 
 ## Age
 
@@ -57,7 +57,7 @@ plot_frq(tmp$hispanic) + xlab("") + ylab("Frequency")
 :::
 
 ::: col-md-5
-We define Hispanic Origin to include: Mexican, Mexican American, Chicano, Puerto Rican, or another Hispanic/Latino/Spanish origin. The data indicates that the majority of survey participants identify as some type of Hispanic Origins (`r unname(table(tmp$hispanic)['Hispanic'])` people), while around a quarter of them do not identify as having Hispanic Origins (`r unname(table(tmp$hispanic)['Non-Hispanic'])` people).
+We define Hispanic Origin to include: Mexican, Mexican American, Chicano, Puerto Rican, or another Hispanic/Latino/Spanish origin. The data indicates that the majority of survey participants identify as having Hispanic Origins (`r unname(table(tmp$hispanic)['Hispanic'])` people), while around a quarter of them do not identify as having Hispanic Origins (`r unname(table(tmp$hispanic)['Non-Hispanic'])` people).
 :::
 :::
 
@@ -108,7 +108,7 @@ tmp <-
 
 ```
 
-**What race do you identify as? Select all that apply `r print_n_reporting_tmp('white')`** *Note that races were collapsed from an original 14 options down to 5 broad groups defined by [census.gov](https://www.census.gov/quickfacts/fact/note/US/RHI625219).*
+**What race do you identify as? Select all that apply `r print_n_reporting_tmp('white')`** *Note that the survey included 14 race options that were collapsed down to 5 broad groups defined by [census.gov](https://www.census.gov/quickfacts/fact/note/US/RHI625219).*
 
 ```{r}
 cnames <- c("Prefer not to answer race", "White", "Black or African American", "American Indian and Alaska Native", "Asian", "Native Hawaiian and Other Pacific Islander")
@@ -130,7 +130,7 @@ tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped")
 plot_frq(bns$q11) + xlab('Number of Dependents') + ylab("Frequency")
 ```
 
-The majority of survey participants claim to provide more than 50% of financial support to at least one dependent (`r nrow(bns[bns$q11 > 0, 'q11'] %>% na.omit())` people).
+The majority of survey participants who report having at least one dependent also report that they provide more than 50% of financial support to at least one dependent (`r nrow(bns[bns$q11 > 0, 'q11'] %>% na.omit())` people).
 
 <br>
 
@@ -154,11 +154,11 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 
 *Note: Variables filled with yellow above are used to show the conditions used to build the First Generation variable*.
 
-The highest level of education completed by most survey participants parents is "`r names(sort(table(bns$q13), decreasing=TRUE)[1])`" (`r unname(sort(table(bns$q13), decreasing=TRUE)[1])`). `r unname(sort(table(bns$q13), decreasing=TRUE)[2])` survey participants claim their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[2])`", and `r unname(sort(table(bns$q13), decreasing=TRUE)[3])` claim their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[3])`". Only a minority of survey participants have parents who have some type of college level degree.
+The highest level of education completed by most survey participants' parents is "`r names(sort(table(bns$q13), decreasing=TRUE)[1])`" (`r unname(sort(table(bns$q13), decreasing=TRUE)[1])`), while `r unname(sort(table(bns$q13), decreasing=TRUE)[2])` survey participants reported their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[2])`", and `r unname(sort(table(bns$q13), decreasing=TRUE)[3])` report their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[3])`". Only a minority of survey participants (`r sum(table(bns$q13)[c("Bachelor's degree", "Master's degree", "Doctorate degree (JD, MD, PhD, EdD., etc.)")])`) indicated that their parents have a bachelor's degree or higher.
 
 ### First Generation
 
-*Note: students with parents education identified as "Other/Unknown" were not marked as first gen or not since they could not be determined.* **`r print_n_reporting('firstgen')`**
+*Note: Students with parents education identified as "Other/Unknown" were not marked as first gen or not since they could not be determined.* **`r print_n_reporting('firstgen')`**
 
 ::: row
 ::: col-md-6
@@ -173,14 +173,10 @@ plot_frq(tmp3$firstgen, ylim=c(0, 2300)) + xlab('') + ylab("Frequency")
 :::
 
 ::: col-md-5
-According to figure 1.11, we can see that `r unname(sort(table(bns$firstgen), decreasing=TRUE)[1])` survey participants are considered as First Generation College students and `r unname(sort(table(bns$firstgen), decreasing=TRUE)[2])` survey participants are not considered First Generation College students.
+`r unname(sort(table(bns$firstgen), decreasing=TRUE)[1])` survey participants are considered as First Generation College students and `r unname(sort(table(bns$firstgen), decreasing=TRUE)[2])` survey participants are not considered First Generation College students.
 :::
 :::
 
-As defined by the [University of California](https://www.universityofcalifornia.edu/sites/default/files/First-Generation%20Student%20Success%20at%20UC%208-2017.pdf), we define first generation students as "working to be part of the first generation in their families to earn a four-year university degree". This means based upon parents education, students in the data set are considered first generation if their parents do not have a Bachelor's or Master's degree from a four-year university. From the *Parents Education* graph, all bars highlighted as yellow are considered first gen, while all bars in blue are not (excluding Other/Unknown).
+As defined by the [University of California](https://www.universityofcalifornia.edu/sites/default/files/First-Generation%20Student%20Success%20at%20UC%208-2017.pdf) first generation students are "working to be part of the first generation in their families to earn a four-year university degree". This means based upon parents education, students in the data set are considered first generation if their parents do not have a Bachelor's or Master's degree from a four-year university. From the *Parents Education* graph, all bars highlighted as yellow are considered first gen, while all bars in blue are not (excluding Other/Unknown).
 
 # Academic Characteristics
-
-
-put other page stuff here. 
-

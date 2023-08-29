@@ -49,7 +49,7 @@ display.text <- function(data, var){
 print_n_reporting <- function(x) { 
   paste0("(n=", 
          sum(!is.na(bns[[x]])), ", ", 
-         percent(mean(!is.na(bns[[x]])), accuracy=1), " of ", nrow(bns), " reporting)."
+         percent(mean(!is.na(bns[[x]])), accuracy=1), " of ", nrow(bns), " reporting)"
   )
 }
 
@@ -57,7 +57,7 @@ print_n_reporting <- function(x) {
 print_n_reporting_tmp <- function(x) {
   paste0("(n=", 
          sum(!is.na(tmp[[x]])), ", ", 
-         percent(sum(!is.na(tmp[[x]]))/nrow(bns), accuracy=1), " of ", nrow(bns), " reporting)."
+         percent(sum(!is.na(tmp[[x]]))/nrow(bns), accuracy=1), " of ", nrow(bns), " reporting)"
   )
 }
 
@@ -65,7 +65,7 @@ print_n_reporting_tmp <- function(x) {
 print_n_reporting_tmp2 <- function(x) {
   paste0("(n=", 
          sum(!is.na(tmp2[[x]])), ", ", 
-         percent(sum(!is.na(tmp2[[x]]))/nrow(bns), accuracy=1), " of ", nrow(bns), " reporting)."
+         percent(sum(!is.na(tmp2[[x]]))/nrow(bns), accuracy=1), " of ", nrow(bns), " reporting)"
   )
 }
 
@@ -101,7 +101,7 @@ binary_table <- function(var, value, row.names, punc = ".") {
   tmp2 <- data.frame(Freq=apply(tmp, 1, function(x, value) sum(x == value, na.rm=TRUE), value))
   n.s <- apply(tmp, 1, function(x) sum(!is.na(x))) # get this
   tmp2$label <- paste0(tmp2$Freq, " (", unname(percent(tmp2$Freq/n.s, accuracy=.1)), ")")
-  rownames(tmp2) <- paste0(rnames, " (n = ", n.s, ")", punc) 
+  rownames(tmp2) <- paste0(rnames, punc, " (n = ", n.s, ")") 
   tmp2 <- tmp2 %>% arrange(desc(Freq)) %>% select(-Freq)
   colnames(tmp2) <- "Yes (%)"
   tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped") %>% column_spec(2, width='3.5cm')

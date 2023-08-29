@@ -41,6 +41,7 @@ Looking at the above graphs, the majority of people apply for CalFresh EBT as an
 
 gghistogram(bns, x = "q49_1", add = "mean", fill = chc_blue, alpha = 1) + xlab("Monthly EBT Received ($)") + ylab("Frequency")
 
+
 #is $1500 a feasible response?
 ```
 

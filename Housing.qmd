@@ -1,5 +1,12 @@
 ---
 title: "Housing"
+output: 
+  html_document: 
+    toc: yes
+    toc_float: yes
+    css: styles.css
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include=FALSE}
@@ -7,48 +14,6 @@ source("common_code.R")
 ```
 
 The following questions were asking in regards to students current and past housing situations. This includes changes due to COVID, if they are living near their college (with most schools being remote at the time of the survey), the type of home they current live in, and hardships that they faced in the past year with housing.
-
-## COVID Housing Impact
-
-**Has your housing stability changed due to COVID-19? `r print_n_reporting("q23")`**
-
-::: row
-::: col-md-6
-```{r}
-#| fig-height: 3
-#| fig-width: 4
-plot_frq(bns$q23, ylim=c(0,2150)) + xlab('') + ylab("Frequency")
-```
-:::
-
-::: col-md-5
-There are `r unname(table(bns$q23)['No'])` people that participated in the survey that claim their housing has not changed due to the impacts of COVID. There also are `r unname(table(bns$q23)['Yes'])` people that say their housing situation did change due to the impacts of COVID.
-:::
-:::
-
-<br />
-
-**If yes, why did your housing stability change due to COVID-19?**
-
-```{r}
-question <- "covid_housing"
-
-qlabel <- c("Finances changed due to lost (or reduced) on-campus job.", 
-            "Finances changed due to lost (or reduced) off-campus job.",
-            "I was unable to access on-campus housing.",
-            "I was unable to access off-campus housing.",
-            "My roommate(s) finances changed.",
-            "I was in unsafe housing.",
-            "Other")
-
-
-ch_barrier_vars <- prep_binary_vars(question, qlabel)
-
-# Plot table of Percentages
-ch_barrier_vars %>%
-  select(Measure = xlab, "Yes (%)" = pct_lab) %>%
-  kable() %>% kable_styling(bootstrap_options = "striped")
-```
 
 ## Living Near College
 
@@ -64,7 +29,7 @@ plot_frq(bns$q24, ylim=c(0,1800)) + xlab('') + ylab("Frequency")
 :::
 
 ::: col-md-5
-There are `r unname(table(bns$q24)['No'])` people that participated in the survey that do not currently live in the city/area of their enrolled college. There also are `r unname(table(bns$q24)['Yes'])` people that say they do live in the city/area of their enrolled college. This high "No" value could likely be due to many campuses being remote and students choosing to live at home or in an area with a lower cost of living.
+There are `r unname(table(bns$q24)['No'])` students that participated in the survey that do not currently live in the city/area of their enrolled college. There also are `r unname(table(bns$q24)['Yes'])` students that say they do live in the city/area of their enrolled college. This high "No" value could likely be due to many campuses being remote and students choosing to live at home or in an area with a lower cost of living.
 :::
 :::
 
@@ -130,25 +95,6 @@ The majority of students (`r unname(table(bns$housing_barrier_none))[2]`) report
 
 <br />
 
-```{r}
-#| fig-height: 4.3
-#| fig-width: 4.5
-
-plot_frq(bns$q34, wrap.title=40, wrap.labels =12, ylim=c(0,1850),
-               title = 'How many times have you been unsure of where you were going to sleep at night?') + xlab('') + ylab("Frequency")
-```
-
-```{r}
-#| fig-height: 4.3
-#| fig-width: 4.5
-
-plot_frq(bns$q35, wrap.labels =10, title = 'How many times have you moved?') + xlab('')
-```
-
-Over the past 12 months, the majority of people were never unsure of where they would be sleeping (`r unname(table(bns$q34)['Never'])` people ) or have not moved housing (`r unname(table(bns$q35)['None'])` people). For uncertainty in where they would be sleeping, the remaining responses were mostly evenly distributed over the other options. For number of times that a person has moved, `r unname(table(bns$q35)['Once'])` people have claimed they moved once in the last 12 months and `r unname(table(bns$q35)['Twice'])` people have moved twice. Only a small minority have moved 3 or more times in the last 12 months.
-
-<br>
-
 ## Sleeping Places
 
 **In the last 30 days, or in the past 12 months, have you slept in any of the following places?**\
@@ -203,6 +149,32 @@ full_join(get.month.vars, get.year.vars) %>%
 
 ## Unstable Housing
 
+**In the past 12 months, how many times have you moved?**
+
+```{r}
+#| fig-height: 4.3
+#| fig-width: 4.5
+
+plot_frq(bns$q35, wrap.labels =10) + xlab('')
+```
+
+Over the past 12 months, the majority of students reported not having moved (`r unname(table(bns$q35)['None'])` students). Regarding the rest of the students, `r unname(table(bns$q35)['Once'])` students moved once in the last 12 months and `r unname(table(bns$q35)['Twice'])` students moved twice. Only a small minority reported having moved 3 or more times in the last 12 months.
+
+<br>
+
+**In the past 12 months, how many times have you been unsure of where you were going to sleep at night?**
+
+```{r}
+#| fig-height: 4.3
+#| fig-width: 4.5
+
+plot_frq(bns$q34, wrap.title=40, wrap.labels =12, ylim=c(0,1850)) + xlab('') + ylab("Frequency")
+```
+
+Over the past 12 months, the majority of students were never unsure of where they would be sleeping (`r unname(table(bns$q34)['Never'])` students). Regarding the rest of the students, `r unname(table(bns$q34)['Once'])` students moved once in the last 12 months, `r unname(table(bns$q34)['Twice'])` students moved twice, and `r unname(table(bns$q34)['Three or more times'])` reported having moved 3 or more times in the last 12 months.
+
+<br>
+
 **In the past 12 months, if you have experienced unstable housing, what was the most common reason? `r print_n_reporting("q37")`**
 
 ```{r}
@@ -211,9 +183,9 @@ full_join(get.month.vars, get.year.vars) %>%
 plot_frq(bns$q37, wrap.labels = 17, ylim=c(0,1600), sort.frq = 'desc') + xlab('') + ylab("Frequency") + theme(axis.text.x = element_text(size = 10))
 ```
 
-It seems that of the people who experienced unstable housing, the most common cause was not having enough money to cover housing expenses (`r unname(table(bns$q37)["I did not have enough money to cover housing expenses (rent, mortgage, or utility bill)"])` people). The next most common was cause was from issues with roommates, both having conflicts (`r unname(table(bns$q37)["I had a conflict with someone I was living with"])` people) and them being unable/unwilling to pay living expenses (`r unname(table(bns$q37)["A roommate was unable/unwilling to pay rent or a bill"])` people).
+It seems that of the students who experienced unstable housing, the most common cause was not having enough money to cover housing expenses (`r unname(table(bns$q37)["I did not have enough money to cover housing expenses (rent, mortgage, or utility bill)"])` students). The next most common was cause was from issues with roommates, both having conflicts (`r unname(table(bns$q37)["I had a conflict with someone I was living with"])` students) and them being unable/unwilling to pay living expenses (`r unname(table(bns$q37)["A roommate was unable/unwilling to pay rent or a bill"])` students).
 
-<br>
+<br> 
 
 ## Housing Insecure & Homeless
 
@@ -238,3 +210,45 @@ bns %>%
 -   Looking at the above table we can see that the majority of students are not considered to be housing insecure (`r unname(table(bns$housing_insecure)["0"])` students, `r percent(unname(prop.table(table(bns$housing_insecure))["0"]), .1)`), while the remaining students could be classified as housing insecure based on their indicators (`r unname(table(bns$housing_insecure)["1"])` students, `r percent(unname(prop.table(table(bns$housing_insecure))["1"]), .1)`).
 
 -   Looking at the table above, we can see the majority of student did not experience homelessness in either the past month (`r unname(table(bns$homelessness_month)["0"])` students, `r percent(unname(prop.table(table(bns$homelessness_month))["0"]), .1)`) or year (`r unname(table(bns$homelessness_year)["0"])` students, `r percent(unname(prop.table(table(bns$homelessness_year))["0"]), .1)`). However, we can see around 3x more students did experience homelessness during the past year (`r unname(table(bns$homelessness_year)["1"])` students, `r percent(unname(prop.table(table(bns$homelessness_year))["1"]), .1)`) compared to during the past month (`r unname(table(bns$homelessness_month)["1"])` students, `r percent(unname(prop.table(table(bns$homelessness_month))["1"]), .1)`).
+
+## COVID Housing Impact
+
+**Has your housing stability changed due to COVID-19? `r print_n_reporting("q23")`**
+
+::: row
+::: col-md-6
+```{r}
+#| fig-height: 3
+#| fig-width: 4
+plot_frq(bns$q23, ylim=c(0,2150)) + xlab('') + ylab("Frequency")
+```
+:::
+
+::: col-md-5
+There are `r unname(table(bns$q23)['No'])` students that participated in the survey that claim their housing has not changed due to the impacts of COVID. There also are `r unname(table(bns$q23)['Yes'])` students that say their housing situation did change due to the impacts of COVID.
+:::
+:::
+
+<br />
+
+**If yes, why did your housing stability change due to COVID-19?**
+
+```{r}
+question <- "covid_housing"
+
+qlabel <- c("Finances changed due to lost (or reduced) on-campus job.", 
+            "Finances changed due to lost (or reduced) off-campus job.",
+            "I was unable to access on-campus housing.",
+            "I was unable to access off-campus housing.",
+            "My roommate(s) finances changed.",
+            "I was in unsafe housing.",
+            "Other")
+
+
+ch_barrier_vars <- prep_binary_vars(question, qlabel)
+
+# Plot table of Percentages
+ch_barrier_vars %>%
+  select(Measure = xlab, "Yes (%)" = pct_lab) %>%
+  kable() %>% kable_styling(bootstrap_options = "striped")
+```

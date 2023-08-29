@@ -25,6 +25,15 @@ bns <- bns %>%
                                                  "Sacramento State",
                                                  "San Francisco State"),
                                      "UC" = c("UC Berkeley")))
+
+#rename to be consistent with code book
+bns <- bns %>% 
+  mutate(school_rnm = recode(school, "Butte CC"="Butte College", 
+                       "Mt. SAC CC" = "Mt. San Antonio College",
+                       "Clovis CC" = "Clovis Community College",
+                       "Palo Verde CC" = "Palo Verde College",
+                   "Allan Hancock Community College" = "Allan Hancock College"))
+
 ```
 
 The following set of questions were asked in regards to the students' academic status. This includes information such as what college they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of student they are (transfer, international, etc.) to help identify students.
@@ -33,7 +42,7 @@ The following set of questions were asked in regards to the students' academic s
 
 ## School
 
-**Which Cal State University are you currently enrolled in? `r print_n_reporting('school')`**
+**Which campus do you attend? `r print_n_reporting('school')`**
 
 <div class = "row">
 
@@ -42,7 +51,7 @@ The following set of questions were asked in regards to the students' academic s
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
-plot_frq(bns$school, ylim=c(0,450), hjust = -.2, vjust = "center",
+plot_frq(bns$school_rnm, ylim=c(0,450), hjust = -.2, vjust = "center",
          coord.flip = TRUE) + xlab('') + ylab("Frequency")
 ```
 
@@ -89,7 +98,7 @@ plot_frq(bns$q16, ylim=c(0,875), wrap.labels = 16, sort.frq = 'desc') + xlab('')
 
 *NOTE: Science, Technology, Engineering and Math (STEM) was shortened for the figure above, but also includes the following majors: Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition.*
 
-The majority of students in the data seem to be majoring in some type of `r names(sort(table(bns$q16), decreasing=TRUE)[1])` program (`r unname(sort(table(bns$q16), decreasing=TRUE)[1])` people). `r unname(sort(table(bns$q16), decreasing=TRUE)[2])` of the students are `r names(sort(table(bns$q16), decreasing=TRUE)[2])` majors.
+The majority of students in the data are majoring in a `r names(sort(table(bns$q16), decreasing=TRUE)[1])` program (`r unname(sort(table(bns$q16), decreasing=TRUE)[1])` people). `r unname(sort(table(bns$q16), decreasing=TRUE)[2])` of the students are `r names(sort(table(bns$q16), decreasing=TRUE)[2])` majors.
 
 <br />
 
@@ -106,7 +115,6 @@ plot_frq(bns$gpa_fac) + xlab('GPA') + ylab("Frequency")
 ```
 
 The average overall GPA for students is `r round(mean(bns$q17, na.rm = TRUE), 2)`, while the median is `r round(median(bns$q17, na.rm = TRUE), 2)`. The majority (`r percent(sum(prop.table(table(bns$gpa_fac))[5:6]), accuracy = .1)`) of students have a GPA greater than 3.0.
-
 
 <br />
 
@@ -125,7 +133,7 @@ gghistogram(bns, x = "q18", add = "mean", fill = chc_blue, alpha = 1) +
 # cutoff at 30?
 ```
 
-The average number of units a student is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The data indicates that the majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occurring.
+The average number of units a student is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occurring.
 
 <br />
 

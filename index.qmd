@@ -2,11 +2,12 @@
 title: "Exploring Patterns of Basic Needs in College Students"
 format: 
   html:
-    toc: no
+    toc: FALSE
 ---
 
 ## Overview
-Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) at 13 colleges across the CSU, CCC and UC systems from November 25$^{th}$, 2020 to March 24$^{th}$, 2021. 
+
+Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) at 13 colleges across the CSU, CCC and UC systems from November 25$^{th}$, 2020 to March 24$^{th}$, 2021.
 
 The EOP office assisted in the recruitment and provided computers for students to take the survey. Participants were given a \$25 gift card for their participation. EOP students were identified as the target population for this survey based upon their low-income and first-generation student status, which indicates a higher probability of CalFresh eligibility.
 
@@ -19,8 +20,7 @@ This report provides a top level descriptive analysis of each question in the su
 
 ## Participants
 
-We surveyed 2,110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU LA, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley. 
-
+We surveyed 2,110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU LA, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.
 
 **Disclaimer on Missing Data:** Students were allowed to select answers such as "Prefer not to answer" or "I don't know" as responses to every question asked. These answers were then converted to missing values, denoted as *NA*, and this is the cause of the missing data for certain questions (not 100% of respondents reporting). The total number of non-missing responses (and percentage of the total data) are provided for each question.
 
