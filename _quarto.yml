@@ -14,26 +14,26 @@ website:
         text: Home
       - href: Demographics.qmd
         text: Demographics
-      - href: Workload.qmd
-        text: Workload
-      - href: Housing.qmd
-        text: Housing
-      - href: CalFresh.qmd
-        text: CalFresh
-      - href: Food_Security.qmd
-        text: Food Security
-      - href: Eating_Habits.qmd
-        text: Eating Habits
-      - href: Physical_Activity.qmd
-        text: Physical Activity
-      - href: Mental_Health.qmd
-        text: Mental Health
+      # - href: Workload.qmd
+      #   text: Workload
+      # - href: Housing.qmd
+      #   text: Housing
+      # - href: CalFresh.qmd
+      #   text: CalFresh
+      # - href: Food_Security.qmd
+      #   text: Food Security
+      # - href: Eating_Habits.qmd
+      #   text: Eating Habits
+      # - href: Physical_Activity.qmd
+      #   text: Physical Activity
+      # - href: Mental_Health.qmd
+      #   text: Mental Health
 
 format:
   html:
     theme: 
       - cosmo
-      - styles.css
+      - custom.scss
     toc: true
 
 
