@@ -49,12 +49,12 @@ The following was determined using the two item food insecurity screening questi
 bns <- bns %>% mutate(two.item = case_when(food_insecure_2item == 0 ~ "No",
                                            food_insecure_2item == 1 ~ "Yes",
                                            TRUE ~ as.character(food_insecure_2item)))
-plot_frq(bns$two.item, ylim=c(0,1250)) + xlab('Food Insecure') + ylab("Frequency")
+plot_frq(bns$two.item, geom.colors = plot_color, ylim=c(0,1250)) + xlab('Food Insecure') + ylab("Frequency")
 ```
 :::
 
 ::: col-md-4
-Of the survey participants, the data indicates that the majority of them are considered to be food insecure (`r unname(table(bns$two.item)['Yes'])` people). There are `r unname(table(bns$two.item)['No'])` survey participants not considered to be food insecure, meaning they answered "never true" to the above question criteria.
+The majority of the students that took part in the survey are considered to be food insecure (`r unname(table(bns$two.item)['Yes'])` people). There are `r unname(table(bns$two.item)['No'])` students not considered to be food insecure, meaning they answered "never true" to the above question criteria.
 :::
 :::
 

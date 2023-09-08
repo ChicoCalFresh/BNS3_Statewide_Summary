@@ -2,24 +2,24 @@ project:
   type: website
   output-dir: docs
 
+# blue - 2b388f
+# purple - 
+
 website:
   title: "BNS Statewide"
   navbar:
+    background: "#702b84"
     left:
       - href: index.qmd
         text: Home
-      - href: Personal_Demographics.qmd
-        text: Personal Demographics
-      - href: Student_Demographics.qmd
-        text: Student Demographics
+      - href: Demographics.qmd
+        text: Demographics
       - href: Workload.qmd
         text: Workload
       - href: Housing.qmd
         text: Housing
-      - href: Participation.qmd
+      - href: CalFresh.qmd
         text: CalFresh
-      - href: Impact.qmd
-        text: Impact
       - href: Food_Security.qmd
         text: Food Security
       - href: Eating_Habits.qmd
@@ -31,9 +31,9 @@ website:
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      - cosmo
+      - styles.css
     toc: true
 
-editor: visual
 

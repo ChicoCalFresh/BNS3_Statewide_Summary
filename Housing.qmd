@@ -24,7 +24,7 @@ The following questions were asking in regards to students current and past hous
 ```{r}
 #| fig-height: 3.5
 #| fig-width: 4.5
-plot_frq(bns$q24, ylim=c(0,1800)) + xlab('') + ylab("Frequency")
+plot_frq(bns$q24, geom.colors = plot_color, ylim=c(0,1800)) + xlab('') + ylab("Frequency")
 ```
 :::
 
@@ -155,7 +155,7 @@ full_join(get.month.vars, get.year.vars) %>%
 #| fig-height: 4.3
 #| fig-width: 4.5
 
-plot_frq(bns$q35, wrap.labels =10) + xlab('')
+plot_frq(bns$q35, geom.colors = plot_color, wrap.labels =10) + xlab('')
 ```
 
 Over the past 12 months, the majority of students reported not having moved (`r unname(table(bns$q35)['None'])` students). Regarding the rest of the students, `r unname(table(bns$q35)['Once'])` students moved once in the last 12 months and `r unname(table(bns$q35)['Twice'])` students moved twice. Only a small minority reported having moved 3 or more times in the last 12 months.
@@ -168,7 +168,7 @@ Over the past 12 months, the majority of students reported not having moved (`r 
 #| fig-height: 4.3
 #| fig-width: 4.5
 
-plot_frq(bns$q34, wrap.title=40, wrap.labels =12, ylim=c(0,1850)) + xlab('') + ylab("Frequency")
+plot_frq(bns$q34, geom.colors = plot_color, wrap.title=40, wrap.labels =12, ylim=c(0,1850)) + xlab('') + ylab("Frequency")
 ```
 
 Over the past 12 months, the majority of students were never unsure of where they would be sleeping (`r unname(table(bns$q34)['Never'])` students). Regarding the rest of the students, `r unname(table(bns$q34)['Once'])` students moved once in the last 12 months, `r unname(table(bns$q34)['Twice'])` students moved twice, and `r unname(table(bns$q34)['Three or more times'])` reported having moved 3 or more times in the last 12 months.
@@ -180,7 +180,7 @@ Over the past 12 months, the majority of students were never unsure of where the
 ```{r}
 #| fig-height: 5
 #| fig-width: 9
-plot_frq(bns$q37, wrap.labels = 17, ylim=c(0,1600), sort.frq = 'desc') + xlab('') + ylab("Frequency") + theme(axis.text.x = element_text(size = 10))
+plot_frq(bns$q37, geom.colors = plot_color, wrap.labels = 17, ylim=c(0,1600), sort.frq = 'desc') + xlab('') + ylab("Frequency") + theme(axis.text.x = element_text(size = 10))
 ```
 
 It seems that of the students who experienced unstable housing, the most common cause was not having enough money to cover housing expenses (`r unname(table(bns$q37)["I did not have enough money to cover housing expenses (rent, mortgage, or utility bill)"])` students). The next most common was cause was from issues with roommates, both having conflicts (`r unname(table(bns$q37)["I had a conflict with someone I was living with"])` students) and them being unable/unwilling to pay living expenses (`r unname(table(bns$q37)["A roommate was unable/unwilling to pay rent or a bill"])` students).
@@ -220,7 +220,7 @@ bns %>%
 ```{r}
 #| fig-height: 3
 #| fig-width: 4
-plot_frq(bns$q23, ylim=c(0,2150)) + xlab('') + ylab("Frequency")
+plot_frq(bns$q23, geom.colors = plot_color, ylim=c(0,2150)) + xlab('') + ylab("Frequency")
 ```
 :::
 

@@ -18,7 +18,7 @@ tmp2$NonAcademic <- ifelse(is.na(tmp2[,'paid_work_hours']) & is.na(tmp2[,"unpaid
 tmp2$TotalHours <- ifelse(is.na(tmp2[, 'units']) & is.na(tmp2[,'NonAcademic']), NA,  rowSums(tmp2[, c('units','NonAcademic')], na.rm = TRUE))
 ```
 
-The following questions were asked in regards to the weekly workload taken on by students. This includes work from both paid/unpaid jobs, as well as time spent caregiving for a family member. Students academic workload is also looked at in order to see the hours spent each week on school work, as well as looking at the combined hours across academic and non-academic responsibilities.
+The following questions were asked in regards to the weekly workload taken on by students. This includes work from both paid/unpaid jobs, as well as time spent care-giving for a family member. Students academic workload is also looked at in order to see the hours spent each week on school work, as well as looking at the combined hours across academic and non-academic responsibilities.
 
 <br>
 
@@ -27,13 +27,13 @@ The following questions were asked in regards to the weekly workload taken on by
 **Estimate the number of hours you work in a PAID job (for example, server at a restaurant, office assistant, etc.) or paid internship (for example, training, shadowing, or practicum) per week. `r print_n_reporting('paid_work_hours')`**
 
 ```{r}
-gghistogram(bns, x = "paid_work_hours", add = "mean", fill = chc_blue, alpha = 1) + 
+gghistogram(bns, x = "paid_work_hours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Paid Hours Per Week") + ylab("Frequency")
 ```
 
-Respondents stated a wide range of paid hours per week, with 50% of them reporting between <insert IQR here> hours, with an average of X and median of X. 
+Students reported a wide range of paid hours per week, with 50% of them reporting between `r quantile(bns$paid_work_hours, na.rm = TRUE, .25)` and `r quantile(bns$paid_work_hours, na.rm = TRUE, .75)`  hours, with an average of `r round(mean(bns$paid_work_hours, na.rm = TRUE), digits = 2)` and median of `r median(bns$paid_work_hours, na.rm = TRUE)`. 
 
-The majority of survey participants work either part-time or not at all. Only a small number `r NROW(bns$paid_work_hours >= 40)` of participants are considered to be working full-time (40 or more hours per week). Below is a breakdown of the exact paid hours worked by survey participants.
+The majority of students work either part-time or not at all. Only a small number `r NROW(bns$paid_work_hours >= 40)` of students are considered to be working full-time (40 or more hours per week). Below is a breakdown of the exact paid hours worked by students.
 
 <br>
 
@@ -43,22 +43,21 @@ The majority of survey participants work either part-time or not at all. Only a 
 
 ```{r}
 #| fig-width: 8
-plot_frq(bns$q20, ylim=c(0,700), wrap.labels = 19, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,700), wrap.labels = 19, sort.frq = 'desc') + xlab('') + ylab("Frequency")
 ```
 
-With the impact of COVID, the data indicates that most employed survey participants were able to keep their current paid jobs with only slight changes. `r unname(table(bns$q20)['Yes, my hours have decreased but I still have a job.'])` students had their hours decrease, `r unname(table(bns$q20)['No, my hours have remained the same.'])` students maintained the same hours, and `r unname(table(bns$q20)['Yes, my hours have increased and I still have a job or I have a new job.'])` students had their hours increase. There was also `r unname(table(bns$q20)['Yes, I no longer have my job/internship.'])` students who claimed that they no longer had their paid position due to the impact of COVID, while `r unname(table(bns$q20)['I did not have a job or internship before COVID-19 and I still do not.'])` students also claimed that they did not have a paid position before COVID.
+With the impact of COVID, the data indicates that most employed students were able to keep their current paid jobs with only slight changes. `r unname(table(bns$q20)['Yes, my hours have decreased but I still have a job.'])` students had their hours decrease, `r unname(table(bns$q20)['No, my hours have remained the same.'])` students maintained the same hours, and `r unname(table(bns$q20)['Yes, my hours have increased and I still have a job or I have a new job.'])` students had their hours increase. There was also `r unname(table(bns$q20)['Yes, I no longer have my job/internship.'])` students who claimed that they no longer had their paid position due to the impact of COVID, while `r unname(table(bns$q20)['I did not have a job or internship before COVID-19 and I still do not.'])` students also claimed that they did not have a paid position before COVID.
 
 ## Unpaid Work Hours
 
 **Estimate the number of hours you work in an UNPAID internship (for example, training, shadowing, practicum, and/or volunteer, etc.). Do not combine with answers above. `r print_n_reporting('unpaid_work_hours')`**
 
 ```{r}
-gghistogram(bns, x = "unpaid_work_hours", add = "mean", fill = chc_blue, alpha = 1) + 
+gghistogram(bns, x = "unpaid_work_hours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Unpaid Hours Per Week") + ylab("Frequency")
-#Outliers
 ```
 
-We can see that the majority of survey participants (`r unname(table(bns$unpaid_work_hours)['0'])`) do not work an unpaid job. A small number of participants work part-time at an unpaid job and only a select few work full-time at an unpaid job. Below is a breakdown of the number of unpaid hours worked per week.
+We can see that the majority of students (`r unname(table(bns$unpaid_work_hours)['0'])`) do not work an unpaid job. A small number of students work part-time at an unpaid job and only a select few work full-time at an unpaid job. Below is a breakdown of the number of unpaid hours worked per week.
 
 <br>
 
@@ -68,18 +67,19 @@ We can see that the majority of survey participants (`r unname(table(bns$unpaid_
 
 ```{r}
 bns$bin <- ifelse(bns$caregiving_hours > 0, 1, 0)
-gghistogram(bns, x = "caregiving_hours", add = "mean", fill = chc_blue, alpha = 1) + 
+gghistogram(bns, x = "caregiving_hours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Caregiving Hours") + ylab("Frequency")
 ```
 
-The data indicates that the majority of survey participants (`r table(bns$bin)['1']`) do spend some time each week caring for family members. A minority (`r unname(table(bns$caregiving_hours)['0'])`) of participants estimated that they spent 0 hours per week for family obligations. `r unname(table(bns$caregiving_hours > 40)[2])` participants reported 40 or more hours per week on these family obligations. Below is a breakdown of these unpaid hours spent on family obligations each week.
+The majority of students (`r table(bns$bin)['1']`) do spend some time each week caring for family members. A minority (`r unname(table(bns$caregiving_hours)['0'])`) of students estimated that they spent 0 hours per week for family obligations. `r unname(table(bns$caregiving_hours > 40)[2])` students reported 40 or more hours per week on these family obligations. Below is a breakdown of these unpaid hours spent on family obligations each week.
 
 <br>
 
 ## Academic Workload
 
+
 ```{r}
-gghistogram(tmp2, x = "units", add = "mean", fill = chc_blue, alpha = 1) + 
+gghistogram(tmp2, x = "units", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Academic Hours Per Week") + ylab("Frequency")
 ```
 
@@ -89,10 +89,10 @@ The average number of academic hours worked per week (denoted by the dotted line
 
 ## Non-Academic Workload
 
-**Below is a combination of both paid and unpaid hours worked by students to get a further understanding of the workload participants face on a weekly basis. `r print_n_reporting('Nonacademic')`**
+**Below is a combination of both paid and unpaid hours worked by students to get a further understanding of the workload students face on a weekly basis. `r print_n_reporting('Nonacademic')`**
 
 ```{r}
-gghistogram(tmp2, x = "NonAcademic", add = "mean", fill = chc_blue, alpha = 1) + 
+gghistogram(tmp2, x = "NonAcademic", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Non-academic Hours Per Week") + ylab("Frequency")
 ```
 
@@ -109,7 +109,7 @@ tmp <- tmp2 %>% filter(TotalHours > 0)
 **Below is a combination of all worked hours per week, both academic and non-academic. This includes units (3 hr/unit), paid, and unpaid worked hours `r print_n_reporting_tmp("TotalHours")`**
 
 ```{r}
-gghistogram(tmp2, x = "TotalHours", add = "mean", fill = chc_blue, alpha = 1) + 
+gghistogram(tmp2, x = "TotalHours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Total Hours Per Week") + ylab("Frequency")
 ```
 

@@ -28,7 +28,16 @@ likert.pal.3[2] <- "#b2b5a8"
 likert.pal.6 <- brewer_pal("div")(6)
 likert.pal.6[3] <- "#b2b5a8"
 
-chc_blue <- "#336699"
+# color options
+
+CF_purple <- "#702b84"
+CF_blue <- "#2b388f"
+CF_green <- "#00944d"
+diff_green <- "#8bc53f"
+
+# set theme options 
+plot_color <- CF_green
+# find sjplot global theme for color
 
 
 # Helper functions

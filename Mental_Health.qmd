@@ -15,6 +15,8 @@ The following questions were asked in regards to students feelings about their m
 **Over the last two weeks, how often have you been bothered by the following problems?**
 
 ```{r}
+#| fig-height: 6
+#| fig-width: 7
 questions <- bns %>% select(starts_with("q108_"))
 names(questions) <- c("Feeling nervous, anxious, or on edge",
                       "Not being able to stop or control worrying",
@@ -38,7 +40,7 @@ plot_likert(questions,
 
 ```{r}
 #| fig-height: 8
-#| fig-width: 8.5
+#| fig-width: 7
 questions <- bns %>% select(starts_with("q109_"))
 names(questions) <- c("Little interest or pleasure in doing things ",
                       "Feeling down, depressed, or hopeless ",
@@ -63,7 +65,7 @@ plot_likert(questions,
 **Which statement best describes how you are feeling right now? `r print_n_reporting("q110")`**
 
 ```{r}
-plot_frq(bns$q110, ylim=c(0,300), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
 ```
 
 Of the `r unname(sum(table(bns$q110)))` students, `r unname(table(bns$q110)[1])` reported feeling safe while `r unname(table(bns$q110)[2])` reported having suicidal thoughts, but were not planning on hurting themselves.
@@ -73,7 +75,7 @@ Of the `r unname(sum(table(bns$q110)))` students, `r unname(table(bns$q110)[1])`
 **Do you have access to mental health services on your campus? `r print_n_reporting("q113")`**
 
 ```{r}
-plot_frq(bns$q113, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+plot_frq(bns$q113, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
 ```
 
 Of the `r unname(sum(table(bns$q113)))` students, the majority (`r unname(table(bns$q113)['Yes'])`) said yes to having access to on campus mental health services. Roughly one fourth of students were unsure, and a smaller minority stated they did not have access to on campus mental health services.
@@ -81,7 +83,7 @@ Of the `r unname(sum(table(bns$q113)))` students, the majority (`r unname(table(
 **Have you used any of these campus-based mental health services within the last 12 months?**
 
 ```{r}
-plot_frq(bns$q114, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+plot_frq(bns$q114, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
 ```
 
 The vast majority of students (`r unname(table(bns$q114)['No'])`) responded "No" to using any of the on campus based mental health services within the last 12 months. Only `r unname(table(bns$q114)['Yes'])` reported using the mental health service offered by their campus in the last 12 months.
@@ -110,8 +112,8 @@ kable() %>% kable_styling(bootstrap_options = "striped")
 **Based on your experiences with one-on-one counseling, please respond to the following statements:**
 
 ```{r}
-#| fig-height: 5
-#| fig-width: 6
+#| fig-height: 6
+#| fig-width: 7
 questions2 <- bns %>% select(starts_with("q116_"))
 names(questions2) <- c("It was easy to access services",
             "The wait time from when I contacted to when I could be seen was acceptable",
