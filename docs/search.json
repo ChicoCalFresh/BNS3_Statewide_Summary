@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "Demographics.html",
+    "href": "Demographics.html",
+    "title": "Demographics",
+    "section": "",
+    "text": "The following set of questions were asked in regards to the students’ personal demographics. This includes the students’ age, ethnicities they identify with, and the number of dependents they are responsible for taking care of. They were also asked about parents’ education, which will help us identify first generation college students.\n\n\nThe following was determined by taking the difference between birth date and the time at which the survey was completed (n=2110, 100% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nThe age of students in the survey range from 18 to 72 at the time of completion, with the majority of students being between 20-30 years old. The average age of a participant in this survey is 24.6 years old. \n\n\n\nWhat is your gender identity? (n=2094, 99% of 2110 reporting)\n\n\n\n\n\n\n\n\n\n\n\n\n\nOf the students in the survey, 1642 of them identify as a woman, 407 identify as a man, and 27 identify as gender non-binary. There are also students who preferred not to answer.\n\n\n\nIn the US Census, Hispanic Origins are not races. Do you identify as Hispanic or Latino or Spanish Origin? (n=2070, 98% of 2110 reporting)\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe define Hispanic Origin to include: Mexican, Mexican American, Chicano, Puerto Rican, or another Hispanic/Latino/Spanish origin. The data indicates that the majority of students identify as having Hispanic Origins (1436 students), while around a quarter of them do not identify as having Hispanic Origins (634 students).\n\n\n\n\n\n\nWhat race do you identify as? Select all that apply (n=2110, 100% of 2110 reporting) Note that the survey included 14 race options that were collapsed down to 5 broad groups defined by census.gov.\n\n\n\n\n\n\nYes (%)\n\n\n\n\nWhite\n859 (40.7%)\n\n\nPrefer not to answer race\n755 (35.8%)\n\n\nAsian\n321 (15.2%)\n\n\nBlack or African American\n167 (7.9%)\n\n\nAmerican Indian and Alaska Native\n106 (5.0%)\n\n\nNative Hawaiian and Other Pacific Islander\n40 (1.9%)\n\n\n\n\n\n\n\n\n\n\nIf you have dependents, then how many of them receive more than 50% of their financial support from you? (n=600, 28% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nThe majority of students who report having at least one dependent also report that they provide more than 50% of financial support to at least one dependent (493 students).\n\n\n\n\nWhat is the highest level of education completed by your parents/guardians? (n=2083, 99% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nNote: Variables filled with yellow above are used to show the conditions used to build the First Generation variable.\nThe highest level of education completed by most students’ parents was “Less than high school” (719), while 584 students reported their parents highest level is “High school diploma or GED”, and 394 report their parents highest level is “Some college”. Only a minority of students (125) indicated that their parents have a bachelor’s degree or higher.\n\n\nNote: Students with parents education identified as “Other/Unknown” were not marked as first gen or not since they could not be determined. (n=2017, 96% of 2110 reporting)\n\n\n\n\n\n\n\n\n\n\n\n\n\n1892 students are considered as First Generation College students and 125 students are not considered First Generation College students.\n\n\nAs defined by the University of California first generation students are “working to be part of the first generation in their families to earn a four-year university degree”. This means based upon parents education, students in the data set are considered first generation if their parents do not have a Bachelor’s or Master’s degree from a four-year university. From the Parents Education graph, all bars highlighted as yellow are considered first gen, while all bars in blue are not (excluding Other/Unknown)."
+  },
+  {
+    "objectID": "Demographics.html#age",
+    "href": "Demographics.html#age",
+    "title": "Demographics",
+    "section": "",
+    "text": "The following was determined by taking the difference between birth date and the time at which the survey was completed (n=2110, 100% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nThe age of students in the survey range from 18 to 72 at the time of completion, with the majority of students being between 20-30 years old. The average age of a participant in this survey is 24.6 years old."
+  },
+  {
+    "objectID": "Demographics.html#gender-identity",
+    "href": "Demographics.html#gender-identity",
+    "title": "Demographics",
+    "section": "",
+    "text": "What is your gender identity? (n=2094, 99% of 2110 reporting)\n\n\n\n\n\n\n\n\n\n\n\n\n\nOf the students in the survey, 1642 of them identify as a woman, 407 identify as a man, and 27 identify as gender non-binary. There are also students who preferred not to answer."
+  },
+  {
+    "objectID": "Demographics.html#ethnicity",
+    "href": "Demographics.html#ethnicity",
+    "title": "Demographics",
+    "section": "",
+    "text": "In the US Census, Hispanic Origins are not races. Do you identify as Hispanic or Latino or Spanish Origin? (n=2070, 98% of 2110 reporting)\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe define Hispanic Origin to include: Mexican, Mexican American, Chicano, Puerto Rican, or another Hispanic/Latino/Spanish origin. The data indicates that the majority of students identify as having Hispanic Origins (1436 students), while around a quarter of them do not identify as having Hispanic Origins (634 students)."
+  },
+  {
+    "objectID": "Demographics.html#race",
+    "href": "Demographics.html#race",
+    "title": "Demographics",
+    "section": "",
+    "text": "What race do you identify as? Select all that apply (n=2110, 100% of 2110 reporting) Note that the survey included 14 race options that were collapsed down to 5 broad groups defined by census.gov.\n\n\n\n\n\n\nYes (%)\n\n\n\n\nWhite\n859 (40.7%)\n\n\nPrefer not to answer race\n755 (35.8%)\n\n\nAsian\n321 (15.2%)\n\n\nBlack or African American\n167 (7.9%)\n\n\nAmerican Indian and Alaska Native\n106 (5.0%)\n\n\nNative Hawaiian and Other Pacific Islander\n40 (1.9%)"
+  },
+  {
+    "objectID": "Demographics.html#dependents",
+    "href": "Demographics.html#dependents",
+    "title": "Demographics",
+    "section": "",
+    "text": "If you have dependents, then how many of them receive more than 50% of their financial support from you? (n=600, 28% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nThe majority of students who report having at least one dependent also report that they provide more than 50% of financial support to at least one dependent (493 students)."
+  },
+  {
+    "objectID": "Demographics.html#parents-education",
+    "href": "Demographics.html#parents-education",
+    "title": "Demographics",
+    "section": "",
+    "text": "What is the highest level of education completed by your parents/guardians? (n=2083, 99% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nNote: Variables filled with yellow above are used to show the conditions used to build the First Generation variable.\nThe highest level of education completed by most students’ parents was “Less than high school” (719), while 584 students reported their parents highest level is “High school diploma or GED”, and 394 report their parents highest level is “Some college”. Only a minority of students (125) indicated that their parents have a bachelor’s degree or higher.\n\n\nNote: Students with parents education identified as “Other/Unknown” were not marked as first gen or not since they could not be determined. (n=2017, 96% of 2110 reporting)\n\n\n\n\n\n\n\n\n\n\n\n\n\n1892 students are considered as First Generation College students and 125 students are not considered First Generation College students.\n\n\nAs defined by the University of California first generation students are “working to be part of the first generation in their families to earn a four-year university degree”. This means based upon parents education, students in the data set are considered first generation if their parents do not have a Bachelor’s or Master’s degree from a four-year university. From the Parents Education graph, all bars highlighted as yellow are considered first gen, while all bars in blue are not (excluding Other/Unknown)."
+  },
+  {
+    "objectID": "Demographics.html#school",
+    "href": "Demographics.html#school",
+    "title": "Demographics",
+    "section": "School",
+    "text": "School\nWhich campus do you attend? (n=2110, 100% of 2110 reporting)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTwelve campuses participated in this statewide survey. Of the twelve campuses, five were community colleges, six were California State Universities, and one was a University of California. The majority of students (1238) were currently enrolled in a state school. Fewer students (690) reported enrollment in a community college, and a small minority (182) reported enrollment in a UC. \nconsider using ggdotchart and color/org by sector https://rpkgs.datanovia.com/ggpubr/reference/ggdotchart.html (this is a note for Robin and Saul to do. leave it.)"
+  },
+  {
+    "objectID": "Demographics.html#class-standing",
+    "href": "Demographics.html#class-standing",
+    "title": "Demographics",
+    "section": "Class Standing",
+    "text": "Class Standing\nEstimate your class standing by units completed (n=2065, 98% of 2110 reporting)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Statewide survey captures students of all class standing. Of the 2065 students, there were 565 freshmen, 433 sophomores, 579 juniors, and 444 seniors."
+  },
+  {
+    "objectID": "Demographics.html#major",
+    "href": "Demographics.html#major",
+    "title": "Demographics",
+    "section": "Major",
+    "text": "Major\nWhich of the following categories best describes your major? (n=2089, 99% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nNOTE: Science, Technology, Engineering and Math (STEM) was shortened for the figure above, but also includes the following majors: Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition.\nThe majority of students in the data are majoring in a Public Health, Social Services, Social Science, and Education program (680 students). 624 of the students are Science, Technology, Engineering and Math (STEM) majors."
+  },
+  {
+    "objectID": "Demographics.html#overall-gpa",
+    "href": "Demographics.html#overall-gpa",
+    "title": "Demographics",
+    "section": "Overall GPA",
+    "text": "Overall GPA\nWhat is your approximate overall grade point average (GPA)? (n=2063, 98% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nThe average overall GPA for students is 3.31, while the median is 3.4. The majority (65.5%) of students have a GPA greater than 3.0."
+  },
+  {
+    "objectID": "Demographics.html#currently-enrolled-units",
+    "href": "Demographics.html#currently-enrolled-units",
+    "title": "Demographics",
+    "section": "Currently Enrolled Units",
+    "text": "Currently Enrolled Units\nHow many units are you currently taking? (n=2090, 99% of 2110 reporting)\n\n\n\n\n\n\n\n\n\nThe average number of units a student is enrolled in is 12.86 units, while the median is 13 units. The majority of students are considered full-time (12 or more units), with 12 units being the highest occurring and 15 units being the second highest occurring."
+  },
+  {
+    "objectID": "Demographics.html#student-identifiers",
+    "href": "Demographics.html#student-identifiers",
+    "title": "Demographics",
+    "section": "Student Identifiers",
+    "text": "Student Identifiers\nThe following tables contain separate questions that were asked as a series of Yes/No responses to help further understand students. They were grouped together in this page by the start of the question.\n\nI identify as…\n\n\n\n\n\n\nYes (%)\n\n\n\n\nA Transfer Student. (n = 2008)\n742 (37.0%)\n\n\nAn ESL (English as a Second Language) student. (n = 2020)\n581 (28.8%)\n\n\nLGBTQA+. (n = 1997)\n295 (14.8%)\n\n\nA student with a disability. (n = 2013)\n248 (12.3%)\n\n\nA DREAM (i.e. undocumented) student. (n = 2081)\n148 (7.1%)\n\n\nA former foster youth/child. (n = 2084)\n127 (6.1%)\n\n\nA non-California resident (not International). (n = 2059)\n76 (3.7%)\n\n\nA DACA (i.e. Deferred Action for Childhood Arrivals) student. (n = 2073)\n65 (3.1%)\n\n\nA student athlete. (n = 2073)\n50 (2.4%)\n\n\nAn International student. (n = 2079)\n22 (1.1%)\n\n\nA Veteran of military service. (n = 2100)\n14 (0.7%)\n\n\n\n\n\n\n\n\n\nDisability Support Services\nNote: This name varies by campus and may not always be called the Disability Support Service Center.\n\n\n\n\n\n\nYes (%)\n\n\n\n\nI identify as a student with a disability (n = 2013)\n248 (12.3%)\n\n\nI receive services through my campus for a disability (n = 2065)\n195 (9.4%)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Exploring Patterns of Basic Needs in College Students",
+    "section": "",
+    "text": "Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The Center for Healthy Communities (CHC) developed the Basic Needs Student Success Survey (BNS3) and administered it to undergraduate students participating in the Educational Opportunity Program (EOP) at 13 colleges across the CSU, CCC and UC systems from November 25\\(^{th}\\), 2020 to March 24\\(^{th}\\), 2021.\nThe EOP office assisted in the recruitment and provided computers for students to take the survey. Participants were given a $25 gift card for their participation. EOP students were identified as the target population for this survey based upon their low-income and first-generation student status, which indicates a higher probability of CalFresh eligibility.\nThe purpose of this second cross-sectional pilot study (update) was to revise the BNS3 tool and validate student perception of the following:\n\nThe impact of receiving CalFresh assistance.\nThe impact of utilization of the campus food pantry on their health, nutrition, cooking confidence, time management and academic performance.\n\nThis report provides a top level descriptive analysis of each question in the survey. Researchers and campus staff are encouraged to review the information in this analysis to formulate additional research questions and hypotheses."
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Exploring Patterns of Basic Needs in College Students",
+    "section": "",
+    "text": "Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The Center for Healthy Communities (CHC) developed the Basic Needs Student Success Survey (BNS3) and administered it to undergraduate students participating in the Educational Opportunity Program (EOP) at 13 colleges across the CSU, CCC and UC systems from November 25\\(^{th}\\), 2020 to March 24\\(^{th}\\), 2021.\nThe EOP office assisted in the recruitment and provided computers for students to take the survey. Participants were given a $25 gift card for their participation. EOP students were identified as the target population for this survey based upon their low-income and first-generation student status, which indicates a higher probability of CalFresh eligibility.\nThe purpose of this second cross-sectional pilot study (update) was to revise the BNS3 tool and validate student perception of the following:\n\nThe impact of receiving CalFresh assistance.\nThe impact of utilization of the campus food pantry on their health, nutrition, cooking confidence, time management and academic performance.\n\nThis report provides a top level descriptive analysis of each question in the survey. Researchers and campus staff are encouraged to review the information in this analysis to formulate additional research questions and hypotheses."
+  },
+  {
+    "objectID": "index.html#participants",
+    "href": "index.html#participants",
+    "title": "Exploring Patterns of Basic Needs in College Students",
+    "section": "Participants",
+    "text": "Participants\nWe surveyed 2,110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU LA, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.\nDisclaimer on Missing Data: Students were allowed to select answers such as “Prefer not to answer” or “I don’t know” as responses to every question asked. These answers were then converted to missing values, denoted as NA, and this is the cause of the missing data for certain questions (not 100% of respondents reporting). The total number of non-missing responses (and percentage of the total data) are provided for each question.\n\n\nHow to use this website\nClick above for instructions on how to navigate the website and interpret graphs."
+  }
+]

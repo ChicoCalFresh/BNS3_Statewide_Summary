@@ -1,12 +1,5 @@
 ---
 title: "Demographics"
-output: 
-  html_document: 
-    toc: yes
-    toc_float: yes
-    css: styles.css
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r, include=FALSE}
