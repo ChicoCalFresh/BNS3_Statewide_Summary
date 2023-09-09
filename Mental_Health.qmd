@@ -1,7 +1,5 @@
 ---
 title: "Mental Health"
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r, include=FALSE}
@@ -10,7 +8,7 @@ source("common_code.R")
 
 The following questions were asked in regards to students feelings about their mental health. This includes if they have experienced any increased mental stress, if they have sought out services to help them, and how often they have felt certain types of mental stress over the past two weeks.
 
-## Mental Health Feelings
+## Feelings
 
 **Over the last two weeks, how often have you been bothered by the following problems?**
 
@@ -70,7 +68,7 @@ plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, so
 
 Of the `r unname(sum(table(bns$q110)))` students, `r unname(table(bns$q110)[1])` reported feeling safe while `r unname(table(bns$q110)[2])` reported having suicidal thoughts, but were not planning on hurting themselves.
 
-## Mental Health Services
+## Services
 
 **Do you have access to mental health services on your campus? `r print_n_reporting("q113")`**
 

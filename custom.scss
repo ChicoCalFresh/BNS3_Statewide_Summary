@@ -1,17 +1,20 @@
 /*-- scss:defaults --*/
 
 $cf_purple: #702b84;
+$dark_purple: #42194d; 
 $cf_blue: #2b388f;
 $cf_green: #00944d; 
 $cf_lime: #8bc53f;
 
 // Links
 
-$link-color:    $cf_purple !default;
-$toc-color:     $cf_purple !default;
+$link-color:    $dark_purple !default;
+$toc-color:     $dark_purple !default;
  
 /*-- scss:rules --*/
  
-h1, h2, h3, h4, h5, h6 {
-  text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
+h2 {
+    color: $cf_purple;
+    font-size: 30px;
+    font-weight: bold;
 }
