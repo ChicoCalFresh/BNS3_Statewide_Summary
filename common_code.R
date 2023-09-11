@@ -181,8 +181,8 @@ confident_scale_percent_negative <- function(x) {
 
 
 # Load data ----
-PATH_TO_BOX <- "C:/Box/" # Robin
-#PATH_TO_BOX <- "C:/Box/" # Saul
+#PATH_TO_BOX <- "C:/Box/" # Robin
+PATH_TO_BOX <- "C:/Users/slmooradian/Box/" # Saul
 
 bns <- readRDS(paste0(PATH_TO_BOX, "CHC All/01. Projects Active/CFO (SP6495202)/08. Research and Evaluation/02. Data Analysis/BNS3-statewide/data/bns3_statewide_clean.rds")) |> 
                  filter(!is.na(school))

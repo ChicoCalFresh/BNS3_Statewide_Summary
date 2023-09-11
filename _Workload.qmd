@@ -31,9 +31,7 @@ gghistogram(bns, x = "paid_work_hours", add = "mean", fill = plot_color, alpha =
   xlab("Paid Hours Per Week") + ylab("Frequency")
 ```
 
-Students reported a wide range of paid hours per week, with 50% of them reporting between `r quantile(bns$paid_work_hours, na.rm = TRUE, .25)` and `r quantile(bns$paid_work_hours, na.rm = TRUE, .75)`  hours, with an average of `r round(mean(bns$paid_work_hours, na.rm = TRUE), digits = 2)` and median of `r median(bns$paid_work_hours, na.rm = TRUE)`. 
-
-The majority of students work either part-time or not at all. Only a small number `r NROW(bns$paid_work_hours >= 40)` of students are considered to be working full-time (40 or more hours per week). Below is a breakdown of the exact paid hours worked by students.
+Students reported a wide range of paid hours per week, with 50% of them reporting between `r quantile(bns$paid_work_hours, na.rm = TRUE, .25)` and `r quantile(bns$paid_work_hours, na.rm = TRUE, .75)`  hours, with an average of `r round(mean(bns$paid_work_hours, na.rm = TRUE), digits = 2)` and median of `r median(bns$paid_work_hours, na.rm = TRUE)`. The majority of students work either part-time or not at all. Only a small number `r NROW(bns$paid_work_hours >= 40)` of students are considered to be working full-time (40 or more hours per week). Below is a breakdown of the exact paid hours worked by students.
 
 <br>
 
@@ -57,7 +55,7 @@ gghistogram(bns, x = "unpaid_work_hours", add = "mean", fill = plot_color, alpha
   xlab("Unpaid Hours Per Week") + ylab("Frequency")
 ```
 
-We can see that the majority of students (`r unname(table(bns$unpaid_work_hours)['0'])`) do not work an unpaid job. A small number of students work part-time at an unpaid job and only a select few work full-time at an unpaid job. Below is a breakdown of the number of unpaid hours worked per week.
+The majority of students (`r unname(table(bns$unpaid_work_hours)['0'])`) do not work an unpaid job. A small number of students work part-time at an unpaid job and only a select few work full-time at an unpaid job. Below is a breakdown of the number of unpaid hours worked per week.
 
 <br>
 
