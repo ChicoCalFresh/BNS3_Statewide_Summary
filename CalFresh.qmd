@@ -1,12 +1,5 @@
 ---
 title: "CalFresh"
-output: 
-  html_document: 
-    toc: yes
-    toc_float: yes
-    css: styles.css
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r, include=FALSE}
@@ -153,6 +146,7 @@ We can see that the majority of students are most likely eligible for CalFresh (
 <div class = "col-md-5">
 
 # Impact
+
 The following questions were asked in regards to the impact of Basic Needs programs and services on students lives. Students were asked to evaluate how they feel these programs have benefited them both academically and non-academically, as well as barriers/reasons in regards to why they are not using certain programs. This includes programs such as CalFresh, Food Pantries, Medi-Cal (also known as Medi-Cade in the United States), and Emergency Housing Services.
 
 <br>
@@ -212,16 +206,21 @@ tmp %>% kable() %>% kable_styling(bootstrap_options = "striped") %>%
   row_spec(9, bold=TRUE)
 ```
 
-Looking at the above table, the general pattern seems to be that as household size increases so does the monthly average assistance from CalFresh. The household average was divided by the household size to find the "per person average" for CalFresh assistance. From taking the average of these values, we can see that a person on CalFresh receives an average monthly assistance of `r tmp[9,3]`.
+The general pattern seems to be that as household size increases so does the monthly average assistance from CalFresh. The household average was divided by the household size to find the "per person average" for CalFresh assistance. From taking the average of these values, we can see that a person on CalFresh receives an average monthly assistance of `r tmp[9,3]`.
 
 ### Is This Enough?
 
 *Note: for the first graph on if the allowance is enough we have `r print_n_reporting("q50")` And for the second graph on when people run out we have `r print_n_reporting("q51")`*
 
 ```{r}
-#| fig-width: 6
-p1 <- plot_frq(bns$q50, geom.colors = plot_color, ylim=c(0,200), title="I feel that the amount that is added to my CalFresh EBT card each month is enough money to provide healthy food for the month.") + xlab('')
-p2 <- plot_frq(bns$q51, geom.colors = plot_color, ylim=c(0, 210), wrap.labels = 12, title="When do you typically use up the balance on your CalFresh EBT card?") + xlab('')
+#| fig-cap-location: top
+#| fig-subcap: 
+#|   - "I feel that the amount that is added to my CalFresh EBT card each month is enough money to provide healthy food for the month."
+#|   - "When do you typically use up the balance on your CalFresh EBT card?"
+#| layout-ncol: 2
+  
+p1 <- plot_frq(bns$q50, geom.colors = plot_color, ylim=c(0,200)) + xlab('')
+p2 <- plot_frq(bns$q51, geom.colors = plot_color, ylim=c(0, 210), wrap.labels = 12) + xlab('')
 
 p1
 p2
@@ -330,8 +329,9 @@ plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 15) + xlab('Food Pantr
 
 When students use the food pantry, the majority do not use it every week (`r unname(sort(table(bns$q54), decreasing = TRUE)['Not every week'])` students). `r unname(sort(table(bns$q54), decreasing = TRUE)['About once a week'])` students claim to use it about once a week, `r unname(sort(table(bns$q54), decreasing = TRUE)['More than once a week'])` students use it more than once a week, and `r unname(sort(table(bns$q54), decreasing = TRUE)['Other (Please specify):'])` students claim other uses.
 
-# Impact of Pantry
+# Other Basic Needs Services
 
+## Food Pantry - Impact
 **For the following questions, please choose how much you agree or disagree with the impact campus food pantries has or had on your life. While I utilized campus food pantry/pantries:**
 
 ```{r}
@@ -379,7 +379,7 @@ plot_likert(questions[12:22],
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
-### Reasons Not Using Food Pantries
+## Food Pantry - Barrier
 
 **What are the reasons for you to not go to campus food pantries? (Select all that apply).**
 
@@ -408,7 +408,8 @@ plot_likert(questions[12:22],
    kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
-## Medi-Cal
+
+## Medi-Cal - Impact
 
 **Knowing that you have Medi-Cal:**
 
@@ -431,7 +432,7 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
-### Reasons Not Using Medi-Cal
+## Medi-Cal - Barriers
 
 **What are the reasons you do not have Medi-Cal or have never used Medi-Cal? (Select all that apply).**
 
@@ -461,7 +462,7 @@ plot_likert(questions,
    kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
-## Emergency Housing Services (EHS)
+## Emergency Housing Services - Impact
 
 **While you received Emergency Housing Services:**
 
@@ -491,7 +492,7 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
-### Reasons Not Using EHS
+## Emergency Housing Services - Barriers
 
 **What are the reasons you do not have Emergency Housing Services or have never used Emergency Housing Services?**
 

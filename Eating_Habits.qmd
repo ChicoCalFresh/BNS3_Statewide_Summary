@@ -1,7 +1,5 @@
 ---
 title: "Eating Habits"
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r, include=FALSE}

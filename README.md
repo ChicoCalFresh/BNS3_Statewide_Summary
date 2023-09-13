@@ -5,9 +5,5 @@ https://chicocalfresh.github.io/BNS3_Statewide_Summary/CalFresh.html
  /* consider changing toc links to darker for better contrast*//
  /* header same col as navbar */
  
- 
- h2 {
-    color: $cf_purple;
-    font-size: 30px;
-    font-weight: bold;
-}
+color picker  tool
+https://www.w3schools.com/colors/colors_picker.asp
