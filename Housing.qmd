@@ -84,7 +84,7 @@ prep_binary_vars(question, qlabel) %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
-The majority of students (`r unname(table(bns$housing_barrier_none))[2]`) reported not experiencing barriers to housing in the last 12 months. Among the students who did experience barriers to housing, lack of deposit funds (`r unname(table(bns$housing_barrier_deposit_funds))['1']` students\`) was most common.
+The majority of students (`r unname(table(bns$housing_barrier_none))[2]`) reported not experiencing barriers to housing in the last 12 months. Among the students who did experience barriers to housing, lack of deposit funds (`r unname(table(bns$housing_barrier_deposit_funds))[2]` students) was most common.
 
 <br />
 

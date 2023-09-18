@@ -153,14 +153,18 @@ The following questions were asked in regards to the impact of Basic Needs progr
 
 ## CalFresh EBT
 
-*Note: for the first graph on EBT application we have `r print_n_reporting("q47")` And for the second graph on how many people are fed we have `r print_n_reporting("fed_through_EBT")`*
+*Note: for the graph on the left (EBT application) we have `r print_n_reporting("q47")` For the graph on the right (people fed through EBT) we have `r print_n_reporting("fed_through_EBT")`*
 
 ```{r}
+#| fig-cap-location: top
+#| fig-subcap: 
+#|   - "Did you apply for CalFresh EBT as an individual or with other people in your household?"
+#|   - "How many people in the household are regularly fed through your CalFresh EBT card?"
+#| layout-ncol: 2
 #| fig-width: 5
-p1 <- plot_frq(bns$q47, geom.colors = plot_color, wrap.title = 40, ylim=c(0,500), wrap.labels = 15, 
-               title="Did you apply for CalFresh EBT as an individual or with other people in your household?") +
+p1 <- plot_frq(bns$q47, geom.colors = plot_color, wrap.title = 40, ylim=c(0,500), wrap.labels = 15) +
   xlab('')
-p2 <- plot_frq(bns$fed_through_EBT, geom.colors = plot_color, wrap.title = 40, title="How many people in the household are regularly fed through your CalFresh EBT card?") + xlab('')
+p2 <- plot_frq(bns$fed_through_EBT, geom.colors = plot_color, wrap.title = 40) + xlab('')
 
 p1
 p2

@@ -9,6 +9,7 @@ tmp2 <- data.frame(bns, q18=bns$q18, paid_work_hours=bns$paid_work_hours, unpaid
 tmp2$units <- tmp2$q18*3
 tmp2$NonAcademic <- ifelse(is.na(tmp2[,'paid_work_hours']) & is.na(tmp2[,"unpaid_work_hours"]) & is.na(tmp2[,"caregiving_hours"]), NA,  rowSums(tmp2[, c('paid_work_hours','unpaid_work_hours', 'caregiving_hours')], na.rm = TRUE))
 tmp2$TotalHours <- ifelse(is.na(tmp2[, 'units']) & is.na(tmp2[,'NonAcademic']), NA,  rowSums(tmp2[, c('units','NonAcademic')], na.rm = TRUE))
+bns$Nonacademic <- tmp2$NonAcademic
 ```
 
 The following questions were asked in regards to the weekly workload taken on by students. This includes work from both paid/unpaid jobs, as well as time spent care-giving for a family member. Students academic workload is also looked at in order to see the hours spent each week on school work, as well as looking at the combined hours across academic and non-academic responsibilities.
