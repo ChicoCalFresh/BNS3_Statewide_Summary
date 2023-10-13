@@ -183,7 +183,6 @@ As defined by the [University of California](https://www.universityofcalifornia.
 # Academic Characteristics
 
 ```{r, include=FALSE}
-source("common_code.R")
 bns <- bns %>%
   mutate(school_split = fct_collapse(school,
                                      "CC" = c("Allan Hancock Community College",
@@ -253,7 +252,7 @@ plot_frq(tmp, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xlab('
   ylab("Frequency")
 ```
 
-The Statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` students, there were `r unname(table(tmp)[1])` freshmen, `r unname(table(tmp)[2])` sophomores, `r unname(table(tmp)[3])` juniors, and `r unname(table(tmp)[4])` seniors.
+The statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` students, there were `r unname(table(tmp)[1])` freshmen, `r unname(table(tmp)[2])` sophomores, `r unname(table(tmp)[3])` juniors, and `r unname(table(tmp)[4])` seniors.
 
 ## Major
 

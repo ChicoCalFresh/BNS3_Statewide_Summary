@@ -20,7 +20,7 @@ This report provides a top level descriptive analysis of each question in the su
 
 ## Participants
 
-We surveyed 2,110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU LA, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.
+We surveyed 2,110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU Los Angeles, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.
 
 **Disclaimer on Missing Data:** Students were allowed to select answers such as "Prefer not to answer" or "I don't know" as responses to every question asked. These answers were then converted to missing values, denoted as *NA*, and this is the cause of the missing data for certain questions (not 100% of respondents reporting). The total number of non-missing responses (and percentage of the total data) are provided for each question.
 

@@ -52,7 +52,7 @@ plot_likert(
 
 ## CalFresh Criteria
 
-*Below are a series of Yes/No questions asked in order to help determine if a person is potentially eligible for CalFresh benefits.*
+*Below are a series of Yes/No questions asked in order to help determine if a student is potentially eligible for CalFresh benefits.*
 
 ```{r}
 # 5 questions reduced to two, keep as is, seperate plot for each question, ...
@@ -147,7 +147,7 @@ We can see that the majority of students are most likely eligible for CalFresh (
 
 # Impact
 
-The following questions were asked in regards to the impact of Basic Needs programs and services on students lives. Students were asked to evaluate how they feel these programs have benefited them both academically and non-academically, as well as barriers/reasons in regards to why they are not using certain programs. This includes programs such as CalFresh, Food Pantries, Medi-Cal (also known as Medi-Cade in the United States), and Emergency Housing Services.
+The following questions were asked in regards to the impact of Basic Needs programs and services on students lives. Students were asked to evaluate how they feel these programs have benefited them both academically and non-academically, as well as barriers/reasons in regards to why they are not using certain programs. This includes programs such as CalFresh, Food Pantries, Medi-Cal (also known as Medicaid in the United States), and Emergency Housing Services.
 
 <br>
 
@@ -210,7 +210,7 @@ tmp %>% kable() %>% kable_styling(bootstrap_options = "striped") %>%
   row_spec(9, bold=TRUE)
 ```
 
-The general pattern seems to be that as household size increases so does the monthly average assistance from CalFresh. The household average was divided by the household size to find the "per person average" for CalFresh assistance. From taking the average of these values, we can see that a person on CalFresh receives an average monthly assistance of `r tmp[9,3]`.
+The general pattern seems to be that as household size increases so does the monthly average assistance from CalFresh. The household average was divided by the household size to find the "per person average" for CalFresh assistance. From taking the average of these values, we can see that a person on CalFresh receives an average monthly assistance of: `r tmp[9,3]`.
 
 ### Is This Enough?
 
@@ -259,7 +259,7 @@ names(questions) <- c('I worked fewer hours each week in a PAID position.',
                       'I concentrated more in class(es).',
                       'My grades had improved.',
                       'My grades had decreased.',
-                      'I kept up with course materials..',
+                      'I kept up with course materials.',
                       'I had more time to go to my professors office hours and tutoring services when needed.',
                       'I had more time to attend all classes as they are scheduled.',
                       'I had more time to go on field trips or internships.',
