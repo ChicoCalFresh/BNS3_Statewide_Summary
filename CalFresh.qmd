@@ -32,7 +32,7 @@ names(questions) <-
   c(
     'CalFresh (also known as Food Stamps or SNAP benefits)',
     'Campus food pantry (e.g., food, toiletries, feminine products)',
-    'MediCal',
+    'Medi-Cal',
     'Emergency Housing Services'
   )
 plot_likert(
@@ -442,16 +442,16 @@ plot_likert(questions,
 
 ```{r}
  question <- "no_medical"
- qlabel <- c("I don’t need MediCal.",
-             "I do not know what MediCal is or I think I already have health insurance.",
+ qlabel <- c("I don’t need Medi-Cal.",
+             "I do not know what Medi-Cal is or I think I already have health insurance.",
              "I only need medical services at the student health center associated with my campus.",
-             "No time to complete the MediCal application/MediCal application is too long.",
-             "The MediCal application is too difficult to complete.",
-             "I do not think I am eligible for MediCal.",
+             "No time to complete the Medi-Cal application/Medi-Cal application is too long.",
+             "The Medi-Cal application is too difficult to complete.",
+             "I do not think I am eligible for Medi-Cal.",
              "I have heard from other students that it is not worth my time because I wont be eligible.",
-             "My family or household does not want me to apply for MediCal.",
-             "I am embarrassed or ashamed to apply for MediCal.",
-             "I don’t believe in social services like MediCal, CalFresh, WIC, or Welfare/Cash Aid.",
+             "My family or household does not want me to apply for Medi-Cal.",
+             "I am embarrassed or ashamed to apply for Medi-Cal.",
+             "I don’t believe in social services like Medi-Cal, CalFresh, WIC, or Welfare/Cash Aid.",
              "Other",
              "I feel uncomfortable about receiving help with basic needs, like food.",
              "I would think less of myself If I went to campus food pantries or local food banks.",
@@ -508,7 +508,7 @@ plot_likert(questions,
              "The Emergency Housing Services application is too difficult to complete.",
              "The emergency housing grant/money is not enough to support what I need, so not worth my time to apply for it.",
              "I am embarrassed or ashamed to apply for Emergency Housing Services.",
-             "I do not believe in social services like Emergency Housing Services, MediCal, CalFresh, or Welfare/Cash Aid.",
+             "I do not believe in social services like Emergency Housing Services, Medi-Cal, CalFresh, or Welfare/Cash Aid.",
              "Other", 
              "I feel uncomfortable about receiving help with basic needs, like housing.",
              "I would think less of myself if I applied for Emergency Housing Services.",

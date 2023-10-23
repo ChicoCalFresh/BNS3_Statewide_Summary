@@ -8,7 +8,9 @@ source("common_code.R")
 
 The following questions were asked in regards to students feelings about their mental health. This includes if they have experienced any increased mental stress, if they have sought out services to help them, and how often they have felt certain types of mental stress over the past two weeks.
 
-## Feelings
+# Feelings
+
+## Frequency of Negative Feelings
 
 **Over the last two weeks, how often have you been bothered by the following problems?**
 
@@ -33,8 +35,8 @@ plot_likert(questions,
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
-
-**Over the last two weeks, how often have you been bothered by the following problems?**
+ 
+ 
 
 ```{r}
 #| fig-height: 8
@@ -60,15 +62,22 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
+<br>
+
+## Current Feelings
 **Which statement best describes how you are feeling right now? `r print_n_reporting("q110")`**
 
 ```{r}
 plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
 ```
 
-Of the `r unname(sum(table(bns$q110)))` students, `r unname(table(bns$q110)[1])` reported feeling safe while `r unname(table(bns$q110)[2])` reported having suicidal thoughts, but were not planning on hurting themselves.
+Of the `r unname(sum(table(bns$q110)))` students, `r unname(table(bns$q110)[1])` reported feeling safe while `r unname(table(bns$q110)[2])` reported having suicidal thoughts. `r unname(table(bns$q110)[3])` student reported currently having suicidal thoughts with a plan for how they might do it.
 
-## Services
+<br>
+
+# Services
+
+## Mental Health Services - Access
 
 **Do you have access to mental health services on your campus? `r print_n_reporting("q113")`**
 
@@ -78,6 +87,29 @@ plot_frq(bns$q113, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, s
 
 Of the `r unname(sum(table(bns$q113)))` students, the majority (`r unname(table(bns$q113)['Yes'])`) said yes to having access to on campus mental health services. Roughly one fourth of students were unsure, and a smaller minority stated they did not have access to on campus mental health services.
 
+**What statement(s) best describe why you might feel unsure about your ability to access mental health services on campus?**
+
+```{r}
+question <- "access_mhs"
+qlabel <- c("I'm not sure what these kinds of services are",
+            "I haven't needed these services, so I haven't looked into them",
+            "I don't know what services are available",
+            "I haven't heard anyone talking about these services",
+            "I don't believe in therapy, so I haven't looked into them",
+            "I don't know where to find information about them, so I'm not sure about what they are"
+            )
+
+access_mhs_vars <- prep_binary_vars(question, qlabel)
+
+# Plot table of percentages
+access_mhs_vars %>% 
+  select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+  kable() %>% kable_styling(bootstrap_options = "striped")
+```
+<br>
+
+## Mental Health Services - Use
+
 **Have you used any of these campus-based mental health services within the last 12 months?**
 
 ```{r}
@@ -85,6 +117,8 @@ plot_frq(bns$q114, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, s
 ```
 
 The vast majority of students (`r unname(table(bns$q114)['No'])`) responded "No" to using any of the on campus based mental health services within the last 12 months. Only `r unname(table(bns$q114)['Yes'])` reported using the mental health service offered by their campus in the last 12 months.
+
+**What type(s) of services did you use?**
 
 ```{r}
 question <- "counseling"
@@ -111,7 +145,7 @@ kable() %>% kable_styling(bootstrap_options = "striped")
 
 ```{r}
 #| fig-height: 6
-#| fig-width: 7
+#| fig-width: 7.5
 questions2 <- bns %>% select(starts_with("q116_"))
 names(questions2) <- c("It was easy to access services",
             "The wait time from when I contacted to when I could be seen was acceptable",
@@ -157,22 +191,5 @@ nomhs_vars %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
-**What statement(s) best describe why you might feel unsure about your ability to access mental health services on campus?**
 
-```{r}
-question <- "access_mhs"
-qlabel <- c("I'm not sure what these kinds of services are",
-            "I haven't needed these services, so I haven't looked into them",
-            "I don't know what services are available",
-            "I haven't heard anyone talking about these services",
-            "I don't believe in therapy, so I haven't looked into them",
-            "I don't know where to find information about them, so I'm not sure about what they are"
-            )
 
-access_mhs_vars <- prep_binary_vars(question, qlabel)
-
-# Plot table of percentages
-access_mhs_vars %>% 
-  select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
-  kable() %>% kable_styling(bootstrap_options = "striped")
-```

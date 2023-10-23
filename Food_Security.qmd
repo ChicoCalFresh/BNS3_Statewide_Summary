@@ -1,5 +1,9 @@
 ---
 title: "Food Security"
+crossref:
+  fig-title: 'Figure 6.'
+  fig-labels: arabic
+  title-delim: ":"
 ---
 
 ```{r, include=FALSE}
@@ -19,6 +23,8 @@ The following questions were asked in regard to students' feelings towards food 
 *Household is determined by the number of people you purchase and prepare food with. This may or may not include your roommates.*
 
 ```{r}
+#| label: fig-q64-65
+#| fig-cap: Food Eaten in Household
 questions <- bns %>% select(q64, q65)
 names(questions) <- c("I/We worried whether food would run out before I/we got money to buy more.",
                       "The food that I/we bought just didn’t last, and I/we didn’t have money to get more.")
@@ -44,6 +50,8 @@ The following was determined using the two item food insecurity screening questi
 ```{r}
 #| fig-height: 3.5
 #| fig-width: 4.5
+#| label: fig-two.item
+#| fig-cap: Food Insecurity
 bns <- bns %>% mutate(two.item = case_when(food_insecure_2item == 0 ~ "No",
                                            food_insecure_2item == 1 ~ "Yes",
                                            TRUE ~ as.character(food_insecure_2item)))
@@ -62,7 +70,10 @@ The majority of the students that took part in the survey are considered to be f
 
 **In the last 30 days, if you ran out of money for food, what did you do? (choose all that apply):**
 
+
 ```{r}
+#| label: fig-food_vars
+#| fig-cap: Ran Out of Money
 question <- "fs"
 qlabel <- c("I did not run out of money for food",
             "My friends, family or roommates gave me money for groceries.",

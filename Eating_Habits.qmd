@@ -94,6 +94,8 @@ plot_frq(bns$q77, geom.colors = plot_color) + xlab('Daily Fruit & Vegetable Serv
 ```{r}
 #| fig-height: 5
 #| fig-width: 6
+#| label: fig-q78
+#| fig-cap: A large number of students reported drinking
 
 bns$q78 <- recode(bns$q78, "Zero" = "Zero",
                    "1-8 ounces" = "1-8", 

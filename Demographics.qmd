@@ -10,14 +10,16 @@ source("common_code.R")
 
 The following set of questions were asked in regards to the students' personal demographics. This includes the students' age, ethnicities they identify with, and the number of dependents they are responsible for taking care of. They were also asked about parents' education, which will help us identify first generation college students.
 
+<br>
+
 ## Age
 
-*The following was determined by taking the difference between birth date and the time at which the survey was completed `r print_n_reporting('age')`*
+*The following was determined by taking the difference between birth date and the time at which the survey was completed* **`r print_n_reporting('age')`**
 
 ```{r}
 gghistogram(bns, x = "age", add = "mean", alpha = 1, 
             fill = plot_color) + 
-  xlab("Age") + ylab("Count")
+  xlab("Age") + ylab("Number of Students")
 ```
 
 The age of students in the survey range from `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)` at the time of completion, with the majority of students being between 20-30 years old. The average age of a participant in this survey is `r round(mean(bns$age, na.rm = TRUE),1)` years old. <br />
@@ -35,7 +37,7 @@ The age of students in the survey range from `r min(bns$age, na.rm = TRUE)` to `
 rec <- bns %>% mutate(q7=recode(q7, "Gender non-binary"="Non-binary", "Gender Queer or Gender-Nonconforming" = "Queer or Nonconforming", "Gender Unlisted:" = "Unlisted"))
 
 
-plot_frq(rec$q7, sort.frq="desc", geom.colors = plot_color) + xlab('Gender') + ylab("Frequency")
+plot_frq(rec$q7, sort.frq="desc", geom.colors = plot_color) + xlab('Gender') + ylab("Number of Students")
 #Should we cut "Gender" from the 3 categories on the right? Exp. "Non-binary" instead of "Gender non-binary"
 ```
 :::
@@ -53,7 +55,7 @@ Of the students in the survey, `r unname(table(bns$q7)['Woman'])` of them identi
 #| fig-width: 4
 tmp <- data.frame(q8=bns$q8) %>% mutate(hispanic=as.factor(ifelse(is.na(q8), NA, ifelse(grepl("Yes", q8), "Hispanic", "Non-Hispanic")))) %>% select(-q8)
 
-plot_frq(tmp$hispanic, geom.colors = plot_color, ylim=c(0, 1800)) + xlab("") + ylab("Frequency")
+plot_frq(tmp$hispanic, geom.colors = plot_color, ylim=c(0, 1800)) + xlab("") + ylab("Number of Students")
 ```
 :::
 
@@ -62,7 +64,6 @@ We define Hispanic Origin to include: Mexican, Mexican American, Chicano, Puerto
 :::
 :::
 
-<br />
 
 ```{r}
 tmp <- data.frame(q8=bns$q8, school=bns$school) %>% 
@@ -109,7 +110,7 @@ tmp <-
 
 ```
 
-**What race do you identify as? Select all that apply `r print_n_reporting_tmp('white')`** *Note that the survey included 14 race options that were collapsed down to 5 broad groups defined by [census.gov](https://www.census.gov/quickfacts/fact/note/US/RHI625219).*
+**What race do you identify as? Select all that apply `r print_n_reporting_tmp('white')`** *Note: that the survey included 14 race options that were collapsed down to 5 broad groups defined by [census.gov](https://www.census.gov/quickfacts/fact/note/US/RHI625219).*
 
 ```{r}
 cnames <- c("Prefer not to answer race", "White", "Black or African American", "American Indian and Alaska Native", "Asian", "Native Hawaiian and Other Pacific Islander")
@@ -128,12 +129,11 @@ tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped")
 ```{r}
 #| fig-height: 4
 #| fig-width: 6
-plot_frq(bns$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + ylab("Frequency")
+plot_frq(bns$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + ylab("Number of Students")
 ```
 
 The majority of students who report having at least one dependent also report that they provide more than 50% of financial support to at least one dependent (`r nrow(bns[bns$q11 > 0, 'q11'] %>% na.omit())` students).
 
-<br>
 
 ## Parents Education
 
@@ -150,14 +150,14 @@ tmp2 <- as.data.frame(table(bns$q13)) %>%
 ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Percent)) + geom_col(colour = "black") +
   scale_fill_manual(values=c("#336699", "#ecf0b7")) + geom_text(aes(y=Freq+50)) + ylim(0,900) +
   scale_x_discrete(labels=label_wrap(10)) +   geom_text(aes(y=Freq + 100, label=Freq)) +
-  xlab('') + ylab("Frequency") + theme(legend.position = "none") + theme(axis.text.x = element_text(size = 10))
+  xlab('') + ylab("Number of Students") + theme(legend.position = "none") + theme(axis.text.x = element_text(size = 10))
 ```
 
-*Note: Variables filled with yellow above are used to show the conditions used to build the First Generation variable*.
+*Note: Categories in yellow were used to determine "First Generation" status* 
 
 The highest level of education completed by most students' parents was "`r names(sort(table(bns$q13), decreasing=TRUE)[1])`" (`r unname(sort(table(bns$q13), decreasing=TRUE)[1])`), while `r unname(sort(table(bns$q13), decreasing=TRUE)[2])` students reported their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[2])`", and `r unname(sort(table(bns$q13), decreasing=TRUE)[3])` report their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[3])`". Only a minority of students (`r sum(table(bns$q13)[c("Bachelor's degree", "Master's degree", "Doctorate degree (JD, MD, PhD, EdD., etc.)")])`) indicated that their parents have a bachelor's degree or higher.
 
-### First Generation
+## First Generation
 
 *Note: Students with parents education identified as "Other/Unknown" were not marked as first gen or not since they could not be determined.* **`r print_n_reporting('firstgen')`**
 
@@ -169,7 +169,7 @@ The highest level of education completed by most students' parents was "`r names
 tmp3 <- data.frame(firstgen=bns$firstgen) %>% 
   mutate(firstgen=factor(ifelse(is.na(firstgen), NA, ifelse(firstgen == 0, "Not First Gen", "First Gen")), levels=c("Not First Gen", "First Gen")))
 
-plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + ylab("Frequency")
+plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + ylab("Number of Students")
 ```
 :::
 
@@ -179,6 +179,8 @@ plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + 
 :::
 
 As defined by the [University of California](https://www.universityofcalifornia.edu/sites/default/files/First-Generation%20Student%20Success%20at%20UC%208-2017.pdf) first generation students are "working to be part of the first generation in their families to earn a four-year university degree". This means based upon parents education, students in the data set are considered first generation if their parents do not have a Bachelor's or Master's degree from a four-year university. From the *Parents Education* graph, all bars highlighted as yellow are considered first gen, while all bars in blue are not (excluding Other/Unknown).
+
+<br>
 
 # Academic Characteristics
 
@@ -224,12 +226,11 @@ The following set of questions were asked in regards to the students' academic s
 #| fig-height: 6
 #| fig-width: 8
 plot_frq(bns$school_rnm, geom.colors = plot_color, ylim=c(0,450), hjust = -.2, vjust = "center",
-         coord.flip = TRUE) + xlab('') + ylab("Frequency")
+         coord.flip = TRUE) + xlab('') + ylab("Number of Students")
 ```
 
 Twelve campuses participated in this statewide survey. Of the twelve campuses, five were community colleges, six were California State Universities, and one was a University of California. The majority of students (`r unname(table(bns$school_split)[2])`) were currently enrolled in a state school. Fewer students (`r unname(table(bns$school_split)[1])`) reported enrollment in a community college, and a small minority (`r unname(table(bns$school_split)[3])`) reported enrollment in a UC. <br>
 
-consider using ggdotchart and color/org by sector https://rpkgs.datanovia.com/ggpubr/reference/ggdotchart.html (this is a note for Robin and Saul to do. leave it.)
 
 ## Class Standing
 
@@ -249,7 +250,7 @@ tmp <- recode(bns$q15,
               "Senior (90+ semester units or 135+ quarter units)" = "Senior")
               
 plot_frq(tmp, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xlab('Class Standing') + 
-  ylab("Frequency")
+  ylab("Number of Students")
 ```
 
 The statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` students, there were `r unname(table(tmp)[1])` freshmen, `r unname(table(tmp)[2])` sophomores, `r unname(table(tmp)[3])` juniors, and `r unname(table(tmp)[4])` seniors.
@@ -264,7 +265,7 @@ The statewide survey captures students of all class standing. Of the `r sum(tabl
 bns <- bns %>% mutate(q16=recode(q16, 
                                  "Science, Technology, Engineering and Math (STEM) (Includes Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition)" = "Science, Technology, Engineering and Math (STEM)"))
 
-plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency") + theme(axis.text.x = element_text(size = 10))
+plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students") + theme(axis.text.x = element_text(size = 10))
 
 ```
 
@@ -272,7 +273,6 @@ plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sor
 
 The majority of students in the data are majoring in a `r names(sort(table(bns$q16), decreasing=TRUE)[1])` program (`r unname(sort(table(bns$q16), decreasing=TRUE)[1])` students). `r unname(sort(table(bns$q16), decreasing=TRUE)[2])` of the students are `r names(sort(table(bns$q16), decreasing=TRUE)[2])` majors.
 
-<br />
 
 ## Overall GPA
 
@@ -283,12 +283,11 @@ The majority of students in the data are majoring in a `r names(sort(table(bns$q
 #| fig-width: 5.5
 bns$gpa_fac <- cut(bns$q17, breaks = c(0, 1.5, 2.0, 2.5, 3.0, 3.5, 5.0), labels = c("1.5 or less", "1.51-2.0", "2.01-2.5", "2.51-3.0", "3.01-3.5", "3.51 or above"), ordered_result = TRUE, include.lowest = TRUE)
 
-plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Frequency")
+plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Number of Students")
 ```
 
 The average overall GPA for students is `r round(mean(bns$q17, na.rm = TRUE), 2)`, while the median is `r round(median(bns$q17, na.rm = TRUE), 2)`. The majority (`r percent(sum(prop.table(table(bns$gpa_fac))[5:6]), accuracy = .1)`) of students have a GPA greater than 3.0.
 
-<br />
 
 ## Currently Enrolled Units
 
@@ -300,18 +299,17 @@ The average overall GPA for students is `r round(mean(bns$q17, na.rm = TRUE), 2)
 bns$q18 <- round(bns$q18, 0) # Rounded non-integers to integers
 bns$units_binned <- cut(bns$q18, breaks = c(0, 6, 9, 12, 15, 18, 21, 1000), labels = c("6 or less", "7-9", "10-12", "13-15", "16-18", "19-21", "22+"), ordered_result = TRUE, include.lowest = TRUE)
 
-plot_frq(bns$units_binned, geom.colors = plot_color) + xlab('Units') + ylab("Frequency")
+plot_frq(bns$units_binned, geom.colors = plot_color) + xlab('Units') + ylab("Number of Students")
 ```
 
 The average number of units a student is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occurring.
 
-<br />
 
-## Student Identifiers
+# Student Identifiers
 
 The following tables contain separate questions that were asked as a series of Yes/No responses to help further understand students. They were grouped together in this page by the start of the question.
 
-### I identify as...
+## I identify as...
 
 ```{r}
 questions <- c(paste0('q14_', 1:3), paste0('q14_', 5:12))
@@ -325,9 +323,9 @@ rnames <- c("A Transfer Student", "LGBTQA+", "A student with a disability", "A f
 binary_table(questions, "Yes", rnames, ".")
 ```
 
-### Disability Support Services
+## Disability Support Services
 
-*Note*: This name varies by campus and may not always be called the Disability Support Service Center.
+*Note: This name varies by campus and may not always be called the Disability Support Service Center.*
 
 ```{r}
 #| fig-height: 5
