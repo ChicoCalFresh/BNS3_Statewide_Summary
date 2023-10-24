@@ -35,7 +35,6 @@ There are `r unname(table(bns$q24)['No'])` students that participated in the sur
 ```{r}
 ## see if you can convert this to binary_table
 
-
 cnames <- c('Current Housing Situation', 'Yes (%)')
 # qs <- unique(bns[['q25']]) %>% na.omit()
 qs <- names(table(bns$q25))

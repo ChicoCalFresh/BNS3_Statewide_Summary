@@ -1,5 +1,9 @@
 ---
 title: "Workload"
+crossref:
+  fig-title: 'Figure 3.'
+  fig-labels: arabic
+  title-delim: ":"
 ---
 
 ```{r, include=FALSE}
@@ -20,6 +24,8 @@ The following questions were asked in regards to the weekly workload taken on by
 **Estimate the number of hours you work in a PAID job (e.g. server at a restaurant, office assistant, etc.) or paid internship (e.g. training, shadowing, or practicum) per week. `r print_n_reporting('paid_work_hours')`**
 
 ```{r}
+#| label: fig-paid_work_hours
+#| fig-cap: Distribution of students weekly paid work hours
 gghistogram(bns, x = "paid_work_hours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Paid Hours Per Week") + ylab("Number of Students")
 ```
@@ -34,6 +40,8 @@ Students reported a wide range of paid hours per week, with 50% of them reportin
 
 ```{r}
 #| fig-width: 8
+#| label: fig-q20
+#| fig-cap: Impact of COVID on students work
 plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,700), wrap.labels = 19, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
 ```
 
@@ -45,6 +53,8 @@ With the impact of COVID, the data indicates that most employed students were ab
 **Estimate the number of hours you work in an UNPAID internship (e.g. training, shadowing, practicum, and/or volunteer, etc.) per week. Do not combine with answers above. `r print_n_reporting('unpaid_work_hours')`**
 
 ```{r}
+#| label: fig-unpaid_work_hours
+#| fig-cap: Distribution of students unpaid work hours
 gghistogram(bns, x = "unpaid_work_hours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Unpaid Hours Per Week") + ylab("Number of Students")
 ```
@@ -58,6 +68,8 @@ The majority of students (`r unname(table(bns$unpaid_work_hours)['0'])`) do not 
 **Estimate the number of hours you spend each week on unpaid family obligations (e.g. taking care of younger siblings, preparing family meals, running errands for the family, etc.) per week. `r print_n_reporting('caregiving_hours')`**
 
 ```{r}
+#| label: fig-caregiving_hours
+#| fig-cap: Distribution of students caregiving hours
 bns$bin <- ifelse(bns$caregiving_hours > 0, 1, 0)
 gghistogram(bns, x = "caregiving_hours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Caregiving Hours") + ylab("Number of Students")
@@ -69,8 +81,10 @@ The majority of students (`r table(bns$bin)['1']`) do spend some time each week 
 
 ## Academic Workload
 
-**Below is a breakdown of the academic workload, using the 3 hours of work per unit measurement. `r print_n_reporting_tmp2("q18")`**
+**Below is a breakdown of students academic workload using the 3 hours of weekly work per unit taken measurement. `r print_n_reporting_tmp2("q18")`**
 ```{r}
+#| label: fig-q18
+#| fig-cap: Distribution of students academic workload
 gghistogram(tmp2, x = "units", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Academic Hours Per Week") + ylab("Number of Students")
 ```
@@ -84,6 +98,8 @@ The average number of academic hours worked per week (denoted by the dotted line
 **Below is a combination of paid work hours, unpaid work hours, and caregiving hours undertaken by students per week. `r print_n_reporting('Nonacademic')`**
 
 ```{r}
+#| label: fig-NonAcademic
+#| fig-cap: Distribution of students non-academic workload
 gghistogram(tmp2, x = "NonAcademic", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Non-academic Hours Per Week") + ylab("Number of Students")
 ```
@@ -98,9 +114,11 @@ The average number of total hours worked per week (denoted by the dotted line) i
 tmp <- tmp2 %>% filter(TotalHours > 0)
 ```
 
-**Below is a combination of all worked hours per week, both academic and non-academic. This includes units (3 hr/unit), paid worked hours, unpaid worked hours, and caregiving hours. `r print_n_reporting_tmp("TotalHours")`**
+**Below is a combination of all worked hours per week, both academic and non-academic. This includes units (3 hr/unit), paid work hours, unpaid work hours, and caregiving hours. `r print_n_reporting_tmp("TotalHours")`**
 
 ```{r}
+#| label: fig-TotalHours
+#| fig-cap: Distribution of students total work hours
 gghistogram(tmp2, x = "TotalHours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Total Hours Per Week") + ylab("Number of Students")
 ```
@@ -125,6 +143,8 @@ The below graphs breaks down if a person meets the workload requirements based s
 
 
 ```{r}
+#| label: fig-student-hours
+#| fig-cap: CalFresh Eligibility
 tmp <- tmp2
 tmp <- tmp %>% mutate(student=factor(ifelse(is.na(q18), NA, 
                                             ifelse(q18 >= 6, "Eligible", "Not Eligible")),

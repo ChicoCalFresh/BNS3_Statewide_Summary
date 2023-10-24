@@ -22,7 +22,7 @@ ggplot(pa.data) +
                    position = position_dodge(width = 0.6), size=1) +
     geom_point(aes(x = Days, y = Freq, colour = Type),
                position = position_dodge(width = 0.6), size=2.5) + scale_color_manual(values=c("#336699", "#000000", "#b5d43b")) +
-  labs(colour='Exercise Type') + xlab('Number of Days') + ylab('') + theme_bw() +
+  labs(colour='Exercise Type') + xlab('Number of Days') + ylab('Number of Students') + theme_bw() +
   theme(legend.key.size = unit(1, 'cm'), 
         legend.key.height = unit(1, 'cm'), 
         legend.key.width = unit(1, 'cm'), 
