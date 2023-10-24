@@ -4,10 +4,10 @@ title: "Eating Habits"
 
 ```{r, include=FALSE}
 source("common_code.R")
-
 ```
 
 This section examines students' eating habits. Students were asked about their cooking habits, access to kitchens, access to storing food, fruit and vegetable intake, sugar sweetened beverage intake, fast food intake, alcohol intake, and confidence in cooking.
+
 
 ## Current Eating/Cooking Habits
 
@@ -63,7 +63,7 @@ plot_likert(questions,
 
 bns$q77 <- recode(bns$q77, "0 servings per day" = "0 servings", "1-2 servings per day" = "1-2 servings", "3-4 servings per day" = "3-4 servings", "5 or more servings per day" = "5+ servings" )
 
-plot_frq(bns$q77, geom.colors = plot_color) + xlab('Daily Fruit & Vegetable Servings') + ylab("Count")
+plot_frq(bns$q77, geom.colors = plot_color) + xlab('Daily Fruit & Vegetable Servings') + ylab("Number of Students")
 
 ```
 :::
@@ -107,7 +107,7 @@ bns$q78 <- recode(bns$q78, "Zero" = "Zero",
                   "57-64 ounces" = "57-64", 
                   "64 ounces or more" = "64+")
 
-plot_frq(bns$q78, geom.colors = plot_color) + xlab('Daily Sugar Sweetened Beverage Intake (Ounces)') + ylab("Count") 
+plot_frq(bns$q78, geom.colors = plot_color) + xlab('Daily Sugar Sweetened Beverage Intake (Ounces)') + ylab("Number of Students") 
 
 ```
 :::
@@ -131,7 +131,7 @@ bns$q79 <- recode(bns$q79, "Zero" = "Zero times",
                    "9-10 times per week" = "9-10 times", 
                    "11 times or more per week" = "11+ times")
 
-plot_frq(bns$q79, geom.colors = plot_color) + xlab('Weekly Fast Food Intake') + ylab("Count")
+plot_frq(bns$q79, geom.colors = plot_color) + xlab('Weekly Fast Food Intake') + ylab("Number of Students")
 ```
 :::
 
@@ -166,7 +166,7 @@ levels(bns$q80) <- gsub(" per week", "", levels(bns$q80))
 bns$q80 <- recode(bns$q80, "Zero" = "Zero days")
 
 
-plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + ylab("Count")
+plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + ylab("Number of Students")
 
 ```
 :::
@@ -184,7 +184,7 @@ plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + yl
 
 
 
-plot_frq(bns$q81, geom.colors = plot_color) + xlab('Alcohol Servings Consumed When Drinking') + ylab("Count")
+plot_frq(bns$q81, geom.colors = plot_color) + xlab('Alcohol Servings Consumed When Drinking') + ylab("Number of Students")
 
 ```
 :::

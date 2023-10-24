@@ -10,7 +10,6 @@ source("common_code.R")
 
 The following set of questions were asked in regards to the students' personal demographics. This includes the students' age, ethnicities they identify with, and the number of dependents they are responsible for taking care of. They were also asked about parents' education, which will help us identify first generation college students.
 
-<br>
 
 ## Age
 
@@ -23,6 +22,8 @@ gghistogram(bns, x = "age", add = "mean", alpha = 1,
 ```
 
 The age of students in the survey range from `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)` at the time of completion, with the majority of students being between 20-30 years old. The average age of a participant in this survey is `r round(mean(bns$age, na.rm = TRUE),1)` years old. <br />
+
+<br>
 
 ## Gender Identity
 
@@ -43,6 +44,8 @@ plot_frq(rec$q7, sort.frq="desc", geom.colors = plot_color) + xlab('Gender') + y
 :::
 
 Of the students in the survey, `r unname(table(bns$q7)['Woman'])` of them identify as a woman, `r unname(table(bns$q7)['Man'])` identify as a man, and `r unname(table(bns$q7)['Gender non-binary'])` identify as gender non-binary. There are also students who preferred not to answer.
+
+<br>
 
 ## Ethnicity
 
@@ -70,6 +73,8 @@ tmp <- data.frame(q8=bns$q8, school=bns$school) %>%
   mutate(hispanic=as.factor(ifelse(is.na(q8), NA, ifelse(grepl("Yes", q8), "Yes", "No"))),
          school=ifelse(is.na(hispanic), NA, school)) %>% select(-q8)
 ```
+
+<br>
 
 ## Race
 
@@ -122,6 +127,8 @@ colnames(tmp2) <- "Yes (%)"
 tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
+<br>
+
 ## Dependents
 
 **If you have dependents, then how many of them receive more than 50% of their financial support from you? `r print_n_reporting('q11')`**
@@ -134,6 +141,7 @@ plot_frq(bns$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + yl
 
 The majority of students who report having at least one dependent also report that they provide more than 50% of financial support to at least one dependent (`r nrow(bns[bns$q11 > 0, 'q11'] %>% na.omit())` students).
 
+<br>
 
 ## Parents Education
 
@@ -153,9 +161,11 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
   xlab('') + ylab("Number of Students") + theme(legend.position = "none") + theme(axis.text.x = element_text(size = 10))
 ```
 
-*Note: Categories in yellow were used to determine "First Generation" status* 
+*Note: Categories in yellow were used to determine "First Generation" status.* 
 
 The highest level of education completed by most students' parents was "`r names(sort(table(bns$q13), decreasing=TRUE)[1])`" (`r unname(sort(table(bns$q13), decreasing=TRUE)[1])`), while `r unname(sort(table(bns$q13), decreasing=TRUE)[2])` students reported their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[2])`", and `r unname(sort(table(bns$q13), decreasing=TRUE)[3])` report their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[3])`". Only a minority of students (`r sum(table(bns$q13)[c("Bachelor's degree", "Master's degree", "Doctorate degree (JD, MD, PhD, EdD., etc.)")])`) indicated that their parents have a bachelor's degree or higher.
+
+<br>
 
 ## First Generation
 
@@ -212,7 +222,6 @@ bns <- bns %>%
 
 The following set of questions were asked in regards to the students' academic status. This includes information such as what college they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of student they are (transfer, international, etc.) to help identify students.
 
-<br>
 
 ## School
 
@@ -231,6 +240,7 @@ plot_frq(bns$school_rnm, geom.colors = plot_color, ylim=c(0,450), hjust = -.2, v
 
 Twelve campuses participated in this statewide survey. Of the twelve campuses, five were community colleges, six were California State Universities, and one was a University of California. The majority of students (`r unname(table(bns$school_split)[2])`) were currently enrolled in a state school. Fewer students (`r unname(table(bns$school_split)[1])`) reported enrollment in a community college, and a small minority (`r unname(table(bns$school_split)[3])`) reported enrollment in a UC. <br>
 
+<br>
 
 ## Class Standing
 
@@ -255,6 +265,8 @@ plot_frq(tmp, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xlab('
 
 The statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` students, there were `r unname(table(tmp)[1])` freshmen, `r unname(table(tmp)[2])` sophomores, `r unname(table(tmp)[3])` juniors, and `r unname(table(tmp)[4])` seniors.
 
+<br>
+
 ## Major
 
 **Which of the following categories best describes your major? `r print_n_reporting('q16')`**
@@ -273,6 +285,7 @@ plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sor
 
 The majority of students in the data are majoring in a `r names(sort(table(bns$q16), decreasing=TRUE)[1])` program (`r unname(sort(table(bns$q16), decreasing=TRUE)[1])` students). `r unname(sort(table(bns$q16), decreasing=TRUE)[2])` of the students are `r names(sort(table(bns$q16), decreasing=TRUE)[2])` majors.
 
+<br>
 
 ## Overall GPA
 
@@ -288,6 +301,7 @@ plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Number of 
 
 The average overall GPA for students is `r round(mean(bns$q17, na.rm = TRUE), 2)`, while the median is `r round(median(bns$q17, na.rm = TRUE), 2)`. The majority (`r percent(sum(prop.table(table(bns$gpa_fac))[5:6]), accuracy = .1)`) of students have a GPA greater than 3.0.
 
+<br>
 
 ## Currently Enrolled Units
 
@@ -304,6 +318,7 @@ plot_frq(bns$units_binned, geom.colors = plot_color) + xlab('Units') + ylab("Num
 
 The average number of units a student is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occurring.
 
+<br>
 
 # Student Identifiers
 
@@ -322,6 +337,8 @@ rnames <- c("A Transfer Student", "LGBTQA+", "A student with a disability", "A f
             "A DACA (i.e. Deferred Action for Childhood Arrivals) student")
 binary_table(questions, "Yes", rnames, ".")
 ```
+
+<br>
 
 ## Disability Support Services
 

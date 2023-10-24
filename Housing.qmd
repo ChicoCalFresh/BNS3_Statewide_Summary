@@ -43,6 +43,8 @@ qs <- names(table(bns$q25))
 question_table('q25', qs, cnames)
 ```
 
+<br>
+
 ## In the past 12 months...
 
 *The following were asked as a series of Yes/No questions to help better understand the living situations of participating students.*
@@ -63,6 +65,8 @@ binary_table(var = questions,
              row.names = rnames, 
              punc = "?")
 ```
+
+<br>
 
 **In the last 12 months, what barriers have you experienced in accessing housing?**
 
@@ -139,6 +143,8 @@ full_join(get.month.vars, get.year.vars) %>%
 
 ```
 
+<br>
+
 ## Unstable Housing
 
 **In the past 12 months, how many times have you moved? `r print_n_reporting("q35")`**
@@ -202,6 +208,8 @@ bns %>%
 -   Looking at the above table we can see that the majority of students are not considered to be housing insecure (`r unname(table(bns$housing_insecure)["0"])` students, `r percent(unname(prop.table(table(bns$housing_insecure))["0"]), .1)`), while the remaining students could be classified as housing insecure based on their indicators (`r unname(table(bns$housing_insecure)["1"])` students, `r percent(unname(prop.table(table(bns$housing_insecure))["1"]), .1)`).
 
 -   Looking at the table above, we can see the majority of student did not experience homelessness in either the past month (`r unname(table(bns$homelessness_month)["0"])` students, `r percent(unname(prop.table(table(bns$homelessness_month))["0"]), .1)`) or year (`r unname(table(bns$homelessness_year)["0"])` students, `r percent(unname(prop.table(table(bns$homelessness_year))["0"]), .1)`). However, we can see around 3x more students did experience homelessness during the past year (`r unname(table(bns$homelessness_year)["1"])` students, `r percent(unname(prop.table(table(bns$homelessness_year))["1"]), .1)`) compared to during the past month (`r unname(table(bns$homelessness_month)["1"])` students, `r percent(unname(prop.table(table(bns$homelessness_month))["1"]), .1)`).
+
+<br>
 
 ## COVID Housing Impact
 

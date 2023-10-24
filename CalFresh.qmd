@@ -10,6 +10,8 @@ source("common_code.R")
 
 The following questions were asked in regards to criteria laid out by the CalFresh Requirements. This includes U.S. citizenship (or lawful permanent resident), receiving Cal Grant A/B, and receiving food from a campus meal plan. Household size and monthly income is also looked at and broken down into a chart to show CalFresh eligibility. Students were also determined to be eligible or not for CalFresh based on their responses to these criteria questions.
 
+## Basic Needs
+
 **Pick all Basic Needs Programs and Services that you participate in (mark all that apply):**
 
 ```{r}
@@ -88,6 +90,8 @@ bns$EOP <- "Yes"
 
 The data suggest the majority of students meet the citizenship and income requirements, however, less than half of the surveyed students meet the 20 hours/week work requirement.
 
+<br>
+
 ## Household Size & Income
 
 The following two questions were asked about household size and monthly income, which were then combined into a single plot:
@@ -117,6 +121,8 @@ huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %
 
 *In the above graph, cells highlighted in green & bold indicate a person is potentially eligible for CalFresh based on their income, cells highlighted in red & italics indicate a person is not eligible, and cells highlighted in yellow indicate a person may be eligible. This information is pulled from the CalFresh requirements section A2 (see below for link).*
 
+<br>
+
 ## CalFresh Eligible
 
 **This variable was created under the following criteria `r print_n_reporting("calfresh_eligible")`**
@@ -137,13 +143,15 @@ huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %
 c1 <- data.frame(bns$calfresh_eligible) %>% na.omit()
 c1 <- c1 %>% mutate(ifelse(bns.calfresh_eligible==0, "No", "Yes"))
 plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plot_color,  ylim=c(0,1600)) + 
-  xlab('Likely Eligible for CalFresh') + ylab("Frequency")
+  xlab('Likely Eligible for CalFresh') + ylab("Number of Students")
 ```
 :::
 
 We can see that the majority of students are most likely eligible for CalFresh (`r unname(table(bns$calfresh_eligible)['1'])` students), while `r unname(table(bns$calfresh_eligible)['0'])` students are most likely to not be eligible for these benefits.
 
 <div class = "col-md-5">
+
+<br>
 
 # Impact
 
@@ -182,13 +190,15 @@ Looking at the above graphs, the majority of students apply for CalFresh EBT as 
 ```{r}
 #| fig-width: 7
 
-gghistogram(bns, x = "q49_1", add = "mean", fill = plot_color, alpha = 1) + xlab("Monthly EBT Received ($)") + ylab("Frequency")
+gghistogram(bns, x = "q49_1", add = "mean", fill = plot_color, alpha = 1) + xlab("Monthly EBT Received ($)") + ylab("Number of Students")
 
 
 #is $1500 a feasible response?
 ```
 
 The average amount of money received per household using CalFresh (denoted by the dotted line) is \$`r round(mean(bns$q49_1, na.rm=TRUE),2)`, while the median is \$`r round(median(bns$q49_1, na.rm=TRUE),2)`. The values range from \$`r min(bns$q49_1, na.rm=TRUE)` to \$`r max(bns$q49_1, na.rm=TRUE)`. The majority of households who do receive these benefits seems to be getting around \$250 or less per month.
+
+<br />
 
 ### Household Size Breakdown
 
@@ -284,6 +294,8 @@ plot_likert(questions[12:22],
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
+<br>
+
 ## CalFresh Barriers
 
 **What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply).**
@@ -322,16 +334,20 @@ select(Measure = xlab, "Yes (%)" = pct_lab) %>%
 kable() %>% kable_styling(bootstrap_options = "striped") %>%  column_spec(2, width='3.5cm')
 ```
 
+<br>
+
 ## Food Pantry Use
 
 **How often do you normally use the food pantry or if you are not currently using it, how often did you use it? `r print_n_reporting("q54")`**
 
 ```{r}
 #| fig-height: 3.5
-plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 15) + xlab('Food Pantry Use Frequency') + ylab("Frequency")
+plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 15) + xlab('Food Pantry Use Frequency') + ylab("Number of Students")
 ```
 
 When students use the food pantry, the majority do not use it every week (`r unname(sort(table(bns$q54), decreasing = TRUE)['Not every week'])` students). `r unname(sort(table(bns$q54), decreasing = TRUE)['About once a week'])` students claim to use it about once a week, `r unname(sort(table(bns$q54), decreasing = TRUE)['More than once a week'])` students use it more than once a week, and `r unname(sort(table(bns$q54), decreasing = TRUE)['Other (Please specify):'])` students claim other uses.
+
+<br>
 
 # Other Basic Needs Services
 
@@ -383,6 +399,8 @@ plot_likert(questions[12:22],
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
+<br>
+
 ## Food Pantry - Barrier
 
 **What are the reasons for you to not go to campus food pantries? (Select all that apply).**
@@ -412,6 +430,7 @@ plot_likert(questions[12:22],
    kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
+<br>
 
 ## Medi-Cal - Impact
 
@@ -435,6 +454,8 @@ plot_likert(questions,
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
+
+<br>
 
 ## Medi-Cal - Barriers
 
@@ -466,6 +487,8 @@ plot_likert(questions,
    kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
+<br>
+
 ## Emergency Housing Services - Impact
 
 **While you received Emergency Housing Services:**
@@ -495,6 +518,8 @@ plot_likert(questions,
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
+
+<br>
 
 ## Emergency Housing Services - Barriers
 

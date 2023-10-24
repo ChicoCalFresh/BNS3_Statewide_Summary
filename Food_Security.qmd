@@ -14,7 +14,6 @@ The following questions were asked in regard to students' feelings towards food 
 
 [^1]: These questions were developed by the [USDA's screener for food insecurity status](https://www.ers.usda.gov/media/8279/ad2012.pdf)
 
-<br>
 
 ## Food Eaten in Household
 
@@ -37,6 +36,8 @@ plot_likert(questions,
             geom.colors = likert.pal.3,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
+
+<br>
 
 ## Food Insecurity
 
@@ -92,4 +93,3 @@ food_vars %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
-<br>

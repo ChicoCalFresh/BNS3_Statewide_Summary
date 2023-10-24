@@ -36,7 +36,7 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
  
- 
+<br />
 
 ```{r}
 #| fig-height: 8
@@ -62,18 +62,18 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
-<br>
+<br />
 
 ## Current Feelings
 **Which statement best describes how you are feeling right now? `r print_n_reporting("q110")`**
 
 ```{r}
-plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
 ```
 
 Of the `r unname(sum(table(bns$q110)))` students, `r unname(table(bns$q110)[1])` reported feeling safe while `r unname(table(bns$q110)[2])` reported having suicidal thoughts. `r unname(table(bns$q110)[3])` student reported currently having suicidal thoughts with a plan for how they might do it.
 
-<br>
+<br />
 
 # Services
 
@@ -82,10 +82,12 @@ Of the `r unname(sum(table(bns$q110)))` students, `r unname(table(bns$q110)[1])`
 **Do you have access to mental health services on your campus? `r print_n_reporting("q113")`**
 
 ```{r}
-plot_frq(bns$q113, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+plot_frq(bns$q113, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
 ```
 
 Of the `r unname(sum(table(bns$q113)))` students, the majority (`r unname(table(bns$q113)['Yes'])`) said yes to having access to on campus mental health services. Roughly one fourth of students were unsure, and a smaller minority stated they did not have access to on campus mental health services.
+
+<br />
 
 **What statement(s) best describe why you might feel unsure about your ability to access mental health services on campus?**
 
@@ -106,17 +108,20 @@ access_mhs_vars %>%
   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
-<br>
+
+<br />
 
 ## Mental Health Services - Use
 
 **Have you used any of these campus-based mental health services within the last 12 months?**
 
 ```{r}
-plot_frq(bns$q114, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Frequency")
+plot_frq(bns$q114, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
 ```
 
 The vast majority of students (`r unname(table(bns$q114)['No'])`) responded "No" to using any of the on campus based mental health services within the last 12 months. Only `r unname(table(bns$q114)['Yes'])` reported using the mental health service offered by their campus in the last 12 months.
+
+<br />
 
 **What type(s) of services did you use?**
 
@@ -141,6 +146,8 @@ select(Measure = xlab, "Yes (%)" = pct_lab) %>%
 kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
+<br />
+
 **Based on your experiences with one-on-one counseling, please respond to the following statements:**
 
 ```{r}
@@ -164,6 +171,8 @@ plot_likert(questions2,
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
+
+<br />
 
 **What best describes your reason(s) for not using campus-based mental health services?**
 

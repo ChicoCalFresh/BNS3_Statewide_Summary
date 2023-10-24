@@ -39,6 +39,8 @@ plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,700), wrap.labels = 19, sor
 
 With the impact of COVID, the data indicates that most employed students were able to keep their current paid jobs with only slight changes. `r unname(table(bns$q20)['Yes, my hours have decreased but I still have a job.'])` students had their hours decrease, `r unname(table(bns$q20)['No, my hours have remained the same.'])` students maintained the same hours, and `r unname(table(bns$q20)['Yes, my hours have increased and I still have a job or I have a new job.'])` students had their hours increase. There was also `r unname(table(bns$q20)['Yes, I no longer have my job/internship.'])` students who claimed that they no longer had their paid position due to the impact of COVID, while `r unname(table(bns$q20)['I did not have a job or internship before COVID-19 and I still do not.'])` students also claimed that they did not have a paid position before COVID.
 
+<br>
+
 ## Unpaid Work Hours
 **Estimate the number of hours you work in an UNPAID internship (e.g. training, shadowing, practicum, and/or volunteer, etc.) per week. Do not combine with answers above. `r print_n_reporting('unpaid_work_hours')`**
 
