@@ -123,7 +123,7 @@ The vast majority of students (`r unname(table(bns$q114)['No'])`) responded "No"
 
 <br />
 
-**What type(s) of services did you use?**
+**What type(s) of services did you use? (Please select all that apply)**
 
 ```{r}
 question <- "counseling"
@@ -174,7 +174,7 @@ plot_likert(questions2,
 
 <br />
 
-**What best describes your reason(s) for not using campus-based mental health services?**
+**What best describes your reason(s) for not using campus-based mental health services? (Please select all that apply)**
 
 ```{r}
 question <- "no_mhs"

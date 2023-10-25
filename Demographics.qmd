@@ -115,7 +115,7 @@ tmp <-
 
 ```
 
-**What race do you identify as? Select all that apply `r print_n_reporting_tmp('white')`** *Note: that the survey included 14 race options that were collapsed down to 5 broad groups defined by [census.gov](https://www.census.gov/quickfacts/fact/note/US/RHI625219).*
+**What race do you identify as? (Select all that apply) `r print_n_reporting_tmp('white')`** *Note: that the survey included 14 race options that were collapsed down to 5 broad groups defined by [census.gov](https://www.census.gov/quickfacts/fact/note/US/RHI625219).*
 
 ```{r}
 cnames <- c("Prefer not to answer race", "White", "Black or African American", "American Indian and Alaska Native", "Asian", "Native Hawaiian and Other Pacific Islander")
@@ -145,7 +145,7 @@ The majority of students who report having at least one dependent also report th
 
 ## Parents Education
 
-**What is the highest level of education completed by your parents/guardians? `r print_n_reporting('q13')`**
+**What is the highest level of education completed by your parents/guardians (for example, if your mother and father both raised you, and your mother has the highest level of education, then indicate her highest level of education): `r print_n_reporting('q13')`**
 
 ```{r}
 #| fig-height: 5
@@ -244,7 +244,7 @@ Twelve campuses participated in this statewide survey. Of the twelve campuses, f
 
 ## Class Standing
 
-**Estimate your class standing by units completed `r print_n_reporting('q15')`**
+**Estimate your class standing by units completed (do not include units from this semester/quarter): `r print_n_reporting('q15')`**
 
 <div class = "row">
 
@@ -289,7 +289,7 @@ The majority of students in the data are majoring in a `r names(sort(table(bns$q
 
 ## Overall GPA
 
-**What is your approximate overall grade point average (GPA)? `r print_n_reporting('q17')`**
+**What is your approximate overall grade point average (GPA)? Remember that your GPA is on a scale from 0 to 4.0 `r print_n_reporting('q17')`**
 
 ```{r}
 #| fig-height: 4

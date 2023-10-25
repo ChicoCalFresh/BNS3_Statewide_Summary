@@ -12,7 +12,7 @@ The following questions were asked in regards to criteria laid out by the CalFre
 
 ## Basic Needs
 
-**Pick all Basic Needs Programs and Services that you participate in (mark all that apply):**
+**Please mark all the statements that apply to you.**
 
 ```{r}
 #| fig-height: 6
@@ -184,7 +184,7 @@ Looking at the above graphs, the majority of students apply for CalFresh EBT as 
 
 ### Monthly CalFresh Money
 
-**How much money do you receive from CalFresh each month? `r print_n_reporting("q49_1")`**
+**How much money is added to your CalFresh EBT card each month for your CalFresh household (i.e. the people you purchase and prepare food with)? `r print_n_reporting("q49_1")`**
 
 ```{r}
 #| fig-width: 7
@@ -246,7 +246,7 @@ Of the students who do receive money from CalFresh, `r unname(table(bns$q50)['Ag
 
 ## CalFresh Benefits
 
-**While you received CalFresh benefits:**
+**For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. While you received CalFresh benefits:**
 
 ```{r}
 #| fig-height: 8
@@ -433,7 +433,7 @@ plot_likert(questions[12:22],
 
 ## Medi-Cal - Impact
 
-**Knowing that you have Medi-Cal:**
+**For the following questions, please choose how much you agree or disagree with the impact Medi-Cal has or had on your life. Knowing that you have Medi-Cal:**
 
 ```{r}
 #| fig-width: 8.5
@@ -490,7 +490,7 @@ plot_likert(questions,
 
 ## Emergency Housing Services - Impact
 
-**While you received Emergency Housing Services:**
+**For the following questions, please choose how much you agree or disagree with the impact Emergency Housing Services have or had on your life. Because I received Emergency Housing Services:**
 
 ```{r}
 #| fig-height: 8
@@ -522,7 +522,7 @@ plot_likert(questions,
 
 ## Emergency Housing Services - Barriers
 
-**What are the reasons you do not have Emergency Housing Services or have never used Emergency Housing Services?**
+**What are the reasons you do not use Emergency Housing Services or have never used Emergency Housing Services? (Select all that apply)**
 
 ```{r}
  question <- "no_ehs"

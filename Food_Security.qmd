@@ -69,7 +69,7 @@ The majority of the students that took part in the survey are considered to be f
 
 ## Ran Out of Money
 
-**In the last 30 days, if you ran out of money for food, what did you do? (choose all that apply):**
+**Additional food security question that are not part of the U.S. Adult Food Security Survey Module (10- item): In the last 30 days, if you ran out of money for food, what did you do? (choose all that apply):**
 
 
 ```{r}

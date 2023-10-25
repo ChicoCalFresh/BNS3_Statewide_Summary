@@ -212,7 +212,7 @@ bns %>%
 
 ## COVID Housing Impact
 
-**Has your housing stability changed due to COVID-19? `r print_n_reporting("q23")`**
+**Has your housing stability changed due to COVID-19? (e.g. you are now homeless, you are now sleeping on my friend's couch, you are unable to access campus housing, etc.) `r print_n_reporting("q23")`**
 
 ::: row
 ::: col-md-6
@@ -235,12 +235,12 @@ There are `r unname(table(bns$q23)['No'])` students that participated in the sur
 ```{r}
 question <- "covid_housing"
 
-qlabel <- c("Finances changed due to lost (or reduced) on-campus job.", 
-            "Finances changed due to lost (or reduced) off-campus job.",
-            "I was unable to access on-campus housing.",
-            "I was unable to access off-campus housing.",
-            "My roommate(s) finances changed.",
-            "I was in unsafe housing.",
+qlabel <- c("Finances changed due to lost (or reduced) on-campus job", 
+            "Finances changed due to lost (or reduced) off-campus job",
+            "I was unable to access on-campus housing",
+            "I was unable to access off-campus housing",
+            "My roommate(s) finances changed",
+            "I was in unsafe housing",
             "Other")
 
 
