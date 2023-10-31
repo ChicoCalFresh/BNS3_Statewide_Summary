@@ -12,7 +12,7 @@ The following questions were asked in regards to students feelings about their m
 
 ## Frequency of Negative Feelings
 
-**Over the last two weeks, how often have you been bothered by the following problems?**
+**Over the last two weeks, how often have you been bothered by the following problems?** [^1]
 
 ```{r}
 #| fig-height: 6
@@ -37,6 +37,8 @@ plot_likert(questions,
 ```
  
 <br />
+
+**Over the last two weeks, how often have you been bothered by the following problems?** [^2]
 
 ```{r}
 #| fig-height: 8
@@ -200,5 +202,7 @@ nomhs_vars %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
+---
 
-
+[^1]: [Generalized Anxiety Disorder 7-item (GAD-7)](https://adaa.org/sites/default/files/GAD-7_Anxiety-updated_0.pdf)
+[^2]: [Patient Health Questionnaire (PHQ-9)](https://med.stanford.edu/fastlab/research/imapp/msrs/_jcr_content/main/accordion/accordion_content3/download_256324296/file.res/PHQ9%20id%20date%2008.03.pdf)

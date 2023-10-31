@@ -12,7 +12,7 @@ source("common_code.R")
 
 The following questions were asked in regard to students' feelings towards food security due to a lack of or no money. Students were asked if they had to cut or skip meals (and how often), went entire days without eating, and other situations due to a lack of money.[^1] Students were also asked how they handled situations when they had run out of money for food, and if they had gotten any assistance.
 
-[^1]: These questions were developed by the [USDA's screener for food insecurity status](https://www.ers.usda.gov/media/8279/ad2012.pdf)
+[^1]: These questions were developed using a two-item version of the [USDA's screener for food insecurity status](https://www.ers.usda.gov/media/8279/ad2012.pdf)
 
 
 ## Food Eaten in Household

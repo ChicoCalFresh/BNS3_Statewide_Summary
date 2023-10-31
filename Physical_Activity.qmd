@@ -7,7 +7,7 @@ source("common_code.R")
 
 ```
 
-Students were asked to select how many days in the last week they had done any of the following exercise types: moderate, vigorous, or strength training.\[\^1\]
+Students were asked to select how many days in the last week they had done any of the following exercise types: moderate, vigorous, or strength training.[^1]
 
 ```{r, fig.width=8}
 tmp1 <- cbind(data.frame(Question=rep("Moderate Exercise", 8)), as.data.frame(table(bns[["q83_1"]])))
@@ -67,3 +67,7 @@ How often did you do 8-10 **strength training** exercises (such as resistance we
 How often did you do **vigorous-intensity** cardio or aerobic exercise (caused large increases in breathing or heart rate, such as jogging) for at least 20 minutes? `r print_n_reporting("q83_3")`
 
 -   The majority of students claim to have done `r names(sort(table(bns$q83_3), decreasing = TRUE))[1]` days of vigorous exercise in the past week (`r unname(sort(table(bns$q83_3), decreasing = TRUE))[1]` people). The general trend is that as the number of days increases, the number of students who exercised for those given number of days decreases. Only a small number of people claim to do vigorous exercise for 4 or more days in the past week.
+
+---
+
+[^1]: These questions were developed based on the [Surgeon General's physical activity guidelines for adults](https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf) who recommend: 150 minutes to 300 minutes a week of moderate-intensity exercise, 75 minutes to 150 minutes a week of vigorous-intensity aerobic exercise, or an equivalent combination of moderate- and vigorous-intensity aerobic activity. They also recommend strength-training activities on 2 or more days a week.

@@ -52,7 +52,7 @@ plot_likert(questions,
 
 ## Daily Fruit & Vegetable Consumption
 
-**How many servings of fruits and vegetables do you usually consume per day? (not including fruit juices)**
+**How many servings of fruits and vegetables do you usually consume per day? (not including fruit juices)** [^1]
 
 *1 serving= 1 medium piece of fruit; 1/2 cup fresh, frozen, or canned fruits/vegetables; 1 cup salad greens; or 1/4 cup dried fruit.* **`r print_n_reporting("q77")`**
 
@@ -173,7 +173,7 @@ plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + yl
 
 ## Alcohol Servings Consumed
 
-**Typically, how many servings of alcohol do you consume when you drink alcohol?** *e.g. 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol* **`r print_n_reporting("q81")`**
+**Typically, how many servings of alcohol do you consume when you drink alcohol?** *e.g. 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol* **`r print_n_reporting("q81")`** [^2]
 
 ::: {.column width="55%"}
 ```{r}
@@ -199,7 +199,7 @@ plot_frq(bns$q81, geom.colors = plot_color) + xlab('Alcohol Servings Consumed Wh
 
 ## Cooking Confidence
 
-**The following questions pertain to how comfortable you feel about buying or preparing food:**
+**The following questions pertain to how comfortable you feel about buying or preparing food:** [^3]
 
 ```{r}
 #| fig-width: 8
@@ -220,3 +220,9 @@ plot_likert(questions,
 ```
 
 **Figure 8.7:** Overall, the majority of students feel confident in their cooking habits. A notable `r confident_scale_percent_negative(bns$q82_3)` of students were not confident in buying healthy foods on a budget and `r confident_scale_percent_negative(bns$q82_4)` of students were not confident that they can cook healthy foods for their family on a budget.
+
+<br />
+
+[^1]: This question was developed by the [American College Health Association’s (ACHA) National College Health Assessment ](https://www.acha.org/documents/ncha/ACHA-NCHA_IIc_Web_Survey_2011_SAMPLE.pdf) (NCHA).
+[^2]: These questions were developed by the [National Institute on Alcohol Abuse and Alcoholism (NIAAA)](https://pubs.niaaa.nih.gov/publications/aa65/AA65.pdf) screening tool.
+[^3]: These questions were developed by the [Share Our Strength’s Cooking Matters survey tool](https://foodsharelc.org/wp-content/uploads/2019/07/2017-Survey.CMF_.English.pdf) (a USDA-SNAP-Ed approved survey).
