@@ -85,6 +85,32 @@ get_perct <- function(x, value) {
          " (", percent(mean(x==value, na.rm = TRUE), accuracy=.1), ")")
 }
 
+## Get percent for 1 category
+get_count_and_percent <- function(x, category) {   
+  count <- sum(x == category, na.rm = TRUE)   
+  total <- sum(!is.na(x))   
+  percent <- percent(count / total, accuracy = .1)   
+  result <- paste0(count, " (", percent, ")")  
+  return(result)
+}
+
+## Get count percent for 2 categories
+get_count_and_percent2 <- function(x, category1, category2) {   
+  count <- sum(x %in% c(category1, category2), na.rm = TRUE)   
+  total <- sum(!is.na(x))   
+  percent <- percent(count / total, accuracy = .1)   
+  result <- paste0(count, " (", percent, ")")  
+  return(result)
+}
+
+## Get count and percent for all categories greater than or equal to the category
+get_count_and_percent3 <- function(x, category) {   
+  count <- sum(x >= category, na.rm = TRUE)   
+  total <- sum(!is.na(x))   
+  percent <- percent(count / total, accuracy = .1)   
+  result <- paste0(count, " (", percent, ")")  
+  return(result)
+}
 
 ## Create table of percentages for single multiple choice question (ex: Housing - Current Housing Situation)
 question_table <- function(question, values, cnames) {
