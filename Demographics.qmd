@@ -136,13 +136,17 @@ tmp <-
 #| label: tbl-race
 #| tbl-cap: !expr sprintf("Reported race by college students %s", print_n_reporting_tmp('white'))
 
-cnames <- c("Prefer not to answer race", "White", "Black or African American", "American Indian and Alaska Native", "Asian", "Native Hawaiian and Other Pacific Islander")
-tmp2 <- tmp %>% na.omit()
-colnames(tmp2) <- cnames
-tmp2 <- as.data.frame(t(tmp2)) %>% mutate(sums=rowSums(.),
-                                          label=paste0(sums, " (", percent(sums/ncol(.), accuracy=0.1), ")")) %>% arrange(desc(sums)) %>% select(label)
-colnames(tmp2) <- "Yes (%)"
-tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped")
+tmp %>% na.omit() %>% 
+  summarize(across(everything(), sum)) %>%
+  pivot_longer(cols = everything()) %>%
+  mutate(`Identified Race` = c("Prefer not to answer race", "White", "Black or African American", 
+                  "American Indian and Alaska Native", "Asian", 
+                  "Native Hawaiian and Other Pacific Islander"), 
+         pct = percent(value/sum(value), accuracy=0.1), 
+         `Yes (%)`=paste0(value, " (", pct, ")")) %>%
+  arrange(desc(value)) %>%
+  select(-c(name, value, pct)) %>% 
+  kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
 **Survey Question: ** *What race do you identify as? (Select all that apply)*
@@ -158,9 +162,7 @@ Possible answers were those pulled from the U.S. Census questionnaire and includ
 **If you have dependents, then how many of them receive more than 50% of their financial support from you? `r print_n_reporting('q11')`**
 
 ```{r}
-tmp <- bns %>% 
-  mutate(q11 = ifelse(bns$q11 == 0, "I don't have dependents", bns$q11),
-         q11 = as.numeric(q11))
+tmp <- bns %>% filter(q11>0, q11 < 9) # drop 0 and "i don't have dependent' responses. 
 ```
 
 
@@ -258,7 +260,32 @@ bns <- bns %>%
                        "Mt. SAC CC" = "Mt. San Antonio College",
                        "Clovis CC" = "Clovis Community College",
                        "Palo Verde CC" = "Palo Verde College",
-                   "Allan Hancock Community College" = "Allan Hancock College"))
+                   "Allan Hancock Community College" = "Allan Hancock College"), 
+         sector = case_when(
+                  school_rnm == "UC Berkeley" ~ "UC",
+                  school_rnm == "San Francisco State" ~ "CSU", 
+                  school_rnm == "Sacramento State" ~ "CSU", 
+                  school_rnm == "CSU Dominguez Hills" ~ "CSU", 
+                  school_rnm == "CSU Bakersfield" ~ "CSU", 
+                  school_rnm == "Cal State San Bernardino" ~ "CSU", 
+                  school_rnm == "Cal State LA" ~ "CSU", 
+                  school_rnm == "Palo Verde College" ~ "CCC", 
+                  school_rnm == "Mt. San Antonio College" ~ "CCC", 
+                  school_rnm == "Clovis Community College" ~ "CCC", 
+                  school_rnm == "Butte College" ~ "CCC", 
+                  school_rnm == "Allan Hancock College" ~ "CCC"), 
+         sector_color = case_when(
+           sector == "UC" ~ 'green', 
+           sector == "CSU" ~ 'red', 
+           sector == "CCC" ~ 'blue'
+         ))
+
+
+
+bns <- bns %>% 
+  ungroup() %>%
+  group_by(sector) %>%
+  mutate(school2 = fct_infreq(school_rnm))
 
 ```
 
@@ -276,7 +303,13 @@ The following set of questions were asked in regards to the students' academic s
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
-plot_frq(bns$school_rnm, geom.colors = plot_color, ylim=c(0,450), hjust = -.2, vjust = "center",
+# come back to this with Robin. -- must 
+
+ggplot(bns, aes(x=school2, fill = sector_color)) + geom_bar()
+
+plot_frq(bns$school2, 
+         geom.colors = c("green", rep("blue", 6), rep("red", 5)), 
+         ylim=c(0,450), hjust = -.2, vjust = "center",
          coord.flip = TRUE) + xlab('') + ylab("Number of Students")
 ```
 
