@@ -159,8 +159,6 @@ Possible answers were those pulled from the U.S. Census questionnaire and includ
 
 ## Dependents
 
-**If you have dependents, then how many of them receive more than 50% of their financial support from you? `r print_n_reporting('q11')`**
-
 ```{r}
 tmp <- bns %>% filter(q11>0, q11 < 9) # drop 0 and "i don't have dependent' responses. 
 ```
@@ -182,7 +180,6 @@ plot_frq(tmp$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + yl
 
 ## Parents Education
 
-**What is the highest level of education completed by your parents/guardians (for example, if your mother and father both raised you, and your mother has the highest level of education, then indicate her highest level of education): `r print_n_reporting('q13')`**
 
 ```{r}
 #| fig-height: 5
@@ -202,16 +199,12 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 
 **Survey Question: ** *What is the highest level of education completed by your parents/guardians (for example, if your mother and father both raised you, and your mother has the highest level of education, then indicate her highest level of education)?*
 
-Summary: `r get_count_and_percent(bns$firstgen, '1')` of all students report first generation status based on their parent/guardian education level. This outcome is not surprising because the students were either enrolled in EOP or EOPS and both programs recruit students with first generation status. 1697 (80.4%) of students reported that their parents/guardians had less than an Associate’s degree, and 719 (42.3%) of those students reported their parents/guardians did not have a high school diploma or GED. 
+**Summary: **`r get_count_and_percent(bns$firstgen, '1')` of all students report first generation status based on their parent/guardian education level. This outcome is not surprising because the students were either enrolled in EOP or EOPS and both programs recruit students with first generation status. `r count_and_percent(bns$q13, "Less than high school", "Some college", "High school diploma or GED")` of students reported that their parents/guardians had less than an Associate’s degree, and `r count_and_percent(bns$q13, "High school diploma or GED")` of those students reported their parents/guardians did not have a high school diploma or GED. 
 
-The highest level of education completed by most students' parents was "`r names(sort(table(bns$q13), decreasing=TRUE)[1])`" (`r unname(sort(table(bns$q13), decreasing=TRUE)[1])`), while `r unname(sort(table(bns$q13), decreasing=TRUE)[2])` students reported their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[2])`", and `r unname(sort(table(bns$q13), decreasing=TRUE)[3])` report their parents highest level is "`r names(sort(table(bns$q13), decreasing=TRUE)[3])`". Only a minority of students (`r sum(table(bns$q13)[c("Bachelor's degree", "Master's degree", "Doctorate degree (JD, MD, PhD, EdD., etc.)")])`) indicated that their parents have a bachelor's degree or higher.
- 
 
 <br>
 
 ## First Generation
-
-*Note: Students with parents education identified as "Other/Unknown" were not marked as first gen or not since they could not be determined.* **`r print_n_reporting('firstgen')`**
 
 ::: row
 ::: col-md-6
@@ -228,11 +221,11 @@ plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + 
 :::
 
 ::: col-md-5
-`r unname(sort(table(bns$firstgen), decreasing=TRUE)[1])` students are considered as First Generation College students and `r unname(sort(table(bns$firstgen), decreasing=TRUE)[2])` students are not considered First Generation College students.
+**Calculated from previous Survey Question: ** *What is the highest level of education completed by your parents/guardians (for example, if your mother and father both raised you, and your mother has the highest level of education, then indicate her highest level of education)?*
 :::
 :::
 
-As defined by the [University of California](https://www.universityofcalifornia.edu/sites/default/files/First-Generation%20Student%20Success%20at%20UC%208-2017.pdf) first generation students are "working to be part of the first generation in their families to earn a four-year university degree". This means based upon parents education, students in the data set are considered first generation if their parents do not have a Bachelor's or Master's degree from a four-year university. From the *Parents Education* graph, all bars highlighted as yellow are considered first gen, while all bars in blue are not (excluding Other/Unknown).
+**Summary: ** `r get_count_and_percent(bns$firstgen, '1')` of all students report First Generation status. As stated above, this outcome is not surprising because the students were either enrolled in EOP or EOPS and both programs recruit students with first generation status.
 
 <br>
 
@@ -275,9 +268,9 @@ bns <- bns %>%
                   school_rnm == "Butte College" ~ "CCC", 
                   school_rnm == "Allan Hancock College" ~ "CCC"), 
          sector_color = case_when(
-           sector == "UC" ~ 'green', 
-           sector == "CSU" ~ 'red', 
-           sector == "CCC" ~ 'blue'
+           sector == "UC" ~ 'blue', 
+           sector == "CSU" ~ 'maroon', 
+           sector == "CCC" ~ 'gold'
          ))
 
 
@@ -289,7 +282,7 @@ bns <- bns %>%
 
 ```
 
-The following set of questions were asked in regards to the students' academic status. This includes information such as what college they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of student they are (transfer, international, etc.) to help identify students.
+The following set of questions were asked in regards to the students' academic status. This includes information such as what college they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of student they are (transfer, international, etc.) to help identify variables that may influence or correlate with other responses.
 
 
 ## School
@@ -303,17 +296,24 @@ The following set of questions were asked in regards to the students' academic s
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
+#| label: fig-school
+#| fig-cap: !expr sprintf("California College Campuses (n=12) associated with college students participating %s in this study. Individual campus is identified based on the college student’s official campus email account. University of California (UC) campus (n=1) is designated in blue, California State University (CSU) campuses (n=6) are designated in red and California Community College (CCC) campuses (n=5) are designated in gold.", print_n('school'))
+
 # come back to this with Robin. -- must 
+ggplot(bns, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() + labs(x = "School",
+         y = "Number of Students") + scale_fill_discrete(labels = c("UC", "CSU", "CCC"))
 
-ggplot(bns, aes(x=school2, fill = sector_color)) + geom_bar()
-
-plot_frq(bns$school2, 
-         geom.colors = c("green", rep("blue", 6), rep("red", 5)), 
-         ylim=c(0,450), hjust = -.2, vjust = "center",
-         coord.flip = TRUE) + xlab('') + ylab("Number of Students")
+# plot_frq(bns$school2, 
+#          geom.colors = c("green", rep("blue", 6), rep("red", 5)), 
+#          ylim=c(0,450), hjust = -.2, vjust = "center",
+#          coord.flip = TRUE) + xlab('') + ylab("Number of Students")
 ```
 
-Twelve campuses participated in this statewide survey. Of the twelve campuses, five were community colleges, six were California State Universities, and one was a University of California. The majority of students (`r unname(table(bns$school_split)[2])`) were currently enrolled in a state school. Fewer students (`r unname(table(bns$school_split)[1])`) reported enrollment in a community college, and a small minority (`r unname(table(bns$school_split)[3])`) reported enrollment in a UC. <br>
+
+**Survey Question: ** N/A
+
+**Summary: **`r count_and_percent(bns$sector, "CSU")`, `r count_and_percent(bns$sector, "CCC")` and `r count_and_percent(bns$sector, "UC")` of college students who completed the survey `r print_n('school')` are enrolled in CSU, CCC and UC, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS). As of Fall 2020, there were 31,553 students in the CSU EOP.
+
 
 <br>
 

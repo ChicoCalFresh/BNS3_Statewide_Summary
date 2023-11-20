@@ -12,8 +12,8 @@ library(scales)
 
 # Load data ----
 
-PATH_TO_BOX <- "C:/Box/" # Robin
-#PATH_TO_BOX <- "C:/Users/slmooradian/Box/" # Saul
+#PATH_TO_BOX <- "C:/Box/" # Robin
+PATH_TO_BOX <- "C:/Users/slmooradian/Box/" # Saul
 bns <- readRDS(paste0(PATH_TO_BOX, "CHC All/01. Projects Active/CFO (SP6495203)/08. Research and Evaluation/02. Data Analysis/BNS3-statewide/data/bns3_statewide_clean.rds")) |> 
   filter(!is.na(school))
 
@@ -69,6 +69,12 @@ print_n_reporting <- function(x) {
   )
 }
 
+# Print number of respondents
+print_n <- function(x) { 
+  paste0("(n=", 
+         sum(!is.na(bns[[x]])), ")")
+}
+
 ## Print number of respondents and percent they compose (non-missing) - use this for tmp data frames.
 print_n_reporting_tmp <- function(x) {
   paste0("(n=", 
@@ -117,6 +123,17 @@ get_count_and_percent3 <- function(x, category) {
   percent <- percent(count / total, accuracy = .1)   
   result <- paste0(count, " (", percent, ")")  
   return(result)
+}
+
+## Get the count and percent for n (...) categories
+count_and_percent <-  function(x, ...) {  # Takes in a variable and an ellipsis ('...') which represents multiple categories
+  values <- list(...)  # Stores the values of each of the selected categories as a list
+  counts <- lapply(values, function(val) sum(x == val, na.rm = TRUE))  # Applies the function to each element of the list
+  total <- sum(!is.na(x))
+  percent <- sapply(counts, function(count) percent(count/total, accuracy = .001))
+  total_count <- sum(unlist(counts))
+  total_percent <- percent(total_count/total, accuracy = .1)
+  paste0(total_count, " (", total_percent, ")")
 }
 
 ## Create table of percentages for single multiple choice question (ex: Housing - Current Housing Situation)
