@@ -287,8 +287,6 @@ The following set of questions were asked in regards to the students' academic s
 
 ## School
 
-**Which campus do you attend? `r print_n_reporting('school')`**
-
 <div class = "row">
 
 <div class = "col-md-7">
@@ -300,8 +298,8 @@ The following set of questions were asked in regards to the students' academic s
 #| fig-cap: !expr sprintf("California College Campuses (n=12) associated with college students participating %s in this study. Individual campus is identified based on the college student’s official campus email account. University of California (UC) campus (n=1) is designated in blue, California State University (CSU) campuses (n=6) are designated in red and California Community College (CCC) campuses (n=5) are designated in gold.", print_n('school'))
 
 # come back to this with Robin. -- must 
-ggplot(bns, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() + labs(x = "School",
-         y = "Number of Students") + scale_fill_discrete(labels = c("UC", "CSU", "CCC"))
+ggplot(bns, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() + 
+  labs(x = "School", y = "Number of Students") + scale_fill_manual(values = c('blue', 'gold', 'maroon'), name = 'School Types', labels = c('UC', 'CC', 'CSU'))
 
 # plot_frq(bns$school2, 
 #          geom.colors = c("green", rep("blue", 6), rep("red", 5)), 
