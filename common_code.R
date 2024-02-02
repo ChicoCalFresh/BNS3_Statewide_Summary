@@ -129,7 +129,7 @@ get_count_and_percent3 <- function(x, category) {
 count_and_percent <-  function(x, ...) {  # Takes in a variable and an ellipsis ('...') which represents multiple categories
   values <- list(...)  # Stores the values of each of the selected categories as a list
   counts <- lapply(values, function(val) sum(x == val, na.rm = TRUE))  # Applies the function to each element of the list
-  total <- sum(!is.na(x))
+  total <- sum(!is.na(x)) 
   percent <- sapply(counts, function(count) percent(count/total, accuracy = .001))
   total_count <- sum(unlist(counts))
   total_percent <- percent(total_count/total, accuracy = .1)

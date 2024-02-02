@@ -1,8 +1,9 @@
 ---
 title: "Demographics"
 crossref:
-  fig-title: 'Figure 1.'
-  tbl-title: 'Table 1.'
+  chapters: true
+  fig-title: 'Figure'
+  tbl-title: 'Table'
   fig-labels: arabic
   title-delim: ":"
 ---
@@ -155,6 +156,7 @@ Possible answers were those pulled from the U.S. Census questionnaire and includ
 
 **Summary: ** `r get_count_and_percent(tmp$white, '1')` of the students self-identify as White, `r get_count_and_percent(tmp$asian, '1')` as Asian, `r get_count_and_percent(tmp$black, '1')` as Black or African American, `r get_count_and_percent(tmp$amer_indian, '1')` as American Indian and Alaskan Native and `r get_count_and_percent(tmp$hawaiian, '1')` as Native Hawaiian or Other Pacific Islander. `r get_count_and_percent(tmp$eth_PNTA, '1')` %) prefer not to answer race identity.
 
+
 <br>
 
 ## Dependents
@@ -185,7 +187,7 @@ plot_frq(tmp$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + yl
 #| fig-height: 5
 #| fig-width: 7.5
 #| label: fig-q13
-#| fig-cap: !expr sprintf("Parent/guardian education level reported by college students %s. These data will determine a student’s First Generation status. First Generation status is defined by neither parent having completed a Bachelor’s degree or higher. Data in yellow categories (minus Other/Unknown) are added to determine total number of First generation status in Figure 1.6 (below). ", print_n_reporting('q13'))
+#| fig-cap: !expr sprintf("Parent/guardian education level reported by college students %s. These data will determine a student’s First Generation status. First Generation status is defined by neither parent having completed a Bachelor’s degree or higher. Data in yellow categories (minus Other/Unknown) are added to determine total number of First generation status in @fig-firstgen (below). ", print_n_reporting('q13'))
 tmp2 <- as.data.frame(table(bns$q13)) %>%
   mutate(Percent=lapply(Freq, function(x) paste0('(', percent(x/sum(!is.na(bns[['q13']])), accuracy = 0.1), ')')),
          FirstGen=as.character(c(1,1,1,1,1,0,0,0,1)),
@@ -212,7 +214,7 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 #| fig-height: 3
 #| fig-width: 4
 #| label: fig-firstgen
-#| fig-cap: !expr sprintf("Reported First Generation status by college students %s. First Generation status is defined by the University of California neither parent having completed a Bachelor's degree or higher. Data from Figure 1.5 (above) in yellow categories (minus Other/Unknown) are added to determine total number of students with First generation status.", print_n_reporting('firstgen'))
+#| fig-cap: !expr sprintf("Reported First Generation status by college students %s. First Generation status is defined by the University of California neither parent having completed a Bachelor's degree or higher. Data from @fig-q13 (above) in yellow categories (minus Other/Unknown) are added to determine total number of students with First generation status.", print_n_reporting('firstgen'))
 tmp3 <- data.frame(firstgen=bns$firstgen) %>% 
   mutate(firstgen=factor(ifelse(is.na(firstgen), NA, ifelse(firstgen == 0, "Not First Gen", "First Gen")), levels=c("Not First Gen", "First Gen")))
 

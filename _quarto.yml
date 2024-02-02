@@ -14,8 +14,8 @@ website:
       #   text: Home
       - href: Demographics.qmd
         text: Demographics
-      # - href: Workload.qmd
-      #   text: Workload
+      - href: Workload.qmd
+        text: Workload
       # - href: Housing.qmd
       #   text: Housing
       # - href: CalFresh.qmd
