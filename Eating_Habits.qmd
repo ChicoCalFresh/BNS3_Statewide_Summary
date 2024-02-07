@@ -56,7 +56,6 @@ plot_likert(questions,
 
 *1 serving= 1 medium piece of fruit; 1/2 cup fresh, frozen, or canned fruits/vegetables; 1 cup salad greens; or 1/4 cup dried fruit.* **`r print_n_reporting("q77")`**
 
-::: {.column width="55%"}
 ```{r}
 #| fig-height: 5
 #| fig-width: 6
@@ -66,15 +65,8 @@ bns$q77 <- recode(bns$q77, "0 servings per day" = "0 servings", "1-2 servings pe
 plot_frq(bns$q77, geom.colors = plot_color) + xlab('Daily Fruit & Vegetable Servings') + ylab("Number of Students")
 
 ```
-:::
 
-::: {.column width="5%"}
-<!-- empty column to create gap -->
-:::
-
-::: {.column width="30%"}
 **Figure 8.2:** The majority of students reported eating `r names(sort(table(bns$q77), decreasing = TRUE))[1]` servings per day (`r percent(unname(prop.table(table(bns$q77))["1-2 servings"]), .1)`). Only `r percent(unname(prop.table(table(bns$q77))["5+ servings"]), .1)` of students are meeting the recommended 5 or more servings of fruits and vegetables per day.
-:::
 
 <br />
 
@@ -82,15 +74,7 @@ plot_frq(bns$q77, geom.colors = plot_color) + xlab('Daily Fruit & Vegetable Serv
 
 **How many ounces of regular soda/cola/pop, sports drink, or energy drinks do you consume each day? `r print_n_reporting("q78")`**
 
-::: {.column width="30%"}
-**Figure 8.3:** A large number of students reported drinking `r names(sort(table(bns$q78), decreasing = TRUE))[1]` per day (`r percent(unname(prop.table(table(bns$q78))["1-8 ounces"]), .1)`). More than half of the students drank at least 1 serving of sugar sweetened beverages per day (`r percent(1 - unname(prop.table(table(bns$q78))["Zero"]), .1)`).
-:::
 
-::: {.column width="5%"}
-<!-- empty column to create gap -->
-:::
-
-::: {.column width="55%"}
 ```{r}
 #| fig-height: 5
 #| fig-width: 6
@@ -108,7 +92,8 @@ bns$q78 <- recode(bns$q78, "Zero" = "Zero",
 plot_frq(bns$q78, geom.colors = plot_color) + xlab('Daily Sugar Sweetened Beverage Intake (Ounces)') + ylab("Number of Students") 
 
 ```
-:::
+
+**Figure 8.3:** A large number of students reported drinking `r names(sort(table(bns$q78), decreasing = TRUE))[1]` per day (`r percent(unname(prop.table(table(bns$q78))["1-8 ounces"]), .1)`). More than half of the students drank at least 1 serving of sugar sweetened beverages per day (`r percent(1 - unname(prop.table(table(bns$q78))["Zero"]), .1)`).
 
 <br />
 
@@ -116,7 +101,7 @@ plot_frq(bns$q78, geom.colors = plot_color) + xlab('Daily Sugar Sweetened Bevera
 
 **How frequently do you eat from fast food restaurants, convenience stores, or vending machines for a meal or meal replacement? `r print_n_reporting("q79")`**
 
-::: {.column width="55%"}
+
 ```{r}
 #| fig-height: 5
 #| fig-width: 6
@@ -131,15 +116,8 @@ bns$q79 <- recode(bns$q79, "Zero" = "Zero times",
 
 plot_frq(bns$q79, geom.colors = plot_color) + xlab('Weekly Fast Food Intake') + ylab("Number of Students")
 ```
-:::
 
-::: {.column width="5%"}
-<!-- empty column to create gap -->
-:::
-
-::: {.column width="30%"}
 **Figure 8.4:** More than half of the students reported eating fast food `r names(sort(table(bns$q79), decreasing = TRUE))[1]` per week (`r percent(unname(prop.table(table(bns$q79))["1-2 times"]), .1)`). The majority of students (`r percent(1 - unname(prop.table(table(bns$q79))["Zero times"]), .1)`) reported eating fast food at least once per week.
-:::
 
 <br />
 
@@ -147,15 +125,7 @@ plot_frq(bns$q79, geom.colors = plot_color) + xlab('Weekly Fast Food Intake') + 
 
 **How often do you consume at least one serving of alcohol?** *e.g. 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol* **`r print_n_reporting("q80")`**
 
-::: {.column width="30%"}
-**Figure 8.5:** The majority of students reported drinking zero days per week (`r percent(unname(prop.table(table(bns$q80))["Zero"]), .1)`) while `r percent(1 - unname(prop.table(table(bns$q80))["Zero"]), .1)` reported drinking at least one day per week.
-:::
 
-::: {.column width="5%"}
-<!-- empty column to create gap -->
-:::
-
-::: {.column width="55%"}
 ```{r}
 #| fig-height: 5
 #| fig-width: 6
@@ -167,15 +137,15 @@ bns$q80 <- recode(bns$q80, "Zero" = "Zero days")
 plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + ylab("Number of Students")
 
 ```
-:::
 
+**Figure 8.5:** The majority of students reported drinking zero days per week (`r percent(unname(prop.table(table(bns$q80))["Zero"]), .1)`) while `r percent(1 - unname(prop.table(table(bns$q80))["Zero"]), .1)` reported drinking at least one day per week.
 <br />
 
 ## Alcohol Servings Consumed
 
 **Typically, how many servings of alcohol do you consume when you drink alcohol?** *e.g. 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol* **`r print_n_reporting("q81")`** [^2]
 
-::: {.column width="55%"}
+
 ```{r}
 #| fig-height: 5
 #| fig-width: 6
@@ -185,15 +155,10 @@ plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + yl
 plot_frq(bns$q81, geom.colors = plot_color) + xlab('Alcohol Servings Consumed When Drinking') + ylab("Number of Students")
 
 ```
-:::
 
-::: {.column width="5%"}
-<!-- empty column to create gap -->
-:::
 
-::: {.column width="30%"}
 **Figure 8.6:** Of the students that reported drinking at least once per week, `r percent(unname(prop.table(table(bns$q81))["1-2 servings"]), .1)` of students reported drinking 1-2 servings when they drink while `r percent(unname(prop.table(table(bns$q81))["5 or more servings"]), .1)` reported drinking 5 or more servings.
-:::
+
 
 <br />
 
