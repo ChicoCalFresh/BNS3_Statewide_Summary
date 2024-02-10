@@ -6,7 +6,7 @@ library(sjPlot)
 library(kableExtra)
 library(questionr)
 library(gridExtra)
-library(ggpubr)
+library(ggpubr) 
 library(scales)
 # library(huxtable) # only used once in CalFresh 
 
