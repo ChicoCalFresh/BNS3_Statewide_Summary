@@ -14,7 +14,7 @@ source("common_code.R")
 
 # Personal Demographics
 
-Students’ personal demographics (e.g. age, ethnicity, number of dependents, etc.) were obtained and visualized in this section. Specific survey questions and summaries are found below each figure. 
+Students’ personal demographics (e.g. age, ethnicity, number of dependents, etc.) were obtained and visualized in this section. Specific survey questions and summaries are found below each figure. As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n count for every survey question reflects the total number of non-missing responses while the percentage reflects the percent of non-missing responses. 
 
 
 ## Age
@@ -28,9 +28,11 @@ gghistogram(bns, x = "age", add = "mean", alpha = 1,
   xlab("Age (years)") + ylab("Number of Students")
 ```
 
-**Survey question: ** *What is your date of birth?*
+**Survey Question: ** *What is your date of birth?*
 
-**Summary: ** Student age was determined by the difference between birth date and the time in which the survey was completed. Students’ `r print_n_reporting('age')` average age is `r round(mean(bns$age, na.rm = TRUE),1)` years with a range of `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)` and the majority falling between 20-30 years old. 
+**Additional Notes: ** Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number. 
+
+**Summary: ** The average age of the students was `r round(mean(bns$age, na.rm = TRUE),1)` years with a range of `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)` and the majority falling between 20-30 years old. 
 
 <br>
 
@@ -55,7 +57,7 @@ plot_frq(rec$q7, sort.frq="desc", geom.colors = plot_color) + xlab('Gender') + y
 
 **Survey question: ** *What is your gender identity?*
 
-**Summary: ** `r get_count_and_percent(bns$q7, 'Woman')` of the students identify as a woman, `r get_count_and_percent(bns$q7, 'Man')` identify as a man, and `r get_count_and_percent2(bns$q7, 'Gender non-binary', 'Gender Queer or Gender-Nonconforming')` identify as gender non-binary and queer/non-conforming, respectively. Remaining students who preferred not to answer. 
+**Summary: ** A total of `r get_count_and_percent(bns$q7, 'Woman')` students identified as a woman, `r get_count_and_percent(bns$q7, 'Man')` identified as a man, `r get_count_and_percent(bns$q7, 'Gender non-binary')` identified as gender non-binary, and `r get_count_and_percent(bns$q7, 'Gender Queer or Gender-Nonconforming')` identified as queer/non-conforming.
 
 
 <br>
@@ -78,9 +80,9 @@ plot_frq(tmp$hispanic, geom.colors = plot_color, ylim=c(0, 1800)) + xlab("") + y
 ::: col-md-5
 **Survey Question: ** *Do you identify as Hispanic or Latino or Spanish Origin?*
 
-Possible answers were those pulled from the U.S. Census questionnaire and Hispanic Origin included: *Mexican, Mexican American, Chicano, Puerto Rican, or another Hispanic/Latino/Spanish origin.* 
+**Additional Notes: ** Possible answers were pulled from the U.S. Census questionnaire assessing Hispanic Origin: *Mexican, Mexican American, Chicano, Puerto Rican, Cuban, or another Hispanic/Latino/Spanish origin.* 
 
-**Summary: ** `r get_count_and_percent(tmp$hispanic, 'Hispanic')` of the students self-identify as having Hispanic Origins and `r get_count_and_percent(tmp$hispanic, 'Non-Hispanic')` of the students self-identify as Non-Hispanic. 
+**Summary: ** A total of `r get_count_and_percent(tmp$hispanic, 'Hispanic')` students self-identified as having Hispanic Origins and `r get_count_and_percent(tmp$hispanic, 'Non-Hispanic')` students self-identified as Non-Hispanic. 
 :::
 :::
 
@@ -143,7 +145,7 @@ tmp %>% na.omit() %>%
   mutate(`Identified Race` = c("Prefer not to answer race", "White", "Black or African American", 
                   "American Indian and Alaska Native", "Asian", 
                   "Native Hawaiian and Other Pacific Islander"), 
-         pct = percent(value/sum(value), accuracy=0.1), 
+         pct = percent(value/nrow(tmp), accuracy=0.1), 
          `Yes (%)`=paste0(value, " (", pct, ")")) %>%
   arrange(desc(value)) %>%
   select(-c(name, value, pct)) %>% 
@@ -152,9 +154,9 @@ tmp %>% na.omit() %>%
 
 **Survey Question: ** *What race do you identify as? (Select all that apply)*
 
-Possible answers were those pulled from the U.S. Census questionnaire and included: White, Black or African American, American Indian or Alaska Native, Chinese, Filipino, Asian Indian, Vietnamese, Korean, Japanese, Other Asian, Native Hawaiian, Samoan, Chamorro, Other Pacific Islander. Although “Prefer not to answer” was an option, “Do not know” was not an option. These 14 options were collapsed into the 5 broad U.S. Census groups due to sample size variations.
+**Additional Notes: ** Possible answers were pulled from the U.S. Census questionnaire assessing race: *White, Black or African American, American Indian or Alaska Native, Chinese, Filipino, Asian Indian, Vietnamese, Korean, Japanese, Other Asian, Native Hawaiian, Samoan, Chamorro, and Other Pacific Islander.* These 14 options were collapsed into the 5 broad U.S. Census groups due to small sample sizes in some groups.
 
-**Summary: ** `r get_count_and_percent(tmp$white, '1')` of the students self-identify as White, `r get_count_and_percent(tmp$asian, '1')` as Asian, `r get_count_and_percent(tmp$black, '1')` as Black or African American, `r get_count_and_percent(tmp$amer_indian, '1')` as American Indian and Alaskan Native and `r get_count_and_percent(tmp$hawaiian, '1')` as Native Hawaiian or Other Pacific Islander. `r get_count_and_percent(tmp$eth_PNTA, '1')` %) prefer not to answer race identity.
+**Summary: ** A total of `r get_count_and_percent(tmp$white, '1')` students self-identified as White, `r get_count_and_percent(tmp$asian, '1')` as Asian, `r get_count_and_percent(tmp$black, '1')` as Black or African American, `r get_count_and_percent(tmp$amer_indian, '1')` as American Indian or Alaskan Native, and `r get_count_and_percent(tmp$hawaiian, '1')` as Native Hawaiian or Other Pacific Islander. Additionally, `r get_count_and_percent(tmp$eth_PNTA, '1')` students preferred not to answer race, likely due to confusion between race and ethnicity.
 
 
 <br>
@@ -163,6 +165,8 @@ Possible answers were those pulled from the U.S. Census questionnaire and includ
 
 ```{r}
 tmp <- bns %>% filter(q11>0, q11 < 9) # drop 0 and "i don't have dependent' responses. 
+
+
 ```
 
 
@@ -170,43 +174,48 @@ tmp <- bns %>% filter(q11>0, q11 < 9) # drop 0 and "i don't have dependent' resp
 #| fig-height: 4
 #| fig-width: 6
 #| label: fig-q11
-#| fig-cap: !expr sprintf("Reported dependents by college students %s. Students reporting no dependents or dependents without more than 50%% financial support (n=%d) were not included.", print_n_reporting('q11'), unname(table(bns$q11)["I don't have dependents"]))
+#| fig-cap: !expr sprintf("Reported dependents by college students %s", print_n_reporting('q11'))
 plot_frq(tmp$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + ylab("Number of Students")
 ```
 
 **Survey Question: ** *If you have dependents, then how many of them receive more than 50% of their financial support from you?*
 
-**Summary: ** `r sum(table(tmp$q11))` of the students reporting have dependents who receive more than 50% of their financial support. Of those with dependents, `r get_count_and_percent(tmp$q11, '1')` have one dependent, `r get_count_and_percent(tmp$q11, '2')` have two and the `r get_count_and_percent3(tmp$q11, '3')` students have more than 3 dependents.
+**Additional Notes: ** Approximately `r get_count_and_percent(bns$q11, "I don't have dependents")` students reporting no dependents and `r get_count_and_percent(bns$q11, "0")` reporting dependents with less than 50% financial support were omitted from the chart. 
+
+
+**Summary: ** A total of `r sum(table(tmp$q11))` students reported having dependents who receive more than 50% of their financial support. Of those with dependents, `r get_count_and_percent(tmp$q11, '1')` had one dependent, `r get_count_and_percent(tmp$q11, '2')` had two, and `r get_count_and_percent3(tmp$q11, '3')` students had 3 or more dependents.
 
 <br>
 
-## Parents Education
+## Parent Education
 
 
 ```{r}
 #| fig-height: 5
 #| fig-width: 7.5
 #| label: fig-q13
-#| fig-cap: !expr sprintf("Parent/guardian education level reported by college students %s. These data will determine a student’s First Generation status. First Generation status is defined by neither parent having completed a Bachelor’s degree or higher. Data in yellow categories (minus Other/Unknown) are added to determine total number of First generation status in @fig-firstgen (below). ", print_n_reporting('q13'))
+#| fig-cap: !expr sprintf("Parent/guardian education level reported by college students %s", print_n_reporting('q13'))
 tmp2 <- as.data.frame(table(bns$q13)) %>%
   mutate(Percent=lapply(Freq, function(x) paste0('(', percent(x/sum(!is.na(bns[['q13']])), accuracy = 0.1), ')')),
-         FirstGen=as.character(c(1,1,1,1,1,0,0,0,1)),
+         FirstGen=as.character(c(1,1,1,1,1,0,0,0,2)),
          Var1=recode(Var1, "Other/Unknown" = "Other/ Unknown")) %>% arrange((desc(Freq)))
 
 ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Percent)) + geom_col(colour = "black") +
-  scale_fill_manual(values=c("#336699", "#ecf0b7")) + geom_text(aes(y=Freq+50)) + ylim(0,900) +
+  scale_fill_manual(values=c("#336699", "#00944d", "grey")) + geom_text(aes(y=Freq+50)) + ylim(0,900) +
   scale_x_discrete(labels=label_wrap(10)) +   geom_text(aes(y=Freq + 100, label=Freq)) +
   xlab('') + ylab("Number of Students") + theme(legend.position = "none") + theme(axis.text.x = element_text(size = 10))
 ```
 
 **Survey Question: ** *What is the highest level of education completed by your parents/guardians (for example, if your mother and father both raised you, and your mother has the highest level of education, then indicate her highest level of education)?*
 
-**Summary: **`r get_count_and_percent(bns$firstgen, '1')` of all students report first generation status based on their parent/guardian education level. This outcome is not surprising because the students were either enrolled in EOP or EOPS and both programs recruit students with first generation status. `r count_and_percent(bns$q13, "Less than high school", "Some college", "High school diploma or GED")` of students reported that their parents/guardians had less than an Associate’s degree, and `r count_and_percent(bns$q13, "High school diploma or GED")` of those students reported their parents/guardians did not have a high school diploma or GED. 
+**Additional Notes: ** This data is used to determine a student’s first-generation status. First-generation status is defined by neither parent having completed a Bachelor’s degree or higher. The green bars represent first-generation categories and the blue bars represent non-first-generation categories. Other/unknown responses are shown in gray.
+
+**Summary: ** Approximately `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because the students were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of `r count_and_percent(bns$q13, "Less than high school")` students reported their parents/guardians did not have a high school diploma or GED while `r count_and_percent(bns$q13, "High school diploma or GED")` reported the highest level of education completed by their parents is high school. 
 
 
 <br>
 
-## First Generation
+## First-Generation
 
 ::: row
 ::: col-md-6
@@ -214,7 +223,7 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 #| fig-height: 3
 #| fig-width: 4
 #| label: fig-firstgen
-#| fig-cap: !expr sprintf("Reported First Generation status by college students %s. First Generation status is defined by the University of California neither parent having completed a Bachelor's degree or higher. Data from @fig-q13 (above) in yellow categories (minus Other/Unknown) are added to determine total number of students with First generation status.", print_n_reporting('firstgen'))
+#| fig-cap: !expr sprintf("Reported First-Generation Status by College Students %s", print_n_reporting('firstgen'))
 tmp3 <- data.frame(firstgen=bns$firstgen) %>% 
   mutate(firstgen=factor(ifelse(is.na(firstgen), NA, ifelse(firstgen == 0, "Not First Gen", "First Gen")), levels=c("Not First Gen", "First Gen")))
 
@@ -223,208 +232,11 @@ plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + 
 :::
 
 ::: col-md-5
-**Calculated from previous Survey Question: ** *What is the highest level of education completed by your parents/guardians (for example, if your mother and father both raised you, and your mother has the highest level of education, then indicate her highest level of education)?*
+**Survey Question: ** *This variable was derived from the question in @fig-q13*
+
+**Additional Notes: ** Students who selected their parents' education  as "Less than high school," "High school diploma or GED," "Some college," "Certificate or technical achievement without Associate's degree," or "Associate's degree" were considered first-generation. The `r get_count_and_percent(bns$q13, 'Other/Unknown')` students who selected "Other/Unknown" were set as missing values. All other responses were considered not first-generation. 
+
 :::
 :::
 
-**Summary: ** `r get_count_and_percent(bns$firstgen, '1')` of all students report First Generation status. As stated above, this outcome is not surprising because the students were either enrolled in EOP or EOPS and both programs recruit students with first generation status.
-
-<br>
-
-# Academic Characteristics
-
-```{r, include=FALSE}
-bns <- bns %>%
-  mutate(school_split = fct_collapse(school,
-                                     "CC" = c("Allan Hancock Community College",
-                                              "Butte CC",
-                                              "Clovis CC",
-                                              "Mt. SAC CC",
-                                              "Palo Verde CC"),
-                                     "State" = c("Cal State LA",
-                                                 "Cal State San Bernardino",
-                                                 "CSU Bakersfield",
-                                                 "CSU Dominguez Hills",
-                                                 "Sacramento State",
-                                                 "San Francisco State"),
-                                     "UC" = c("UC Berkeley")))
-
-#rename to be consistent with code book
-bns <- bns %>% 
-  mutate(school_rnm = recode(school, "Butte CC"="Butte College", 
-                       "Mt. SAC CC" = "Mt. San Antonio College",
-                       "Clovis CC" = "Clovis Community College",
-                       "Palo Verde CC" = "Palo Verde College",
-                   "Allan Hancock Community College" = "Allan Hancock College"), 
-         sector = case_when(
-                  school_rnm == "UC Berkeley" ~ "UC",
-                  school_rnm == "San Francisco State" ~ "CSU", 
-                  school_rnm == "Sacramento State" ~ "CSU", 
-                  school_rnm == "CSU Dominguez Hills" ~ "CSU", 
-                  school_rnm == "CSU Bakersfield" ~ "CSU", 
-                  school_rnm == "Cal State San Bernardino" ~ "CSU", 
-                  school_rnm == "Cal State LA" ~ "CSU", 
-                  school_rnm == "Palo Verde College" ~ "CCC", 
-                  school_rnm == "Mt. San Antonio College" ~ "CCC", 
-                  school_rnm == "Clovis Community College" ~ "CCC", 
-                  school_rnm == "Butte College" ~ "CCC", 
-                  school_rnm == "Allan Hancock College" ~ "CCC"), 
-         sector_color = case_when(
-           sector == "UC" ~ 'blue', 
-           sector == "CSU" ~ 'maroon', 
-           sector == "CCC" ~ 'gold'
-         ))
-
-
-
-bns <- bns %>% 
-  ungroup() %>%
-  group_by(sector) %>%
-  mutate(school2 = fct_infreq(school_rnm))
-
-```
-
-The following set of questions were asked in regards to the students' academic status. This includes information such as what college they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of student they are (transfer, international, etc.) to help identify variables that may influence or correlate with other responses.
-
-
-## School
-
-<div class = "row">
-
-<div class = "col-md-7">
-
-```{r}
-#| fig-height: 6
-#| fig-width: 8
-#| label: fig-school
-#| fig-cap: !expr sprintf("California College Campuses (n=12) associated with college students participating %s in this study. Individual campus is identified based on the college student’s official campus email account. University of California (UC) campus (n=1) is designated in blue, California State University (CSU) campuses (n=6) are designated in red and California Community College (CCC) campuses (n=5) are designated in gold.", print_n('school'))
-
-# come back to this with Robin. -- must 
-ggplot(bns, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() + 
-  labs(x = "School", y = "Number of Students") + scale_fill_manual(values = c('blue', 'gold', 'maroon'), name = 'School Types', labels = c('UC', 'CC', 'CSU'))
-
-# plot_frq(bns$school2, 
-#          geom.colors = c("green", rep("blue", 6), rep("red", 5)), 
-#          ylim=c(0,450), hjust = -.2, vjust = "center",
-#          coord.flip = TRUE) + xlab('') + ylab("Number of Students")
-```
-
-
-**Survey Question: ** N/A
-
-**Summary: **`r count_and_percent(bns$sector, "CSU")`, `r count_and_percent(bns$sector, "CCC")` and `r count_and_percent(bns$sector, "UC")` of college students who completed the survey `r print_n('school')` are enrolled in CSU, CCC and UC, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS). As of Fall 2020, there were 31,553 students in the CSU EOP.
-
-
-<br>
-
-## Class Standing
-
-**Estimate your class standing by units completed (do not include units from this semester/quarter): `r print_n_reporting('q15')`**
-
-<div class = "row">
-
-<div class = "col-md-7">
-
-```{r}
-#| fig-height: 4.5
-#| fig-width: 5.5
-tmp <- recode(bns$q15,
-              "Freshman (0-29 semester units or 0-44 quarter units)" = "Freshman",
-              "Sophomore (30-59 semester units or 45-89 quarter units)" = "Sophmore",
-              "Junior (60-89 semester units or 90-134 quarter units)" = "Junior",
-              "Senior (90+ semester units or 135+ quarter units)" = "Senior")
-              
-plot_frq(tmp, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xlab('Class Standing') + 
-  ylab("Number of Students")
-```
-
-The statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` students, there were `r unname(table(tmp)[1])` freshmen, `r unname(table(tmp)[2])` sophomores, `r unname(table(tmp)[3])` juniors, and `r unname(table(tmp)[4])` seniors.
-
-<br>
-
-## Major
-
-**Which of the following categories best describes your major? `r print_n_reporting('q16')`**
-
-```{r}
-#| fig-height: 6
-#| fig-width: 8.5
-bns <- bns %>% mutate(q16=recode(q16, 
-                                 "Science, Technology, Engineering and Math (STEM) (Includes Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition)" = "Science, Technology, Engineering and Math (STEM)"))
-
-plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students") + theme(axis.text.x = element_text(size = 10))
-
-```
-
-*NOTE: Science, Technology, Engineering and Math (STEM) was shortened for the figure above, but also includes the following majors: Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition.*
-
-The majority of students in the data are majoring in a `r names(sort(table(bns$q16), decreasing=TRUE)[1])` program (`r unname(sort(table(bns$q16), decreasing=TRUE)[1])` students). `r unname(sort(table(bns$q16), decreasing=TRUE)[2])` of the students are `r names(sort(table(bns$q16), decreasing=TRUE)[2])` majors.
-
-<br>
-
-## Overall GPA
-
-**What is your approximate overall grade point average (GPA)? Remember that your GPA is on a scale from 0 to 4.0 `r print_n_reporting('q17')`**
-
-```{r}
-#| fig-height: 4
-#| fig-width: 5.5
-bns$gpa_fac <- cut(bns$q17, breaks = c(0, 1.5, 2.0, 2.5, 3.0, 3.5, 5.0), labels = c("1.5 or less", "1.51-2.0", "2.01-2.5", "2.51-3.0", "3.01-3.5", "3.51 or above"), ordered_result = TRUE, include.lowest = TRUE)
-
-plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Number of Students")
-```
-
-The average overall GPA for students is `r round(mean(bns$q17, na.rm = TRUE), 2)`, while the median is `r round(median(bns$q17, na.rm = TRUE), 2)`. The majority (`r percent(sum(prop.table(table(bns$gpa_fac))[5:6]), accuracy = .1)`) of students have a GPA greater than 3.0.
-
-<br>
-
-## Currently Enrolled Units
-
-**How many units are you currently taking? `r print_n_reporting('q18')`**
-
-```{r}
-#| fig-height: 3.4
-#| fig-width: 7
-bns$q18 <- round(bns$q18, 0) # Rounded non-integers to integers
-bns$units_binned <- cut(bns$q18, breaks = c(0, 6, 9, 12, 15, 18, 21, 1000), labels = c("6 or less", "7-9", "10-12", "13-15", "16-18", "19-21", "22+"), ordered_result = TRUE, include.lowest = TRUE)
-
-plot_frq(bns$units_binned, geom.colors = plot_color) + xlab('Units') + ylab("Number of Students")
-```
-
-The average number of units a student is enrolled in is `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median is `r median(bns$q18, na.rm = TRUE)` units. The majority of students are considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the highest occurring and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second highest occurring.
-
-<br>
-
-# Student Identifiers
-
-The following tables contain separate questions that were asked as a series of Yes/No responses to help further understand students. They were grouped together in this page by the start of the question.
-
-## I identify as...
-
-```{r}
-questions <- c(paste0('q14_', 1:3), paste0('q14_', 5:12))
-rnames <- c("A Transfer Student", "LGBTQA+", "A student with a disability", "A former foster youth/child",
-            "An International student", "A non-California resident (not International)",
-            "An ESL (English as a Second Language) student",
-            "A Veteran of military service",
-            "A student athlete",
-            "A DREAM (i.e. undocumented) student",
-            "A DACA (i.e. Deferred Action for Childhood Arrivals) student")
-binary_table(questions, "Yes", rnames, ".")
-```
-
-<br>
-
-## Disability Support Services
-
-*Note: This name varies by campus and may not always be called the Disability Support Service Center.*
-
-```{r}
-#| fig-height: 5
-#| fig-width: 7
-questions <- paste0('q14_', 3:4)
-rnames <- c('I identify as a student with a disability',
-          'I receive services through my campus for a disability')
-            
-binary_table(questions, "Yes", rnames, "")
-```
+**Summary: ** A total of `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status. As stated above, this outcome is not surprising because students in this study were either enrolled in EOP or EOPS, and both programs recruit students with first-generation status.

@@ -14,6 +14,8 @@ website:
         text: Home
       - href: Demographics.qmd
         text: Demographics
+      - href: Academic_Profile.qmd
+        text: Academic Profile
       - href: Workload.qmd
         text: Workload
       - href: Housing.qmd
