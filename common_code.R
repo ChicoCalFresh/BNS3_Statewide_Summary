@@ -7,7 +7,7 @@ library(kableExtra)
 library(questionr)
 library(gridExtra)
 library(ggpubr) 
-library(scales)
+library(scales) 
 # library(huxtable) # only used once in CalFresh 
 
 # Load data ---- 
