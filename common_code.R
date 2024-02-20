@@ -72,7 +72,7 @@ print_n_reporting <- function(x) {
 
 # Print number of respondents
 print_n <- function(x) { 
-  paste0("(n=", 
+  paste0("(n = ", 
          sum(!is.na(bns[[x]])), ")")
 }
 
@@ -156,7 +156,7 @@ question_table <- function(question, values, cnames) {
 ## prepare multiple binary variables to be displayed as N(%) in a table
 
 ## Show percentage of students who selected A GIVEN VALUE (e.g. "Yes") across multiple binary variables (ex: Student Demographics - Identifiers)
-binary_table <- function(var, value, row.names, punc = ".") {
+binary_table <- function(var, value, row.names, punc = ".", col.title = "") {
   tmp <- as.data.frame(t(bns[var]))
   tmp2 <- data.frame(Freq=apply(tmp, 1, function(x, value) sum(x == value, na.rm=TRUE), value))
   n.s <- apply(tmp, 1, function(x) sum(!is.na(x))) # get this
@@ -164,7 +164,7 @@ binary_table <- function(var, value, row.names, punc = ".") {
   rownames(tmp2) <- paste0(rnames, punc, " (n = ", n.s, ")") 
   tmp2 <- tmp2 %>% arrange(desc(Freq)) %>% select(-Freq)
   colnames(tmp2) <- "Yes (%)"
-  tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped") %>% column_spec(2, width='3.5cm')
+  tmp2 %>% kable(col.names = c(col.title, "Yes (%)")) %>% kable_styling(bootstrap_options = "striped") %>% column_spec(2, width='3.5cm')
 }
 
 ## Show percentage of students who selected YES == 1 across multiple binary variables (ex: Personal Demographics - Ethnicity)

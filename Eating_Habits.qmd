@@ -4,6 +4,8 @@ title: "Eating Habits"
 
 ```{r, include=FALSE}
 source("common_code.R")
+
+bns$q77 <- recode(bns$q77, "0 servings per day" = "0 servings", "1-2 servings per day" = "1-2 servings", "3-4 servings per day" = "3-4 servings", "5 or more servings per day" = "5+ servings" )
 ```
 
 This section examines students' eating habits. Students were asked about their cooking habits, access to kitchens, access to storing food, fruit and vegetable intake, sugar sweetened beverage intake, fast food intake, alcohol intake, and confidence in cooking.
@@ -59,8 +61,6 @@ plot_likert(questions,
 ```{r}
 #| fig-height: 5
 #| fig-width: 6
-
-bns$q77 <- recode(bns$q77, "0 servings per day" = "0 servings", "1-2 servings per day" = "1-2 servings", "3-4 servings per day" = "3-4 servings", "5 or more servings per day" = "5+ servings" )
 
 plot_frq(bns$q77, geom.colors = plot_color) + xlab('Daily Fruit & Vegetable Servings') + ylab("Number of Students")
 

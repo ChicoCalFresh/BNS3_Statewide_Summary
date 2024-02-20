@@ -12,7 +12,9 @@ crossref:
 source("common_code.R")
 ```
 
-Students’ personal demographics (e.g. age, ethnicity, number of dependents, etc.) were obtained and visualized in this section. Specific survey questions and summaries are found below each figure. As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n count for every survey question reflects the total number of non-missing responses while the percentage reflects the percent of non-missing responses. 
+Students’ personal demographics (e.g. age, ethnicity, number of dependents, etc.) were obtained and visualized in this section. Specific survey questions and summaries are found below each figure. 
+
+*As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n count for every survey question reflects the total number of non-missing responses while the percentage reflects the percent of non-missing responses.*
 
 
 ## Age
