@@ -33,7 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -86,14 +85,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Demographics.html" rel="" target="">
- <span class="menu-text">Demographics</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-demographics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Demographics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-demographics">    
+        <li>
+    <a class="dropdown-item" href="./Demographics.html" rel="" target="">
+ <span class="dropdown-text">Personal Demographics</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Academic_Profile.html" rel="" target="">
- <span class="menu-text">Academic Profile</span></a>
+        <li>
+    <a class="dropdown-item" href="./Academic_Profile.html" rel="" target="">
+ <span class="dropdown-text">Academic Profile</span></a>
   </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./Workload.html" rel="" target="">
  <span class="menu-text">Workload</span></a>
@@ -105,6 +111,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link active" href="./CalFresh.html" rel="" target="" aria-current="page">
  <span class="menu-text">CalFresh</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Other_Basic_Needs.html" rel="" target="">
+ <span class="menu-text">Other Basic Needs</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Food_Security.html" rel="" target="">
@@ -138,33 +148,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#participation" id="toc-participation" class="nav-link active" data-scroll-target="#participation">Participation</a>
-  <ul class="collapse">
-  <li><a href="#basic-needs" id="toc-basic-needs" class="nav-link" data-scroll-target="#basic-needs">Basic Needs</a></li>
-  <li><a href="#calfresh-criteria" id="toc-calfresh-criteria" class="nav-link" data-scroll-target="#calfresh-criteria">CalFresh Criteria</a></li>
-  <li><a href="#household-size-income" id="toc-household-size-income" class="nav-link" data-scroll-target="#household-size-income">Household Size &amp; Income</a></li>
-  <li><a href="#calfresh-eligible" id="toc-calfresh-eligible" class="nav-link" data-scroll-target="#calfresh-eligible">CalFresh Eligible</a></li>
-  </ul></li>
+  <li><a href="#cal_status_reference" id="toc-cal_status_reference" class="nav-link active" data-scroll-target="#cal_status_reference">CalFresh Status</a></li>
+  <li><a href="#reference1" id="toc-reference1" class="nav-link" data-scroll-target="#reference1">Income &amp; Household Size</a></li>
+  <li><a href="#calfresh-eligibility" id="toc-calfresh-eligibility" class="nav-link" data-scroll-target="#calfresh-eligibility">CalFresh Eligibility</a></li>
+  <li><a href="#calfresh-eligibility-breakdown" id="toc-calfresh-eligibility-breakdown" class="nav-link" data-scroll-target="#calfresh-eligibility-breakdown">CalFresh Eligibility Breakdown</a></li>
   <li><a href="#impact" id="toc-impact" class="nav-link" data-scroll-target="#impact">Impact</a>
   <ul class="collapse">
-  <li><a href="#calfresh-ebt" id="toc-calfresh-ebt" class="nav-link" data-scroll-target="#calfresh-ebt">CalFresh EBT</a>
-  <ul class="collapse">
-  <li><a href="#monthly-calfresh-money" id="toc-monthly-calfresh-money" class="nav-link" data-scroll-target="#monthly-calfresh-money">Monthly CalFresh Money</a></li>
+  <li><a href="#reference2" id="toc-reference2" class="nav-link" data-scroll-target="#reference2">CalFresh EBT</a></li>
+  <li><a href="#reference3" id="toc-reference3" class="nav-link" data-scroll-target="#reference3">Monthly CalFresh Money</a></li>
   <li><a href="#household-size-breakdown" id="toc-household-size-breakdown" class="nav-link" data-scroll-target="#household-size-breakdown">Household Size Breakdown</a></li>
-  <li><a href="#is-this-enough" id="toc-is-this-enough" class="nav-link" data-scroll-target="#is-this-enough">Is This Enough?</a></li>
-  </ul></li>
+  <li><a href="#was-this-enough" id="toc-was-this-enough" class="nav-link" data-scroll-target="#was-this-enough">Was This Enough?</a></li>
   <li><a href="#calfresh-benefits" id="toc-calfresh-benefits" class="nav-link" data-scroll-target="#calfresh-benefits">CalFresh Benefits</a></li>
   <li><a href="#calfresh-barriers" id="toc-calfresh-barriers" class="nav-link" data-scroll-target="#calfresh-barriers">CalFresh Barriers</a></li>
-  <li><a href="#food-pantry-use" id="toc-food-pantry-use" class="nav-link" data-scroll-target="#food-pantry-use">Food Pantry Use</a></li>
-  </ul></li>
-  <li><a href="#other-basic-needs-services" id="toc-other-basic-needs-services" class="nav-link" data-scroll-target="#other-basic-needs-services">Other Basic Needs Services</a>
-  <ul class="collapse">
-  <li><a href="#food-pantry---impact" id="toc-food-pantry---impact" class="nav-link" data-scroll-target="#food-pantry---impact">Food Pantry - Impact</a></li>
-  <li><a href="#food-pantry---barrier" id="toc-food-pantry---barrier" class="nav-link" data-scroll-target="#food-pantry---barrier">Food Pantry - Barrier</a></li>
-  <li><a href="#medi-cal---impact" id="toc-medi-cal---impact" class="nav-link" data-scroll-target="#medi-cal---impact">Medi-Cal - Impact</a></li>
-  <li><a href="#medi-cal---barriers" id="toc-medi-cal---barriers" class="nav-link" data-scroll-target="#medi-cal---barriers">Medi-Cal - Barriers</a></li>
-  <li><a href="#emergency-housing-services---impact" id="toc-emergency-housing-services---impact" class="nav-link" data-scroll-target="#emergency-housing-services---impact">Emergency Housing Services - Impact</a></li>
-  <li><a href="#emergency-housing-services---barriers" id="toc-emergency-housing-services---barriers" class="nav-link" data-scroll-target="#emergency-housing-services---barriers">Emergency Housing Services - Barriers</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -189,69 +184,32 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="participation" class="level1">
-<h1>Participation</h1>
-<p>The following questions were asked in regards to criteria laid out by the CalFresh Requirements. This includes U.S. citizenship (or lawful permanent resident), receiving Cal Grant A/B, and receiving food from a campus meal plan. Household size and monthly income is also looked at and broken down into a chart to show CalFresh eligibility. Students were also determined to be eligible or not for CalFresh based on their responses to these criteria questions.</p>
-<section id="basic-needs" class="level2">
-<h2 class="anchored" data-anchor-id="basic-needs">Basic Needs</h2>
-<p><strong>Please mark all the statements that apply to you.</strong></p>
+<p>Students were asked to report information relating to CalFresh and CalFresh eligibility. This includes U.S. citizenship (or lawful permanent residency), household size, and monthly household income. Those that were not using CalFresh were asked to report any barriers to applying for CalFresh, while those that reported currently using CalFresh were asked to report their monthly Electronic Benefit Transfer (EBT), whether the EBT received is enough for them, and the perceived impact of CalFresh.</p>
+<p><em>As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.</em></p>
+<section id="cal_status_reference" class="level2">
+<h2 data-anchor-id="cal_status_reference">CalFresh Status</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="CalFresh_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption class="figure-caption">Figure 5.1: CalFresh Status (n=1877, 89% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p><strong>Survey Question:</strong> <em>Please mark all the statements that apply to you.</em></p>
+<p><strong>Summary:</strong> A total of 528 (28.1%) students reported currently using CalFresh, 130 (6.9%) reported they used CalFresh in the past as a college student, and 292 (15.6%) reported that they used CalFresh before attending college. Additionally, 842 (44.9%) students reported that they heard of CalFresh, but never used it, while 85 (4.5%) reported that they never heard of it.</p>
 <p><br></p>
 </section>
-<section id="calfresh-criteria" class="level2">
-<h2 class="anchored" data-anchor-id="calfresh-criteria">CalFresh Criteria</h2>
-<p><em>Below are a series of Yes/No questions asked in order to help determine if a student is potentially eligible for CalFresh benefits.</em></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="table table-striped table-sm small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Yes (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">US Citizen or lawful permanent resident i.e. has a ‘green card’ (n = 1946)</td>
-<td style="text-align: left; width: 3.5cm;">1850 (95.1%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Meets income/household requirements (n = 1660)</td>
-<td style="text-align: left; width: 3.5cm;">1429 (86.1%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Meets 20 hours/week work exemption (n = 1862)</td>
-<td style="text-align: left; width: 3.5cm;">821 (44.1%)</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-<p>The data suggest the majority of students meet the citizenship and income requirements, however, less than half of the surveyed students meet the 20 hours/week work requirement.</p>
-<p><br></p>
-</section>
-<section id="household-size-income" class="level2">
-<h2 class="anchored" data-anchor-id="household-size-income">Household Size &amp; Income</h2>
-<p>The following two questions were asked about household size and monthly income, which were then combined into a single plot:</p>
-<ul>
-<li><strong>How many people in your household do you purchase and prepare food with, including yourself? This may or may not include your roommate(s). (n=1895, 90% of 2110 reporting)</strong></li>
-<li><strong>How much is your household’s gross monthly income (before taxes and not including financial aid)? (n=1699, 81% of 2110 reporting)</strong></li>
-</ul>
+<section id="reference1" class="level2">
+<h2 data-anchor-id="reference1">Income &amp; Household Size</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 
-<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 75%; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-4">
-<caption style="caption-side: top; text-align: center;">Household Size</caption><colgroup><col><col><col><col><col><col><col><col><col></colgroup><tbody><tr>
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 80%; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-3">
+<caption style="caption-side: top; text-align: center;"><p>Table 5.1: Income &amp; Household Size (n=1659, 79% of 2110
+reporting)</p></caption><colgroup><col><col><col><col><col><col><col><col><col></colgroup><tbody><tr>
 <th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">1</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">2</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">3</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">4</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">5</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">6</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">7</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">8</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 12pt;">Less than $150</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(162, 205, 90); font-weight: bold; font-size: 12pt;">112</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(162, 205, 90); font-weight: bold; font-size: 12pt;">46</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(162, 205, 90); font-weight: bold; font-size: 12pt;">19</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(162, 205, 90); font-weight: bold; font-size: 12pt;">27</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(162, 205, 90); font-weight: bold; font-size: 12pt;">9</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(162, 205, 90); font-weight: bold; font-size: 12pt;">4</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(162, 205, 90); font-weight: bold; font-size: 12pt;">2</td><td style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 3pt 3pt 3pt 3pt; border-top-color: rgb(255, 255, 255);  border-right-color: rgb(255, 255, 255);  border-bottom-color: rgb(255, 255, 255);  border-left-color: rgb(255, 255, 255); padding: 6pt 6pt 6pt 6pt; background-color: rgb(162, 205, 90); font-weight: bold; font-size: 12pt;">2</td></tr>
@@ -279,26 +237,17 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 </div>
-<p><em>In the above graph, cells highlighted in green &amp; bold indicate a person is potentially eligible for CalFresh based on their income, cells highlighted in red &amp; italics indicate a person is not eligible, and cells highlighted in yellow indicate a person may be eligible. This information is pulled from the CalFresh requirements section A2 (see below for link).</em></p>
+<p><strong>Survey Questions:</strong></p>
+<ul>
+<li><p><em>How many people in your household do you purchase and prepare food with, including yourself? This may or may not include your roommate(s).</em></p></li>
+<li><p><em>Based on the household you defined in the previous question, how much is your household’s gross monthly income (before taxes and not including financial aid)? Note: Monthly income is money earned from jobs on your pay stubs, paid internships, or money deposited in your accounts every month from others (like parents). If you are not sure about your gross income, take your hourly rate and multiply by the number of hours you work per month. Please do NOT include financial aid or grants. Please do NOT include one-time monetary gifts from family or friends. Please do NOT include any balance in personal savings accounts. Remember, if you have a household of more than 1, you must include everyone’s gross income (use your best guess).</em></p></li>
+</ul>
+<p><strong>Additional Notes: </strong> Household size and income are used to determine CalFresh eligibility (among other factors). Cells highlighted in green indicate a student is likely eligible for CalFresh based on their self-reported income/household size, and cells highlighted in red indicate a student is likely ineligible. Household size was asked in a multiple choice format with options ranging from <em>“1 (myself)”</em> to <em>“8 or more (myself plus 7, etc.)”</em> where those who reported eight or more were coded as <em>“8.”</em> Hence, there was some uncertainty in determining eligibility among students who reported a household size of eight or more and a higher income where these cells are highlighted in yellow.</p>
+<p><strong>Summary:</strong> The most common household size reported was a household size of 1 while the most common income reported was $151-$2,148. A total of 112 students who had a household size of one with a monthly household income of less than $150, and 229 students who had a household size of one with a monthly household income of $151-$2,148 were deemed likely eligible for CalFresh. Of those with a household size of one, 83.2% met the income/household size eligibility criteria. Of those with a household size of two, 80.7% met the income/household size eligibility criteria.</p>
 <p><br></p>
 </section>
-<section id="calfresh-eligible" class="level2">
-<h2 class="anchored" data-anchor-id="calfresh-eligible">CalFresh Eligible</h2>
-<p><strong>This variable was created under the following criteria (n=1656, 78% of 2110 reporting)</strong></p>
-<p><em>Disclaimer: only county eligibility workers have the authority to determine official eligibility for CalFresh. These students are just most likely to be eligible based on the below listed criteria.</em></p>
-<ul>
-<li>The person is between the ages 18 to 49.<br>
-</li>
-<li>The person is at least a part-time student (6 units per semester for the three campuses in this survey).<br>
-</li>
-<li>The person is either a U.S. citizen or lawful permanent resident.<br>
-</li>
-<li>Does not get more than half of their meals from meals plans (less than 11 per week or none).<br>
-</li>
-<li>Identifies as an EOP student.<br>
-</li>
-<li>Falls under the household size/income from the <a href="https://www.cdss.ca.gov/inforesources/cdss-programs/calfresh/eligibility-and-issuance-requirements#income">Department of Social Services</a> requirements.</li>
-</ul>
+<section id="calfresh-eligibility" class="level2">
+<h2 data-anchor-id="calfresh-eligibility">CalFresh Eligibility</h2>
 <div class="row">
 
 <div class="col-md-6">
@@ -306,72 +255,118 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="CalFresh_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 5.2: CalFresh Eligibility (n=1656, 78% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<p>We can see that the majority of students are most likely eligible for CalFresh (1341 students), while 315 students are most likely to not be eligible for these benefits.</p>
+<p><strong>Survey Questions:</strong> <em>This variable was derived using self-reported household size and income (See <a href="#reference1">Income &amp; Household Size</a>)</em></p>
+<p><strong>Additional Notes: </strong> Only county workers have the authority to determine official eligibility for CalFresh. These eligibility rates were estimated based on self-reported household size and income. Below is a list of eligibility criteria for students:</p>
+<ul>
+<li>Meets household size/income requirements from the <a href="https://www.cdss.ca.gov/inforesources/cdss-programs/calfresh/eligibility-and-issuance-requirements#income">Department of Social Services</a>.</li>
+<li>The person is either a U.S. citizen or lawful permanent resident.<br>
+</li>
+<li>If the person is between the ages of 18 to 49, and is at least a part-time student (enrolled in six or more units), then this person is classified as a student by the California Department of Social Services and needs to meet the following additional criteria:
+<ul>
+<li>Does not get more than half of their meals from meals plans (less than 11 per week).&nbsp;<strong>(All students from this study met this criteria as this was one of the inclusion criteria to take the survey)</strong></li>
+<li>Meets one of the possible work requirements such as working 20 or more hours per week or being enrolled in a approved Local Program that Increases Employability (LPIE). At the time of the start of this survey, all EOP/EOPS programs were considered an LIPE, however, campuses now need to apply and receive approval for their program to be considered an LPIE. <strong>When determining eligibility, all students were assumed to meet the work requirement since they were all EOP/EOPS students.</strong></li>
+</ul></li>
+</ul>
+<p><strong>Summary:</strong> A total of 1341 (81.0%) students were likely eligible for CalFresh while 315 (19.0%) were likely not eligible. Many students selected “Prefer not to answer” when reporting their income. Calfresh eligibility was unable to be determined among these students and among any students who answered “Prefer not to answer” to household size.</p>
 <div class="col-md-5">
 
 <p><br></p>
 </div></div></section>
+<section id="calfresh-eligibility-breakdown" class="level2">
+<h2 data-anchor-id="calfresh-eligibility-breakdown">CalFresh Eligibility Breakdown</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Table 5.2: CalFresh Eligibility Breakdown </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Yes (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">US Citizen or lawful permanent resident i.e. has a ‘green card’ (n = 1946)</td>
+<td style="text-align: left; width: 3.5cm;">1850 (95.1%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Meets income/household requirements (n = 1660)</td>
+<td style="text-align: left; width: 3.5cm;">1429 (86.1%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Meets 20 hours/week work exemption (n = 1930)</td>
+<td style="text-align: left; width: 3.5cm;">774 (40.1%)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p><strong>Survey Questions:</strong></p>
+<ul>
+<li><em>Are you a U.S. citizen?</em></li>
+<li><em>If not a U.S. citizen, are you a lawful permanent resident (i.e.&nbsp;have a “green card)?</em></li>
+<li><em>Estimate the number of hours you work in a PAID job (e.g.&nbsp;server at a restaurant, office assistant, etc.) or paid internship (e.g.&nbsp;training, shadowing, or practicum) per week.</em></li>
+<li><em>For income and household size survey questions, see <a href="#reference1">Income and Household Size</a></em></li>
+</ul>
+<p><strong>Summary:</strong> Based on self-reported data, 1850 (95.1%) students met the citizenship requirement of either being a US Citizen or a lawful permanent resident. A total of 1429 (86.1%) students met the income/household size requirements, and 774 (40.1%) students met the 20 hours/week work exemption. As a reminder, students don’t need to meet a work requirement if they are are enrolled in an LPIE such as an approved EOP/EOPS.</p>
+<p><br></p>
 </section>
 <section id="impact" class="level1">
 <h1>Impact</h1>
-<p>The following questions were asked in regards to the impact of Basic Needs programs and services on students lives. Students were asked to evaluate how they feel these programs have benefited them both academically and non-academically, as well as barriers/reasons in regards to why they are not using certain programs. This includes programs such as CalFresh, Food Pantries, Medi-Cal (also known as Medicaid in the United States), and Emergency Housing Services.</p>
-<section id="calfresh-ebt" class="level2">
-<h2 class="anchored" data-anchor-id="calfresh-ebt">CalFresh EBT</h2>
-<p><em>Note: for the graph on the left (EBT application) we have (n=652, 31% of 2110 reporting) For the graph on the right (people fed through EBT) we have (n=620, 29% of 2110 reporting)</em></p>
-<div class="cell quarto-layout-panel" data-fig-cap-location="top">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>Only students who reported currently using CalFresh or used it in the past as a college student saw the following set of questions. Students were asked to report how much EBT they received per month, how many people they fed with their EBT, whether they received enough money, how long their EBT lasts every month, and their perceived impact of CalFresh on academic and non-academic matters.</p>
+<section id="reference2" class="level2">
+<h2 data-anchor-id="reference2">CalFresh EBT</h2>
+<div class="cell" data-layout-align="center" data-fig-cap-location="top">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Did you apply for CalFresh EBT as an individual or with other people in your household?</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">How many people in the household are regularly fed through your CalFresh EBT card?</figcaption>
+<p><img src="CalFresh_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="864"></p>
+<figcaption class="figure-caption">Figure 5.3: CalFresh Application Household Size (n=652, 31% of 2110 reporting) &amp; Figure 5.4: Number of People Fed Through EBT (n=620, 29% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<p>Looking at the above graphs, the majority of students apply for CalFresh EBT as an individual (355 students) while only 297 students applied with other people in their household. Similarly, the majority of students claimed only 1 person is fed through the EBT card (230 people). 138 students claim to feed 2 people through the EBT card, and only a small amount of students claim to feed 5 or more people through the EBT card.</p>
+<p><strong>Survey Questions:</strong> <em>Indicated in x-axis Labels</em></p>
+<p><strong>Additional Notes:</strong> For the number of people fed through EBT, students had response choices ranging from “1 (myself)” to “8 or more (myself plus 7, etc.)” where eight or more was coded as “8”.</p>
+<p><strong>Summary:</strong> A total of 297 (45.6%) students reported applying for CalFresh as a household while 230 (37.1%) students reported feeding only one person in their household, and 138 (22.3%) reported feeding two people (one plus themselves).</p>
 <p><br></p>
-<section id="monthly-calfresh-money" class="level3">
-<h3 class="anchored" data-anchor-id="monthly-calfresh-money">Monthly CalFresh Money</h3>
-<p><strong>How much money is added to your CalFresh EBT card each month for your CalFresh household (i.e.&nbsp;the people you purchase and prepare food with)? (n=634, 30% of 2110 reporting)</strong></p>
+</section>
+<section id="reference3" class="level2">
+<h2 data-anchor-id="reference3">Monthly CalFresh Money</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="CalFresh_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure 5.5: Monthly CalFresh Money (n=634, 30% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The average amount of money received per household using CalFresh (denoted by the dotted line) is $305.91, while the median is $250. The values range from $0 to $1500. The majority of households who do receive these benefits seems to be getting around $250 or less per month.</p>
+<p><strong>Survey Question:</strong> <em>How much money is added to your CalFresh EBT card each month for your CalFresh household (i.e.&nbsp;the people you purchase and prepare food with)?</em></p>
+<p><strong>Summary:</strong> The average amount of money received per household using CalFresh (denoted by the dotted line) was $305.91, while the median was $250. The amounts reported ranged from $0 to $1500.</p>
 <p><br></p>
 </section>
-<section id="household-size-breakdown" class="level3">
-<h3 class="anchored" data-anchor-id="household-size-breakdown">Household Size Breakdown</h3>
-<p>Below is a breakdown of the average monthly allowance received from CalFresh based on household size.</p>
+<section id="household-size-breakdown" class="level2">
+<h2 data-anchor-id="household-size-breakdown">Household Size Breakdown</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Table 5.3: EBT per Number of People Fed Through EBT (n=605, 29% of 2110 reporting) </caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Household Size</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Household Average</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Per Person Average</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Number of People Fed Through EBT</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Household Average EBT</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Per Person Average EBT</th>
 </tr>
 </thead>
 <tbody>
@@ -426,52 +421,48 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 </div>
-<p>The general pattern seems to be that as household size increases so does the monthly average assistance from CalFresh. The household average was divided by the household size to find the “per person average” for CalFresh assistance. From taking the average of these values, we can see that a person on CalFresh receives an average monthly assistance of:</p>
+<p><strong>Survey Questions:</strong></p>
+<ul>
+<li><em>For the number of people fed through EBT, see <a href="#reference2">CalFresh EBT</a></em></li>
+<li><em>For the amount of EBT received per month, see <a href="#reference3">Monthly CalFresh Money</a></em></li>
+</ul>
+<p><strong>Additional Notes:</strong> The per person average was computed by dividing the average amount of EBT received per month by the number of people fed through EBT.</p>
+<p><strong>Summary:</strong> The average monthly EBT received per person was $196.58 for households feeding just themselves with EBT, $154.76 for households feeding themselves plus one other, and $129.33 for households feeding themselves plus two others. In general, as the number of people fed through EBT increases, the per person average decreases. The total per person average, taking into account all households, was:</p>
 
 <table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-8">
 <colgroup><col></colgroup><tbody><tr>
-<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Per Person Average</th></tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Per Person Average EBT</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">$112.28</td></tr>
 </tbody></table>
 
 <p>.</p>
 </section>
-<section id="is-this-enough" class="level3">
-<h3 class="anchored" data-anchor-id="is-this-enough">Is This Enough?</h3>
-<p><em>Note: for the first graph on if the allowance is enough we have (n=623, 30% of 2110 reporting) And for the second graph on when people run out we have (n=586, 28% of 2110 reporting)</em></p>
-<div class="cell quarto-layout-panel" data-fig-cap-location="top">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<section id="was-this-enough" class="level2">
+<h2 data-anchor-id="was-this-enough">Was This Enough?</h2>
+<p><br></p>
+<div class="cell" data-layout-align="center" data-fig-cap-location="top">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">I feel that the amount that is added to my CalFresh EBT card each month is enough money to provide healthy food for the month.</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">When do you typically use up the balance on your CalFresh EBT card?</figcaption>
+<p><img src="CalFresh_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="864"></p>
+<figcaption class="figure-caption">Figure 5.6: Level of Agreement on EBT Being Enough (n=623, 30% of 2110 reporting) &amp; Figure 5.7: Number of Weeks EBT Lasts (n=586, 28% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<p>Of the students who do receive money from CalFresh, 224 of them agree that it is enough money to provide healthy food for a month and 288 of them feel that it is not enough. Students typically run out of CalFresh money in the first week (127 students), the second week (156 students) or the third week (160 students). A smaller minority run out within the fourth week or do not use up all their monthly balance.</p>
+<p><strong>Survey Questions:</strong> <em>Indicated in x-axis Labels</em></p>
+<p><strong>Summary:</strong> Of those who received CalFresh Benefits, 224 (36.0%) students either agreed or strongly agreed that the money received per month was enough to provide healthy food for the month while 288 (46.2%) either disagreed or strongly disagreed. Meanwhile, 127 (21.7%) students reported running out of benefits during the first week of the month, 156 (26.6%) during the second week, and 160 (27.3%) during the third week.</p>
 <p><br></p>
 </section>
-</section>
 <section id="calfresh-benefits" class="level2">
-<h2 class="anchored" data-anchor-id="calfresh-benefits">CalFresh Benefits</h2>
-<p><strong>For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. While you received CalFresh benefits:</strong></p>
+<h2 data-anchor-id="calfresh-benefits">CalFresh Benefits</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="CalFresh_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="816"></p>
+<figcaption class="figure-caption">Figure 5.8: Perceived Impact of CalFresh</figcaption>
 </figure>
 </div>
 </div>
@@ -479,21 +470,24 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="CalFresh_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="816"></p>
+<figcaption class="figure-caption">Figure 5.8: Perceived Impact of CalFresh</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p><strong>Survey Questions:</strong> <em>For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. While you received CalFresh benefits:</em></p>
+<p><strong>Summary:</strong> Because students received CalFresh, 308 (50.1%) reported they had more money for bills, 434 (69.1%) reported purchasing healthier foods, and 524 (83.2%) reported cooking more frequently. Only 90 (16.2%) students reported that they worked fewer hours because of CalFresh, 171 (28.1%) shopped more frequently at the farmers’ market, and 132 (21.7%) reported learning more about healthier foods.</p>
 <p><br></p>
 </section>
 <section id="calfresh-barriers" class="level2">
-<h2 class="anchored" data-anchor-id="calfresh-barriers">CalFresh Barriers</h2>
-<p><strong>What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply).</strong></p>
+<h2 data-anchor-id="calfresh-barriers">CalFresh Barriers</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Table 5.4: Reported Barriers to Using CalFresh </caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Measure</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Reasons for Not Using CalFresh</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">Yes (%)</th>
 </tr>
 </thead>
@@ -580,300 +574,10 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 </div>
+<p><strong>Survey Questions:</strong> <em>What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply)</em></p>
+<p><strong>Additional Notes:</strong> Only students who reported never using Calfresh as a college student (see <a href="#cal_status_reference">CalFresh Status</a>) saw this question.</p>
+<p><strong>Summary:</strong> The most common reason that students reported not using CalFresh was because they do not think they are eligible where 419 (37.1%) students selected this option. Meanwhile 210 (18.6%) students reported that they felt other students need CalFresh more than they do, and 191 (16.9%) reported that they have no time to complete the application.</p>
 <p><br></p>
-</section>
-<section id="food-pantry-use" class="level2">
-<h2 class="anchored" data-anchor-id="food-pantry-use">Food Pantry Use</h2>
-<p><strong>How often do you normally use the food pantry or if you are not currently using it, how often did you use it? (n=500, 24% of 2110 reporting)</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>When students use the food pantry, the majority do not use it every week (235 students). 180 students claim to use it about once a week, 27 students use it more than once a week, and 58 students claim other uses.</p>
-<p><br></p>
-</section>
-</section>
-<section id="other-basic-needs-services" class="level1">
-<h1>Other Basic Needs Services</h1>
-<section id="food-pantry---impact" class="level2">
-<h2 class="anchored" data-anchor-id="food-pantry---impact">Food Pantry - Impact</h2>
-<p><strong>For the following questions, please choose how much you agree or disagree with the impact campus food pantries has or had on your life. While I utilized campus food pantry/pantries:</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="816"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="816"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><br></p>
-</section>
-<section id="food-pantry---barrier" class="level2">
-<h2 class="anchored" data-anchor-id="food-pantry---barrier">Food Pantry - Barrier</h2>
-<p><strong>What are the reasons for you to not go to campus food pantries? (Select all that apply).</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="table table-striped table-sm small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Measure</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Yes (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">I feel other students need the food more than I do. (n = 1267)</td>
-<td style="text-align: left;">386 (30.5%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I don't need to use campus food pantries. (n = 1267)</td>
-<td style="text-align: left;">332 (26.2%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I am not aware of any campus food pantries or local food banks. (n = 1267)</td>
-<td style="text-align: left;">262 (20.7%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Inconvenient to access due to lack of transportation or out-of-the way location. (n = 1267)</td>
-<td style="text-align: left;">213 (16.8%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Inconvenient times of operation/limited pantry hours. (n = 1267)</td>
-<td style="text-align: left;">210 (16.6%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I am embarrassed or scared to go to the campus food pantries or local food banks. (n = 1267)</td>
-<td style="text-align: left;">208 (16.4%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I feel uncomfortable about receiving help with basic needs, like food. (n = 1267)</td>
-<td style="text-align: left;">155 (12.2%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Other (n = 1267)</td>
-<td style="text-align: left;">74 (5.8%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I would think less of myself If I went to campus food pantries or local food banks. (n = 1267)</td>
-<td style="text-align: left;">57 (4.5%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I don't want my friends to find out I go to campus food pantries or local food banks. (n = 1267)</td>
-<td style="text-align: left;">43 (3.4%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">There are no food pantries close to campus or my residence. (n = 1267)</td>
-<td style="text-align: left;">39 (3.1%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">My friends and peers would think less of me if I went to campus table(food pantries or local food banks. (n = 1267)</td>
-<td style="text-align: left;">30 (2.4%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">My family doesn't want me to go to campus food pantries or local food banks. (n = 1267)</td>
-<td style="text-align: left;">27 (2.1%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I do not believe in using campus food pantries or local food banks. (n = 1267)</td>
-<td style="text-align: left;">4 (0.3%)</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-<p><br></p>
-</section>
-<section id="medi-cal---impact" class="level2">
-<h2 class="anchored" data-anchor-id="medi-cal---impact">Medi-Cal - Impact</h2>
-<p><strong>For the following questions, please choose how much you agree or disagree with the impact Medi-Cal has or had on your life. Knowing that you have Medi-Cal:</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="816"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><br></p>
-</section>
-<section id="medi-cal---barriers" class="level2">
-<h2 class="anchored" data-anchor-id="medi-cal---barriers">Medi-Cal - Barriers</h2>
-<p><strong>What are the reasons you do not have Medi-Cal or have never used Medi-Cal? (Select all that apply).</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="table table-striped table-sm small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Measure</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Yes (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">I do not know what Medi-Cal is or I think I already have health insurance. (n = 526)</td>
-<td style="text-align: left;">145 (27.6%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I don’t need Medi-Cal. (n = 526)</td>
-<td style="text-align: left;">139 (26.4%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I do not think I am eligible for Medi-Cal. (n = 526)</td>
-<td style="text-align: left;">117 (22.2%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Other (n = 526)</td>
-<td style="text-align: left;">95 (18.1%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">The Medi-Cal application is too difficult to complete. (n = 526)</td>
-<td style="text-align: left;">39 (7.4%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">No time to complete the Medi-Cal application/Medi-Cal application is too long. (n = 526)</td>
-<td style="text-align: left;">33 (6.3%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I only need medical services at the student health center associated with my campus. (n = 526)</td>
-<td style="text-align: left;">21 (4.0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I feel uncomfortable about receiving help with basic needs, like food. (n = 526)</td>
-<td style="text-align: left;">8 (1.5%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I have heard from other students that it is not worth my time because I wont be eligible. (n = 526)</td>
-<td style="text-align: left;">7 (1.3%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">My family or household does not want me to apply for Medi-Cal. (n = 526)</td>
-<td style="text-align: left;">5 (1.0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I am embarrassed or ashamed to apply for Medi-Cal. (n = 526)</td>
-<td style="text-align: left;">5 (1.0%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I would think less of myself If I went to campus food pantries or local food banks. (n = 526)</td>
-<td style="text-align: left;">2 (0.4%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I don’t believe in social services like Medi-Cal, CalFresh, WIC, or Welfare/Cash Aid. (n = 526)</td>
-<td style="text-align: left;">1 (0.2%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I don't want my friends to find out I go to campus food pantries or local food banks. (n = 526)</td>
-<td style="text-align: left;">0 (0.0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">My friends and peers would think less of me if I went to campus table(food pantries or local food banks. (n = 526)</td>
-<td style="text-align: left;">0 (0.0%)</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-<p><br></p>
-</section>
-<section id="emergency-housing-services---impact" class="level2">
-<h2 class="anchored" data-anchor-id="emergency-housing-services---impact">Emergency Housing Services - Impact</h2>
-<p><strong>For the following questions, please choose how much you agree or disagree with the impact Emergency Housing Services have or had on your life. Because I received Emergency Housing Services:</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="CalFresh_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="816"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><br></p>
-</section>
-<section id="emergency-housing-services---barriers" class="level2">
-<h2 class="anchored" data-anchor-id="emergency-housing-services---barriers">Emergency Housing Services - Barriers</h2>
-<p><strong>What are the reasons you do not use Emergency Housing Services or have never used Emergency Housing Services? (Select all that apply)</strong></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="table table-striped table-sm small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Measure</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Yes (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">I don’t need Emergency Housing Services (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">1062 (62.5%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I was not aware that my campus had Emergency Housing Services like grants and housing placements in an emergency. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">628 (37.0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Other (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">60 (3.5%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">No time to complete the Emergency Housing application or contact the Emergency Housing Staff. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">59 (3.5%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I feel uncomfortable about receiving help with basic needs, like housing. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">54 (3.2%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I am embarrassed or ashamed to apply for Emergency Housing Services. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">46 (2.7%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">The emergency housing grant/money is not enough to support what I need, so not worth my time to apply for it. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">40 (2.4%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">The Emergency Housing Services application is too difficult to complete. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">33 (1.9%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">I would think less of myself if I applied for Emergency Housing Services. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">26 (1.5%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I don't want my friends to find out that I applied for emergency housing services. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">17 (1.0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">My friends and peers would think less of me if I applied for emergency housing services. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">14 (0.8%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I do not believe in social services like Emergency Housing Services, Medi-Cal, CalFresh, or Welfare/Cash Aid. (n = 1698)</td>
-<td style="text-align: left; width: 3.5cm;">1 (0.1%)</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
 
 
 </section>
@@ -900,13 +604,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

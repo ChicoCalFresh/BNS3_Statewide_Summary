@@ -33,7 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -86,14 +85,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Demographics.html" rel="" target="">
- <span class="menu-text">Demographics</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-demographics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Demographics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-demographics">    
+        <li>
+    <a class="dropdown-item" href="./Demographics.html" rel="" target="">
+ <span class="dropdown-text">Personal Demographics</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./Academic_Profile.html" rel="" target="" aria-current="page">
- <span class="menu-text">Academic Profile</span></a>
+        <li>
+    <a class="dropdown-item" href="./Academic_Profile.html" rel="" target="">
+ <span class="dropdown-text">Academic Profile</span></a>
   </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./Workload.html" rel="" target="">
  <span class="menu-text">Workload</span></a>
@@ -105,6 +111,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./CalFresh.html" rel="" target="">
  <span class="menu-text">CalFresh</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Other_Basic_Needs.html" rel="" target="">
+ <span class="menu-text">Other Basic Needs</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Food_Security.html" rel="" target="">
@@ -167,10 +177,10 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Students were asked to report academic information. This includes information such as what college they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of students they are (transfer, international, etc.).</p>
-<p><em>As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n count for every survey question reflects the total number of non-missing responses while the percentage reflects the percent of non-missing responses.</em></p>
+<p>Students were asked to report information relating to their academics. This includes information such as what college they were currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of students they identify as (transfer, international, etc.).</p>
+<p><em>As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.</em></p>
 <section id="college-campus" class="level2">
-<h2 class="anchored" data-anchor-id="college-campus">College Campus</h2>
+<h2 data-anchor-id="college-campus">College Campus</h2>
 <div class="row">
 
 <div class="col-md-7">
@@ -178,21 +188,21 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-school" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Academic_Profile_files/figure-html/fig-school-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Survey Participants by Campus (n=12) (n=2110, 100% of 2110 reporting)</figcaption>
+<p><img src="Academic_Profile_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption class="figure-caption">Figure 2.1: Survey Participants by Campus (n=2110, 100% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question: </strong> <em>Which campus do you attend?</em></p>
-<p><strong>Additional Notes: </strong> The University of California (UC) campus (n=1) is shown in blue, while the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow.</p>
-<p><strong>Summary: </strong> A total of 1238 (58.7%), 690 (32.7%) and 182 (8.6%) college students were enrolled in CSU, CCC and UC campuses, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS). As of Fall 2020, there were 31,553 students in the CSU EOP.</p>
+<p><strong>Additional Notes: </strong> The University of California (UC) campus (n=1) is shown in blue, the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow (n = 12 campuses total).</p>
+<p><strong>Summary: </strong> A total of 1238 (58.7%), 690 (32.7%) and 182 (8.6%) college students were enrolled in CSU, CCC and UC campuses, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS) in the CCC systems.</p>
 <p><br></p>
 </div></div></section>
 <section id="academic-level" class="level2">
-<h2 class="anchored" data-anchor-id="academic-level">Academic Level</h2>
+<h2 data-anchor-id="academic-level">Academic Level</h2>
 <div class="row">
 
 <div class="col-md-7">
@@ -200,74 +210,73 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-academic_level" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Academic_Profile_files/figure-html/fig-academic_level-1.png" class="img-fluid figure-img" width="528"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Student Academic Level (n=2065, 98% of 2110 reporting)</figcaption>
+<p><img src="Academic_Profile_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="528"></p>
+<figcaption class="figure-caption">Figure 2.2: Student Academic Level (n=2065, 98% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question: </strong> <em>Estimate your class standing by units completed (do not include units from this semester/quarter):</em></p>
-<p><strong>Summary: </strong> The statewide survey captures students of all class standing. Of the 2065 students reporting, 565 (27.4%) were freshmen, 433 (21.0%) were sophmores, 579 (28.0%) were juniors, and 444 (21.5%) were seniors.</p>
+<p><strong>Summary: </strong> The statewide survey captures undergraduate students of all class standing. Of the 2065 students reporting, 565 (27.4%) were freshmen, 433 (21.0%) were sophmores, 579 (28.0%) were juniors, and 444 (21.5%) were seniors.</p>
 <p><br></p>
 </div></div></section>
 <section id="major" class="level2">
-<h2 class="anchored" data-anchor-id="major">Major</h2>
+<h2 data-anchor-id="major">Major</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-major" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Academic_Profile_files/figure-html/fig-major-1.png" class="img-fluid figure-img" width="816"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: Academic Majors (n=2089, 99% of 2110 reporting)</figcaption>
+<p><img src="Academic_Profile_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="816"></p>
+<figcaption class="figure-caption">Figure 2.3: Academic Majors (n=2089, 99% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question: </strong> <em>Which of the following categories best describes your major?</em></p>
 <p><strong>Additional Notes: </strong> Science, Technology, Engineering and Math (STEM) was shortened for the figure above, but also includes the following majors: Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition.</p>
-<p><strong>Summary: </strong> A total of 680 (32.6%) students were majoring in a Public Health, Social Services, Social Science, and Education program, while 624 (29.9%) students majored in Science, Technology, Engineering and Math (STEM).</p>
+<p><strong>Summary: </strong> A total of 680 (32.6%) students were majoring in a Public Health, Social Services, Social Science, or Education program, while 624 (29.9%) students majored in Science, Technology, Engineering and Math (STEM).</p>
 <p><br></p>
 </section>
 <section id="overall-gpa" class="level2">
-<h2 class="anchored" data-anchor-id="overall-gpa">Overall GPA</h2>
+<h2 data-anchor-id="overall-gpa">Overall GPA</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-GPA" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Academic_Profile_files/figure-html/fig-GPA-1.png" class="img-fluid figure-img" width="528"></p>
-<figcaption class="figure-caption">Figure&nbsp;4: GPA (n=2063, 98% of 2110 reporting)</figcaption>
+<p><img src="Academic_Profile_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="528"></p>
+<figcaption class="figure-caption">Figure 2.4: Reported GPA (n=2063, 98% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question: </strong> <em>What is your approximate overall grade point average (GPA)? Remember that your GPA is on a scale from 0 to 4.0.</em></p>
-<p><strong>Summary: </strong> The average overall GPA for students was 3.31, while the median was 3.4. The majority (65.5%) of students had a GPA greater than 3.0.</p>
+<p><strong>Summary: </strong> The average overall GPA for students was 3.31, while the median was 3.4. A total of 1549 (75.1%) students had a GPA greater than or equal to 3.0, and 583 (28.3%) had a GPA greater than or equal to 3.7.</p>
 <p><br></p>
 </section>
 <section id="currently-enrolled-units" class="level2">
-<h2 class="anchored" data-anchor-id="currently-enrolled-units">Currently Enrolled Units</h2>
+<h2 data-anchor-id="currently-enrolled-units">Currently Enrolled Units</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-units" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Academic_Profile_files/figure-html/fig-units-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5: Enrolled Units (n=2090, 99% of 2110 reporting)</figcaption>
+<p><img src="Academic_Profile_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure 2.5: Enrolled Units (n=2090, 99% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question: </strong> <em>How many units are you currently taking?</em></p>
-<p><strong>Summary: </strong> Student were enrolled in an average of 12.86 units, while the median units enrolled in were 13. A total of 1698 (81.2%) students were considered full-time (12 or more units), with 12 units being the most common response and 15 units being the second most common.</p>
+<p><strong>Summary: </strong> Student were enrolled in an average of 12.86 units, while the median was 13. A total of 1698 (81.2%) students were considered full-time (12 or more units), with 12 units being the most common response and 15 units being the second most common.</p>
 <p><br></p>
 </section>
 <section id="i-identify-as" class="level2">
-<h2 class="anchored" data-anchor-id="i-identify-as">I identify as…</h2>
+<h2 data-anchor-id="i-identify-as">I identify as…</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl--academic_identifiers" class="anchored">
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
-<caption>Table&nbsp;1: Academic Identiers</caption>
+<caption>Table 2.1: Academic Identiers </caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Student Identifiers:</th>
@@ -325,7 +334,6 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
 
 
 </div>
@@ -359,13 +367,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

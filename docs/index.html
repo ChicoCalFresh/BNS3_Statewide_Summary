@@ -33,7 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -59,12 +58,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -85,14 +82,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Demographics.html" rel="" target="">
- <span class="menu-text">Demographics</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-demographics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Demographics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-demographics">    
+        <li>
+    <a class="dropdown-item" href="./Demographics.html" rel="" target="">
+ <span class="dropdown-text">Personal Demographics</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Academic_Profile.html" rel="" target="">
- <span class="menu-text">Academic Profile</span></a>
+        <li>
+    <a class="dropdown-item" href="./Academic_Profile.html" rel="" target="">
+ <span class="dropdown-text">Academic Profile</span></a>
   </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./Workload.html" rel="" target="">
  <span class="menu-text">Workload</span></a>
@@ -104,6 +108,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./CalFresh.html" rel="" target="">
  <span class="menu-text">CalFresh</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Other_Basic_Needs.html" rel="" target="">
+ <span class="menu-text">Other Basic Needs</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Food_Security.html" rel="" target="">
@@ -132,7 +140,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#participants" id="toc-participants" class="nav-link" data-scroll-target="#participants">Participants</a>
+  <ul class="collapse">
+  <li><a href="#how-to-use-this-website" id="toc-how-to-use-this-website" class="nav-link" data-scroll-target="#how-to-use-this-website">How to use this website</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -154,23 +174,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The <a href="https://www.csuchico.edu/chc/">Center for Healthy Communities</a> (CHC) developed the <strong>Basic Needs Student Success Survey (BNS3)</strong> and administered it to undergraduate students participating in the <a href="https://www2.calstate.edu/attend/student-services/eop">Educational Opportunity Program (EOP)</a> at 13 colleges across the CSU, CCC and UC systems from November 25<span class="math inline">\(^{th}\)</span>, 2020 to March 24<span class="math inline">\(^{th}\)</span>, 2021.</p>
-<p>The EOP office assisted in the recruitment and provided computers for students to take the survey. Participants were given a $25 gift card for their participation. EOP students were identified as the target population for this survey based upon their low-income and first-generation student status, which indicates a higher probability of CalFresh eligibility.</p>
-<p>The purpose of this second cross-sectional pilot study (update) was to revise the BNS3 tool and validate student perception of the following:</p>
+<h2 data-anchor-id="overview">Overview</h2>
+<p>Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately affect student success. The <a href="https://www.csuchico.edu/chc/">Center for Healthy Communities</a> (CHC) developed the <strong>Basic Needs Student Success Survey (BNS3)</strong> and administered it to undergraduate students participating in the <a href="https://www2.calstate.edu/attend/student-services/eop">Educational Opportunity Program (EOP)</a> or the Extended Opportunity Programs and services (EOPS) at 12 colleges across the CSU, CCC and UC systems from 2022 to 2023.</p>
+<p>EOP/EOPS offices assisted in the recruitment by emailing interest form links to their EOP/EOPS students. Students who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criteria when determining CalFresh eligibility) were then emailed a survey. Participants were given a $25 gift card incentive for completing the survey. EOP/EOPS students were identified as the target population for this survey based on their low-income and first-generation student status, which indicates a higher probability of using CalFresh and being likely eligible for CalFresh.</p>
+<p>The main purpose of this third cross-sectional study was to evaluate the following:</p>
 <ol type="1">
-<li>The impact of receiving <a href="https://www.csuchico.edu/calfresh/index.shtml">CalFresh</a> assistance.</li>
-<li>The impact of utilization of the campus food pantry on their health, nutrition, cooking confidence, time management and academic performance.</li>
+<li>The impact of receiving <a href="https://www.csuchico.edu/calfresh/index.shtml">CalFresh</a> benefits</li>
+<li>Barriers to applying to CalFresh</li>
+<li>College student food insecurity</li>
+<li>The impact of and barriers to using food pantries</li>
 </ol>
 <p>This report provides a top level descriptive analysis of each question in the survey. Researchers and campus staff are encouraged to review the information in this analysis to formulate additional research questions and hypotheses.</p>
 </section>
 <section id="participants" class="level2">
-<h2 class="anchored" data-anchor-id="participants">Participants</h2>
-<p>We surveyed 2,110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU Los Angeles, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.</p>
-<p><strong>Disclaimer on Missing Data:</strong> Students were allowed to select answers such as “Prefer not to answer” or “I don’t know” as responses to every question asked. These answers were then converted to missing values, denoted as <em>NA</em>, and this is the cause of the missing data for certain questions (not 100% of respondents reporting). The total number of non-missing responses (and percentage of the total data) are provided for each question.</p>
+<h2 data-anchor-id="participants">Participants</h2>
+<p>We surveyed 2,110 EOP/EOPS students in California from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU Los Angeles, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.</p>
+<p><strong>Disclaimer on Missing Data:</strong> <em>Students had the option to select “Prefer not to answer” for all questions or options such as “I don’t know” for a small subset of questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.</em></p>
 <p><br></p>
 <section id="how-to-use-this-website" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-website"><a href="Instructions.html">How to use this website</a></h3>
+<h3 data-anchor-id="how-to-use-this-website"><a href="Instructions.html">How to use this website</a></h3>
 <p><em>Click above for instructions on how to navigate the website and interpret graphs.</em></p>
 
 
@@ -198,13 +220,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

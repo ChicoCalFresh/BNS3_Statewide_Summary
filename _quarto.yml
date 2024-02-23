@@ -14,16 +14,20 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: Demographics.qmd
-        text: Demographics
-      - href: Academic_Profile.qmd
-        text: Academic Profile
+      - text: Demographics
+        menu:
+          - href: Demographics.qmd
+            text: Personal Demographics
+          - href: Academic_Profile.qmd
+            text: Academic Profile
       - href: Workload.qmd
         text: Workload
       - href: Housing.qmd
         text: Housing
       - href: CalFresh.qmd
         text: CalFresh
+      - href: Other_Basic_Needs.qmd
+        text: Other Basic Needs
       - href: Food_Security.qmd
         text: Food Security
       - href: Eating_Habits.qmd

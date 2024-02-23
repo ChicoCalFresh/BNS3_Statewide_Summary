@@ -1,23 +1,57 @@
 ---
 title: "CalFresh"
+format:
+  html:
+    anchor-sections: false
 ---
 
 ```{r, include=FALSE}
 source("common_code.R")
+
+
+# Print the next figure number
+currentFigure <- 0
+NextFigure <- function() {
+  # Increment the figure number
+  currentFigure <<- currentFigure + 1
+  
+      # -------- Set figure and section number --------
+  paste("Figure 5.", currentFigure, ":", sep = "")
+}
+
+# Print the next Table number
+currentTable <- 0
+NextTable <- function() {
+  # Increment the table number
+  currentTable <<- currentTable + 1
+  
+      # -------- Set table and section number --------
+  paste("Table 5.", currentTable, ":", sep = "")
+}
+
+# Used to print n reporting of number of people fed through EBT per household size
+# Since two questions were used for this table, if either of them is NA, set to missing, otherwise set to 1. This is only used to determine how many students are reporting
+bns$for_ebt_household_reporting <- ifelse(is.na(bns$fed_through_EBT) | is.na(bns$q49_1), NA, 1)
+
+
+bns$for_income_household_reporting <- ifelse(is.na(bns$monthly_hh_income) | is.na(bns$household_size), NA, 1)
+
+
 ```
 
-# Participation
 
-The following questions were asked in regards to criteria laid out by the CalFresh Requirements. This includes U.S. citizenship (or lawful permanent resident), receiving Cal Grant A/B, and receiving food from a campus meal plan. Household size and monthly income is also looked at and broken down into a chart to show CalFresh eligibility. Students were also determined to be eligible or not for CalFresh based on their responses to these criteria questions.
+Students were asked to report information relating to CalFresh and CalFresh eligibility. This includes U.S. citizenship (or lawful permanent residency), household size, and monthly household income. Those that were not using CalFresh were asked to report any barriers to applying for CalFresh, while those that reported currently using CalFresh were asked to report their monthly Electronic Benefit Transfer (EBT), whether the EBT received is enough for them, and the perceived impact of CalFresh. 
 
-## Basic Needs
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
-**Please mark all the statements that apply to you.**
+## CalFresh Status {#cal_status_reference}
+
 
 ```{r}
-#| fig-height: 6
+#| fig-height: 2
 #| fig-width: 8
-questions <- bns %>% select(starts_with("q46_"))
+#| fig-cap: !expr sprintf("%s CalFresh Status %s", NextFigure(), print_n_reporting('q46_1'))
+questions <- bns %>% select(q46_1)
 
 questions <-
   questions %>% mutate(across(everything(), function(x)
@@ -32,31 +66,125 @@ questions <-
 
 names(questions) <-
   c(
-    'CalFresh (also known as Food Stamps or SNAP benefits)',
-    'Campus food pantry (e.g., food, toiletries, feminine products)',
-    'Medi-Cal',
-    'Emergency Housing Services'
+    'CalFresh (also known as Food Stamps or SNAP benefits)'
   )
+
 plot_likert(
   questions,
-  grid.range = c(1.3, 1.3),
+  grid.range = c(1.1, 1.1),
   wrap.legend.labels = 20,
   expand.grid = FALSE,
   values = "sum.outside",
   catcount = 5,
   geom.colors = likert.pal.5,
   show.prc.sign = TRUE,
-  reverse.scale = TRUE
+  reverse.scale = TRUE,
 ) + theme_bw() + theme(legend.position = "top")
+
+
 ```
+
+**Survey Question:** *Please mark all the statements that apply to you.*
+
+**Summary:** A total of `r get_count_and_percent(bns$q46_1, "Currently use as a college student")` students reported currently using CalFresh, `r get_count_and_percent(bns$q46_1, "Used it in the past as a college student")` reported they used CalFresh in the past as a college student, and `r get_count_and_percent(bns$q46_1, "Used it before attending college")` reported that they used CalFresh before attending college. Additionally, `r get_count_and_percent(bns$q46_1, "Heard of it, but never used it")` students reported that they heard of CalFresh, but never used it, while `r get_count_and_percent(bns$q46_1, "Never heard of it")` reported that they never heard of it. 
 
 <br>
 
-## CalFresh Criteria
 
-*Below are a series of Yes/No questions asked in order to help determine if a student is potentially eligible for CalFresh benefits.*
+
+## Income & Household Size {#reference1}
+
 
 ```{r}
+#| tbl-cap: !expr sprintf("%s Income & Household Size %s", NextTable(), print_n_reporting('for_income_household_reporting'))
+
+for_reporting_hux <- bns %>% select(monthly_hh_income, household_size) %>% na.omit()
+
+for_reporting_hs1 <- bns %>% filter(household_size == 1) %>% select(monthly_hh_income, household_size) %>% na.omit()
+
+for_reporting_hs2 <- bns %>% filter(household_size == 2) %>% select(monthly_hh_income, household_size) %>% na.omit()
+
+library(huxtable)
+
+tmp <- as.data.frame.matrix(table(bns$monthly_hh_income, bns$household_size))
+
+
+huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %>%
+  set_background_color(2:3, 2, "darkolivegreen3") %>% set_background_color(2:4, 3, "darkolivegreen3") %>% 
+  set_background_color(2:5, 4, "darkolivegreen3") %>% set_background_color(2:6, 5, "darkolivegreen3") %>% 
+  set_background_color(2:7, 6, "darkolivegreen3") %>% set_background_color(2:8, 7, "darkolivegreen3") %>% 
+  set_background_color(2:9, 8, "darkolivegreen3") %>% set_background_color(2:10, 9, "darkolivegreen3") %>%
+  set_background_color(11:12, 9, "yellow") %>%
+  set_bold(2:3, 2) %>% set_bold(2:4, 3) %>% set_bold(2:5, 4) %>% set_bold(2:6, 5) %>% set_bold(2:7, 6) %>% 
+  set_bold(2:8, 7) %>%  set_bold(2:9, 8) %>% set_bold(2:10, 9) %>% 
+  set_italic(4:10, 2) %>% set_italic(5:10, 3) %>% set_italic(6:10, 4) %>% set_italic(7:10, 5) %>% 
+  set_italic(8:10, 6) %>% set_italic(9:10, 7) %>%  set_italic(10, 8) %>% set_italic(11, 9) %>%
+  set_all_borders(brdr(3, "solid", "white")) %>% map_align(by_cols("center")) %>%
+  set_width(0.75) %>% set_font_size(12) %>% set_caption("Household Size:") %>%
+  set_width(0.8)
+
+
+# New color for row 12 column 8 (not sure if the two people qualify)
+# Combine rows 2 and 3?
+
+```
+
+**Survey Questions:**
+
+- *How many people in your household do you purchase and prepare food with, including yourself? This may or may not include your roommate(s).*
+
+- *Based on the household you defined in the previous question, how much is your household's gross monthly income (before taxes and not including financial aid)? Note: Monthly income is money earned from jobs on your pay stubs, paid internships, or money deposited in your accounts every month from others (like parents). If you are not sure about your gross income, take your hourly rate and multiply by the number of hours you work per month. Please do NOT include financial aid or grants. Please do NOT include one-time monetary gifts from family or friends. Please do NOT include any balance in personal savings accounts. Remember, if you have a household of more than 1, you must include everyone's gross income (use your best guess).*
+
+**Additional Notes: ** Household size and income are used to determine CalFresh eligibility (among other factors). Cells highlighted in green indicate a student is likely eligible for CalFresh based on their self-reported income/household size, and cells highlighted in red indicate a student is likely ineligible. Household size was asked in a multiple choice format with options ranging from *"1 (myself)"* to *"8 or more (myself plus 7, etc.)"* where those who reported eight or more were coded as *"8."* Hence, there was some uncertainty in determining eligibility among students who reported a household size of eight or more and a higher income where these cells are highlighted in yellow.
+
+**Summary:** The most common household size reported was a household size of `r names(sort(table(bns$household_size), decreasing=TRUE)[1])` while the most common income reported was `r names(sort(table(bns$monthly_hh_income), decreasing=TRUE)[1])`. A total of `r table(bns$monthly_hh_income, bns$household_size)[1,1]` students who had a household size of one with a monthly household income of less than \$150, and `r table(bns$monthly_hh_income, bns$household_size)[2,1]` students who had a household size of one with a monthly household income of \$151-\$2,148 were deemed likely eligible for CalFresh. Of those with a household size of one, `r round(100*(table(bns$monthly_hh_income, bns$household_size)[1,1] + table(bns$monthly_hh_income, bns$household_size)[2,1]) / NROW(for_reporting_hs1), 1)`% met the income/household size eligibility criteria. Of those with a household size of two, `r round(100*(table(bns$monthly_hh_income, bns$household_size)[1,2] + table(bns$monthly_hh_income, bns$household_size)[2,2] + table(bns$monthly_hh_income, bns$household_size)[3,2]) / NROW(for_reporting_hs2), 1)`% met the income/household size eligibility criteria. 
+
+
+<br>
+
+## CalFresh Eligibility
+
+<div class = "row">
+
+::: col-md-6
+```{r}
+#| fig-cap: !expr sprintf("%s CalFresh Eligibility %s", NextFigure(), print_n_reporting('calfresh_eligible'))
+
+c1 <- data.frame(bns$calfresh_eligible) %>% na.omit()
+c1 <- c1 %>% mutate(ifelse(bns.calfresh_eligible==0, "No", "Yes"))
+plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plot_color,  ylim=c(0,1600)) + 
+  xlab('Likely Eligible for CalFresh') + ylab("Number of Students")
+```
+:::
+
+**Survey Questions:** *This variable was derived using self-reported household size and income (See [Income & Household Size](#reference1))*
+
+**Additional Notes: ** Only county workers have the authority to determine official eligibility for CalFresh. These eligibility rates were estimated based on self-reported household size and income. Below is a list of eligibility criteria for students:  
+
+- Meets household size/income requirements from the [Department of Social Services](https://www.cdss.ca.gov/inforesources/cdss-programs/calfresh/eligibility-and-issuance-requirements#income).
+- The person is either a U.S. citizen or lawful permanent resident.\
+- If the person is between the ages of 18 to 49, and is at least a part-time student (enrolled in six or more units), then this person is classified as a student by the California Department of Social Services and needs to meet the following additional criteria: 
+  -   Does not get more than half of their meals from meals plans (less than 11 per week).\ **(All students from this study met this criteria as this was one of the inclusion criteria to take the survey)**
+  -   Meets one of the possible work requirements such as working 20 or more hours per week or being enrolled in a approved Local Program that Increases Employability (LPIE). At the time of the start of this survey, all EOP/EOPS programs were considered an LIPE, however, campuses now need to apply and receive approval for their program to be considered an LPIE. **When determining eligibility, all students were assumed to meet the work requirement since they were all EOP/EOPS students.**
+
+**Summary:** A total of `r get_count_and_percent(bns$calfresh_eligible, "1")` students were likely eligible for CalFresh while `r get_count_and_percent(bns$calfresh_eligible, "0")` were likely not eligible. Many students selected "Prefer not to answer" when reporting their income. Calfresh eligibility was unable to be determined among these students and among any students who answered "Prefer not to answer" to household size.  
+
+
+<div class = "col-md-5">
+
+<br>
+
+
+
+
+
+
+## CalFresh Eligibility Breakdown
+
+
+```{r}
+#| tbl-cap: !expr sprintf("%s CalFresh Eligibility Breakdown", NextTable())
+
 # 5 questions reduced to two, keep as is, seperate plot for each question, ...
 
 # If US citizen or has a green card, set to "Yes"
@@ -74,7 +202,7 @@ bns <- bns <- bns %>% mutate(m_income = as.numeric(monthly_hh_income, na.rm = TR
                            (household_size == 8 & m_income < 10)), "Yes", "No"))
 
 # If the student meets the 20 hour a week work requirement, set to "Yes"
-bns$work_eligible <- ifelse(bns$paid_work_hours >= 20 | bns$unpaid_work_hours >= 20, "Yes", "No")
+bns$work_eligible <- ifelse(bns$paid_work_hours >= 20, "Yes", "No")
 
 bns$EOP <- "Yes"
 
@@ -88,105 +216,56 @@ bns$EOP <- "Yes"
  binary_table(qs, 'Yes', rnames, "")
 ```
 
-The data suggest the majority of students meet the citizenship and income requirements, however, less than half of the surveyed students meet the 20 hours/week work requirement.
+**Survey Questions:** 
+
+- *Are you a U.S. citizen?*
+- *If not a U.S. citizen, are you a lawful permanent resident (i.e. have a "green card)?*
+- *Estimate the number of hours you work in a PAID job (e.g. server at a restaurant, office assistant, etc.) or paid internship (e.g. training, shadowing, or practicum) per week.*
+- *For income and household size survey questions, see [Income and Household Size](#reference1)*
+
+**Summary:** Based on self-reported data, `r get_count_and_percent(bns$citizenship, "Yes")` students met the citizenship requirement of either being a US Citizen or a lawful permanent resident. A total of `r get_count_and_percent(bns$income_eligible, "Yes")` students met the income/household size requirements, and `r get_count_and_percent(bns$work_eligible, "Yes")` students met the 20 hours/week work exemption. As a reminder, students don't need to meet a work requirement if they are are enrolled in an LPIE such as an approved EOP/EOPS. 
+
 
 <br>
 
-## Household Size & Income
 
-The following two questions were asked about household size and monthly income, which were then combined into a single plot:
-
--   **How many people in your household do you purchase and prepare food with, including yourself? This may or may not include your roommate(s). `r print_n_reporting("household_size")`**
--   **How much is your household's gross monthly income (before taxes and not including financial aid)? `r print_n_reporting("monthly_hh_income")`**
-
-```{r}
-library(huxtable)
-tmp <- as.data.frame.matrix(table(bns$monthly_hh_income, bns$household_size))
-huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %>%
-  set_background_color(2:3, 2, "darkolivegreen3") %>% set_background_color(2:4, 3, "darkolivegreen3") %>% 
-  set_background_color(2:5, 4, "darkolivegreen3") %>% set_background_color(2:6, 5, "darkolivegreen3") %>% 
-  set_background_color(2:7, 6, "darkolivegreen3") %>% set_background_color(2:8, 7, "darkolivegreen3") %>% 
-  set_background_color(2:9, 8, "darkolivegreen3") %>% set_background_color(2:10, 9, "darkolivegreen3") %>%
-  set_background_color(11:12, 9, "yellow") %>%
-  set_bold(2:3, 2) %>% set_bold(2:4, 3) %>% set_bold(2:5, 4) %>% set_bold(2:6, 5) %>% set_bold(2:7, 6) %>% 
-  set_bold(2:8, 7) %>%  set_bold(2:9, 8) %>% set_bold(2:10, 9) %>% 
-  set_italic(4:10, 2) %>% set_italic(5:10, 3) %>% set_italic(6:10, 4) %>% set_italic(7:10, 5) %>% 
-  set_italic(8:10, 6) %>% set_italic(9:10, 7) %>%  set_italic(10, 8) %>% set_italic(11, 9) %>%
-  set_all_borders(brdr(3, "solid", "white")) %>% map_align(by_cols("center")) %>%
-  set_width(0.75) %>% set_font_size(12) %>% set_caption("Household Size")
-
-# New color for row 12 column 8 (not sure if the two people qualify)
-# Combine rows 2 and 3?
-```
-
-*In the above graph, cells highlighted in green & bold indicate a person is potentially eligible for CalFresh based on their income, cells highlighted in red & italics indicate a person is not eligible, and cells highlighted in yellow indicate a person may be eligible. This information is pulled from the CalFresh requirements section A2 (see below for link).*
-
-<br>
-
-## CalFresh Eligible
-
-**This variable was created under the following criteria `r print_n_reporting("calfresh_eligible")`**
-
-*Disclaimer: only county eligibility workers have the authority to determine official eligibility for CalFresh. These students are just most likely to be eligible based on the below listed criteria.*
-
--   The person is between the ages 18 to 49.\
--   The person is at least a part-time student (6 units per semester for the three campuses in this survey).\
--   The person is either a U.S. citizen or lawful permanent resident.\
--   Does not get more than half of their meals from meals plans (less than 11 per week or none).\
--   Identifies as an EOP student.\
--   Falls under the household size/income from the [Department of Social Services](https://www.cdss.ca.gov/inforesources/cdss-programs/calfresh/eligibility-and-issuance-requirements#income) requirements.
-
-<div class = "row">
-
-::: col-md-6
-```{r}
-c1 <- data.frame(bns$calfresh_eligible) %>% na.omit()
-c1 <- c1 %>% mutate(ifelse(bns.calfresh_eligible==0, "No", "Yes"))
-plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plot_color,  ylim=c(0,1600)) + 
-  xlab('Likely Eligible for CalFresh') + ylab("Number of Students")
-```
-:::
-
-We can see that the majority of students are most likely eligible for CalFresh (`r unname(table(bns$calfresh_eligible)['1'])` students), while `r unname(table(bns$calfresh_eligible)['0'])` students are most likely to not be eligible for these benefits.
-
-<div class = "col-md-5">
-
-<br>
 
 # Impact
 
-The following questions were asked in regards to the impact of Basic Needs programs and services on students lives. Students were asked to evaluate how they feel these programs have benefited them both academically and non-academically, as well as barriers/reasons in regards to why they are not using certain programs. This includes programs such as CalFresh, Food Pantries, Medi-Cal (also known as Medicaid in the United States), and Emergency Housing Services.
+Only students who reported currently using CalFresh or used it in the past as a college student saw the following set of questions. Students were asked to report how much EBT they received per month, how many people they fed with their EBT, whether they received enough money, how long their EBT lasts every month, and their perceived impact of CalFresh on academic and non-academic matters.   
 
 
-## CalFresh EBT
+## CalFresh EBT {#reference2}
 
-*Note: for the graph on the left (EBT application) we have `r print_n_reporting("q47")` For the graph on the right (people fed through EBT) we have `r print_n_reporting("fed_through_EBT")`*
 
 ```{r}
 #| fig-cap-location: top
-#| fig-subcap: 
-#|   - "Did you apply for CalFresh EBT as an individual or with other people in your household?"
-#|   - "How many people in the household are regularly fed through your CalFresh EBT card?"
-#| layout-ncol: 2
-#| fig-width: 5
+#| fig-cap: !expr sprintf("%s CalFresh Application Household Size %s & %s Number of People Fed Through EBT %s", NextFigure(), print_n_reporting('q47'), NextFigure(), print_n_reporting('fed_through_EBT'))
+#| fig-width: 9
 p1 <- plot_frq(bns$q47, geom.colors = plot_color, wrap.title = 40, ylim=c(0,500), wrap.labels = 15) +
-  xlab('')
-p2 <- plot_frq(bns$fed_through_EBT, geom.colors = plot_color, wrap.title = 40) + xlab('')
+  xlab('\nDid you apply for CalFresh EBT as an individual \nor with other people in your household?')
+p2 <- plot_frq(bns$fed_through_EBT, geom.colors = plot_color, wrap.title = 40) + 
+  xlab('\nHow many people in the household are regularly \nfed through your CalFresh EBT card?')
 
-p1
-p2
+grid.arrange(p1, p2, nrow = 1)
+
+
 rm(p1,p2)
 ```
 
-Looking at the above graphs, the majority of students apply for CalFresh EBT as an individual (`r unname(table(bns$q47)['As an individual'])` students) while only `r unname(table(bns$q47)['With other people in my household'])` students applied with other people in their household. Similarly, the majority of students claimed only `r names(sort(table(bns$fed_through_EBT), decreasing = TRUE))[1]` person is fed through the EBT card (`r unname(sort(table(bns$fed_through_EBT), decreasing = TRUE))[1]` people). `r unname(sort(table(bns$fed_through_EBT), decreasing = TRUE))[2]` students claim to feed `r names(sort(table(bns$fed_through_EBT), decreasing = TRUE))[2]` people through the EBT card, and only a small amount of students claim to feed 5 or more people through the EBT card.
+**Survey Questions:** *Indicated in x-axis Labels*
+
+**Additional Notes:** For the number of people fed through EBT, students had response choices ranging from "1 (myself)" to "8 or more (myself plus 7, etc.)" where eight or more was coded as "8". 
+
+**Summary:** A total of `r get_count_and_percent(bns$q47, "With other people in my household")` students reported applying for CalFresh as a household while `r get_count_and_percent(bns$fed_through_EBT, "1")` students reported feeding only one person in their household, and `r get_count_and_percent(bns$fed_through_EBT, "2")` reported feeding two people (one plus themselves).
 
 <br>
 
-### Monthly CalFresh Money
+## Monthly CalFresh Money {#reference3}
 
-**How much money is added to your CalFresh EBT card each month for your CalFresh household (i.e. the people you purchase and prepare food with)? `r print_n_reporting("q49_1")`**
 
 ```{r}
+#| fig-cap: !expr sprintf("%s Monthly CalFresh Money %s", NextFigure(), print_n_reporting('q49_1'))
 #| fig-width: 7
 
 gghistogram(bns, x = "q49_1", add = "mean", fill = plot_color, alpha = 1) + xlab("Monthly EBT Received ($)") + ylab("Number of Students")
@@ -195,15 +274,17 @@ gghistogram(bns, x = "q49_1", add = "mean", fill = plot_color, alpha = 1) + xlab
 #is $1500 a feasible response?
 ```
 
-The average amount of money received per household using CalFresh (denoted by the dotted line) is \$`r round(mean(bns$q49_1, na.rm=TRUE),2)`, while the median is \$`r round(median(bns$q49_1, na.rm=TRUE),2)`. The values range from \$`r min(bns$q49_1, na.rm=TRUE)` to \$`r max(bns$q49_1, na.rm=TRUE)`. The majority of households who do receive these benefits seems to be getting around \$250 or less per month.
+**Survey Question:** *How much money is added to your CalFresh EBT card each month for your CalFresh household (i.e. the people you purchase and prepare food with)?*
+
+**Summary:** The average amount of money received per household using CalFresh (denoted by the dotted line) was \$`r round(mean(bns$q49_1, na.rm=TRUE),2)`, while the median was \$`r round(median(bns$q49_1, na.rm=TRUE),2)`. The amounts reported ranged from \$`r min(bns$q49_1, na.rm=TRUE)` to \$`r max(bns$q49_1, na.rm=TRUE)`.
+
 
 <br />
 
-### Household Size Breakdown
-
-Below is a breakdown of the average monthly allowance received from CalFresh based on household size.
+## Household Size Breakdown
 
 ```{r}
+#| tbl-cap: !expr sprintf("%s EBT per Number of People Fed Through EBT %s", NextTable(), print_n_reporting("for_ebt_household_reporting"))
 #| fig-width: 6.5
 tmp <- bns %>% group_by(fed_through_EBT) %>% 
   summarise(avg = round(mean(q49_1, na.rm=TRUE),2)) %>% 
@@ -213,44 +294,67 @@ tmp <- bns %>% group_by(fed_through_EBT) %>%
 
 tmp[9,] <- list("", "Total Average", round(mean(tmp$HH.avg),2))
 tmp <- tmp %>% mutate(HH.avg = paste0("$", format(HH.avg, nsmall=2)))
-colnames(tmp) <- c("Household Size", "Household Average", "Per Person Average")
+tmp2 <- tmp
+colnames(tmp2) <- c("Number of People Fed Through EBT", "Household Average EBT", "Per Person Average EBT")
 
-tmp %>% kable() %>% kable_styling(bootstrap_options = "striped") %>%
+tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped") %>%
   row_spec(9, bold=TRUE)
 ```
 
-The general pattern seems to be that as household size increases so does the monthly average assistance from CalFresh. The household average was divided by the household size to find the "per person average" for CalFresh assistance. From taking the average of these values, we can see that a person on CalFresh receives an average monthly assistance of: `r tmp[9,3]`.
+**Survey Questions:**
 
-### Is This Enough?
+- *For the number of people fed through EBT, see [CalFresh EBT](#reference2)*
+- *For the amount of EBT received per month, see [Monthly CalFresh Money](#reference3)*
 
-*Note: for the first graph on if the allowance is enough we have `r print_n_reporting("q50")` And for the second graph on when people run out we have `r print_n_reporting("q51")`*
+**Additional Notes:** The per person average was computed by dividing the average amount of EBT received per month by the number of people fed through EBT. 
+
+**Summary:** The average monthly EBT received per person was `r names(table(tmp$HH.avg)[9])` for households feeding just themselves with EBT, `r names(table(tmp$HH.avg)[8])` for households feeding themselves plus one other, and `r names(table(tmp$HH.avg)[7])` for households feeding themselves plus two others. In general, as the number of people fed through EBT increases, the per person average decreases. The total per person average, taking into account all households, was: `r tmp2[9,3]`.
+
+## Was This Enough?
+
+<br />
 
 ```{r}
 #| fig-cap-location: top
-#| fig-subcap: 
-#|   - "I feel that the amount that is added to my CalFresh EBT card each month is enough money to provide healthy food for the month."
-#|   - "When do you typically use up the balance on your CalFresh EBT card?"
-#| layout-ncol: 2
-  
-p1 <- plot_frq(bns$q50, geom.colors = plot_color, ylim=c(0,200)) + xlab('')
-p2 <- plot_frq(bns$q51, geom.colors = plot_color, ylim=c(0, 210), wrap.labels = 12) + xlab('')
+#| fig-cap: !expr sprintf("%s Level of Agreement on EBT Being Enough %s & %s Number of Weeks EBT Lasts %s", NextFigure(), print_n_reporting('q50'), NextFigure(), print_n_reporting('q51'))
+#| fig-width: 9
 
-p1
-p2
-rm(p1,p2)
+bns$q50_tmp <- recode(bns$q50, "Strongly agree" = "Strongly \nagree",
+                      "Strongly disagree" = "Strongly \ndisagree",
+                      "Neither agree nor disagree" = "Neither agree \nnor disagree")
+  
+p3 <- plot_frq(bns$q50_tmp, geom.colors = plot_color, ylim=c(0,200)) + 
+  xlab('\nI feel that the amount that is added to my CalFresh EBT card each \nmonth is enough money to provide healthy food for the month.') + 
+  theme(axis.text=element_text(size=9), #change font size of axis text
+        axis.title=element_text(size=9)) #change font size of axis titles
+
+
+
+p4 <- plot_frq(bns$q51, geom.colors = plot_color, ylim=c(0, 210), wrap.labels = 12) + 
+  xlab('\nWhen do you typically use up the balance \non your CalFresh EBT card?')+ 
+  theme(axis.text=element_text(size=9), #change font size of axis text
+        axis.title=element_text(size=9)) #change font size of axis titles
+
+grid.arrange(p3, p4, nrow = 1)
+
+
 ```
 
-Of the students who do receive money from CalFresh, `r unname(table(bns$q50)['Agree']) + unname(table(bns$q50)['Strongly agree'])` of them agree that it is enough money to provide healthy food for a month and `r unname(table(bns$q50)['Disagree']) + unname(table(bns$q50)['Strongly disagree'])` of them feel that it is not enough. Students typically run out of CalFresh money in the first week (`r unname(table(bns$q51)['First week after receiving benefits'])` students), the second week (`r unname(table(bns$q51)['Second week after receiving benefits'])` students) or the third week (`r unname(table(bns$q51)['Third week after receiving benefits'])` students). A smaller minority run out within the fourth week or do not use up all their monthly balance.
+**Survey Questions:** *Indicated in x-axis Labels*
+
+**Summary:** Of those who received CalFresh Benefits, `r get_count_and_percent2(bns$q50, "Agree", "Strongly agree")` students either agreed or strongly agreed that the money received per month was enough to provide healthy food for the month while `r get_count_and_percent2(bns$q50, "Disagree", "Strongly disagree")` either disagreed or strongly disagreed. Meanwhile, `r get_count_and_percent(bns$q51, "First week after receiving benefits")` students reported running out of benefits during the first week of the month, `r get_count_and_percent(bns$q51, "Second week after receiving benefits")` during the second week, and `r get_count_and_percent(bns$q51, "Third week after receiving benefits")` during the third week. 
 
 <br>
 
+
 ## CalFresh Benefits
 
-**For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. While you received CalFresh benefits:**
 
 ```{r}
+#| fig-cap: !expr sprintf("%s Perceived Impact of CalFresh", NextFigure())
 #| fig-height: 8
 #| fig-width: 8.5
+
 questions <- bns %>% select(starts_with("q52_"))
 names(questions) <- c('I worked fewer hours each week in a PAID position.',
                       'I had more time to do an UNPAID internship or volunteer work.',
@@ -293,13 +397,18 @@ plot_likert(questions[12:22],
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
+**Survey Questions:** *For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. While you received CalFresh benefits:*
+
+**Summary:** Because students received CalFresh, `r get_count_and_percent2(bns$q52_3, "Agree", "Strongly agree")` reported they had more money for bills, `r get_count_and_percent2(bns$q52_7, "Agree", "Strongly agree")` reported purchasing healthier foods, and `r get_count_and_percent2(bns$q52_8, "Agree", "Strongly agree")` reported cooking more frequently. Only `r get_count_and_percent2(bns$q52_1, "Agree", "Strongly agree")` students reported that they worked fewer hours because of CalFresh, `r get_count_and_percent2(bns$q52_5, "Agree", "Strongly agree")` shopped more frequently at the farmers' market, and `r get_count_and_percent2(bns$q52_6, "Agree", "Strongly agree")` reported learning more about healthier foods. 
+
+
 <br>
 
 ## CalFresh Barriers
 
-**What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply).**
-
 ```{r}
+#| tbl-cap: !expr sprintf("%s Reported Barriers to Using CalFresh", NextTable())
+
 question <- "calfresh_barrier"
 
 qlabel <- c('No time to complete the application/ application is too long.', 
@@ -329,221 +438,16 @@ cf_barrier_vars <- prep_binary_vars(question, qlabel) ## Issues here
 
 # Plot table of Percentages
 cf_barrier_vars %>%
-select(Measure = xlab, "Yes (%)" = pct_lab) %>%
+select("Reasons for Not Using CalFresh" = xlab, "Yes (%)" = pct_lab) %>%
 kable() %>% kable_styling(bootstrap_options = "striped") %>%  column_spec(2, width='3.5cm')
+
 ```
+
+**Survey Questions:** *What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply)*
+
+**Additional Notes:** Only students who reported never using Calfresh as a college student (see [CalFresh Status](#cal_status_reference)) saw this question.
+
+
+**Summary:** The most common reason that students reported not using CalFresh was because they do not think they are eligible where `r get_count_and_percent(bns$calfresh_barrier_do_not_think_eligible, "1")` students selected this option. Meanwhile `r get_count_and_percent(bns$calfresh_barrier_other_students_need, "1")` students reported that they felt other students need CalFresh more than they do, and `r get_count_and_percent(bns$calfresh_barrier_no_time_app, "1")` reported that they have no time to complete the application.
 
 <br>
-
-## Food Pantry Use
-
-**How often do you normally use the food pantry or if you are not currently using it, how often did you use it? `r print_n_reporting("q54")`**
-
-```{r}
-#| fig-height: 3.5
-plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 15) + xlab('Food Pantry Use Frequency') + ylab("Number of Students")
-```
-
-When students use the food pantry, the majority do not use it every week (`r unname(sort(table(bns$q54), decreasing = TRUE)['Not every week'])` students). `r unname(sort(table(bns$q54), decreasing = TRUE)['About once a week'])` students claim to use it about once a week, `r unname(sort(table(bns$q54), decreasing = TRUE)['More than once a week'])` students use it more than once a week, and `r unname(sort(table(bns$q54), decreasing = TRUE)['Other (Please specify):'])` students claim other uses.
-
-<br>
-
-# Other Basic Needs Services
-
-## Food Pantry - Impact
-**For the following questions, please choose how much you agree or disagree with the impact campus food pantries has or had on your life. While I utilized campus food pantry/pantries:**
-
-```{r}
-#| fig-height: 8
-#| fig-width: 8.5
-questions <- bns %>% select(starts_with("q55_"))
-names(questions) <- c('I worked fewer hours each week in a PAID position.',
-                      'I had more time to do an UNPAID internship or volunteer work.',
-                      'I had more money to pay for bills (rent, utility bills, clothes, etc.).',
-                      'I had more money for entertainment and social activities.',
-                      'I shopped more frequently at the farmers market.',
-                      'I had learned more about healthier foods.',
-                      'I purchased healthier foods.',
-                      'I cooked more frequently at home.',
-                      'I consumed a healthier diet.',
-                      'I consumed less fast food.',
-                      'I consumed fewer processed foods.',
-                      'I consumed fewer sugar-sweetened beverages like soda and energy drinks.',
-                      'I consumed less alcohol or fewer alcoholic beverages.',
-                      'I concentrated more in class(es).',
-                      'My grades had improved.',
-                      'My grades had decreased.',
-                      'I kept up with course materials.',
-                      'I had more time to go to my professors office hours and tutoring services when needed.',
-                      'I had more time to attend all classes as they are scheduled.',
-                      'I had more time to go on field trips or internships.',
-                      'My sleep quality had improved.',
-                      'My stress/anxiety level had decreased.')
-plot_likert(questions[1:11],
-            grid.range = c(1.2, 1.2),
-            wrap.legend.labels = 20,
-            expand.grid = FALSE,
-            values = "sum.outside",
-            catcount = 5,
-            geom.colors = likert.pal.5,
-            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
-
-plot_likert(questions[12:22],
-            grid.range = c(1.2, 1.2),
-            wrap.legend.labels = 20,
-            expand.grid = FALSE,
-            values = "sum.outside",
-            catcount = 5,
-            geom.colors = likert.pal.5,
-            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
-```
-
-<br>
-
-## Food Pantry - Barrier
-
-**What are the reasons for you to not go to campus food pantries? (Select all that apply).**
-
-```{r}
- question <- "no_pantry"
- qlabel <- c("My family doesn't want me to go to campus food pantries or local food banks.",
-             'I am embarrassed or scared to go to the campus food pantries or local food banks.',
-             'I do not believe in using campus food pantries or local food banks.',
-             "Inconvenient to access due to lack of transportation or out-of-the way location.",
-             'Inconvenient times of operation/limited pantry hours.',
-             'I feel other students need the food more than I do.',
-             'I am not aware of any campus food pantries or local food banks.',
-             'There are no food pantries close to campus or my residence.',
-             'Other', 
-             "I don't need to use campus food pantries.", 
-             'I feel uncomfortable about receiving help with basic needs, like food.',
-             'I would think less of myself If I went to campus food pantries or local food banks.',
-             "I don't want my friends to find out I go to campus food pantries or local food banks.",
-             'My friends and peers would think less of me if I went to campus table(food pantries or local food banks.')
- 
- pantry_vars <- prep_binary_vars(question, qlabel)
-
-# Plot table of Percentages
- pantry_vars %>% 
-   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
-   kable() %>% kable_styling(bootstrap_options = "striped")
-```
-
-<br>
-
-## Medi-Cal - Impact
-
-**For the following questions, please choose how much you agree or disagree with the impact Medi-Cal has or had on your life. Knowing that you have Medi-Cal:**
-
-```{r}
-#| fig-width: 8.5
-questions <- bns %>% select(starts_with("q59_"))
-names(questions) <- c("My mental health has improved.",
-                      "My physical health has improved.",
-                      "My sleep quality had improved.",
-                      "My stress/anxiety level had decreased.")
-                      
-
-plot_likert(questions,
-            grid.range = c(1.2, 1.2),
-            wrap.legend.labels = 20,
-            expand.grid = FALSE,
-            values = "sum.outside",
-            catcount = 5,
-            geom.colors = likert.pal.5,
-            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
-```
-
-<br>
-
-## Medi-Cal - Barriers
-
-**What are the reasons you do not have Medi-Cal or have never used Medi-Cal? (Select all that apply).**
-
-```{r}
- question <- "no_medical"
- qlabel <- c("I don’t need Medi-Cal.",
-             "I do not know what Medi-Cal is or I think I already have health insurance.",
-             "I only need medical services at the student health center associated with my campus.",
-             "No time to complete the Medi-Cal application/Medi-Cal application is too long.",
-             "The Medi-Cal application is too difficult to complete.",
-             "I do not think I am eligible for Medi-Cal.",
-             "I have heard from other students that it is not worth my time because I wont be eligible.",
-             "My family or household does not want me to apply for Medi-Cal.",
-             "I am embarrassed or ashamed to apply for Medi-Cal.",
-             "I don’t believe in social services like Medi-Cal, CalFresh, WIC, or Welfare/Cash Aid.",
-             "Other",
-             "I feel uncomfortable about receiving help with basic needs, like food.",
-             "I would think less of myself If I went to campus food pantries or local food banks.",
-             "I don't want my friends to find out I go to campus food pantries or local food banks.",
-             "My friends and peers would think less of me if I went to campus table(food pantries or local food banks.")
- 
- medical_vars <- prep_binary_vars(question, qlabel)
- 
- # Plot table of Percentages
- medical_vars %>% 
-   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
-   kable() %>% kable_styling(bootstrap_options = "striped")
-```
-
-<br>
-
-## Emergency Housing Services - Impact
-
-**For the following questions, please choose how much you agree or disagree with the impact Emergency Housing Services have or had on your life. Because I received Emergency Housing Services:**
-
-```{r}
-#| fig-height: 8
-#| fig-width: 8.5
-questions <- bns %>% select(starts_with("q62_"))
-names(questions) <- c('I concentrated more in class(es).',
-                      'My grades had improved.',
-                      'My grades had decreased.',
-                      'I kept up course materials.',
-                      'I had more time to go to my professors’ office hours and tutoring services when needed.',
-                      'I had more time to attend all classes as they are scheduled.',
-                      'I had more time to go on field trips or internships.',
-                      'My sleep quality had improved.',
-                      'My stress/anxiety level had decreased.',
-                      'I’m less concerned about housing issues.',
-                      'I felt more confident in my ability to maintain healthy relationships.')
-
-plot_likert(questions,
-            grid.range = c(1.2, 1.2),
-            wrap.legend.labels = 20,
-            expand.grid = FALSE,
-            values = "sum.outside",
-            catcount = 5,
-            geom.colors = likert.pal.5,
-            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
-```
-
-<br>
-
-## Emergency Housing Services - Barriers
-
-**What are the reasons you do not use Emergency Housing Services or have never used Emergency Housing Services? (Select all that apply)**
-
-```{r}
- question <- "no_ehs"
- qlabel <- c("I don’t need Emergency Housing Services",
-             "I was not aware that my campus had Emergency Housing Services like grants and housing placements in an emergency.",
-             "No time to complete the Emergency Housing application or contact the Emergency Housing Staff.",
-             "The Emergency Housing Services application is too difficult to complete.",
-             "The emergency housing grant/money is not enough to support what I need, so not worth my time to apply for it.",
-             "I am embarrassed or ashamed to apply for Emergency Housing Services.",
-             "I do not believe in social services like Emergency Housing Services, Medi-Cal, CalFresh, or Welfare/Cash Aid.",
-             "Other", 
-             "I feel uncomfortable about receiving help with basic needs, like housing.",
-             "I would think less of myself if I applied for Emergency Housing Services.",
-             "I don't want my friends to find out that I applied for emergency housing services.",
-             "My friends and peers would think less of me if I applied for emergency housing services.")
-             
- 
- ehs_vars <- prep_binary_vars(question, qlabel)
- 
- # Plot table of Percentages
- ehs_vars %>% 
-   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
-   kable() %>% kable_styling(bootstrap_options = "striped") %>% column_spec(2, width='3.5cm')
-```

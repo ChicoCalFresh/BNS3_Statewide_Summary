@@ -1,28 +1,44 @@
 ---
 title: "Demographics"
-crossref:
-  chapters: true
-  fig-title: 'Figure'
-  tbl-title: 'Table'
-  fig-labels: arabic
-  title-delim: ":"
+format:
+  html:
+    anchor-sections: false
 ---
 
 ```{r, include=FALSE}
 source("common_code.R")
+
+# Print the next figure number
+currentFigure <- 0
+NextFigure <- function() {
+  # Increment the figure number
+  currentFigure <<- currentFigure + 1
+  
+      # -------- Set figure and section number --------
+  paste("Figure 1.", currentFigure, ":", sep = "")
+}
+
+# Print the next Table number
+currentTable <- 0
+NextTable <- function() {
+  # Increment the table number
+  currentTable <<- currentTable + 1
+  
+      # -------- Set Table and section number --------
+  paste("Table 1.", currentTable, ":", sep = "")
+}
 ```
 
-Students’ personal demographics (e.g. age, ethnicity, number of dependents, etc.) were obtained and visualized in this section. Specific survey questions and summaries are found below each figure. 
+Students were asked to report information relating to their personal demographics such as age, gender identity, race/ethnicity, number of dependents (if any), and their parents' education level. 
 
-*As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n count for every survey question reflects the total number of non-missing responses while the percentage reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
 
 ## Age
 
 
 ```{r}
-#| label: fig-age
-#| fig-cap: !expr sprintf("Reported age (years) by college students %s", print_n_reporting('age'))  
+#| fig-cap: !expr sprintf("%s Reported Age %s", NextFigure(), print_n_reporting('age'))  
 gghistogram(bns, x = "age", add = "mean", alpha = 1, 
             fill = plot_color) + 
   xlab("Age (years)") + ylab("Number of Students")
@@ -32,7 +48,7 @@ gghistogram(bns, x = "age", add = "mean", alpha = 1,
 
 **Additional Notes: ** Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number. 
 
-**Summary: ** The average age of the students was `r round(mean(bns$age, na.rm = TRUE),1)` years with a range of `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)` and the majority falling between 20-30 years old. 
+**Summary: ** The average age of the students was `r round(mean(bns$age, na.rm = TRUE),1)` years with a range of `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)` and the majority falling between 20-30 years old. A total of `r get_count_and_percent3(bns$age, 21)` students were 21 or older, and `r get_count_and_percent3(bns$age, 30)` students were 30 or older. 
 
 <br>
 
@@ -44,8 +60,7 @@ gghistogram(bns, x = "age", add = "mean", alpha = 1,
 ```{r}
 #| fig-height: 3.5
 #| fig-width: 7
-#| label: fig-gender
-#| fig-cap: !expr sprintf("Reported gender identity by college students %s", print_n_reporting('q7'))  
+#| fig-cap: !expr sprintf("%s Gender Identity %s", NextFigure(), print_n_reporting('q7'))  
 
 rec <- bns %>% mutate(q7=recode(q7, "Gender non-binary"="Non-binary", "Gender Queer or Gender-Nonconforming" = "Queer or Nonconforming", "Gender Unlisted:" = "Unlisted"))
 
@@ -69,8 +84,7 @@ plot_frq(rec$q7, sort.frq="desc", geom.colors = plot_color) + xlab('Gender') + y
 ```{r}
 #| fig-height: 3
 #| fig-width: 4
-#| label: fig-hispanic
-#| fig-cap: !expr sprintf("Reported ethnic/Hispanic identity by college students %s", print_n_reporting_tmp('hispanic'))
+#| fig-cap: !expr sprintf("%s Ethnic/Hispanic Identity %s", NextFigure(), print_n_reporting_tmp('hispanic'))
 tmp <- data.frame(q8=bns$q8) %>% mutate(hispanic=as.factor(ifelse(is.na(q8), NA, ifelse(grepl("Yes", q8), "Hispanic", "Non-Hispanic")))) %>% select(-q8)
 
 plot_frq(tmp$hispanic, geom.colors = plot_color, ylim=c(0, 1800)) + xlab("") + ylab("Number of Students")
@@ -136,8 +150,7 @@ tmp <-
 
 
 ```{r}
-#| label: tbl-race
-#| tbl-cap: !expr sprintf("Reported race by college students %s", print_n_reporting_tmp('white'))
+#| tbl-cap: !expr sprintf("%s Reported Race %s", NextTable(), print_n_reporting_tmp('white'))
 
 tmp %>% na.omit() %>% 
   summarize(across(everything(), sum)) %>%
@@ -156,7 +169,7 @@ tmp %>% na.omit() %>%
 
 **Additional Notes: ** Possible answers were pulled from the U.S. Census questionnaire assessing race: *White, Black or African American, American Indian or Alaska Native, Chinese, Filipino, Asian Indian, Vietnamese, Korean, Japanese, Other Asian, Native Hawaiian, Samoan, Chamorro, and Other Pacific Islander.* These 14 options were collapsed into the 5 broad U.S. Census groups due to small sample sizes in some groups.
 
-**Summary: ** A total of `r get_count_and_percent(tmp$white, '1')` students self-identified as White, `r get_count_and_percent(tmp$asian, '1')` as Asian, `r get_count_and_percent(tmp$black, '1')` as Black or African American, `r get_count_and_percent(tmp$amer_indian, '1')` as American Indian or Alaskan Native, and `r get_count_and_percent(tmp$hawaiian, '1')` as Native Hawaiian or Other Pacific Islander. Additionally, `r get_count_and_percent(tmp$eth_PNTA, '1')` students preferred not to answer race, likely due to confusion between race and ethnicity.
+**Summary: ** A total of `r get_count_and_percent(tmp$white, '1')` students self-identified as White, `r get_count_and_percent(tmp$asian, '1')` as Asian, `r get_count_and_percent(tmp$black, '1')` as Black or African American, `r get_count_and_percent(tmp$amer_indian, '1')` as American Indian or Alaskan Native, and `r get_count_and_percent(tmp$hawaiian, '1')` as Native Hawaiian or Other Pacific Islander. Additionally, `r get_count_and_percent(tmp$eth_PNTA, '1')` students preferred not to answer race, likely due to confusion between race and ethnicity. 
 
 
 <br>
@@ -173,28 +186,26 @@ tmp <- bns %>% filter(q11>0, q11 < 9) # drop 0 and "i don't have dependent' resp
 ```{r}
 #| fig-height: 4
 #| fig-width: 6
-#| label: fig-q11
-#| fig-cap: !expr sprintf("Reported dependents by college students %s", print_n_reporting('q11'))
+#| fig-cap: !expr sprintf("%s Reported Number of Dependents %s", NextFigure(), print_n_reporting('q11'))
 plot_frq(tmp$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + ylab("Number of Students")
 ```
 
 **Survey Question: ** *If you have dependents, then how many of them receive more than 50% of their financial support from you?*
 
-**Additional Notes: ** Approximately `r get_count_and_percent(bns$q11, "I don't have dependents")` students reporting no dependents and `r get_count_and_percent(bns$q11, "0")` reporting dependents with less than 50% financial support were omitted from the chart. 
+**Additional Notes: ** A total of `r get_count_and_percent(bns$q11, "I don't have dependents")` students reporting no dependents and `r get_count_and_percent(bns$q11, "0")` reporting dependents with less than 50% financial support were omitted from the chart. 
 
 
 **Summary: ** A total of `r sum(table(tmp$q11))` students reported having dependents who receive more than 50% of their financial support. Of those with dependents, `r get_count_and_percent(tmp$q11, '1')` had one dependent, `r get_count_and_percent(tmp$q11, '2')` had two, and `r get_count_and_percent3(tmp$q11, '3')` students had 3 or more dependents.
 
 <br>
 
-## Parent Education
+## Parent Education {#Parent_Education}
 
 
 ```{r}
 #| fig-height: 5
 #| fig-width: 7.5
-#| label: fig-q13
-#| fig-cap: !expr sprintf("Parent/guardian education level reported by college students %s", print_n_reporting('q13'))
+#| fig-cap: !expr sprintf("%s Parent/Guardian Education Level Reported by College Students %s", NextFigure(), print_n_reporting('q13'))
 tmp2 <- as.data.frame(table(bns$q13)) %>%
   mutate(Percent=lapply(Freq, function(x) paste0('(', percent(x/sum(!is.na(bns[['q13']])), accuracy = 0.1), ')')),
          FirstGen=as.character(c(1,1,1,1,1,0,0,0,2)),
@@ -210,7 +221,7 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 
 **Additional Notes: ** This data is used to determine a student’s first-generation status. First-generation status is defined by neither parent having completed a Bachelor’s degree or higher. The green bars represent first-generation categories and the blue bars represent non-first-generation categories. Other/unknown responses are shown in gray.
 
-**Summary: ** Approximately `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because the students were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of `r count_and_percent(bns$q13, "Less than high school")` students reported their parents/guardians did not have a high school diploma or GED while `r count_and_percent(bns$q13, "High school diploma or GED")` reported the highest level of education completed by their parents is high school. 
+**Summary: ** A total of `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because all students in this study were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of `r count_and_percent(bns$q13, "Less than high school")` students reported their parents/guardians did not have a high school diploma or GED while `r count_and_percent(bns$q13, "High school diploma or GED")` reported the highest level of education completed by their parents was high school. 
 
 
 <br>
@@ -222,8 +233,7 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 ```{r}
 #| fig-height: 3
 #| fig-width: 4
-#| label: fig-firstgen
-#| fig-cap: !expr sprintf("Reported First-Generation Status by College Students %s", print_n_reporting('firstgen'))
+#| fig-cap: !expr sprintf("%s First-Generation Students %s", NextFigure(), print_n_reporting('firstgen'))
 tmp3 <- data.frame(firstgen=bns$firstgen) %>% 
   mutate(firstgen=factor(ifelse(is.na(firstgen), NA, ifelse(firstgen == 0, "Not First Gen", "First Gen")), levels=c("Not First Gen", "First Gen")))
 
@@ -232,7 +242,7 @@ plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + 
 :::
 
 ::: col-md-5
-**Survey Question: ** *This variable was derived from the question in @fig-q13*
+**Survey Question: ** *This variable was derived from the question in the [Parent Education](#Parent_Education) section.*
 
 **Additional Notes: ** Students who selected their parents' education  as "Less than high school," "High school diploma or GED," "Some college," "Certificate or technical achievement without Associate's degree," or "Associate's degree" were considered first-generation. The `r get_count_and_percent(bns$q13, 'Other/Unknown')` students who selected "Other/Unknown" were set as missing values. All other responses were considered not first-generation. 
 
@@ -240,3 +250,7 @@ plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + 
 :::
 
 **Summary: ** A total of `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status. As stated above, this outcome is not surprising because students in this study were either enrolled in EOP or EOPS, and both programs recruit students with first-generation status.
+
+<br>
+
+

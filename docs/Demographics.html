@@ -33,7 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -86,14 +85,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./Demographics.html" rel="" target="" aria-current="page">
- <span class="menu-text">Demographics</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-demographics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Demographics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-demographics">    
+        <li>
+    <a class="dropdown-item" href="./Demographics.html" rel="" target="">
+ <span class="dropdown-text">Personal Demographics</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Academic_Profile.html" rel="" target="">
- <span class="menu-text">Academic Profile</span></a>
+        <li>
+    <a class="dropdown-item" href="./Academic_Profile.html" rel="" target="">
+ <span class="dropdown-text">Academic Profile</span></a>
   </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./Workload.html" rel="" target="">
  <span class="menu-text">Workload</span></a>
@@ -105,6 +111,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./CalFresh.html" rel="" target="">
  <span class="menu-text">CalFresh</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Other_Basic_Needs.html" rel="" target="">
+ <span class="menu-text">Other Basic Needs</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Food_Security.html" rel="" target="">
@@ -143,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ethnicity-i.e.-identifying-with-hispanic-origin" id="toc-ethnicity-i.e.-identifying-with-hispanic-origin" class="nav-link" data-scroll-target="#ethnicity-i.e.-identifying-with-hispanic-origin">Ethnicity (i.e.&nbsp;Identifying with Hispanic Origin)</a></li>
   <li><a href="#race" id="toc-race" class="nav-link" data-scroll-target="#race">Race</a></li>
   <li><a href="#dependents" id="toc-dependents" class="nav-link" data-scroll-target="#dependents">Dependents</a></li>
-  <li><a href="#parent-education" id="toc-parent-education" class="nav-link" data-scroll-target="#parent-education">Parent Education</a></li>
+  <li><a href="#Parent_Education" id="toc-Parent_Education" class="nav-link" data-scroll-target="#Parent_Education">Parent Education</a></li>
   <li><a href="#first-generation" id="toc-first-generation" class="nav-link" data-scroll-target="#first-generation">First-Generation</a></li>
   </ul>
 </nav>
@@ -168,36 +178,36 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Students’ personal demographics (e.g.&nbsp;age, ethnicity, number of dependents, etc.) were obtained and visualized in this section. Specific survey questions and summaries are found below each figure.</p>
-<p><em>As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n count for every survey question reflects the total number of non-missing responses while the percentage reflects the percent of non-missing responses.</em></p>
+<p>Students were asked to report information relating to their personal demographics such as age, gender identity, race/ethnicity, number of dependents (if any), and their parents’ education level.</p>
+<p><em>As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.</em></p>
 <section id="age" class="level2">
-<h2 class="anchored" data-anchor-id="age">Age</h2>
+<h2 data-anchor-id="age">Age</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-age" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Demographics_files/figure-html/fig-age-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Reported age (years) by college students (n=2110, 100% of 2110 reporting)</figcaption>
+<p><img src="Demographics_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 1.1: Reported Age (n=2110, 100% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question: </strong> <em>What is your date of birth?</em></p>
 <p><strong>Additional Notes: </strong> Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number.</p>
-<p><strong>Summary: </strong> The average age of the students was 24.6 years with a range of 18 to 72 and the majority falling between 20-30 years old.</p>
+<p><strong>Summary: </strong> The average age of the students was 24.6 years with a range of 18 to 72 and the majority falling between 20-30 years old. A total of 1387 (65.7%) students were 21 or older, and 374 (17.7%) students were 30 or older.</p>
 <p><br></p>
 </section>
 <section id="gender-identity" class="level2">
-<h2 class="anchored" data-anchor-id="gender-identity">Gender Identity</h2>
+<h2 data-anchor-id="gender-identity">Gender Identity</h2>
 <div class="row">
 
 <div class="col-md-7">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-gender" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Demographics_files/figure-html/fig-gender-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Reported gender identity by college students (n=2094, 99% of 2110 reporting)</figcaption>
+<p><img src="Demographics_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure 1.2: Gender Identity (n=2094, 99% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
@@ -208,15 +218,15 @@ ul.task-list li input[type="checkbox"] {
 <p><br></p>
 </div></section>
 <section id="ethnicity-i.e.-identifying-with-hispanic-origin" class="level2">
-<h2 class="anchored" data-anchor-id="ethnicity-i.e.-identifying-with-hispanic-origin">Ethnicity (i.e.&nbsp;Identifying with Hispanic Origin)</h2>
+<h2 data-anchor-id="ethnicity-i.e.-identifying-with-hispanic-origin">Ethnicity (i.e.&nbsp;Identifying with Hispanic Origin)</h2>
 <div class="row">
 <div class="col-md-6">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-hispanic" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Demographics_files/figure-html/fig-hispanic-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: Reported ethnic/Hispanic identity by college students (n=2070, 98% of 2110 reporting)</figcaption>
+<p><img src="Demographics_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="384"></p>
+<figcaption class="figure-caption">Figure 1.3: Ethnic/Hispanic Identity (n=2070, 98% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
@@ -231,12 +241,11 @@ ul.task-list li input[type="checkbox"] {
 <p><br></p>
 </section>
 <section id="race" class="level2">
-<h2 class="anchored" data-anchor-id="race">Race</h2>
+<h2 data-anchor-id="race">Race</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-race" class="anchored">
 <table class="table table-striped table-sm small" data-quarto-postprocess="true">
-<caption>Table&nbsp;1: Reported race by college students (n=2110, 100% of 2110 reporting)</caption>
+<caption>Table 1.1: Reported Race (n=2110, 100% of 2110 reporting) </caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Identified Race</th>
@@ -270,7 +279,6 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-</div>
 
 
 </div>
@@ -281,60 +289,61 @@ ul.task-list li input[type="checkbox"] {
 <p><br></p>
 </section>
 <section id="dependents" class="level2">
-<h2 class="anchored" data-anchor-id="dependents">Dependents</h2>
+<h2 data-anchor-id="dependents">Dependents</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-q11" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Demographics_files/figure-html/fig-q11-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;4: Reported dependents by college students (n=2078, 98% of 2110 reporting)</figcaption>
+<p><img src="Demographics_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 1.4: Reported Number of Dependents (n=2078, 98% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question: </strong> <em>If you have dependents, then how many of them receive more than 50% of their financial support from you?</em></p>
-<p><strong>Additional Notes: </strong> Approximately 1478 (71.1%) students reporting no dependents and 107 (5.1%) reporting dependents with less than 50% financial support were omitted from the chart.</p>
+<p><strong>Additional Notes: </strong> A total of 1478 (71.1%) students reporting no dependents and 107 (5.1%) reporting dependents with less than 50% financial support were omitted from the chart.</p>
 <p><strong>Summary: </strong> A total of 493 students reported having dependents who receive more than 50% of their financial support. Of those with dependents, 213 (43.2%) had one dependent, 151 (30.6%) had two, and 128 (26.0%) students had 3 or more dependents.</p>
 <p><br></p>
 </section>
-<section id="parent-education" class="level2">
-<h2 class="anchored" data-anchor-id="parent-education">Parent Education</h2>
+<section id="Parent_Education" class="level2">
+<h2 data-anchor-id="Parent_Education">Parent Education</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-q13" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Demographics_files/figure-html/fig-q13-1.png" class="img-fluid figure-img" width="720"></p>
-<figcaption class="figure-caption">Figure&nbsp;5: Parent/guardian education level reported by college students (n=2083, 99% of 2110 reporting)</figcaption>
+<p><img src="Demographics_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="720"></p>
+<figcaption class="figure-caption">Figure 1.5: Parent/Guardian Education Level Reported by College Students (n=2083, 99% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question: </strong> <em>What is the highest level of education completed by your parents/guardians (for example, if your mother and father both raised you, and your mother has the highest level of education, then indicate her highest level of education)?</em></p>
 <p><strong>Additional Notes: </strong> This data is used to determine a student’s first-generation status. First-generation status is defined by neither parent having completed a Bachelor’s degree or higher. The green bars represent first-generation categories and the blue bars represent non-first-generation categories. Other/unknown responses are shown in gray.</p>
-<p><strong>Summary: </strong> Approximately 1892 (93.8%) students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because the students were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of 719 (34.5%) students reported their parents/guardians did not have a high school diploma or GED while 584 (28.0%) reported the highest level of education completed by their parents is high school.</p>
+<p><strong>Summary: </strong> A total of 1892 (93.8%) students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because all students in this study were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of 719 (34.5%) students reported their parents/guardians did not have a high school diploma or GED while 584 (28.0%) reported the highest level of education completed by their parents was high school.</p>
 <p><br></p>
 </section>
 <section id="first-generation" class="level2">
-<h2 class="anchored" data-anchor-id="first-generation">First-Generation</h2>
+<h2 data-anchor-id="first-generation">First-Generation</h2>
 <div class="row">
 <div class="col-md-6">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-firstgen" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Demographics_files/figure-html/fig-firstgen-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figure&nbsp;6: Reported First-Generation Status by College Students (n=2017, 96% of 2110 reporting)</figcaption>
+<p><img src="Demographics_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="384"></p>
+<figcaption class="figure-caption">Figure 1.6: First-Generation Students (n=2017, 96% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div class="col-md-5">
-<p><strong>Survey Question: </strong> <em>This variable was derived from the question in <a href="#fig-q13">Figure&nbsp;5</a></em></p>
+<p><strong>Survey Question: </strong> <em>This variable was derived from the question in the <a href="#Parent_Education">Parent Education</a> section.</em></p>
 <p><strong>Additional Notes: </strong> Students who selected their parents’ education as “Less than high school,” “High school diploma or GED,” “Some college,” “Certificate or technical achievement without Associate’s degree,” or “Associate’s degree” were considered first-generation. The 66 (3.2%) students who selected “Other/Unknown” were set as missing values. All other responses were considered not first-generation.</p>
 </div>
 </div>
 <p><strong>Summary: </strong> A total of 1892 (93.8%) students reported first-generation status. As stated above, this outcome is not surprising because students in this study were either enrolled in EOP or EOPS, and both programs recruit students with first-generation status.</p>
+<p><br></p>
 
 
 </section>
@@ -360,13 +369,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

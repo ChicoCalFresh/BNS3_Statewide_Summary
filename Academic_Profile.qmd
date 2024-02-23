@@ -1,22 +1,40 @@
 ---
 title: "Academic Profile"
-crossref:
-  chapters: true
-  fig-title: 'Figure'
-  tbl-title: 'Table'
-  fig-labels: arabic
-  title-delim: ":"
+format:
+  html:
+    anchor-sections: false
 ---
 
 
 ```{r, include=FALSE}
 source("common_code.R")
+
+# Print the next figure number
+currentFigure <- 0
+NextFigure <- function() {
+  # Increment the figure number
+  currentFigure <<- currentFigure + 1
+  
+      # -------- Set figure and section number --------
+  paste("Figure 2.", currentFigure, ":", sep = "")
+}
+
+# Print the next Table number
+currentTable <- 0
+NextTable <- function() {
+  # Increment the table number
+  currentTable <<- currentTable + 1
+  
+      # -------- Set Table and section number --------
+  paste("Table 2.", currentTable, ":", sep = "")
+}
+
 ```
 
 
-Students were asked to report academic information. This includes information such as what college they are currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of students they are (transfer, international, etc.). 
+Students were asked to report information relating to their academics. This includes information such as what college they were currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of students they identify as (transfer, international, etc.). 
 
-*As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n count for every survey question reflects the total number of non-missing responses while the percentage reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
 
 
@@ -83,8 +101,7 @@ tmp <- tmp %>%
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
-#| label: fig-school
-#| fig-cap: !expr sprintf("Survey Participants by Campus (n=12) %s", print_n_reporting('school'))
+#| fig-cap: !expr sprintf("%s Survey Participants by Campus %s", NextFigure(), print_n_reporting('school'))
 
 # come back to this with Robin. -- must 
 ggplot(tmp, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() + 
@@ -99,9 +116,9 @@ ggplot(tmp, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() +
 
 **Survey Question: ** *Which campus do you attend?*
 
-**Additional Notes: ** The University of California (UC) campus (n=1) is shown in blue, while the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow.
+**Additional Notes: ** The University of California (UC) campus (n=1) is shown in blue, the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow (n = 12 campuses total).
 
-**Summary: ** A total of `r count_and_percent(tmp$sector, "CSU")`, `r count_and_percent(tmp$sector, "CCC")` and `r count_and_percent(tmp$sector, "UC")` college students were enrolled in CSU, CCC and UC campuses, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS). As of Fall 2020, there were 31,553 students in the CSU EOP.
+**Summary: ** A total of `r count_and_percent(tmp$sector, "CSU")`, `r count_and_percent(tmp$sector, "CCC")` and `r count_and_percent(tmp$sector, "UC")` college students were enrolled in CSU, CCC and UC campuses, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS) in the CCC systems.
 
 
 <br>
@@ -115,8 +132,7 @@ ggplot(tmp, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() +
 ```{r}
 #| fig-height: 4.5
 #| fig-width: 5.5
-#| label: fig-academic_level
-#| fig-cap: !expr sprintf("Student Academic Level %s", print_n_reporting('q15'))
+#| fig-cap: !expr sprintf("%s Student Academic Level %s", NextFigure(), print_n_reporting('q15'))
 bns$q15 <- recode(bns$q15,
               "Freshman (0-29 semester units or 0-44 quarter units)" = "Freshman",
               "Sophomore (30-59 semester units or 45-89 quarter units)" = "Sophmore",
@@ -129,7 +145,7 @@ plot_frq(bns$q15, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xl
 
 **Survey Question: ** *Estimate your class standing by units completed (do not include units from this semester/quarter):*
 
-**Summary: ** The statewide survey captures students of all class standing. Of the `r sum(table(bns$q15))` students reporting, `r get_count_and_percent(bns$q15, "Freshman")` were freshmen, `r get_count_and_percent(bns$q15, "Sophmore")` were sophmores, `r get_count_and_percent(bns$q15, "Junior")` were juniors, and `r get_count_and_percent(bns$q15, "Senior")` were seniors.
+**Summary: ** The statewide survey captures undergraduate students of all class standing. Of the `r sum(table(bns$q15))` students reporting, `r get_count_and_percent(bns$q15, "Freshman")` were freshmen, `r get_count_and_percent(bns$q15, "Sophmore")` were sophmores, `r get_count_and_percent(bns$q15, "Junior")` were juniors, and `r get_count_and_percent(bns$q15, "Senior")` were seniors.
 
 <br>
 
@@ -138,8 +154,7 @@ plot_frq(bns$q15, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xl
 ```{r}
 #| fig-height: 6
 #| fig-width: 8.5
-#| label: fig-major
-#| fig-cap: !expr sprintf("Academic Majors %s", print_n_reporting('q16'))
+#| fig-cap: !expr sprintf("%s Academic Majors %s", NextFigure(), print_n_reporting('q16'))
 bns <- bns %>% mutate(q16=recode(q16, 
                                  "Science, Technology, Engineering and Math (STEM) (Includes Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition)" = "Science, Technology, Engineering and Math (STEM)"))
 
@@ -152,7 +167,7 @@ plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sor
 **Additional Notes: ** Science, Technology, Engineering and Math (STEM) was shortened for the figure above, but also includes the following majors: Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition.
 
 
-**Summary: ** A total of `r count_and_percent(bns$q16, "Public Health, Social Services, Social Science, and Education")` students were majoring in a `r names(sort(table(bns$q16), decreasing=TRUE)[1])` program, while `r count_and_percent(bns$q16, "Science, Technology, Engineering and Math (STEM)")` students majored in `r names(sort(table(bns$q16), decreasing=TRUE)[2])`.
+**Summary: ** A total of `r count_and_percent(bns$q16, "Public Health, Social Services, Social Science, and Education")` students were majoring in a Public Health, Social Services, Social Science, or Education program, while `r count_and_percent(bns$q16, "Science, Technology, Engineering and Math (STEM)")` students majored in `r names(sort(table(bns$q16), decreasing=TRUE)[2])`. 
 
 <br>
 
@@ -161,8 +176,7 @@ plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sor
 ```{r}
 #| fig-height: 4
 #| fig-width: 5.5
-#| label: fig-GPA
-#| fig-cap: !expr sprintf("GPA %s", print_n_reporting('q17'))
+#| fig-cap: !expr sprintf("%s Reported GPA %s", NextFigure(), print_n_reporting('q17'))
 bns$gpa_fac <- cut(bns$q17, breaks = c(0, 1.5, 2.0, 2.5, 3.0, 3.5, 5.0), labels = c("1.5 or less", "1.51-2.0", "2.01-2.5", "2.51-3.0", "3.01-3.5", "3.51 or above"), ordered_result = TRUE, include.lowest = TRUE)
 
 plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Number of Students")
@@ -171,7 +185,7 @@ plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Number of 
 **Survey Question: ** *What is your approximate overall grade point average (GPA)? Remember that your GPA is on a scale from 0 to 4.0.*
 
 
-**Summary: ** The average overall GPA for students was `r round(mean(bns$q17, na.rm = TRUE), 2)`, while the median was `r round(median(bns$q17, na.rm = TRUE), 2)`. The majority (`r percent(sum(prop.table(table(bns$gpa_fac))[5:6]), accuracy = .1)`) of students had a GPA greater than 3.0.
+**Summary: ** The average overall GPA for students was `r round(mean(bns$q17, na.rm = TRUE), 2)`, while the median was `r round(median(bns$q17, na.rm = TRUE), 2)`. A total of `r get_count_and_percent3(bns$q17, 3)` students had a GPA greater than or equal to 3.0, and `r get_count_and_percent3(bns$q17, 3.7)` had a GPA greater than or equal to 3.7.
 
 <br>
 
@@ -180,8 +194,7 @@ plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Number of 
 ```{r}
 #| fig-height: 3.4
 #| fig-width: 7
-#| label: fig-units
-#| fig-cap: !expr sprintf("Enrolled Units %s", print_n_reporting('q18'))
+#| fig-cap: !expr sprintf("%s Enrolled Units %s", NextFigure(), print_n_reporting('q18'))
 bns$q18 <- round(bns$q18, 0) # Rounded non-integers to integers
 bns$full_time <- ifelse(bns$q18 >= 12, "Yes", "No")
 bns$units_binned <- cut(bns$q18, breaks = c(0, 6, 9, 12, 15, 18, 21, 1000), labels = c("6 or less", "7-9", "10-12", "13-15", "16-18", "19-21", "22+"), ordered_result = TRUE, include.lowest = TRUE)
@@ -191,7 +204,7 @@ plot_frq(bns$units_binned, geom.colors = plot_color) + xlab('Units') + ylab("Num
 
 **Survey Question: ** *How many units are you currently taking?*
 
-**Summary: ** Student were enrolled in an average of `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median units enrolled in were `r median(bns$q18, na.rm = TRUE)`. A total of `r get_count_and_percent(bns$full_time, "Yes")` students were considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the most common response and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second most common.
+**Summary: ** Student were enrolled in an average of `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median was `r median(bns$q18, na.rm = TRUE)`. A total of `r get_count_and_percent(bns$full_time, "Yes")` students were considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the most common response and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second most common.
 
 <br>
 
@@ -199,8 +212,7 @@ plot_frq(bns$units_binned, geom.colors = plot_color) + xlab('Units') + ylab("Num
 ## I identify as...
 
 ```{r}
-#| label: tbl--academic_identifiers
-#| tbl-cap: !expr sprintf("Academic Identiers")
+#| tbl-cap: !expr sprintf("%s Academic Identiers", NextTable())
 
 questions <- c(paste0('q14_', 1:4), paste0('q14_', 5:12))
 rnames <- c("A Transfer Student", "LGBTQA+", "A student with a disability", 

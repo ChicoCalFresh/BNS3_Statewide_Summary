@@ -1,28 +1,34 @@
 ---
 title: "Exploring Patterns of Basic Needs in College Students"
-format: 
+format:
   html:
-    toc: FALSE
+    anchor-sections: false
 ---
+
+```{r, include=FALSE}
+source("common_code.R")
+```
 
 ## Overview
 
-Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately effect student success. The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) at 13 colleges across the CSU, CCC and UC systems from November 25$^{th}$, 2020 to March 24$^{th}$, 2021.
+Food insecurity among college students is a serious problem that can impact student performance in the classroom and ultimately affect student success. The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) or the Extended Opportunity Programs and services (EOPS) at 12 colleges across the CSU, CCC and UC systems from 2022 to 2023.
 
-The EOP office assisted in the recruitment and provided computers for students to take the survey. Participants were given a \$25 gift card for their participation. EOP students were identified as the target population for this survey based upon their low-income and first-generation student status, which indicates a higher probability of CalFresh eligibility.
+EOP/EOPS offices assisted in the recruitment by emailing interest form links to their EOP/EOPS students. Students who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criteria when determining CalFresh eligibility) were then emailed a survey. Participants were given a \$25 gift card incentive for completing the survey. EOP/EOPS students were identified as the target population for this survey based on their low-income and first-generation student status, which indicates a higher probability of using CalFresh and being likely eligible for CalFresh.
 
-The purpose of this second cross-sectional pilot study (update) was to revise the BNS3 tool and validate student perception of the following:
+The main purpose of this third cross-sectional study was to evaluate the following:
 
-1.  The impact of receiving [CalFresh](https://www.csuchico.edu/calfresh/index.shtml) assistance.
-2.  The impact of utilization of the campus food pantry on their health, nutrition, cooking confidence, time management and academic performance.
+1.  The impact of receiving [CalFresh](https://www.csuchico.edu/calfresh/index.shtml) benefits
+2. Barriers to applying to CalFresh
+3. College student food insecurity
+4. The impact of and barriers to using food pantries
 
 This report provides a top level descriptive analysis of each question in the survey. Researchers and campus staff are encouraged to review the information in this analysis to formulate additional research questions and hypotheses.
 
 ## Participants
 
-We surveyed 2,110 EOP students from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU Los Angeles, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.
+We surveyed 2,110 EOP/EOPS students in California from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU Los Angeles, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.
 
-**Disclaimer on Missing Data:** Students were allowed to select answers such as "Prefer not to answer" or "I don't know" as responses to every question asked. These answers were then converted to missing values, denoted as *NA*, and this is the cause of the missing data for certain questions (not 100% of respondents reporting). The total number of non-missing responses (and percentage of the total data) are provided for each question.
+**Disclaimer on Missing Data:** *Students had the option to select "Prefer not to answer" for all questions or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
 <br />
 

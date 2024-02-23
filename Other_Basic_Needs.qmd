@@ -1,0 +1,245 @@
+---
+title: "Other Basic Needs"
+editor: visual
+---
+
+```{r, include=FALSE}
+source("common_code.R")
+```
+
+## Basic Needs
+
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+questions <- bns %>% select(starts_with("q46_"))
+
+questions <-
+  questions %>% mutate(across(everything(), function(x)
+    fct_relevel(
+      x,
+      "Never heard of it",
+      "Heard of it, but never used it",
+      "Used it before attending college",
+      "Used it in the past as a college student",
+      "Currently use as a college student"
+    )))
+
+names(questions) <-
+  c(
+    'CalFresh (also known as Food Stamps or SNAP benefits)',
+    'Campus food pantry (e.g., food, toiletries, feminine products)',
+    'Medi-Cal',
+    'Emergency Housing Services'
+  )
+plot_likert(
+  questions,
+  grid.range = c(1.3, 1.3),
+  wrap.legend.labels = 20,
+  expand.grid = FALSE,
+  values = "sum.outside",
+  catcount = 5,
+  geom.colors = likert.pal.5,
+  show.prc.sign = TRUE,
+  reverse.scale = TRUE
+) + theme_bw() + theme(legend.position = "top")
+```
+
+## Food Pantry - Impact
+
+**For the following questions, please choose how much you agree or disagree with the impact campus food pantries has or had on your life. While I utilized campus food pantry/pantries:**
+
+```{r}
+#| fig-height: 8
+#| fig-width: 8.5
+questions <- bns %>% select(starts_with("q55_"))
+names(questions) <- c('I worked fewer hours each week in a PAID position.',
+                      'I had more time to do an UNPAID internship or volunteer work.',
+                      'I had more money to pay for bills (rent, utility bills, clothes, etc.).',
+                      'I had more money for entertainment and social activities.',
+                      'I shopped more frequently at the farmers market.',
+                      'I had learned more about healthier foods.',
+                      'I purchased healthier foods.',
+                      'I cooked more frequently at home.',
+                      'I consumed a healthier diet.',
+                      'I consumed less fast food.',
+                      'I consumed fewer processed foods.',
+                      'I consumed fewer sugar-sweetened beverages like soda and energy drinks.',
+                      'I consumed less alcohol or fewer alcoholic beverages.',
+                      'I concentrated more in class(es).',
+                      'My grades had improved.',
+                      'My grades had decreased.',
+                      'I kept up with course materials.',
+                      'I had more time to go to my professors office hours and tutoring services when needed.',
+                      'I had more time to attend all classes as they are scheduled.',
+                      'I had more time to go on field trips or internships.',
+                      'My sleep quality had improved.',
+                      'My stress/anxiety level had decreased.')
+plot_likert(questions[1:11],
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+
+plot_likert(questions[12:22],
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+<br>
+
+## Food Pantry - Barrier
+
+**What are the reasons for you to not go to campus food pantries? (Select all that apply).**
+
+```{r}
+ question <- "no_pantry"
+ qlabel <- c("My family doesn't want me to go to campus food pantries or local food banks.",
+             'I am embarrassed or scared to go to the campus food pantries or local food banks.',
+             'I do not believe in using campus food pantries or local food banks.',
+             "Inconvenient to access due to lack of transportation or out-of-the way location.",
+             'Inconvenient times of operation/limited pantry hours.',
+             'I feel other students need the food more than I do.',
+             'I am not aware of any campus food pantries or local food banks.',
+             'There are no food pantries close to campus or my residence.',
+             'Other', 
+             "I don't need to use campus food pantries.", 
+             'I feel uncomfortable about receiving help with basic needs, like food.',
+             'I would think less of myself If I went to campus food pantries or local food banks.',
+             "I don't want my friends to find out I go to campus food pantries or local food banks.",
+             'My friends and peers would think less of me if I went to campus table(food pantries or local food banks.')
+ 
+ pantry_vars <- prep_binary_vars(question, qlabel)
+
+# Plot table of Percentages
+ pantry_vars %>% 
+   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+   kable() %>% kable_styling(bootstrap_options = "striped")
+```
+
+<br>
+
+## Medi-Cal - Impact
+
+**For the following questions, please choose how much you agree or disagree with the impact Medi-Cal has or had on your life. Knowing that you have Medi-Cal:**
+
+```{r}
+#| fig-width: 8.5
+questions <- bns %>% select(starts_with("q59_"))
+names(questions) <- c("My mental health has improved.",
+                      "My physical health has improved.",
+                      "My sleep quality had improved.",
+                      "My stress/anxiety level had decreased.")
+                      
+
+plot_likert(questions,
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+<br>
+
+## Medi-Cal - Barriers
+
+**What are the reasons you do not have Medi-Cal or have never used Medi-Cal? (Select all that apply).**
+
+```{r}
+ question <- "no_medical"
+ qlabel <- c("I don’t need Medi-Cal.",
+             "I do not know what Medi-Cal is or I think I already have health insurance.",
+             "I only need medical services at the student health center associated with my campus.",
+             "No time to complete the Medi-Cal application/Medi-Cal application is too long.",
+             "The Medi-Cal application is too difficult to complete.",
+             "I do not think I am eligible for Medi-Cal.",
+             "I have heard from other students that it is not worth my time because I wont be eligible.",
+             "My family or household does not want me to apply for Medi-Cal.",
+             "I am embarrassed or ashamed to apply for Medi-Cal.",
+             "I don’t believe in social services like Medi-Cal, CalFresh, WIC, or Welfare/Cash Aid.",
+             "Other",
+             "I feel uncomfortable about receiving help with basic needs, like food.",
+             "I would think less of myself If I went to campus food pantries or local food banks.",
+             "I don't want my friends to find out I go to campus food pantries or local food banks.",
+             "My friends and peers would think less of me if I went to campus table(food pantries or local food banks.")
+ 
+ medical_vars <- prep_binary_vars(question, qlabel)
+ 
+ # Plot table of Percentages
+ medical_vars %>% 
+   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+   kable() %>% kable_styling(bootstrap_options = "striped")
+```
+
+<br>
+
+## Emergency Housing Services - Impact
+
+**For the following questions, please choose how much you agree or disagree with the impact Emergency Housing Services have or had on your life. Because I received Emergency Housing Services:**
+
+```{r}
+#| fig-height: 8
+#| fig-width: 8.5
+questions <- bns %>% select(starts_with("q62_"))
+names(questions) <- c('I concentrated more in class(es).',
+                      'My grades had improved.',
+                      'My grades had decreased.',
+                      'I kept up course materials.',
+                      'I had more time to go to my professors’ office hours and tutoring services when needed.',
+                      'I had more time to attend all classes as they are scheduled.',
+                      'I had more time to go on field trips or internships.',
+                      'My sleep quality had improved.',
+                      'My stress/anxiety level had decreased.',
+                      'I’m less concerned about housing issues.',
+                      'I felt more confident in my ability to maintain healthy relationships.')
+
+plot_likert(questions,
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+```
+
+<br>
+
+## Emergency Housing Services - Barriers
+
+**What are the reasons you do not use Emergency Housing Services or have never used Emergency Housing Services? (Select all that apply)**
+
+```{r}
+ question <- "no_ehs"
+ qlabel <- c("I don’t need Emergency Housing Services",
+             "I was not aware that my campus had Emergency Housing Services like grants and housing placements in an emergency.",
+             "No time to complete the Emergency Housing application or contact the Emergency Housing Staff.",
+             "The Emergency Housing Services application is too difficult to complete.",
+             "The emergency housing grant/money is not enough to support what I need, so not worth my time to apply for it.",
+             "I am embarrassed or ashamed to apply for Emergency Housing Services.",
+             "I do not believe in social services like Emergency Housing Services, Medi-Cal, CalFresh, or Welfare/Cash Aid.",
+             "Other", 
+             "I feel uncomfortable about receiving help with basic needs, like housing.",
+             "I would think less of myself if I applied for Emergency Housing Services.",
+             "I don't want my friends to find out that I applied for emergency housing services.",
+             "My friends and peers would think less of me if I applied for emergency housing services.")
+             
+ 
+ ehs_vars <- prep_binary_vars(question, qlabel)
+ 
+ # Plot table of Percentages
+ ehs_vars %>% 
+   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+   kable() %>% kable_styling(bootstrap_options = "striped") %>% column_spec(2, width='3.5cm')
+```

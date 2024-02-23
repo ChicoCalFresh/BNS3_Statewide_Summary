@@ -33,7 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -83,14 +82,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Demographics.html" rel="" target="">
- <span class="menu-text">Demographics</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-demographics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Demographics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-demographics">    
+        <li>
+    <a class="dropdown-item" href="./Demographics.html" rel="" target="">
+ <span class="dropdown-text">Personal Demographics</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Academic_Profile.html" rel="" target="">
- <span class="menu-text">Academic Profile</span></a>
+        <li>
+    <a class="dropdown-item" href="./Academic_Profile.html" rel="" target="">
+ <span class="dropdown-text">Academic Profile</span></a>
   </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link active" href="./Workload.html" rel="" target="" aria-current="page">
  <span class="menu-text">Workload</span></a>
@@ -102,6 +108,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./CalFresh.html" rel="" target="">
  <span class="menu-text">CalFresh</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Other_Basic_Needs.html" rel="" target="">
+ <span class="menu-text">Other Basic Needs</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Food_Security.html" rel="" target="">
@@ -165,121 +175,121 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Students were asked to report information regarding their workload. This includes work from both paid/unpaid jobs, academic work, as well as time spent caregiving for a family member.</p>
-<p><em>As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n count for every survey question reflects the total number of non-missing responses while the percentage reflects the percent of non-missing responses.</em></p>
+<p>Students were asked to report information regarding their workload. This includes work from both paid/unpaid jobs, academic work, as well as time spent caregiving for any family members.</p>
+<p><em>As a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.</em></p>
 <section id="weekly-paid-work-hours" class="level2">
-<h2 class="anchored" data-anchor-id="weekly-paid-work-hours">Weekly Paid Work Hours</h2>
+<h2 data-anchor-id="weekly-paid-work-hours">Weekly Paid Work Hours</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-paid_work_hours" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Workload_files/figure-html/fig-paid_work_hours-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Weekly Paid Work Hours (n=1930, 91% of 2110 reporting)</figcaption>
+<p><img src="Workload_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 3.1: Weekly Paid Work Hours (n=1930, 91% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question:</strong> <em>Estimate the number of hours you work in a PAID job (e.g.&nbsp;server at a restaurant, office assistant, etc.) or paid internship (e.g.&nbsp;training, shadowing, or practicum) per week.</em></p>
-<p><strong>Summary:</strong> Students reported a wide range of paid work hours per week, with an average of 14.67 and median of 13. The majority of students worked either part-time or not at all. Only a small number of students (277) are considered to be working full-time (32 or more hours per week).</p>
+<p><strong>Summary:</strong> Students reported a wide range of paid work hours per week with an average of 14.67 hours (denoted by the dotted line) and a median of 13. The majority of students worked either part-time or not at all. Only 198 (10.3%) students were considered to be working full-time (40 or more hours per week).</p>
 <p><br></p>
 </section>
 <section id="impact-of-covid" class="level2">
-<h2 class="anchored" data-anchor-id="impact-of-covid">Impact of COVID</h2>
+<h2 data-anchor-id="impact-of-covid">Impact of COVID</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-q20" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Workload_files/figure-html/fig-q20-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Impact of COVID (n=1852, 88% of 2110 reporting)</figcaption>
+<p><img src="Workload_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption class="figure-caption">Figure 3.2: Impact of COVID (n=1852, 88% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question:</strong> <em>Have the hours you work in a PAID job or internship changed due to COVID-19?</em></p>
-<p><strong>Summary:</strong> A total of 536 (28.9%) students reported either not working prior to COVID while 504 (27.2%) reported that their hours have not changed because of COVID. There were also 388 (21.0%) students that had their hours decrease, 299 (16.1%) get_count_and_percent(bns$q20, ‘Yes, my hours have increased and I still have a job or I have a new job.’) that lost their job/internship, and that had their hours increased.</p>
+<p><strong>Summary:</strong> A total of 536 (28.9%) students reported not working prior to COVID while 504 (27.2%) reported that their hours have not changed due to COVID. There were 388 (21.0%) students that had their hours decreased, 299 (16.1%) that no longer had a job/internship, and 125 (6.7%) that had their hours increased.</p>
 <p><br></p>
 </section>
 <section id="unpaid-work-hours" class="level2">
-<h2 class="anchored" data-anchor-id="unpaid-work-hours">Unpaid Work Hours</h2>
+<h2 data-anchor-id="unpaid-work-hours">Unpaid Work Hours</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-unpaid_work_hours" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Workload_files/figure-html/fig-unpaid_work_hours-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: Unpaid Work Hours (n=1806, 86% of 2110 reporting)</figcaption>
+<p><img src="Workload_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 3.3: Unpaid Work Hours (n=1806, 86% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question:</strong> <em>Estimate the number of hours you work in an UNPAID internship (e.g.&nbsp;training, shadowing, practicum, and/or volunteer, etc.) per week. Do not combine with answers above.</em></p>
-<p><strong>Summary:</strong> The average number of unpaid work hours were 24.6. The majority of students (1387, 65.7%) did not work an unpaid internship while 212 (10%) students reported working 10 or more unpaid hours every week.</p>
+<p><strong>Summary:</strong> The average number of unpaid work hours was 2.8 (denoted by the dotted line) and the median was 0. A total of 1387 (76.8%) students did not work at an unpaid job/internship while 212 (11.7%) students reported working 10 or more unpaid hours every week.</p>
 <p><br></p>
 </section>
 <section id="unpaid-caregiving-hours" class="level2">
-<h2 class="anchored" data-anchor-id="unpaid-caregiving-hours">Unpaid Caregiving Hours</h2>
+<h2 data-anchor-id="unpaid-caregiving-hours">Unpaid Caregiving Hours</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-caregiving_hours" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Workload_files/figure-html/fig-caregiving_hours-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;4: Unpaid Caregiving Hours (n=1880, 89% of 2110 reporting)</figcaption>
+<p><img src="Workload_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 3.4: Unpaid Caregiving Hours (n=1880, 89% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question:</strong> <em>Estimate the number of hours you spend each week on UNPAID family obligations (e.g.&nbsp;taking care of younger siblings, preparing family meals, running errands for the family, etc.) per week.</em></p>
-<p><strong>Summary:</strong> The majority of students (1449, 68.7%) spend some time each week caring for family members. A total of 431 (22.9%) students reported spending zero hours per week on family obligations, while 232 (11%) reported spending over 40 hours each week.</p>
+<p><strong>Summary:</strong> A total of 1449 (77.1%) students spent time each week caring for family members with an average of 20.33 hours (denoted by the dotted line) and a median of 10. There were 431 (22.9%) students that reported spending zero hours per week on family obligations, while 351 (18.7%) reported spending 40 or more hours each week.</p>
 <p><br></p>
 </section>
 <section id="academic-workload" class="level2">
-<h2 class="anchored" data-anchor-id="academic-workload">Academic Workload</h2>
+<h2 data-anchor-id="academic-workload">Academic Workload</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-q18" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Workload_files/figure-html/fig-q18-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;5: Academic Workload (n=2090, 99% of 2110 reporting)</figcaption>
+<p><img src="Workload_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 3.5: Academic Workload (n=2090, 99% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Survey Question:</strong> <em>How many units are you currently taking?</em></p>
 <p><strong>Additional Notes:</strong> The hours of academic work per week were estimated by assuming 3 hours of work per unit.</p>
-<p><strong>Summary:</strong> The average number of academic hours worked per week (denoted by the dotted line) was 38.6 hours, while the median was 39 hours. The most common value was 36 hours (n = 502, 23.8%) and the second most common was 45 hours (n = 464, 22%).</p>
+<p><strong>Summary:</strong> The average number of academic hours worked per week was 38.6 hours (denoted by the dotted line), while the median was 39. A total of 969 (46.4%) students spent 40 or more hours per week on academic work.</p>
 <p><br></p>
 </section>
 <section id="non-academic-workload" class="level2">
-<h2 class="anchored" data-anchor-id="non-academic-workload">Non-Academic Workload</h2>
+<h2 data-anchor-id="non-academic-workload">Non-Academic Workload</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-NonAcademic" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Workload_files/figure-html/fig-NonAcademic-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;6: Non-Academic Workload (n=1992, 94% of 2110 reporting)</figcaption>
+<p><img src="Workload_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 3.6: Non-Academic Workload (n=1751, 83% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>Survey Question:</strong> <em>This variable was derived from the questions in <a href="#fig-paid_work_hours">Figure&nbsp;1</a>, <a href="#fig-unpaid_work_hours">Figure&nbsp;3</a>, and <a href="#fig-caregiving_hours">Figure&nbsp;4</a>.</em></p>
-<p><strong>Additional Notes:</strong> Total non-academic workload was computed by taking the sum of students’ paid work hours, unpaid work hours and caregiving hours.</p>
-<p><strong>Summary:</strong> The average number of total hours worked per week in non-academic work (denoted by the dotted line) was 35.98, while the median was 30 hours. The most common value was 0 hours (n = 258, 12.2%) and the second most common was 40 hours (n = 121, 5.7%).</p>
+<p><strong>Survey Question:</strong> <em>This variable was derived by taking the sum of students’ paid work hours, unpaid work hours, and caregiving hours.</em></p>
+<p><strong>Additional Notes:</strong> Total workload was calculated only for students who reported their paid work hours, unpaid work hours, and caregiving hours.</p>
+<p><strong>Summary:</strong> The average total number of hours worked per week in non-academic matters was 36.72 hours (denoted by the dotted line), while the median was 30 hours. A total of 708 (40.4%) students spent 40 or more hours per week on non-academic work.</p>
 <p><br></p>
 </section>
 <section id="total-workload" class="level2">
-<h2 class="anchored" data-anchor-id="total-workload">Total Workload</h2>
+<h2 data-anchor-id="total-workload">Total Workload</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-TotalHours" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Workload_files/figure-html/fig-TotalHours-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;7: Non-Academic Workload (n=2100, 100% of 2110 reporting)</figcaption>
+<p><img src="Workload_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figure 3.7: Non-Academic Workload (n=1743, 83% of 2110 reporting)</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>Survey Question:</strong> <em>This variable was derived from the questions in <a href="#fig-paid_work_hours">Figure&nbsp;1</a>, <a href="#fig-unpaid_work_hours">Figure&nbsp;3</a>, <a href="#fig-caregiving_hours">Figure&nbsp;4</a>, and <a href="#fig-q18">Figure&nbsp;5</a>.</em></p>
-<p><strong>Additional Notes:</strong> Total non-academic workload was computed by taking the sum of students’ paid work hours, unpaid work hours, caregiving hours, and hours spent from academic activities (assuming 3 hours per unit taken).</p>
-<p><strong>Summary:</strong> The average number of total hours worked per week (denoted by the dotted line) was 72.52, while the median is 68 hours. The most common value was 45 hours (n = 83, 3.9%) and the second most common was 36 hours (n = 81, 3.8%).</p>
+<p><strong>Survey Question:</strong> <em>This variable was derived by taking the sum of students’ paid work hours, unpaid work hours, caregiving hours, and hours spent from academic activities (assuming 3 hours per unit taken).</em></p>
+<p><strong>Additional Notes:</strong> Total workload was calculated only for students who reported their paid work hours, unpaid work hours, caregiving hours, and units.</p>
+<p><strong>Summary:</strong> The average number of total hours worked per week was 75.47 hours (denoted by the dotted line) while the median was 70 hours. A total of 1597 (91.6%) students spent 40 or more hours per week on academic and non-academic work, while 635 (36.4%) spent 80 or more hours.</p>
 <p><br></p>
 
 
@@ -306,13 +316,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
