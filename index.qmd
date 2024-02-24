@@ -7,6 +7,40 @@ format:
 
 ```{r, include=FALSE}
 source("common_code.R")
+library(maps)
+library(dplyr)
+library(ggplot2)
+
+# 1) Create Vector of Names of Schools
+Names <- c("Allan Hancock CC (n = 108)", "Butte CC (n = 124)" ,
+           "Mt. SAC CC (n = 247)", "Clovis CC (n = 136)", 
+           "Palo Verde CC (n = 35)",
+           "Cal State San Bernardino (n = 183)", 
+           "CSU Bakersfield (n = 105)", "Sacramento State (n = 240)",
+           "CSU Dominguez Hills (n = 56)", 
+           "San Francisco State (n = 250)", 
+           "Cal State LA (n = 320)", "UC Berkeley (n = 167)", NA)
+
+
+# 2) Set Lat (from Google Maps)
+Lat <- c(34.944806751448446, 39.64865964609286, 34.04908827552049, 36.8881247883413, 33.661194382241, 34.181456718923286, 35.3488035843719, 38.56494552780801, 33.862538254060354, 37.72428800979904, 34.0664952125493, 37.87032035949273, NA)
+
+# 3) Set Long (from Google Maps)
+Long <- c(-120.41904099310837, -121.6448880602949, -117.84283323764328,  -119.73237338219428,  -114.6528941759761,  -117.3231769109331, -119.1034047186511, -121.42779950825016,  -118.25447517782001, -122.48003539894094, -118.1684245606096,
+          -122.25952497759987, NA)
+
+# 4) Merge Vectors as data frame
+coord_data <- cbind(Names, Lat, Long) %>% as.data.frame()
+
+
+# 5) load California map as data set
+cali_map <- map_data("state") %>% filter(region == "california")
+
+
+# 6) Merge California map data and our school data
+map_and_data <- merge(cali_map, coord_data)
+
+
 ```
 
 ## Overview
@@ -26,7 +60,23 @@ This report provides a top level descriptive analysis of each question in the su
 
 ## Participants
 
-We surveyed 2,110 EOP/EOPS students in California from Allan Hancock Community College, Butte Community College, Clovis Community College, Mt. SAC Community College, Palo Verde Community College, CSU Bakersfield, CSU Dominguez Hills, CSU Los Angeles, CSU Sacramento, CSU San Bernadino, CSU San Francisco, and UC Berkeley.
+A total of 2,110 EOP/EOPS students in California were surveyed from the following campuses:
+
+```{r, fig.width=7, fig.height=4}
+
+
+ggplot() + 
+  geom_polygon(data=map_and_data, aes(x=long, y=lat, group=group),
+                color="black", fill= CF_green) + 
+  geom_point(aes(Long, Lat)) +
+  ggrepel::geom_label_repel(aes(x = Long, 
+                      y = Lat, 
+                      label = Names)) + 
+  theme_void() 
+
+```
+
+
 
 **Disclaimer on Missing Data:** *Students had the option to select "Prefer not to answer" for all questions or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
