@@ -161,7 +161,7 @@ plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plo
 
 **Additional Notes: ** Only county workers have the authority to determine official eligibility for CalFresh. These eligibility rates were estimated based on self-reported household size and income. Below is a list of eligibility criteria for students:  
 
-- Meets household size/income requirements from the [Department of Social Services](https://www.cdss.ca.gov/inforesources/cdss-programs/calfresh/eligibility-and-issuance-requirements#income).
+- Meets household size/income requirements from the California Department of Social Services.
 - The person is either a U.S. citizen or lawful permanent resident.\
 - If the person is between the ages of 18 to 49, and is at least a part-time student (enrolled in six or more units), then this person is classified as a student by the California Department of Social Services and needs to meet the following additional criteria: 
   -   Does not get more than half of their meals from meals plans (less than 11 per week).\ **(All students from this study met this criteria as this was one of the inclusion criteria to take the survey)**

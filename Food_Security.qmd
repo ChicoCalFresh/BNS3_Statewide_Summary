@@ -30,9 +30,7 @@ NextTable <- function() {
 
 ```
 
-Students were screened for food insecurity using a two-item version of the USDA's screener for food insecurity [^1]. Additionally, students were asked how they handled situations when they had run out of money for food, if applicable. 
-
-[^1]: [USDA's screener for food insecurity](https://www.ers.usda.gov/media/8279/ad2012.pdf)
+Students were screened for food insecurity using a two-item version of the USDA's screener for food insecurity. Additionally, students were asked how they handled situations when they had run out of money for food, if applicable. 
 
 
 *As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
@@ -132,6 +130,7 @@ food_vars %>%
 <br>
 
 
+[^1]: [USDA's screener for food insecurity](https://www.ers.usda.gov/media/8279/ad2012.pdf)
 
 
 

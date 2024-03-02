@@ -234,6 +234,6 @@ plot_likert(questions,
 
 <br />
 
-[^1]: This question was developed by the [American College Health Association’s (ACHA) National College Health Assessment ](https://www.acha.org/documents/ncha/ACHA-NCHA_IIc_Web_Survey_2011_SAMPLE.pdf) (NCHA).
+[^1]: This question was developed by the [American College Health Association’s (ACHA) National College Health Assessment](https://www.acha.org/documents/ncha/ACHA-NCHA_IIc_Web_Survey_2011_SAMPLE.pdf) (NCHA).
 [^2]: These questions were developed by the [National Institute on Alcohol Abuse and Alcoholism (NIAAA)](https://pubs.niaaa.nih.gov/publications/aa65/AA65.pdf) screening tool.
 [^3]: These questions were developed by the [Share Our Strength’s Cooking Matters survey tool](https://foodsharelc.org/wp-content/uploads/2019/07/2017-Survey.CMF_.English.pdf) (a USDA-SNAP-Ed approved survey).

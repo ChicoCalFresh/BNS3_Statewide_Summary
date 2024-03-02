@@ -66,7 +66,7 @@ plot_frq(bns$q24, geom.colors = plot_color, ylim=c(0,1800)) + xlab('') + ylab("N
 #| tbl-cap: !expr sprintf("%s Current Housing Status %s", NextTable(), print_n_reporting('q25'))
 ## see if you can convert this to binary_table
 
-cnames <- c('Current Housing Status', 'Yes (%)')
+cnames <- c('Current Housing Status:', 'Yes (%)')
 # qs <- unique(bns[['q25']]) %>% na.omit()
 qs <- names(table(bns$q25))
 
@@ -158,7 +158,7 @@ get.na.vars <- prep_binary_vars(question = questions_na,
 
 full_join(get.month.vars, get.year.vars) %>%
   full_join(get.na.vars) %>% 
-  rename(Location = xlab) %>%
+  rename("Location:" = xlab) %>%
   kable(align = c("l","c", "c", "c")) %>% 
   kable_styling(bootstrap_options = "striped") %>% 
   column_spec(1, width='8cm')
@@ -195,7 +195,7 @@ bns <- bns %>% mutate(housing_table1 = housing_insecure,
 housing_prep <- prep_binary_vars("ousing_table", housing_names)
 
 housing_prep %>%
-  select(Measure = xlab, "Yes (%)" = pct_lab) %>%
+  select("Classification:" = xlab, "Yes (%)" = pct_lab) %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 
 # bns %>% 
@@ -238,7 +238,7 @@ qlabel <- c("Lack of co-signer",
             "I have not experienced barriers related to accessing housing")
 
 prep_binary_vars(question, qlabel) %>%
-  select("Housing Barriers" = xlab, "Yes (%)" = pct_lab) %>%
+  select("Housing Barriers:" = xlab, "Yes (%)" = pct_lab) %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
@@ -352,7 +352,7 @@ ch_barrier_vars <- prep_binary_vars(question, qlabel)
 
 # Plot table of Percentages
 ch_barrier_vars %>%
-  select(Measure = xlab, "Yes (%)" = pct_lab) %>%
+  select("Reason:" = xlab, "Yes (%)" = pct_lab) %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
