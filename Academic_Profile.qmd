@@ -227,9 +227,9 @@ rnames <- c("A Transfer Student", "LGBTQA+", "A student with a disability",
 binary_table(questions, "Yes", rnames, ".", col.title = "Student Identifiers:")
 ```
 
-**Survey Question: ** *Please check any statement below that you identify with.*
+**Survey Question:** *Please check any statement below that you identify with.*
 
-**Additional Notes: ** Students selected from the following options: "Yes," "No," and "I don't know." Responses of "I don't Know" were set as missing values. The n count next to each label represents the total number of non-missing responses. 
+**Additional Notes:** Students selected from the following options: "Yes," "No," and "I don't know." Responses of "I don't Know" were set as missing values. The n count next to each label represents the total number of non-missing responses. 
 
 **Summary:** A total of `r count_and_percent(bns$q14_1, "Yes")` of students identified as transfer students, `r count_and_percent(bns$q14_8, "Yes")` identified as students with English as their second language, and `r count_and_percent(bns$q14_2, "Yes")` identified as LGBTQA+.
 
@@ -252,6 +252,46 @@ binary_table(questions, "Yes", rnames, ".", col.title = "Student Identifiers:")
 #             
 # binary_table(questions, "Yes", rnames, "")
 ```
+
+
+## Academic Performance & Activities
+
+
+```{r}
+#| fig-cap: !expr sprintf("%s Academic Performance & Activities", NextFigure())
+#| fig-height: 6
+#| fig-width: 8
+questions <- bns %>% select(starts_with("q106_"))
+names(questions) <- c('I am confident in my writing skills or ability to write well for university-level courses',
+                      'I am confident in my test-taking ability for university-level courses.', 
+                      'I have enough time to keep up with course materials, for example reading, writing, and preparing for exams and course assignments.',
+                      "I have enough time to go to my professors' office hours and tutoring services when needed.", 
+                      "I have enough time to attend all my classes.",
+                      "I have enough time to go on field trips or do internships.")
+
+plot_likert(questions,
+            grid.range = c(1.2, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+
+
+
+```
+
+
+**Summary:** *For each of the following statements, indicate how strongly you agree or disagree about the time you have available for these academic activities and your confidence in your academic performance.*
+
+
+**Summary:** Some highlights of the results include the following: A total of `r get_count_and_percent2(bns$q106_1, "Agree", "Strongly agree")` agreed or strongly agreed that they were confident in their writing skills;  `r count_and_percent(bns$q106_3, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they had enough time to keep up with course material; `r count_and_percent(bns$q106_4, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they had enough time to go to office hours; and `r count_and_percent(bns$q106_5, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they had enough time to attend class. 
+
+
+
+
+
 
 
 

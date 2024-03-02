@@ -1,18 +1,52 @@
 ---
 title: "Other Basic Needs"
-editor: visual
+format:
+  html:
+    anchor-sections: false
 ---
 
 ```{r, include=FALSE}
 source("common_code.R")
+
+
+# Print the next figure number
+currentFigure <- 0
+NextFigure <- function() {
+  # Increment the figure number
+  currentFigure <<- currentFigure + 1
+  
+      # -------- Set figure and section number --------
+  paste("Figure 6.", currentFigure, ":", sep = "")
+}
+
+# Print the next Table number
+currentTable <- 0
+NextTable <- function() {
+  # Increment the table number
+  currentTable <<- currentTable + 1
+  
+      # -------- Set table and section number --------
+  paste("Table 6.", currentTable, ":", sep = "")
+}
+
 ```
 
-## Basic Needs
+
+Students were asked to report information relating to their campus food pantry, Medi-Cal, and emergency housing services. Those that have utilized these services were asked to report their perceived impact of these services, while those that were not using them were asked to report any barriers to accessing them. 
+
+
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+
+
+
+
+## Basic Needs {#Basic-Needs}
 
 ```{r}
-#| fig-height: 6
+#| fig-cap: !expr sprintf("%s Basic Needs Services Usage", NextFigure())
+#| fig-height: 4
 #| fig-width: 8
-questions <- bns %>% select(starts_with("q46_"))
+questions <- bns %>% select(q46_2 ,q46_3, q46_4)
 
 questions <-
   questions %>% mutate(across(everything(), function(x)
@@ -27,7 +61,6 @@ questions <-
 
 names(questions) <-
   c(
-    'CalFresh (also known as Food Stamps or SNAP benefits)',
     'Campus food pantry (e.g., food, toiletries, feminine products)',
     'Medi-Cal',
     'Emergency Housing Services'
@@ -45,11 +78,42 @@ plot_likert(
 ) + theme_bw() + theme(legend.position = "top")
 ```
 
-## Food Pantry - Impact
 
-**For the following questions, please choose how much you agree or disagree with the impact campus food pantries has or had on your life. While I utilized campus food pantry/pantries:**
+**Survey Question:** *Please mark all the statements that apply to you.*
+
+**Summary:** A total of `r count_and_percent(bns$q46_2, "Currently use as a college student", "Used it in the past as a college student")` students reported currently using their campus food pantry or have used it in the past as a college student compared to `r count_and_percent(bns$q46_3, "Currently use as a college student", "Used it in the past as a college student")` students for Medi-Cal and only `r count_and_percent(bns$q46_4, "Currently use as a college student", "Used it in the past as a college student")` for emergency housing services.
+
+
+
+
+## Food Pantry Usage
 
 ```{r}
+#| fig-cap: !expr sprintf("%s Food Pantry Usage %s", NextFigure(), print_n_reporting('q54'))
+
+
+bns$q54 <- recode(bns$q54, "Other (Please specify):" = "Other")
+
+plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 12) + 
+  xlab('\nHow often do you normally use the food pantry?')+ 
+  theme(axis.text=element_text(size=9), #change font size of axis text
+        axis.title=element_text(size=9))
+```
+
+
+**Survey Question:** *Indicated in x-axis Labels*
+
+**Additional Notes:** Only students who reported that they *Currently use the campus food pantry as a student,* or *Used it in the past as a college student* saw this question (See [Basic Needs section](#Basic-Needs)).
+
+**Summary:** Of those who reported currently using their campus food pantry or have used it in the past as a college student, `r get_count_and_percent(bns$q54, "Not every week")` students reported using it less than once a week, `r get_count_and_percent(bns$q54, "About once a week")` reported using it about once a week, and `r get_count_and_percent(bns$q54, "More than once a week")` reported using it more than once a week. 
+
+
+## Food Pantry - Impact
+
+**Because I utilized campus food pantries:**
+
+```{r}
+#| fig-cap: !expr sprintf("%s Food Pantry Impact", NextFigure())
 #| fig-height: 8
 #| fig-width: 8.5
 questions <- bns %>% select(starts_with("q55_"))
@@ -94,13 +158,28 @@ plot_likert(questions[12:22],
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
+
+
+**Survey Question:** *For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. Because I utilized campus food pantries:*
+
+
+**Additional Notes:** Only students who reported that they *Currently use the campus food pantry as a student,* or *Used it in the past as a college student* saw this question (See [Basic Needs section](#Basic-Needs)).
+
+
+**Summary:** Some highlights of the results include the following: Because students utilized their campus food pantries, `r count_and_percent(bns$q55_1, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they worked fewer hours in a paid position each week; and `r count_and_percent(bns$q55_6, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they learned more about healthier foods. Meanwhile, `r get_count_and_percent2(bns$q55_8, "Agree", "Strongly agree")` students agreed or strongly agreed that they cooked more frequently at home. 
+
+
 <br>
 
-## Food Pantry - Barrier
 
-**What are the reasons for you to not go to campus food pantries? (Select all that apply).**
+
+
+## Food Pantry - Barriers
 
 ```{r}
+#| tbl-cap: !expr sprintf("%s Food Pantry Barriers %s", NextTable(), print_n_reporting('no_pantry_dont_need'))
+
+
  question <- "no_pantry"
  qlabel <- c("My family doesn't want me to go to campus food pantries or local food banks.",
              'I am embarrassed or scared to go to the campus food pantries or local food banks.',
@@ -121,17 +200,27 @@ plot_likert(questions[12:22],
 
 # Plot table of Percentages
  pantry_vars %>% 
-   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+   select("Reasons for Not Using Campus Food Pantries:" = xlab, "Yes (%)" = pct_lab) %>% 
    kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
+
+**Survey Question:** *What are the reasons you do not go to campus food pantries? (Select all that apply)*
+
+**Additional Notes:** Only students who reported that they *Never heard of the campus food pantry;* *Heard of it, but never used it;* or *Used it before attending college* saw this question (See [Basic Needs section](#Basic-Needs)).
+
+
+**Summary:** The most common reason students reported not using their campus food pantry was because they felt that other students need the food more than them, where `r get_count_and_percent(bns$no_pantry_other_students_need, "1")` students selected this option. Meanwhile, `r get_count_and_percent(bns$no_pantry_dont_need, "1")` reported they did not need to use the food pantry, and `r get_count_and_percent(bns$no_pantry_not_aware, "1")` reported they were not aware of any campus food pantries or local food banks. Please note: Some campuses may not have food pantries on or near their campus. 
+
 <br>
+
 
 ## Medi-Cal - Impact
 
-**For the following questions, please choose how much you agree or disagree with the impact Medi-Cal has or had on your life. Knowing that you have Medi-Cal:**
+**Knowing that I have Medi-Cal:**
 
 ```{r}
+#| fig-cap: !expr sprintf("%s Medi-Cal Impact", NextFigure())
 #| fig-width: 8.5
 questions <- bns %>% select(starts_with("q59_"))
 names(questions) <- c("My mental health has improved.",
@@ -150,13 +239,25 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
+
+**Survey Question:** *For the following questions, please choose how much you agree or disagree with the impact Medi-Cal has or had on your life. Knowing that I have Medi-Cal:*
+
+**Additional Notes:** Only students who reported that they *Currently use Medi-Cal as a student,* or *Used it in the past as a college student* saw this question (See [Basic Needs section](#Basic-Needs)).
+
+**Summary:** Because students used Medi-Cal, `r count_and_percent(bns$q59_1, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their mental health has improved; `r get_count_and_percent2(bns$q59_2, "Agree", "Strongly agree")`agreed or strongly agreed that their physical health had improved; `r count_and_percent(bns$q59_3, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their sleep quality had improved; and `r count_and_percent(bns$q59_4, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their stress/anxiety level had decreased. 
+
+
+
+
+
 <br>
 
 ## Medi-Cal - Barriers
 
-**What are the reasons you do not have Medi-Cal or have never used Medi-Cal? (Select all that apply).**
 
 ```{r}
+#| tbl-cap: !expr sprintf("%s Medi-Cal Barriers %s", NextTable(), print_n_reporting('no_medical_dont_need'))
+
  question <- "no_medical"
  qlabel <- c("I don’t need Medi-Cal.",
              "I do not know what Medi-Cal is or I think I already have health insurance.",
@@ -178,17 +279,27 @@ plot_likert(questions,
  
  # Plot table of Percentages
  medical_vars %>% 
-   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+   select("Reasons for Not Using Medi-Cal:" = xlab, "Yes (%)" = pct_lab) %>% 
    kable() %>% kable_styling(bootstrap_options = "striped")
 ```
+
+
+**Survey Question:** *What are the reasons you do not have Medi-Cal or have never used Medi-Cal? (Select all that apply).*
+
+**Additional Notes:** Only students who reported that they *Never heard of Medi-Cal; Heard of it, but never used it; or Used it before attending college* saw this question (See [Basic Needs section](#Basic-Needs)).
+
+**Summary:** A total of `r get_count_and_percent(bns$no_medical_unknown, "1")` students did not use Medi-Cal because they did not know what Medi-Cal was or they already had another health insurance. Meanwhile, `r get_count_and_percent(bns$no_medical_dont_need, "1")` reported not needing Medi-Cal, and `r get_count_and_percent(bns$no_medical_eligible, "1")` did not think they were eligible.
+
+
 
 <br>
 
 ## Emergency Housing Services - Impact
 
-**For the following questions, please choose how much you agree or disagree with the impact Emergency Housing Services have or had on your life. Because I received Emergency Housing Services:**
+**Because I received Emergency Housing Services:**
 
 ```{r}
+#| fig-cap: !expr sprintf("%s Emergency Housing Services Impact", NextFigure())
 #| fig-height: 8
 #| fig-width: 8.5
 questions <- bns %>% select(starts_with("q62_"))
@@ -214,13 +325,25 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
+**Survey Question:** *For the following questions, please choose how much you agree or disagree with the impact Emergency Housing Services have or had on your life. Because I received Emergency Housing Services:*
+
+
+**Additional Notes:** Only students who reported that they *Currently use Emergency Housing Services as a student,* or *Used it in the past as a college student* saw this question (See [Basic Needs section](#Basic-Needs)).
+
+**Summary:** Some highlights of the results include the following: Because students utilized emergency housing services, `r get_count_and_percent2(bns$q62_1, "Agree", "Strongly agree")` agreed or strongly agreed that they concentrated more in class; `r get_count_and_percent2(bns$q62_2, "Agree", "Strongly agree")` agreed or strongly agreed that their grades had improved; `r get_count_and_percent2(bns$q62_9, "Agree", "Strongly agree")` agreed or strongly agreed that their stress/anxiety had decreased; and `r get_count_and_percent2(bns$q62_10, "Agree", "Strongly agree")` agreed or strongly agreed that they were less concerned about housing issues. 
+
+
+
+
+
 <br>
 
 ## Emergency Housing Services - Barriers
 
-**What are the reasons you do not use Emergency Housing Services or have never used Emergency Housing Services? (Select all that apply)**
 
 ```{r}
+#| tbl-cap: !expr sprintf("%s Emergency Housing Services Barriers %s", NextTable(), print_n_reporting('no_ehs_dont_need'))
+
  question <- "no_ehs"
  qlabel <- c("I don’t need Emergency Housing Services",
              "I was not aware that my campus had Emergency Housing Services like grants and housing placements in an emergency.",
@@ -240,6 +363,21 @@ plot_likert(questions,
  
  # Plot table of Percentages
  ehs_vars %>% 
-   select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+   select("Reasons for Not Using Emergency Housing Services:" = xlab, "Yes (%)" = pct_lab) %>% 
    kable() %>% kable_styling(bootstrap_options = "striped") %>% column_spec(2, width='3.5cm')
 ```
+
+
+
+**Survey Question:** *What are the reasons you do not use Emergency Housing Services or have never used Emergency Housing Services? (Select all that apply)*
+
+**Additional Notes:** Only students who reported that they *Never heard of Emergency Housing Services; Heard of it, but never used it; or Used it before attending college* saw this question (See [Basic Needs section](#Basic-Needs)).
+
+**Summary:** A total of `r get_count_and_percent(bns$no_ehs_dont_need, "1")` students did not use Emergency Housing Services because they reported not needing them, while `r get_count_and_percent(bns$no_ehs_not_aware, "1")` did not know that their campus offered emergency housing services. Please note: Some campuses may not offer emergency housing services. 
+
+<br>
+
+
+
+
+

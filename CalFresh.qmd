@@ -33,7 +33,7 @@ NextTable <- function() {
 # Since two questions were used for this table, if either of them is NA, set to missing, otherwise set to 1. This is only used to determine how many students are reporting
 bns$for_ebt_household_reporting <- ifelse(is.na(bns$fed_through_EBT) | is.na(bns$q49_1), NA, 1)
 
-
+# Used to print n reporting for the hux table
 bns$for_income_household_reporting <- ifelse(is.na(bns$monthly_hh_income) | is.na(bns$household_size), NA, 1)
 
 
@@ -213,7 +213,7 @@ bns$EOP <- "Yes"
              "Meets 20 hours/week work exemption")
              
              
- binary_table(qs, 'Yes', rnames, "")
+ binary_table(qs, 'Yes', rnames, col.title = "Eligibility Criteria:")
 ```
 
 **Survey Questions:** 
@@ -308,7 +308,7 @@ tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped") %>%
 
 **Additional Notes:** The per person average was computed by dividing the average amount of EBT received per month by the number of people fed through EBT. 
 
-**Summary:** The average monthly EBT received per person was `r names(table(tmp$HH.avg)[9])` for households feeding just themselves with EBT, `r names(table(tmp$HH.avg)[8])` for households feeding themselves plus one other, and `r names(table(tmp$HH.avg)[7])` for households feeding themselves plus two others. In general, as the number of people fed through EBT increases, the per person average decreases. The total per person average, taking into account all households, was: `r tmp2[9,3]`.
+**Summary:** The average monthly EBT received per person was `r names(table(tmp$HH.avg)[9])` for households feeding just themselves with EBT, `r names(table(tmp$HH.avg)[8])` for households feeding themselves plus one other, and `r names(table(tmp$HH.avg)[7])` for households feeding themselves plus two others. In general, as the number of people fed through EBT increases, the per person average decreases. Taking into account all households, the total per person average was: `r tmp2[9,3]`
 
 ## Was This Enough?
 
@@ -347,8 +347,9 @@ grid.arrange(p3, p4, nrow = 1)
 <br>
 
 
-## CalFresh Benefits
+## CalFresh - Benefits
 
+**While I received CalFresh benefits:**
 
 ```{r}
 #| fig-cap: !expr sprintf("%s Perceived Impact of CalFresh", NextFigure())
@@ -397,14 +398,14 @@ plot_likert(questions[12:22],
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
-**Survey Questions:** *For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. While you received CalFresh benefits:*
+**Survey Question:** *For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. While you received CalFresh benefits:*
 
-**Summary:** Because students received CalFresh, `r get_count_and_percent2(bns$q52_3, "Agree", "Strongly agree")` reported they had more money for bills, `r get_count_and_percent2(bns$q52_7, "Agree", "Strongly agree")` reported purchasing healthier foods, and `r get_count_and_percent2(bns$q52_8, "Agree", "Strongly agree")` reported cooking more frequently. Only `r get_count_and_percent2(bns$q52_1, "Agree", "Strongly agree")` students reported that they worked fewer hours because of CalFresh, `r get_count_and_percent2(bns$q52_5, "Agree", "Strongly agree")` shopped more frequently at the farmers' market, and `r get_count_and_percent2(bns$q52_6, "Agree", "Strongly agree")` reported learning more about healthier foods. 
+**Summary:** Some highlights of the results include the following: Because students received CalFresh, `r count_and_percent(bns$q52_1, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they worked fewer hours per week; and `r count_and_percent(bns$q52_6, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they learned more about healthier foods. Meanwhile, `r get_count_and_percent2(bns$q52_7, "Agree", "Strongly agree")` students agreed or strongly agreed that they purchased healthier foods; `r get_count_and_percent2(bns$q52_8, "Agree", "Strongly agree")` agreed or strongly agreed that they cooked more frequently; and `r get_count_and_percent2(bns$q52_5, "Agree", "Strongly agree")` agreed or strongly agreed that they shopped more frequently at the farmers' market.
 
 
 <br>
 
-## CalFresh Barriers
+## CalFresh - Barriers
 
 ```{r}
 #| tbl-cap: !expr sprintf("%s Reported Barriers to Using CalFresh", NextTable())
@@ -438,16 +439,16 @@ cf_barrier_vars <- prep_binary_vars(question, qlabel) ## Issues here
 
 # Plot table of Percentages
 cf_barrier_vars %>%
-select("Reasons for Not Using CalFresh" = xlab, "Yes (%)" = pct_lab) %>%
+select("Reasons for Not Using CalFresh:" = xlab, "Yes (%)" = pct_lab) %>%
 kable() %>% kable_styling(bootstrap_options = "striped") %>%  column_spec(2, width='3.5cm')
 
 ```
 
-**Survey Questions:** *What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply)*
+**Survey Question:** *What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply)*
 
-**Additional Notes:** Only students who reported never using Calfresh as a college student (see [CalFresh Status](#cal_status_reference)) saw this question.
+**Additional Notes:** Only students who reported that they *Never heard of CalFresh;* *Heard of it, but never used it;* or *Used it before attending college* saw this question (See [Basic Needs section](#cal_status_reference)).
 
 
-**Summary:** The most common reason that students reported not using CalFresh was because they do not think they are eligible where `r get_count_and_percent(bns$calfresh_barrier_do_not_think_eligible, "1")` students selected this option. Meanwhile `r get_count_and_percent(bns$calfresh_barrier_other_students_need, "1")` students reported that they felt other students need CalFresh more than they do, and `r get_count_and_percent(bns$calfresh_barrier_no_time_app, "1")` reported that they have no time to complete the application.
+**Summary:** The most common reason that students reported not using CalFresh was because they do not think they are eligible, where `r get_count_and_percent(bns$calfresh_barrier_do_not_think_eligible, "1")` students selected this option. Meanwhile `r get_count_and_percent(bns$calfresh_barrier_other_students_need, "1")` students reported that they felt other students need CalFresh more than they do, and `r get_count_and_percent(bns$calfresh_barrier_no_time_app, "1")` reported that they have no time to complete the application.
 
 <br>

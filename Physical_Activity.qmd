@@ -1,15 +1,70 @@
 ---
 title: "Physical Activity"
+format:
+  html:
+    anchor-sections: false
 ---
 
 ```{r, include=FALSE}
 source("common_code.R")
 
+# Print the next figure number
+currentFigure <- 0
+NextFigure <- function() {
+  # Increment the figure number
+  currentFigure <<- currentFigure + 1
+  
+      # -------- Set figure and section number --------
+  paste("Figure 9.", currentFigure, ":", sep = "")
+}
+
+# Print the next Table number
+currentTable <- 0
+NextTable <- function() {
+  # Increment the table number
+  currentTable <<- currentTable + 1
+  
+      # -------- Set table and section number --------
+  paste("Table 9.", currentTable, ":", sep = "")
+}
+
 ```
 
-Students were asked to select how many days in the last week they had done any of the following exercise types: moderate, vigorous, or strength training.[^1]
+Students were asked to select how many days in the last week they had done any of the following exercise types: moderate, vigorous, or strength training exercises.[^1]
+
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+
+
+
+
+```{r, results='asis'}
+#| tbl-cap: !expr sprintf("%s Physical Activity Patterns", NextTable())
+
+
+tmp <- data.frame(rbind(table(bns$q83_1),
+                        table(bns$q83_2),
+                        table(bns$q83_3)))
+
+tmp <- as.data.frame(apply(tmp, 1, function(x) paste0(x, " (", percent(x/sum(x), accuracy = 0.1), ")")))
+colnames(tmp) <- c("Moderate Exercise", "Strength Training", "Vigorous Training")
+tmp["Days"] <- 0:7
+tmp <- tmp[c(4,1,2,3)]
+tmp <- t(tmp)
+
+tmp %>%
+  kable() %>% kable_styling(latex_options = c("HOLD_position", "striped", "bordered", "hover"))  %>%  
+    row_spec(1, bold = T, color = "white", background = CF_green) 
+
+
+```
+
+
 
 ```{r, fig.width=8}
+#| fig-cap: !expr sprintf("%s Physical Activity Patterns", NextFigure())
+
+
+
 tmp1 <- cbind(data.frame(Question=rep("Moderate Exercise", 8)), as.data.frame(table(bns[["q83_1"]])))
 tmp2 <- cbind(data.frame(Question=rep("Vigorous Exercise", 8)), as.data.frame(table(bns[["q83_2"]])))
 tmp3 <- cbind(data.frame(Question=rep("Strength Training", 8)), as.data.frame(table(bns[["q83_3"]])))
@@ -32,42 +87,24 @@ ggplot(pa.data) +
 
 ```
 
-```{r, results='asis'}
-tmp <- data.frame(rbind(table(bns$q83_1),
-                        table(bns$q83_2),
-                        table(bns$q83_3)))
 
-tmp <- as.data.frame(apply(tmp, 1, function(x) paste0(x, " (", percent(x/sum(x), accuracy = 0.1), ")")))
-colnames(tmp) <- c("Moderate Exercise", "Strength Training", "Vigorous Training")
-tmp["Days"] <- 0:7
-tmp <- tmp[c(4,1,2,3)]
-tmp <- t(tmp)
+**Survey Questions:** *On how many of the past 7 days did you: (Please mark the appropriate column for each row)*
 
-tmp %>%
-  kable() %>% kable_styling(latex_options = c("HOLD_position", "striped", "bordered", "hover"))  %>%  
-    row_spec(1, bold = T, color = "white", background = CF_green) 
+- *Do moderate-intensity cardio or aerobic exercise (caused a noticeable increase in heart rate, such as brisk walk) for at least 30 minutes?* `r print_n_reporting("q83_1")`
+
+- *How often did you do 8-10 strength training exercises (such as resistance weight machines) for at least 8 repetitions each?* `r print_n_reporting("q83_3")`
+
+- *How often did you do vigorous-intensity cardio or aerobic exercise (caused large increases in breathing or heart rate, such as jogging) for at least 20 minutes?* `r print_n_reporting("q83_3")`
 
 
-```
 
-## Moderate Exercise
+**Additional Notes:** For each exercise type, students had the options to select anywhere from zero days per week to seven days per week. In the table, percentages are calculated accross rows. 
 
-How often did you do **moderate-intensity** cardio or aerobic exercise (caused a noticeable increase in heart rate, such as brisk walk) for at least 30 minutes? `r print_n_reporting("q83_1")`
+**Summary:** The majority of students reported doing moderate-intensity exercises at least once in the past seven days, and `r get_count_and_percent(bns$q83_1, "0 days")` reported doing this zero times. About half the students reported doing strength training exercises at least once in the past 7 days, and `r get_count_and_percent(bns$q83_2, "0 days")` reported doing this zero times. Less than half of the students reported doing vigorous-intensity cardio or aerobic exercises at least once in the past 7 days, and `r get_count_and_percent(bns$q83_3, "0 days")` reported doing this zero times. 
 
--   The majority of students claim to have done moderate exercise at least once in the past week (`r sum(unname(table(bns$q83_1))[2:8])` people). The general trend is that as the number of days increases, the number of students who exercised for those given number of days decreases. This seems to be the most commonly performed type of exercise from the graph above (typically the highest number of days per week out of all exercise types).
 
-## Strength Training
 
-How often did you do 8-10 **strength training** exercises (such as resistance weight machines) for at least 8 repetitions each? `r print_n_reporting("q83_3")`
 
--    Nearly half of the students claim to have not done strength training in the past week (`r unname(sort(table(bns$q83_2), decreasing = TRUE))[1]` people). The general trend is that as the number of days increases, the number of students who exercised for those given number of days decreases. Only a small number of people claim to do strength training for 4 or more days in the past week.
 
-## Vigorous Exercise
-
-How often did you do **vigorous-intensity** cardio or aerobic exercise (caused large increases in breathing or heart rate, such as jogging) for at least 20 minutes? `r print_n_reporting("q83_3")`
-
--   The majority of students claim to have done `r names(sort(table(bns$q83_3), decreasing = TRUE))[1]` days of vigorous exercise in the past week (`r unname(sort(table(bns$q83_3), decreasing = TRUE))[1]` people). The general trend is that as the number of days increases, the number of students who exercised for those given number of days decreases. Only a small number of people claim to do vigorous exercise for 4 or more days in the past week.
-
----
 
 [^1]: These questions were developed based on the [Surgeon General's physical activity guidelines for adults](https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf) who recommend: 150 minutes to 300 minutes a week of moderate-intensity exercise, 75 minutes to 150 minutes a week of vigorous-intensity aerobic exercise, or an equivalent combination of moderate- and vigorous-intensity aerobic activity. They also recommend strength-training activities on 2 or more days a week.

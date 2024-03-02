@@ -1,29 +1,48 @@
 ---
 title: "Food Security"
-crossref:
-  fig-title: 'Figure 6.'
-  fig-labels: arabic
-  title-delim: ":"
+format:
+  html:
+    anchor-sections: false
 ---
 
 ```{r, include=FALSE}
 source("common_code.R")
+
+# Print the next figure number
+currentFigure <- 0
+NextFigure <- function() {
+  # Increment the figure number
+  currentFigure <<- currentFigure + 1
+  
+      # -------- Set figure and section number --------
+  paste("Figure 7.", currentFigure, ":", sep = "")
+}
+
+# Print the next Table number
+currentTable <- 0
+NextTable <- function() {
+  # Increment the table number
+  currentTable <<- currentTable + 1
+  
+      # -------- Set table and section number --------
+  paste("Table 7.", currentTable, ":", sep = "")
+}
+
 ```
 
-The following questions were asked in regard to students' feelings towards food security due to a lack of or no money. Students were asked if they had to cut or skip meals (and how often), went entire days without eating, and other situations due to a lack of money.[^1] Students were also asked how they handled situations when they had run out of money for food, and if they had gotten any assistance.
+Students were screened for food insecurity using a two-item version of the USDA's screener for food insecurity [^1]. Additionally, students were asked how they handled situations when they had run out of money for food, if applicable. 
 
-[^1]: These questions were developed using a two-item version of the [USDA's screener for food insecurity status](https://www.ers.usda.gov/media/8279/ad2012.pdf)
+[^1]: [USDA's screener for food insecurity](https://www.ers.usda.gov/media/8279/ad2012.pdf)
 
 
-## Food Eaten in Household
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
-**For the following statements, please state whether they were often true, sometimes true, or never true for you/your household in the last 30 days.**
+## Food Insecurity Screening {#Food-Insecurity-Screening}
 
-*Household is determined by the number of people you purchase and prepare food with. This may or may not include your roommates.*
 
 ```{r}
-#| label: fig-q64-65
-#| fig-cap: Food Eaten in Household
+#| fig-cap: !expr sprintf("%s Food Insecurity Screening", NextFigure())
+
 questions <- bns %>% select(q64, q65)
 names(questions) <- c("I/We worried whether food would run out before I/we got money to buy more.",
                       "The food that I/we bought just didn’t last, and I/we didn’t have money to get more.")
@@ -37,31 +56,42 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
+**Survey Question:** *These next questions are about the food eaten in your household. Remember that household is determined by the number of people you purchase and prepare food with. This may or may not include your roommates. For the following statements, please state whether they were often true, sometimes true, or never true for you/your household in the last 30 days.*[^1]
+
+**Additional Notes:** These two questions were used to screen for food insecurity. Students who responded with "Sometimes true" or "Often true" to any of the questions were deemed food insecure. Students also had the option to select "I don't know," and these responses were set to missing values. 
+
+**Summary:** In the last 30 days of taking the survey, `r get_count_and_percent2(bns$q64, "Sometimes true", "Often true")` students reported they worried about food running out before getting money to buy more food. Meanwhile, `r get_count_and_percent2(bns$q65, "Sometimes true", "Often true")` students reported that the food they bought did not last, and they did not have money to get more. 
+
+
 <br>
 
-## Food Insecurity
-
-The following was determined using the two item food insecurity screening questions. If a student answered "sometimes true" or "often true" to either question, they were considered to be food insecure `r print_n_reporting("food_insecure_2item")`:
-
--   "I/We worried whether food would run out before I/we got money to buy more."
--   "The food that I/we bought just didn't last, and I/we didn't have money to get more."
+## Food Insecurity Rates
 
 ::: row
 ::: col-md-7
 ```{r}
+#| fig-cap: !expr sprintf("%s Food Insecurity Rates %s", NextFigure(), print_n_reporting('food_insecure_2item'))
 #| fig-height: 3.5
 #| fig-width: 4.5
-#| label: fig-two.item
-#| fig-cap: Food Insecurity
+
+
 bns <- bns %>% mutate(two.item = case_when(food_insecure_2item == 0 ~ "No",
                                            food_insecure_2item == 1 ~ "Yes",
                                            TRUE ~ as.character(food_insecure_2item)))
 plot_frq(bns$two.item, geom.colors = plot_color, ylim=c(0,1250)) + xlab('Food Insecure') + ylab("Frequency")
+
+
 ```
 :::
 
 ::: col-md-4
-The majority of the students that took part in the survey are considered to be food insecure (`r unname(table(bns$two.item)['Yes'])` people). There are `r unname(table(bns$two.item)['No'])` students not considered to be food insecure, meaning they answered "never true" to the above question criteria.
+
+**Survey Question:** *This variable was derived from the questions in [Food Insecurity Screening](#Food-Insecurity-Screening).*
+
+**Additional Notes:** Students who responded with "Sometimes true" or "Often true" to one or both of the questions in the [Food Insecurity Screening](#Food-Insecurity-Screening) section were deemed food insecure.
+
+**Summary:** A total of `r get_count_and_percent(bns$food_insecure_2item, "1")` students were deemed food insecure. Please note: The majority of the study sample were low-income students and these rates are not generalizable to all college students. 
+
 :::
 :::
 
@@ -69,12 +99,12 @@ The majority of the students that took part in the survey are considered to be f
 
 ## Ran Out of Money
 
-**Additional food security question that are not part of the U.S. Adult Food Security Survey Module (10- item): In the last 30 days, if you ran out of money for food, what did you do? (choose all that apply):**
 
 
 ```{r}
-#| label: fig-food_vars
-#| fig-cap: Ran Out of Money
+#| tbl-cap: !expr sprintf("%s Ran Out of Money %s", NextTable(), print_n_reporting('fs_not_run_out'))
+
+
 question <- "fs"
 qlabel <- c("I did not run out of money for food",
             "My friends, family or roommates gave me money for groceries.",
@@ -89,7 +119,19 @@ food_vars <- prep_binary_vars(question, qlabel) # %>% slice(-8) drop "other" sin
 
 # Plot table of percentages
 food_vars %>% 
-  select(Measure = xlab, "Yes (%)" = pct_lab) %>% 
+  select("If You Ran Out of Money for Food..." = xlab, "Yes (%)" = pct_lab) %>% 
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
+
+
+**Survey Question:** *In the last 30 days, if you ran out of money for food, what did you do? (Select all that apply):*
+
+**Summary:** A total of `r get_count_and_percent(bns$fs_not_run_out, "1")` students reported not running out of money for food in the last 30 days. Meanwhile, when students ran out of money for food, `r get_count_and_percent(bns$fs_skip_meal, "1")` reported that they started skipping meals, `r get_count_and_percent(bns$fs_credit_card, "1")` reported using their credit card to buy food, `r get_count_and_percent(bns$fs_given_money, "1")` were given money from friends/family/roommates, and only `r get_count_and_percent(bns$fs_organization, "1")` reported going to the food pantry or other free food organizations.
+
+
+<br>
+
+
+
+
 
