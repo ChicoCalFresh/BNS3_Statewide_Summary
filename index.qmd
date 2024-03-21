@@ -70,7 +70,7 @@ The main purpose of this third cross-sectional study was to evaluate the followi
 
 A total of 2,110 EOP/EOPS students in California were surveyed from the following campuses:
 
-```{r, fig.width=7, fig.height=4}
+```{r, fig.width=6, fig.height=4}
 
 
 ggplot() + 
@@ -79,7 +79,7 @@ ggplot() +
   geom_point(aes(Long, Lat)) +
   ggrepel::geom_label_repel(aes(x = Long, 
                       y = Lat, 
-                      label = Names)) + 
+                      label = Names), nudge_y  = 0.01, min.segment.length = 0) + 
   theme_void() 
 
 ```

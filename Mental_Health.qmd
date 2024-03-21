@@ -82,7 +82,7 @@ plot_likert(questions,
  
 **Survey Question:** *Over the last two weeks, how often have you been bothered by the following problems?*[^1] 
 
-**Additional Notes:** These questions (GAD-7) were used to classify generalized anxiety severity (see [Generalized Anxiety Classification](#Generalized-Anxiety-Classification)).
+**Additional Notes:** These questions (from the **validated GAD-7** tool) were used to classify generalized anxiety severity (see [Generalized Anxiety Classification](#Generalized-Anxiety-Classification)).
  
  
 **Summary:** Overall, the majority of students responded negatively to all options. Some highlights of the results include the following: In the past two weeks, `r count_and_percent(bns$q108_1, "Nearly every day", "More than half the days", "Several days")` students have felt nervous/anxious for several days, more than half the days, or nearly every day; `r count_and_percent(bns$q108_3, "Nearly every day", "More than half the days", "Several days")` students have worried too much about different things for several days, more than half the days, or nearly every day; and `r count_and_percent(bns$q108_4, "Nearly every day", "More than half the days", "Several days")` students have had trouble relaxing for several days, more than half the days, or nearly every day.
@@ -122,7 +122,7 @@ plot_frq(bns$GAD7, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 16) + 
 
 **Survey Question:** *This variable was created from the questions in the [Generalized Anxiety](#Generalized-Anxiety) section.*
 
-**Additional Notes:** This variable was created using the GAD-7 severity scoring. "Not at all" was scored as 0, "Several days" was scored as 1, "More than half the days" was scored as 2, and "Nearly every day" was scored as 3. Individuals' scores were added together. Those classified with "Minimal anxiety" had scores of 0-4, "Mild anxiety" had scores of 5-9, "Moderate anxiety" had scores of 10-14, and "Severe anxiety" had scores of 15-21. Anyone who answered "Prefer not to answer" to at least one of the seven questions was not classified. 
+**Additional Notes:** This variable was created using the **validated GAD-7** severity scoring. "Not at all" was scored as 0, "Several days" was scored as 1, "More than half the days" was scored as 2, and "Nearly every day" was scored as 3. Individuals' scores were added together. Those classified with "Minimal anxiety" had scores of 0-4, "Mild anxiety" had scores of 5-9, "Moderate anxiety" had scores of 10-14, and "Severe anxiety" had scores of 15-21. Anyone who answered "Prefer not to answer" to at least one of the seven questions was not classified. 
 
 
 **Summary:** A total of `r get_count_and_percent(bns$GAD7, "Minimal anxiety")` students were classified as having minimal anxiety, `r get_count_and_percent(bns$GAD7, "Mild anxiety")` were classified as having mild anxiety, `r get_count_and_percent(bns$GAD7, "Moderate anxiety")` were classified as having moderate anxiety, and `r get_count_and_percent(bns$GAD7, "Severe anxiety")` were classified as having severe anxiety.
@@ -170,7 +170,7 @@ plot_likert(questions,
 
 **Survey Question:** **Over the last two weeks, how often have you been bothered by the following problems?**[^2]
 
-**Additional Notes:** These questions (PHQ-9) were used to classify depression severity (see [Depression Severity Classification](#Depression-Severity-Classification)).
+**Additional Notes:** These questions (from the **validated PHQ-9**) were used to classify depression severity (see [Depression Severity Classification](#Depression-Severity-Classification)).
 
 **Summary:** Some highlights of the results include the following: In the past two weeks, `r count_and_percent(bns$q109_2, "Nearly every day", "More than half the days", "Several days")` students have felt down, depressed or hopeless for several days, more than half the days, or nearly every day; `r count_and_percent(bns$q109_3, "Nearly every day", "More than half the days", "Several days")` students have had trouble falling or staying asleep for several days, more than half the days, or nearly every day; `r count_and_percent(bns$q109_4, "Nearly every day", "More than half the days", "Several days")` students have felt tired or had little energy for several days, more than half the days, or nearly every day; and `r count_and_percent(bns$q109_9, "Nearly every day", "More than half the days", "Several days")` students have had thoughts that they would be better off dead or had thoughts of hurting themselves for several days, more than half the days, or nearly every day.
 
@@ -220,7 +220,7 @@ plot_frq(bns$PHQ9, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 14) + 
 
 **Survey Question:** *This variable was created from the questions in the [Depression](#Depression) section.*
 
-**Additional Notes:** This variable was created using the PHQ-9 severity scoring. "Not at all" was scored as 0, "Several days" was scored as 1, "More than half the days" was scored as 2, and "Nearly every day" was scored as 3. Individuals' scores were added together. Those classified with "None/Minimal depression" had scores of 0-4, "Mild depression" had scores of 5-9, "Moderate depression" had scores of 10-14, "Moderately severe depression" had scores of 15-19, and "Severe depression had scores of 20-27. Anyone who answered "Prefer not to answer" to at least one of the nine questions was not classified. 
+**Additional Notes:** This variable was created using the **validated PHQ-9** severity scoring. "Not at all" was scored as 0, "Several days" was scored as 1, "More than half the days" was scored as 2, and "Nearly every day" was scored as 3. Individuals' scores were added together. Those classified with "None/Minimal depression" had scores of 0-4, "Mild depression" had scores of 5-9, "Moderate depression" had scores of 10-14, "Moderately severe depression" had scores of 15-19, and "Severe depression had scores of 20-27. Anyone who answered "Prefer not to answer" to at least one of the nine questions was not classified. 
 
 
 **Summary:** A total of `r get_count_and_percent(bns$PHQ9, "None/Minimal depression")` students were classified as having none/minimal depression, `r get_count_and_percent(bns$PHQ9, "Mild depression")` were classified as having mild depression, `r get_count_and_percent(bns$PHQ9, "Moderate depression")` were classified as having moderate depression, `r get_count_and_percent(bns$PHQ9, "Moderately severe depression")` were classified as having moderately severe depression, and `r get_count_and_percent(bns$PHQ9, "Severe depression")` were classified as having severe depression.

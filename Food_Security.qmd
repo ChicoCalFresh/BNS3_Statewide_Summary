@@ -54,9 +54,9 @@ plot_likert(questions,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
 
-**Survey Question:** *These next questions are about the food eaten in your household. Remember that household is determined by the number of people you purchase and prepare food with. This may or may not include your roommates. For the following statements, please state whether they were often true, sometimes true, or never true for you/your household in the last 30 days.*[^1]
+**Survey Question:** *These next questions are about the food eaten in your household. Remember that household is determined by the number of people you purchase and prepare food with. This may or may not include your roommates. For the following statements, please state whether they were often true, sometimes true, or never true for you/your household in the last 30 days.*
 
-**Additional Notes:** These two questions were used to screen for food insecurity. Students who responded with "Sometimes true" or "Often true" to any of the questions were deemed food insecure. Students also had the option to select "I don't know," and these responses were set to missing values. 
+**Additional Notes:** A two-item version of the validated USDA 10-item food insecurity screening tool[^1] was used and has been validated among low-income families[^2]. Students who responded with "Sometimes true" or "Often true" to any of the questions were deemed food insecure. Students also had the option to select "I don't know," and these responses were set to missing values. 
 
 **Summary:** In the last 30 days of taking the survey, `r get_count_and_percent2(bns$q64, "Sometimes true", "Often true")` students reported they worried about food running out before getting money to buy more food. Meanwhile, `r get_count_and_percent2(bns$q65, "Sometimes true", "Often true")` students reported that the food they bought did not last, and they did not have money to get more. 
 
@@ -130,7 +130,7 @@ food_vars %>%
 <br>
 
 
-[^1]: [USDA's screener for food insecurity](https://www.ers.usda.gov/media/8279/ad2012.pdf)
+[^1]: [USDA's 10-item screener for food insecurity](https://www.ers.usda.gov/media/8279/ad2012.pdf)
 
-
+[^2]: [Validation of a 2-item screener for food insecurity among low-income families](https://pubmed.ncbi.nlm.nih.gov/20595453/)
 
