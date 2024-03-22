@@ -15,7 +15,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 4.", currentFigure, ":", sep = "")
+  paste("Figure 4.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -25,7 +25,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set Table and section number --------
-  paste("Table 4.", currentTable, ":", sep = "")
+  paste("Table 4.", currentTable, ".", sep = "")
 }
 
 
@@ -44,7 +44,7 @@ Students were asked to report information relating to their current and past hou
 ```{r}
 #| fig-height: 3.5
 #| fig-width: 4.5
-#| fig-cap: !expr sprintf("%s Students Living Near Their College %s", NextFigure(), print_n_reporting('q24'))
+#| fig-cap: !expr sprintf("%s Students Living Near Their College %s.", NextFigure(), print_n_reporting('q24'))
 plot_frq(bns$q24, geom.colors = plot_color, ylim=c(0,1800)) + xlab('') + ylab("Number of Students")
 ```
 :::
@@ -63,7 +63,7 @@ plot_frq(bns$q24, geom.colors = plot_color, ylim=c(0,1800)) + xlab('') + ylab("N
 ## Current Housing Status
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Current Housing Status %s", NextTable(), print_n_reporting('q25'))
+#| tbl-cap: !expr sprintf("%s Current Housing Status %s.", NextTable(), print_n_reporting('q25'))
 ## see if you can convert this to binary_table
 
 cnames <- c('Current Housing Status:', 'Yes (%)')
@@ -83,7 +83,7 @@ question_table('q25', qs, cnames)
 ## In the Past 12 Months... {#In_Past_12_Months}
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Housing Security Screening", NextTable())
+#| tbl-cap: !expr sprintf("%s Housing Security Screening.", NextTable())
 
 questions <- paste0('q', 26:33)
 rnames <- c('Was there a rent or mortgage increase that made it difficult to pay',
@@ -116,7 +116,7 @@ binary_table(var = questions,
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Sleeping Locations", NextTable())
+#| tbl-cap: !expr sprintf("%s Sleeping Locations.", NextTable())
 
 questions_month <- paste0('q36_', 1:12, '_month')
 questions_year <- paste0('q36_', 1:12, '_year')
@@ -180,7 +180,7 @@ full_join(get.month.vars, get.year.vars) %>%
 ## Housing Insecurity & Homelessness
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Housing Insecurity & Homeless", NextTable())
+#| tbl-cap: !expr sprintf("%s Housing Insecurity & Homelessness.", NextTable())
 
 
 
@@ -223,7 +223,7 @@ housing_prep %>%
 ## Housing Barriers 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Housing Barriers %s", NextTable(), print_n_reporting('housing_barrier_deposit_funds'))
+#| tbl-cap: !expr sprintf("%s Housing Barriers %s.", NextTable(), print_n_reporting('housing_barrier_deposit_funds'))
 
 # New
 question <- "housing_barrier"
@@ -254,7 +254,7 @@ prep_binary_vars(question, qlabel) %>%
 ```{r}
 #| fig-height: 4.3
 #| fig-width: 4.5
-#| fig-cap: !expr sprintf("%s Number of Times Moved in the Past 12 months %s", NextFigure(), print_n_reporting('q35'))
+#| fig-cap: !expr sprintf("%s Number of Times Moved in the Past 12 months %s.", NextFigure(), print_n_reporting('q35'))
 
 
 plot_frq(bns$q35, geom.colors = plot_color, wrap.labels =10) + xlab('')
@@ -270,7 +270,7 @@ plot_frq(bns$q35, geom.colors = plot_color, wrap.labels =10) + xlab('')
 ```{r}
 #| fig-height: 4.3
 #| fig-width: 4.5
-#| fig-cap: !expr sprintf("%s Sleeping Location Uncertainty %s", NextFigure(), print_n_reporting('q34'))
+#| fig-cap: !expr sprintf("%s Sleeping Location Uncertainty %s.", NextFigure(), print_n_reporting('q34'))
 
 plot_frq(bns$q34, geom.colors = plot_color, wrap.title=40, wrap.labels =12, ylim=c(0,1850)) + xlab('') + ylab("Number of Students")
 
@@ -288,7 +288,7 @@ plot_frq(bns$q34, geom.colors = plot_color, wrap.title=40, wrap.labels =12, ylim
 ```{r}
 #| fig-height: 5
 #| fig-width: 9
-#| fig-cap: !expr sprintf("%s Most Common Reason for Experiencing Unstable Housing %s", NextFigure(), print_n_reporting('q37'))
+#| fig-cap: !expr sprintf("%s Most Common Reason for Experiencing Unstable Housing %s.", NextFigure(), print_n_reporting('q37'))
 
 plot_frq(bns$q37, geom.colors = plot_color, wrap.labels = 17, ylim=c(0,1600), sort.frq = 'desc') + xlab('') + ylab("Number of Students") + theme(axis.text.x = element_text(size = 10))
 ```
@@ -309,7 +309,7 @@ plot_frq(bns$q37, geom.colors = plot_color, wrap.labels = 17, ylim=c(0,1600), so
 ```{r}
 #| fig-height: 3
 #| fig-width: 4
-#| fig-cap: !expr sprintf("%s COVID Housing Impact %s", NextFigure(), print_n_reporting('q23'))
+#| fig-cap: !expr sprintf("%s COVID Housing Impact %s.", NextFigure(), print_n_reporting('q23'))
 
 
 plot_frq(bns$q23, geom.colors = plot_color, ylim=c(0,2150)) + xlab('') + ylab("Number of Students")
@@ -333,7 +333,7 @@ plot_frq(bns$q23, geom.colors = plot_color, ylim=c(0,2150)) + xlab('') + ylab("N
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Reported Reasons for a Change in Housing Stability From COVID %s", NextTable(), print_n_reporting('covid_housing_off_campus_job'))
+#| tbl-cap: !expr sprintf("%s Reported Reasons for a Change in Housing Stability From COVID %s.", NextTable(), print_n_reporting('covid_housing_off_campus_job'))
 
 question <- "covid_housing"
 

@@ -16,7 +16,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 10.", currentFigure, ":", sep = "")
+  paste("Figure 10.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -26,7 +26,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set table and section number --------
-  paste("Table 10.", currentTable, ":", sep = "")
+  paste("Table 10.", currentTable, ".", sep = "")
 }
 
 ```
@@ -44,7 +44,7 @@ Students were screened for generalized anxiety, depression, and thoughts of suic
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Generalized Anxiety", NextFigure())
+#| fig-cap: !expr sprintf("%s Generalized Anxiety.", NextFigure())
 #| fig-height: 6
 #| fig-width: 7
 
@@ -113,7 +113,7 @@ bns$GAD7 <- case_when(bns$GAD7_tmp >= 15 ~ "Severe anxiety",
 ## Generalized Anxiety Classification {#Generalized-Anxiety-Classification}
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Generalized Anxiety Classification %s", NextFigure(), print_n_reporting('GAD7'))
+#| fig-cap: !expr sprintf("%s Generalized Anxiety Classification %s.", NextFigure(), print_n_reporting('GAD7'))
 
 
 plot_frq(bns$GAD7, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 16) + xlab('') + ylab("Number of Students")
@@ -133,7 +133,7 @@ plot_frq(bns$GAD7, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 16) + 
 ## Depression {#Depression}
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Depression Screening", NextFigure())
+#| fig-cap: !expr sprintf("%s Depression Screening.", NextFigure())
 #| fig-height: 8
 #| fig-width: 7
 
@@ -212,7 +212,7 @@ bns$PHQ9 <- case_when(bns$PHQ9_tmp >= 20 ~ "Severe depression",
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Depression Severity Classification %s", NextFigure(), print_n_reporting('PHQ9'))
+#| fig-cap: !expr sprintf("%s Depression Severity Classification %s.", NextFigure(), print_n_reporting('PHQ9'))
 
 plot_frq(bns$PHQ9, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 14) + xlab('') + ylab("Number of Students")
 
@@ -232,7 +232,7 @@ plot_frq(bns$PHQ9, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 14) + 
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Suicidal Thoughts %s", NextFigure(), print_n_reporting('q110'))
+#| fig-cap: !expr sprintf("%s Suicidal Thoughts %s.", NextFigure(), print_n_reporting('q110'))
 plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
 ```
 
@@ -250,7 +250,7 @@ plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, so
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Mental Health Services Access %s", NextFigure(), print_n_reporting('q113'))
+#| fig-cap: !expr sprintf("%s Mental Health Services Access %s.", NextFigure(), print_n_reporting('q113'))
 
 plot_frq(bns$q113, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('Mental Health Services Access') + ylab("Number of Students")
 ```
@@ -264,7 +264,7 @@ plot_frq(bns$q113, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, s
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Reasons for Being Unsure About Access to Mental Health Services %s", NextTable(), print_n_reporting('access_mhs_unsure_what_they_are'))
+#| tbl-cap: !expr sprintf("%s Reasons for Being Unsure About Access to Mental Health Services %s.", NextTable(), print_n_reporting('access_mhs_unsure_what_they_are'))
 
 question <- "access_mhs"
 qlabel <- c("I'm not sure what these kinds of services are",
@@ -297,7 +297,7 @@ access_mhs_vars %>%
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Mental Health Services Use %s", NextFigure(), print_n_reporting('q114'))
+#| fig-cap: !expr sprintf("%s Mental Health Services Use %s.", NextFigure(), print_n_reporting('q114'))
 
 plot_frq(bns$q114, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('Use of Campus Mental Health Services') + ylab("Number of Students")
 ```
@@ -314,7 +314,7 @@ plot_frq(bns$q114, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, s
 <br />
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Reasons for Not using Campus-Based Mental Health Services %s", NextTable(), print_n_reporting('no_mhs_afraid'))
+#| tbl-cap: !expr sprintf("%s Reasons for Not using Campus-Based Mental Health Services %s.", NextTable(), print_n_reporting('no_mhs_afraid'))
 
 question <- "no_mhs"
 qlabel <- c("I haven't needed these services",
@@ -353,7 +353,7 @@ nomhs_vars %>%
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Mental Health Services Used %s", NextTable(), print_n_reporting('counseling_drop_in'))
+#| tbl-cap: !expr sprintf("%s Mental Health Services Used %s.", NextTable(), print_n_reporting('counseling_drop_in'))
 
 question <- "counseling"
 
@@ -387,7 +387,7 @@ kable() %>% kable_styling(bootstrap_options = "striped")
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Experiences With Mental Health Counseling", NextFigure())
+#| fig-cap: !expr sprintf("%s Experiences With Mental Health Counseling.", NextFigure())
 #| fig-height: 6
 #| fig-width: 7.5
 questions2 <- bns %>% select(starts_with("q116_"))

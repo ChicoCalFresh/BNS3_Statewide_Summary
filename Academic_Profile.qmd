@@ -16,7 +16,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 2.", currentFigure, ":", sep = "")
+  paste("Figure 2.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -26,7 +26,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set Table and section number --------
-  paste("Table 2.", currentTable, ":", sep = "")
+  paste("Table 2.", currentTable, ".", sep = "")
 }
 
 ```
@@ -101,7 +101,7 @@ tmp <- tmp %>%
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
-#| fig-cap: !expr sprintf("%s Survey Participants by Campus %s", NextFigure(), print_n_reporting('school'))
+#| fig-cap: !expr sprintf("%s Survey Participants by Campus %s.", NextFigure(), print_n_reporting('school'))
 
 # come back to this with Robin. -- must 
 ggplot(tmp, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() + 
@@ -132,7 +132,7 @@ ggplot(tmp, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() +
 ```{r}
 #| fig-height: 4.5
 #| fig-width: 5.5
-#| fig-cap: !expr sprintf("%s Student Academic Level %s", NextFigure(), print_n_reporting('q15'))
+#| fig-cap: !expr sprintf("%s Student Academic Level %s.", NextFigure(), print_n_reporting('q15'))
 bns$q15 <- recode(bns$q15,
               "Freshman (0-29 semester units or 0-44 quarter units)" = "Freshman",
               "Sophomore (30-59 semester units or 45-89 quarter units)" = "Sophmore",
@@ -154,7 +154,7 @@ plot_frq(bns$q15, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xl
 ```{r}
 #| fig-height: 6
 #| fig-width: 8.5
-#| fig-cap: !expr sprintf("%s Academic Majors %s", NextFigure(), print_n_reporting('q16'))
+#| fig-cap: !expr sprintf("%s Academic Majors %s.", NextFigure(), print_n_reporting('q16'))
 bns <- bns %>% mutate(q16=recode(q16, 
                                  "Science, Technology, Engineering and Math (STEM) (Includes Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition)" = "Science, Technology, Engineering and Math (STEM)"))
 
@@ -176,7 +176,7 @@ plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sor
 ```{r}
 #| fig-height: 4
 #| fig-width: 5.5
-#| fig-cap: !expr sprintf("%s Reported GPA %s", NextFigure(), print_n_reporting('q17'))
+#| fig-cap: !expr sprintf("%s Reported GPA %s.", NextFigure(), print_n_reporting('q17'))
 bns$gpa_fac <- cut(bns$q17, breaks = c(0, 1.5, 2.0, 2.5, 3.0, 3.5, 5.0), labels = c("1.5 or less", "1.51-2.0", "2.01-2.5", "2.51-3.0", "3.01-3.5", "3.51 or above"), ordered_result = TRUE, include.lowest = TRUE)
 
 plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Number of Students")
@@ -194,7 +194,7 @@ plot_frq(bns$gpa_fac, geom.colors = plot_color) + xlab('GPA') + ylab("Number of 
 ```{r}
 #| fig-height: 3.4
 #| fig-width: 7
-#| fig-cap: !expr sprintf("%s Enrolled Units %s", NextFigure(), print_n_reporting('q18'))
+#| fig-cap: !expr sprintf("%s Enrolled Units %s.", NextFigure(), print_n_reporting('q18'))
 bns$q18 <- round(bns$q18, 0) # Rounded non-integers to integers
 bns$full_time <- ifelse(bns$q18 >= 12, "Yes", "No")
 bns$units_binned <- cut(bns$q18, breaks = c(0, 6, 9, 12, 15, 18, 21, 1000), labels = c("6 or less", "7-9", "10-12", "13-15", "16-18", "19-21", "22+"), ordered_result = TRUE, include.lowest = TRUE)
@@ -212,7 +212,7 @@ plot_frq(bns$units_binned, geom.colors = plot_color) + xlab('Units') + ylab("Num
 ## I identify as...
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Academic Identiers", NextTable())
+#| tbl-cap: !expr sprintf("%s Academic Identifiers.", NextTable())
 
 questions <- c(paste0('q14_', 1:4), paste0('q14_', 5:12))
 rnames <- c("A Transfer Student", "LGBTQA+", "A student with a disability", 
@@ -258,7 +258,7 @@ binary_table(questions, "Yes", rnames, ".", col.title = "Student Identifiers:")
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Academic Performance & Activities", NextFigure())
+#| fig-cap: !expr sprintf("%s Academic Performance & Activities.", NextFigure())
 #| fig-height: 6
 #| fig-width: 8
 questions <- bns %>% select(starts_with("q106_"))
@@ -290,7 +290,7 @@ plot_likert(questions,
 
 
 
-
+<br />
 
 
 

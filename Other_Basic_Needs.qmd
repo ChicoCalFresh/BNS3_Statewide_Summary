@@ -16,7 +16,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 6.", currentFigure, ":", sep = "")
+  paste("Figure 6.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -26,7 +26,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set table and section number --------
-  paste("Table 6.", currentTable, ":", sep = "")
+  paste("Table 6.", currentTable, ".", sep = "")
 }
 
 ```
@@ -43,7 +43,7 @@ Students were asked to report information relating to their campus food pantry, 
 ## Basic Needs {#Basic-Needs}
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Basic Needs Services Usage", NextFigure())
+#| fig-cap: !expr sprintf("%s Basic Needs Services Usage.", NextFigure())
 #| fig-height: 4
 #| fig-width: 8
 questions <- bns %>% select(q46_2 ,q46_3, q46_4)
@@ -89,7 +89,7 @@ plot_likert(
 ## Food Pantry Usage
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Food Pantry Usage %s", NextFigure(), print_n_reporting('q54'))
+#| fig-cap: !expr sprintf("%s Food Pantry Usage %s.", NextFigure(), print_n_reporting('q54'))
 
 
 bns$q54 <- recode(bns$q54, "Other (Please specify):" = "Other")
@@ -113,7 +113,7 @@ plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 12) +
 **Because I utilized campus food pantries:**
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Food Pantry Impact", NextFigure())
+#| fig-cap: !expr sprintf("%s Food Pantry Impact.", NextFigure())
 #| fig-height: 8
 #| fig-width: 8.5
 questions <- bns %>% select(starts_with("q55_"))
@@ -177,7 +177,7 @@ plot_likert(questions[12:22],
 ## Food Pantry - Barriers
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Food Pantry Barriers %s", NextTable(), print_n_reporting('no_pantry_dont_need'))
+#| tbl-cap: !expr sprintf("%s Food Pantry Barriers %s.", NextTable(), print_n_reporting('no_pantry_dont_need'))
 
 
  question <- "no_pantry"
@@ -220,7 +220,7 @@ plot_likert(questions[12:22],
 **Knowing that I have Medi-Cal:**
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Medi-Cal Impact", NextFigure())
+#| fig-cap: !expr sprintf("%s Medi-Cal Impact.", NextFigure())
 #| fig-width: 8.5
 questions <- bns %>% select(starts_with("q59_"))
 names(questions) <- c("My mental health has improved.",
@@ -256,7 +256,7 @@ plot_likert(questions,
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Medi-Cal Barriers %s", NextTable(), print_n_reporting('no_medical_dont_need'))
+#| tbl-cap: !expr sprintf("%s Medi-Cal Barriers %s.", NextTable(), print_n_reporting('no_medical_dont_need'))
 
  question <- "no_medical"
  qlabel <- c("I don’t need Medi-Cal.",
@@ -299,7 +299,7 @@ plot_likert(questions,
 **Because I received Emergency Housing Services:**
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Emergency Housing Services Impact", NextFigure())
+#| fig-cap: !expr sprintf("%s Emergency Housing Services Impact.", NextFigure())
 #| fig-height: 8
 #| fig-width: 8.5
 questions <- bns %>% select(starts_with("q62_"))
@@ -342,7 +342,7 @@ plot_likert(questions,
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Emergency Housing Services Barriers %s", NextTable(), print_n_reporting('no_ehs_dont_need'))
+#| tbl-cap: !expr sprintf("%s Emergency Housing Services Barriers %s.", NextTable(), print_n_reporting('no_ehs_dont_need'))
 
  question <- "no_ehs"
  qlabel <- c("I don’t need Emergency Housing Services",

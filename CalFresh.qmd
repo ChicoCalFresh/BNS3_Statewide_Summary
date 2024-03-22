@@ -8,7 +8,6 @@ format:
 ```{r, include=FALSE}
 source("common_code.R")
 
-
 # Print the next figure number
 currentFigure <- 0
 NextFigure <- function() {
@@ -16,7 +15,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 5.", currentFigure, ":", sep = "")
+  paste("Figure 5.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -26,7 +25,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set table and section number --------
-  paste("Table 5.", currentTable, ":", sep = "")
+  paste("Table 5.", currentTable, ".", sep = "")
 }
 
 # Used to print n reporting of number of people fed through EBT per household size
@@ -50,7 +49,7 @@ Students were asked to report information relating to CalFresh and CalFresh elig
 ```{r}
 #| fig-height: 2
 #| fig-width: 8
-#| fig-cap: !expr sprintf("%s CalFresh Status %s", NextFigure(), print_n_reporting('q46_1'))
+#| fig-cap: !expr sprintf("%s CalFresh Status %s.", NextFigure(), print_n_reporting('q46_1'))
 questions <- bns %>% select(q46_1)
 
 questions <-
@@ -96,7 +95,7 @@ plot_likert(
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Income & Household Size %s", NextTable(), print_n_reporting('for_income_household_reporting'))
+#| tbl-cap: !expr sprintf("%s Income & Household Size %s.", NextTable(), print_n_reporting('for_income_household_reporting'))
 
 for_reporting_hux <- bns %>% select(monthly_hh_income, household_size) %>% na.omit()
 
@@ -119,9 +118,8 @@ huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %
   set_bold(2:8, 7) %>%  set_bold(2:9, 8) %>% set_bold(2:10, 9) %>% 
   set_italic(4:10, 2) %>% set_italic(5:10, 3) %>% set_italic(6:10, 4) %>% set_italic(7:10, 5) %>% 
   set_italic(8:10, 6) %>% set_italic(9:10, 7) %>%  set_italic(10, 8) %>% set_italic(11, 9) %>%
-  set_all_borders(brdr(3, "solid", "white")) %>% map_align(by_cols("center")) %>%
-  set_width(0.75) %>% set_font_size(12) %>% set_caption("Household Size:") %>%
-  set_width(0.8)
+  set_all_borders(brdr(3, "solid", "white")) %>% map_align(by_cols("center")) %>% set_font_size(12) %>% set_caption("Household Size:") %>%
+  set_width(1.0)
 
 
 # New color for row 12 column 8 (not sure if the two people qualify)
@@ -148,7 +146,7 @@ huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %
 
 ::: col-md-6
 ```{r}
-#| fig-cap: !expr sprintf("%s CalFresh Eligibility %s", NextFigure(), print_n_reporting('calfresh_eligible'))
+#| fig-cap: !expr sprintf("%s CalFresh Eligibility %s.", NextFigure(), print_n_reporting('calfresh_eligible'))
 
 c1 <- data.frame(bns$calfresh_eligible) %>% na.omit()
 c1 <- c1 %>% mutate(ifelse(bns.calfresh_eligible==0, "No", "Yes"))
@@ -183,7 +181,7 @@ plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plo
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s CalFresh Eligibility Breakdown", NextTable())
+#| tbl-cap: !expr sprintf("%s CalFresh Eligibility Breakdown.", NextTable())
 
 # 5 questions reduced to two, keep as is, seperate plot for each question, ...
 
@@ -240,10 +238,10 @@ Only students who reported currently using CalFresh or used it in the past as a 
 
 ```{r}
 #| fig-cap-location: top
-#| fig-cap: !expr sprintf("%s CalFresh Application Household Size %s & %s Number of People Fed Through EBT %s", NextFigure(), print_n_reporting('q47'), NextFigure(), print_n_reporting('fed_through_EBT'))
+#| fig-cap: !expr sprintf("%s CalFresh Application Household Size %s & %s Number of People Fed Through EBT %s.", NextFigure(), print_n_reporting('q47'), NextFigure(), print_n_reporting('fed_through_EBT'))
 #| fig-width: 9
 p1 <- plot_frq(bns$q47, geom.colors = plot_color, wrap.title = 40, ylim=c(0,500), wrap.labels = 15) +
-  xlab('\nDid you apply for CalFresh EBT as an individual \nor with other people in your household?')
+  xlab('\nDid you apply for CalFresh EBT as an individual \nor with other people in your household?') + ylab("Number of Students")
 p2 <- plot_frq(bns$fed_through_EBT, geom.colors = plot_color, wrap.title = 40) + 
   xlab('\nHow many people in the household are regularly \nfed through your CalFresh EBT card?')
 
@@ -265,7 +263,7 @@ rm(p1,p2)
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Monthly CalFresh Money %s", NextFigure(), print_n_reporting('q49_1'))
+#| fig-cap: !expr sprintf("%s Monthly CalFresh Money %s.", NextFigure(), print_n_reporting('q49_1'))
 #| fig-width: 7
 
 gghistogram(bns, x = "q49_1", add = "mean", fill = plot_color, alpha = 1) + xlab("Monthly EBT Received ($)") + ylab("Number of Students")
@@ -284,7 +282,7 @@ gghistogram(bns, x = "q49_1", add = "mean", fill = plot_color, alpha = 1) + xlab
 ## Household Size Breakdown
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s EBT per Number of People Fed Through EBT %s", NextTable(), print_n_reporting("for_ebt_household_reporting"))
+#| tbl-cap: !expr sprintf("%s EBT per Number of People Fed Through EBT %s.", NextTable(), print_n_reporting("for_ebt_household_reporting"))
 #| fig-width: 6.5
 tmp <- bns %>% group_by(fed_through_EBT) %>% 
   summarise(avg = round(mean(q49_1, na.rm=TRUE),2)) %>% 
@@ -316,7 +314,7 @@ tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped") %>%
 
 ```{r}
 #| fig-cap-location: top
-#| fig-cap: !expr sprintf("%s Level of Agreement on EBT Being Enough %s & %s Number of Weeks EBT Lasts %s", NextFigure(), print_n_reporting('q50'), NextFigure(), print_n_reporting('q51'))
+#| fig-cap: !expr sprintf("%s Level of Agreement on EBT Being Enough %s & %s Number of Weeks EBT Lasts %s.", NextFigure(), print_n_reporting('q50'), NextFigure(), print_n_reporting('q51'))
 #| fig-width: 9
 
 bns$q50_tmp <- recode(bns$q50, "Strongly agree" = "Strongly \nagree",
@@ -326,7 +324,8 @@ bns$q50_tmp <- recode(bns$q50, "Strongly agree" = "Strongly \nagree",
 p3 <- plot_frq(bns$q50_tmp, geom.colors = plot_color, ylim=c(0,200)) + 
   xlab('\nI feel that the amount that is added to my CalFresh EBT card each \nmonth is enough money to provide healthy food for the month.') + 
   theme(axis.text=element_text(size=9), #change font size of axis text
-        axis.title=element_text(size=9)) #change font size of axis titles
+        axis.title=element_text(size=9))  + #change font size of axis titles
+  ylab("Number of Students")
 
 
 
@@ -352,7 +351,7 @@ grid.arrange(p3, p4, nrow = 1)
 **While I received CalFresh benefits:**
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Perceived Impact of CalFresh", NextFigure())
+#| fig-cap: !expr sprintf("%s Perceived Impact of CalFresh.", NextFigure())
 #| fig-height: 8
 #| fig-width: 8.5
 
@@ -408,7 +407,7 @@ plot_likert(questions[12:22],
 ## CalFresh - Barriers
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Reported Barriers to Using CalFresh", NextTable())
+#| tbl-cap: !expr sprintf("%s Reported Barriers to Using CalFresh.", NextTable())
 
 question <- "calfresh_barrier"
 

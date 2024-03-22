@@ -15,7 +15,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 7.", currentFigure, ":", sep = "")
+  paste("Figure 7.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -25,7 +25,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set table and section number --------
-  paste("Table 7.", currentTable, ":", sep = "")
+  paste("Table 7.", currentTable, ".", sep = "")
 }
 
 ```
@@ -39,7 +39,7 @@ Students were screened for food insecurity using a two-item version of the USDA'
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Food Insecurity Screening", NextFigure())
+#| fig-cap: !expr sprintf("%s Food Insecurity Screening.", NextFigure())
 
 questions <- bns %>% select(q64, q65)
 names(questions) <- c("I/We worried whether food would run out before I/we got money to buy more.",
@@ -68,7 +68,7 @@ plot_likert(questions,
 ::: row
 ::: col-md-7
 ```{r}
-#| fig-cap: !expr sprintf("%s Food Insecurity Rates %s", NextFigure(), print_n_reporting('food_insecure_2item'))
+#| fig-cap: !expr sprintf("%s Food Insecurity Rates %s.", NextFigure(), print_n_reporting('food_insecure_2item'))
 #| fig-height: 3.5
 #| fig-width: 4.5
 
@@ -100,7 +100,7 @@ plot_frq(bns$two.item, geom.colors = plot_color, ylim=c(0,1250)) + xlab('Food In
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Ran Out of Money %s", NextTable(), print_n_reporting('fs_not_run_out'))
+#| tbl-cap: !expr sprintf("%s Ran Out of Money %s.", NextTable(), print_n_reporting('fs_not_run_out'))
 
 
 question <- "fs"

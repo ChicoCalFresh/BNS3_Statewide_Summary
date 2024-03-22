@@ -15,7 +15,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 8.", currentFigure, ":", sep = "")
+  paste("Figure 8.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -25,7 +25,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set table and section number --------
-  paste("Table 8.", currentTable, ":", sep = "")
+  paste("Table 8.", currentTable, ".", sep = "")
 }
 
 bns$q77 <- recode(bns$q77, "0 servings per day" = "0 servings", "1-2 servings per day" = "1-2 servings", "3-4 servings per day" = "3-4 servings", "5 or more servings per day" = "5+ servings" )
@@ -50,7 +50,7 @@ Students were asked to report questions related to their eating habits. This inc
 ```
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Food Access and Eating Behaviors", NextFigure())
+#| fig-cap: !expr sprintf("%s Food Access and Eating Behaviors.", NextFigure())
 #| fig-height: 8
 #| fig-width: 7.5
 questions <- bns %>% select(starts_with("q76_"))
@@ -85,7 +85,7 @@ plot_likert(questions,
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Daily Fruit & Vegetable Intake %s", NextFigure(), print_n_reporting("q77"))
+#| fig-cap: !expr sprintf("%s Daily Fruit & Vegetable Intake %s.", NextFigure(), print_n_reporting("q77"))
 #| fig-height: 5
 #| fig-width: 6
 
@@ -107,7 +107,7 @@ plot_frq(bns$q77, geom.colors = plot_color) + xlab('Daily Fruit & Vegetable Serv
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Daily Sugar Sweetened Beverage Intake %s", NextFigure(), print_n_reporting("q78"))
+#| fig-cap: !expr sprintf("%s Daily Sugar Sweetened Beverage Intake %s.", NextFigure(), print_n_reporting("q78"))
 #| fig-height: 5
 #| fig-width: 6
 
@@ -136,7 +136,7 @@ plot_frq(bns$q78, geom.colors = plot_color) + xlab('Daily Sugar-Sweetened Bevera
 ## Weekly Fast Food Intake
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Weekly Fast Food Intake %s", NextFigure(), print_n_reporting("q79"))
+#| fig-cap: !expr sprintf("%s Weekly Fast Food Intake %s.", NextFigure(), print_n_reporting("q79"))
 #| fig-height: 5
 #| fig-width: 6
 
@@ -162,7 +162,7 @@ plot_frq(bns$q79, geom.colors = plot_color) + xlab('Weekly Fast Food Intake') + 
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Weekly Alcohol Intake %s", NextFigure(), print_n_reporting("q80"))
+#| fig-cap: !expr sprintf("%s Weekly Alcohol Intake %s.", NextFigure(), print_n_reporting("q80"))
 #| fig-height: 5
 #| fig-width: 6
 
@@ -184,7 +184,7 @@ plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + yl
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Alcohol Servings Consumed When Drinking %s", NextFigure(), print_n_reporting("q81"))
+#| fig-cap: !expr sprintf("%s Alcohol Servings Consumed When Drinking %s.", NextFigure(), print_n_reporting("q81"))
 #| fig-height: 5
 #| fig-width: 6
 
@@ -208,7 +208,7 @@ plot_frq(bns$q81, geom.colors = plot_color) + xlab('Alcohol Servings Consumed Wh
 ## Cooking Confidence
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Cooking Confidence", NextFigure())
+#| fig-cap: !expr sprintf("%s Cooking Confidence.", NextFigure())
 #| fig-width: 8
 
 questions <- bns %>% select(starts_with("q82_"))

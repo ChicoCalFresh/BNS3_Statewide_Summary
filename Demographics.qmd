@@ -15,7 +15,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 1.", currentFigure, ":", sep = "")
+  paste("Figure 1.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -25,7 +25,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set Table and section number --------
-  paste("Table 1.", currentTable, ":", sep = "")
+  paste("Table 1.", currentTable, ".", sep = "")
 }
 ```
 
@@ -38,7 +38,7 @@ Students were asked to report information relating to their personal demographic
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Reported Age %s", NextFigure(), print_n_reporting('age'))  
+#| fig-cap: !expr sprintf("%s Reported Age %s.", NextFigure(), print_n_reporting('age'))  
 gghistogram(bns, x = "age", add = "mean", alpha = 1, 
             fill = plot_color) + 
   xlab("Age (years)") + ylab("Number of Students")
@@ -60,7 +60,7 @@ gghistogram(bns, x = "age", add = "mean", alpha = 1,
 ```{r}
 #| fig-height: 3.5
 #| fig-width: 7
-#| fig-cap: !expr sprintf("%s Gender Identity %s", NextFigure(), print_n_reporting('q7'))  
+#| fig-cap: !expr sprintf("%s Gender Identity %s.", NextFigure(), print_n_reporting('q7'))  
 
 rec <- bns %>% mutate(q7=recode(q7, "Gender non-binary"="Non-binary", "Gender Queer or Gender-Nonconforming" = "Queer or Nonconforming", "Gender Unlisted:" = "Unlisted"))
 
@@ -84,7 +84,7 @@ plot_frq(rec$q7, sort.frq="desc", geom.colors = plot_color) + xlab('Gender') + y
 ```{r}
 #| fig-height: 3
 #| fig-width: 4
-#| fig-cap: !expr sprintf("%s Ethnic/Hispanic Identity %s", NextFigure(), print_n_reporting_tmp('hispanic'))
+#| fig-cap: !expr sprintf("%s Ethnic/Hispanic Identity %s.", NextFigure(), print_n_reporting_tmp('hispanic'))
 tmp <- data.frame(q8=bns$q8) %>% mutate(hispanic=as.factor(ifelse(is.na(q8), NA, ifelse(grepl("Yes", q8), "Hispanic", "Non-Hispanic")))) %>% select(-q8)
 
 plot_frq(tmp$hispanic, geom.colors = plot_color, ylim=c(0, 1800)) + xlab("") + ylab("Number of Students")
@@ -150,7 +150,7 @@ tmp <-
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Reported Race %s", NextTable(), print_n_reporting_tmp('white'))
+#| tbl-cap: !expr sprintf("%s Reported Race %s.", NextTable(), print_n_reporting_tmp('white'))
 
 tmp %>% na.omit() %>% 
   summarize(across(everything(), sum)) %>%
@@ -186,7 +186,7 @@ tmp <- bns %>% filter(q11>0, q11 < 9) # drop 0 and "i don't have dependent' resp
 ```{r}
 #| fig-height: 4
 #| fig-width: 6
-#| fig-cap: !expr sprintf("%s Reported Number of Dependents %s", NextFigure(), print_n_reporting('q11'))
+#| fig-cap: !expr sprintf("%s Reported Number of Dependents %s.", NextFigure(), print_n_reporting('q11'))
 plot_frq(tmp$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + ylab("Number of Students")
 ```
 
@@ -205,7 +205,7 @@ plot_frq(tmp$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + yl
 ```{r}
 #| fig-height: 5
 #| fig-width: 7.5
-#| fig-cap: !expr sprintf("%s Parent/Guardian Education Level Reported by College Students %s", NextFigure(), print_n_reporting('q13'))
+#| fig-cap: !expr sprintf("%s Parent/Guardian Education Level Reported by College Students %s.", NextFigure(), print_n_reporting('q13'))
 tmp2 <- as.data.frame(table(bns$q13)) %>%
   mutate(Percent=lapply(Freq, function(x) paste0('(', percent(x/sum(!is.na(bns[['q13']])), accuracy = 0.1), ')')),
          FirstGen=as.character(c(1,1,1,1,1,0,0,0,2)),
@@ -233,7 +233,7 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 ```{r}
 #| fig-height: 3
 #| fig-width: 4
-#| fig-cap: !expr sprintf("%s First-Generation Students %s", NextFigure(), print_n_reporting('firstgen'))
+#| fig-cap: !expr sprintf("%s First-Generation Students %s.", NextFigure(), print_n_reporting('firstgen'))
 tmp3 <- data.frame(firstgen=bns$firstgen) %>% 
   mutate(firstgen=factor(ifelse(is.na(firstgen), NA, ifelse(firstgen == 0, "Not First Gen", "First Gen")), levels=c("Not First Gen", "First Gen")))
 

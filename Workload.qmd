@@ -15,7 +15,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 3.", currentFigure, ":", sep = "")
+  paste("Figure 3.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -25,7 +25,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set Table and section number --------
-  paste("Table 3.", currentTable, ":", sep = "")
+  paste("Table 3.", currentTable, ".", sep = "")
 }
 
 
@@ -46,7 +46,7 @@ Students were asked to report information regarding their workload. This include
 ## Weekly Paid Work Hours
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Weekly Paid Work Hours %s", NextFigure(), print_n_reporting('paid_work_hours'))
+#| fig-cap: !expr sprintf("%s Weekly Paid Work Hours %s.", NextFigure(), print_n_reporting('paid_work_hours'))
 
 gghistogram(bns, x = "paid_work_hours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Paid Hours Per Week") + ylab("Number of Students")
@@ -63,7 +63,7 @@ gghistogram(bns, x = "paid_work_hours", add = "mean", fill = plot_color, alpha =
 
 ```{r}
 #| fig-width: 8
-#| fig-cap: !expr sprintf("%s Impact of COVID %s", NextFigure(), print_n_reporting('q20'))
+#| fig-cap: !expr sprintf("%s Impact of COVID %s.", NextFigure(), print_n_reporting('q20'))
 plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,700), wrap.labels = 19, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
 
 ```
@@ -79,7 +79,7 @@ plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,700), wrap.labels = 19, sor
 ## Unpaid Work Hours
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Unpaid Work Hours %s", NextFigure(), print_n_reporting('unpaid_work_hours'))
+#| fig-cap: !expr sprintf("%s Unpaid Work Hours %s.", NextFigure(), print_n_reporting('unpaid_work_hours'))
 
 gghistogram(bns, x = "unpaid_work_hours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Unpaid Hours Per Week") + ylab("Number of Students")
@@ -96,7 +96,7 @@ gghistogram(bns, x = "unpaid_work_hours", add = "mean", fill = plot_color, alpha
 ## Unpaid Caregiving Hours
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Unpaid Caregiving Hours %s", NextFigure(), print_n_reporting('caregiving_hours'))
+#| fig-cap: !expr sprintf("%s Unpaid Caregiving Hours %s.", NextFigure(), print_n_reporting('caregiving_hours'))
 
 
 # Used for denominator in text for calculations
@@ -117,7 +117,7 @@ gghistogram(bns, x = "caregiving_hours", add = "mean", fill = plot_color, alpha 
 ## Academic Workload
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Academic Workload %s", NextFigure(), print_n_reporting('q18'))
+#| fig-cap: !expr sprintf("%s Academic Workload %s.", NextFigure(), print_n_reporting('q18'))
 gghistogram(tmp2, x = "units", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Academic Hours Per Week") + ylab("Number of Students")
 ```
@@ -133,7 +133,7 @@ gghistogram(tmp2, x = "units", add = "mean", fill = plot_color, alpha = 1) +
 ## Non-Academic Workload
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Non-Academic Workload %s", NextFigure(), print_n_reporting('NonAcademic'))
+#| fig-cap: !expr sprintf("%s Non-Academic Workload %s.", NextFigure(), print_n_reporting('NonAcademic'))
 gghistogram(tmp2, x = "NonAcademic", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Non-academic Hours Per Week") + ylab("Number of Students")
 ```
@@ -156,7 +156,7 @@ tmp <- tmp2 %>% filter(TotalHours > 0)
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Non-Academic Workload %s", NextFigure(), print_n_reporting('TotalHours'))
+#| fig-cap: !expr sprintf("%s Non-Academic Workload %s.", NextFigure(), print_n_reporting('TotalHours'))
 gghistogram(tmp2, x = "TotalHours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Total Hours Per Week") + ylab("Number of Students")
 ```

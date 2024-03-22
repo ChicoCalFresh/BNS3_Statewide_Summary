@@ -15,7 +15,7 @@ NextFigure <- function() {
   currentFigure <<- currentFigure + 1
   
       # -------- Set figure and section number --------
-  paste("Figure 9.", currentFigure, ":", sep = "")
+  paste("Figure 9.", currentFigure, ".", sep = "")
 }
 
 # Print the next Table number
@@ -25,7 +25,7 @@ NextTable <- function() {
   currentTable <<- currentTable + 1
   
       # -------- Set table and section number --------
-  paste("Table 9.", currentTable, ":", sep = "")
+  paste("Table 9.", currentTable, ".", sep = "")
 }
 
 ```
@@ -38,7 +38,7 @@ Students were asked to select how many days in the last week they had done any o
 
 
 ```{r, results='asis'}
-#| tbl-cap: !expr sprintf("%s Physical Activity Patterns", NextTable())
+#| tbl-cap: !expr sprintf("%s Physical Activity Patterns.", NextTable())
 
 
 tmp <- data.frame(rbind(table(bns$q83_1),
@@ -61,7 +61,7 @@ tmp %>%
 
 
 ```{r, fig.width=8}
-#| fig-cap: !expr sprintf("%s Physical Activity Patterns", NextFigure())
+#| fig-cap: !expr sprintf("%s Physical Activity Patterns.", NextFigure())
 
 
 
