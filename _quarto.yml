@@ -25,17 +25,19 @@ website:
       - href: Housing.qmd
         text: Housing
       - href: CalFresh.qmd
-        text: CalFresh
+        text: CalFresh Food
       - href: Other_Basic_Needs.qmd
         text: Other Basic Needs
       - href: Food_Security.qmd
         text: Food Security
-      - href: Eating_Habits.qmd
-        text: Eating Habits
-      - href: Physical_Activity.qmd
-        text: Physical Activity
-      - href: Mental_Health.qmd
-        text: Mental Health
+      - text: Other Health Variables
+        menu:
+          - href: Eating_Habits.qmd
+            text: Eating Habits
+          - href: Physical_Activity.qmd
+            text: Physical Activity
+          - href: Mental_Health.qmd
+            text: Mental Health
 
 format:
   html:

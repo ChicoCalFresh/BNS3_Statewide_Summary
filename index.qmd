@@ -53,19 +53,19 @@ map_and_data <- merge(cali_map, coord_data)
 
 The main purpose of this third cross-sectional study was to evaluate the following:
 
-- The impact of receiving [CalFresh](https://www.csuchico.edu/calfresh/index.shtml) benefits
-- Barriers to applying to CalFresh
+- The impact of receiving [CalFresh Food Benefits](https://www.csuchico.edu/calfresh/index.shtml) benefits
+- Barriers to applying to CalFresh Food
 - College student food insecurity
-- The impact of and barriers to using food pantries
+- The impact of and barriers to using other basic needs services
 
 
 
 ## Participants
 
 - EOP/EOPS offices assisted in the recruitment by emailing interest form links to their EOP/EOPS students. 
-- Students who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criteria when determining CalFresh eligibility) were then emailed a survey. 
+- Students who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criteria when determining CalFresh Food eligibility) were then emailed a survey. 
 - Participants were given a \$25 gift card incentive for completing the survey. 
-- EOP/EOPS students were identified as the target population for this survey based on their low-income and first-generation student status, which indicates a higher probability of using CalFresh and being likely eligible for CalFresh.
+- EOP/EOPS students were identified as the target population for this survey based on their low-income and first-generation student status, which indicates a higher probability of using CalFresh Food and being likely eligible for CalFresh Food.
 
 
 A total of 2,110 EOP/EOPS students in California were surveyed from the following campuses:
@@ -89,3 +89,16 @@ ggplot() +
 **Disclaimer on Missing Data:** *Students had the option to select "Prefer not to answer" for all questions or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
 <br />
+
+
+## Use of Website and Access to Data 
+
+Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-decoration: underline;">sbianco@csuchico.edu</span>, if you would like more information on using or citing this website, access to the data, methods used or survey instrument. Dissemination activities are in progress.
+
+## Funding
+
+*The CalFresh Food section of this website was partially funded by the USDA SNAP, (known as CalFresh Food in California) an equal opportunity provider and employer; and the California Department of Social Services.*
+
+
+
+
