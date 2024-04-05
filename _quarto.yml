@@ -9,7 +9,7 @@ project:
 
 website:
   page-footer: |
-    ![](bns_statewide_logo_array.svg){height=200}
+    ![](bns_statewide_logo_array.svg)
   title: "BNS Statewide"
   navbar:
     background: "#702b84"
@@ -48,5 +48,4 @@ format:
       - custom.scss
     toc: true
     toc_float: yes
-
 
