@@ -290,8 +290,6 @@ plot_likert(questions,
 
 
 
-<br />
-
 
 
 

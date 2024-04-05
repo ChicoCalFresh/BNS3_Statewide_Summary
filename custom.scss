@@ -5,19 +5,34 @@ $dark_purple: #42194d;
 $cf_blue: #2b388f;
 $cf_green: #00944d; 
 $cf_lime: #8bc53f;
+$chc_red: #9d2236;
+$link: #0000EE;
 
 // Links
 
-$link-color:    $dark_purple !default;
-$toc-color:     $dark_purple !default;
+$link-color:    $link !default;
+$toc-color:     $cf_green !default;
+
+
+$navbar-bg:     $cf_purple !default;
+
  
 /*-- scss:rules --*/
  
 h2 {
-    color: $cf_purple;
+    color: $cf_green;
     font-size: 30px;
     font-weight: bold;
+      opacity: 1;
 }
+
+
+h1 {
+  color: $cf_green;
+  text-align: center;
+  opacity: 1;
+}
+
 
 
 figcaption  {
@@ -33,4 +48,6 @@ body caption {
   text-align: left !important;
 }
 
+  
+  
 

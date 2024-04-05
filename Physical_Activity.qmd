@@ -108,3 +108,11 @@ ggplot(pa.data) +
 
 
 [^1]: These questions were developed based on the [Surgeon General's physical activity guidelines for adults](https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf) who recommend: 150 minutes to 300 minutes a week of moderate-intensity exercise, 75 minutes to 150 minutes a week of vigorous-intensity aerobic exercise, or an equivalent combination of moderate- and vigorous-intensity aerobic activity. They also recommend strength-training activities on 2 or more days a week.
+
+
+
+
+
+
+
+

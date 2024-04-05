@@ -428,19 +428,8 @@ kable() %>% kable_styling(bootstrap_options = "striped") %>%  column_spec(2, wid
 
 **Summary:** The most common reason that students reported not using CalFresh Food was because they do not think they are eligible, where `r get_count_and_percent(bns$calfresh_barrier_do_not_think_eligible, "1")` students selected this option. Meanwhile `r get_count_and_percent(bns$calfresh_barrier_other_students_need, "1")` students reported that they felt other students need CalFresh Food more than they do, and `r get_count_and_percent(bns$calfresh_barrier_no_time_app, "1")` reported that they have no time to complete the application.
 
-<br>
-
-------------------------------------------------------------------------
 
 
-<div style="text-align: center;">
-
-![](CalFresh_Food_Logo.jpg){height="150"}
-
-</div>
-
-
-*The CalFresh Food section of this website was partially funded by USDA SNAP, known in California as CalFresh Food, an equal opportunity provider and employer, and the California Department of Social Services.*
 
 
 

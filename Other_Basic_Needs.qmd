@@ -375,9 +375,5 @@ plot_likert(questions,
 
 **Summary:** A total of `r get_count_and_percent(bns$no_ehs_dont_need, "1")` students did not use Emergency Housing Services because they reported not needing them, while `r get_count_and_percent(bns$no_ehs_not_aware, "1")` did not know that their campus offered emergency housing services. Please note: Some campuses may not offer emergency housing services. 
 
-<br>
-
-
-
 
 

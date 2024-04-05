@@ -127,10 +127,14 @@ food_vars %>%
 **Summary:** A total of `r get_count_and_percent(bns$fs_not_run_out, "1")` students reported not running out of money for food in the last 30 days. Meanwhile, when students ran out of money for food, `r get_count_and_percent(bns$fs_skip_meal, "1")` reported that they started skipping meals, `r get_count_and_percent(bns$fs_credit_card, "1")` reported using their credit card to buy food, `r get_count_and_percent(bns$fs_given_money, "1")` were given money from friends/family/roommates, and only `r get_count_and_percent(bns$fs_organization, "1")` reported going to the food pantry or other free food organizations.
 
 
-<br>
-
 
 [^1]: [USDA's 10-item screener for food insecurity](https://www.ers.usda.gov/media/8279/ad2012.pdf)
 
 [^2]: [Validation of a 2-item screener for food insecurity among low-income families](https://pubmed.ncbi.nlm.nih.gov/20595453/)
+
+
+
+
+
+
 

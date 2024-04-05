@@ -169,8 +169,6 @@ gghistogram(tmp2, x = "TotalHours", add = "mean", fill = plot_color, alpha = 1) 
 
 **Summary:** The average number of total hours worked per week was `r round(mean(tmp2$TotalHours, na.rm = TRUE), 2)` hours (denoted by the dotted line) while the median was `r median(tmp2$TotalHours, na.rm = TRUE)` hours. A total of `r get_count_and_percent3(tmp2$TotalHours, 40)` students spent 40 or more hours per week on academic and non-academic work, while `r get_count_and_percent3(tmp2$TotalHours, 80)` spent 80 or more hours. 
 
-<br />
-
 
 ```{r}
 ## | label: fig-student-hours
@@ -217,3 +215,11 @@ gghistogram(tmp2, x = "TotalHours", add = "mean", fill = plot_color, alpha = 1) 
 #             geom.colors = c("#D8B365","#5AB4AC"),
 #             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
+
+
+
+
+
+
+
+

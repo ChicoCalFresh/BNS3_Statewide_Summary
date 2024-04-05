@@ -95,10 +95,4 @@ ggplot() +
 
 Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-decoration: underline;">sbianco@csuchico.edu</span>, if you would like more information on using or citing this website, access to the data, methods used or survey instrument. Dissemination activities are in progress.
 
-## Funding
-
-*The CalFresh Food section of this website was partially funded by USDA SNAP, known in California as CalFresh Food, an equal opportunity provider and employer, and the California Department of Social Services.*
-
-
-
 

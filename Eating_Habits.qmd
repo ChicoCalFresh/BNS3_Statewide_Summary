@@ -232,8 +232,13 @@ plot_likert(questions,
 **Summary:** Overall, the majority of students feel confident in their cooking habits. A notable `r count_and_percent(bns$q82_1, "Not at all confident", "Not very confident", "Neutral")` students were neutral, not very confident, or not at all confident that they can use the same healthy ingredients in more than one meal; `r count_and_percent(bns$q82_2, "Not at all confident", "Not very confident", "Neutral")` were neutral, not very confident, or not at all confident that they can use basic cooking skills; `r count_and_percent(bns$q82_3, "Not at all confident", "Not very confident", "Neutral")` were neutral, not very confident, or not at all confident that they can buy healthy food for their family on a budget; and `r count_and_percent(bns$q82_4, "Not at all confident", "Not very confident", "Neutral")` were neutral, not very confident, or not at all confident that they can cook healthy meals for their family on a budget. 
 
 
-<br />
 
 [^1]: This question was developed from the [Fall 2015-Spring 2019 American College Health Association’s National College Health Assessment](https://www.acha.org/NCHA/About_ACHA_NCHA/Survey/NCHA/About/Survey.aspx?hkey=7e9f6752-2b47-4671-8ce7-ba7a529c9934) which is no longer publicly available.
 [^2]: These questions were developed by the [Behavioral Risk Factor Surveillance System](https://www.cdc.gov/brfss/questionnaires/pdf-ques/2018_BRFSS_English_Questionnaire-508.pdf#page=35) screening tool.
 [^3]: These questions were developed by the [Share Our Strength’s Cooking Matters survey tool](https://foodsharelc.org/wp-content/uploads/2019/07/2017-Survey.CMF_.English.pdf) (a USDA-SNAP-Ed approved survey).
+
+
+
+
+
+

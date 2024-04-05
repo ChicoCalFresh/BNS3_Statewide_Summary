@@ -417,9 +417,6 @@ plot_likert(questions2,
 **Summary:** Overall, students who have used one-on-one counseling have had mostly positive experiences. A notable `r count_and_percent(bns$q116_2, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that the wait time to be seen was acceptable; and `r count_and_percent(bns$q116_5, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that the support they received helped them. 
 
 
-<br />
-
-
 
 
 [^1]: [Generalized Anxiety Disorder 7-item (GAD-7)](https://adaa.org/sites/default/files/GAD-7_Anxiety-updated_0.pdf)

@@ -8,6 +8,8 @@ project:
 # purple - 
 
 website:
+  page-footer: |
+    ![](bns_statewide_logo_array.svg){height="200"}
   title: "BNS Statewide"
   navbar:
     background: "#702b84"

@@ -251,6 +251,5 @@ plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + 
 
 **Summary: ** A total of `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status. As stated above, this outcome is not surprising because students in this study were either enrolled in EOP or EOPS, and both programs recruit students with first-generation status.
 
-<br>
 
 
