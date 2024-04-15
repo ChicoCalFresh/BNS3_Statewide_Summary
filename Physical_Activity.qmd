@@ -30,7 +30,7 @@ NextTable <- function() {
 
 ```
 
-Students were asked to select how many days in the last week they had done any of the following exercise types: moderate, vigorous, or strength training exercises.[^1]
+Students were asked to select how many days in the last week they had done any of the following exercise types: [moderate, vigorous, or strength training exercises.^1^](#Footnotes)
 
 *As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
@@ -105,12 +105,36 @@ ggplot(pa.data) +
 
 
 
+<br />
+
+--- 
+
+# Footnotes: {#Footnotes}
+
+1. These questions were developed based on the [Surgeon General's physical activity guidelines for adults](https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf) who recommend: 150 minutes to 300 minutes a week of moderate-intensity exercise, 75 minutes to 150 minutes a week of vigorous-intensity aerobic exercise, or an equivalent combination of moderate- and vigorous-intensity aerobic activity. They also recommend strength-training activities on 2 or more days a week.
+
+<br />
+
+:::: {.columns}
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="80%"}
+<div style="text-align: center;">
+
+<img src="bns_statewide_logo_array.svg" alt="CHC Logo" width="auto" height="auto">
+
+</div>
+:::
+
+::: {.column width="10%"}
 
 
-[^1]: These questions were developed based on the [Surgeon General's physical activity guidelines for adults](https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf) who recommend: 150 minutes to 300 minutes a week of moderate-intensity exercise, 75 minutes to 150 minutes a week of vigorous-intensity aerobic exercise, or an equivalent combination of moderate- and vigorous-intensity aerobic activity. They also recommend strength-training activities on 2 or more days a week.
+:::
 
-
-
+::::
 
 
 
