@@ -5,6 +5,7 @@ format:
     anchor-sections: false
 ---
 
+
 ```{r, include=FALSE}
 source("common_code.R")
 
@@ -80,7 +81,7 @@ plot_likert(questions,
 
 ```
  
-**Survey Question:** *Over the last two weeks, how often have you been bothered by the following problems?*[^1] 
+**Survey Question:** [*Over the last two weeks, how often have you been bothered by the following problems?^1^*](#Footnotes)
 
 **Additional Notes:** These questions (from the **validated GAD-7** tool) were used to classify generalized anxiety severity (see [Generalized Anxiety Classification](#Generalized-Anxiety-Classification)).
  
@@ -168,7 +169,7 @@ plot_likert(questions,
 ```
 
 
-**Survey Question:** **Over the last two weeks, how often have you been bothered by the following problems?**[^2]
+**Survey Question:** [*Over the last two weeks, how often have you been bothered by the following problems?^2^*](#Footnotes)
 
 **Additional Notes:** These questions (from the **validated PHQ-9**) were used to classify depression severity (see [Depression Severity Classification](#Depression-Severity-Classification)).
 
@@ -416,8 +417,38 @@ plot_likert(questions2,
 
 **Summary:** Overall, students who have used one-on-one counseling have had mostly positive experiences. A notable `r count_and_percent(bns$q116_2, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that the wait time to be seen was acceptable; and `r count_and_percent(bns$q116_5, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that the support they received helped them. 
 
+<br />
+
+--- 
+
+# Footnotes: {#Footnotes}
+
+1. [Generalized Anxiety Disorder 7-item (GAD-7](https://adaa.org/sites/default/files/GAD-7_Anxiety-updated_0.pdf)
+
+2. [Patient Health Questionnaire (PHQ-9)](https://med.stanford.edu/fastlab/research/imapp/msrs/_jcr_content/main/accordion/accordion_content3/download_256324296/file.res/PHQ9%20id%20date%2008.03.pdf)
+
+<br />
 
 
 
-[^1]: [Generalized Anxiety Disorder 7-item (GAD-7)](https://adaa.org/sites/default/files/GAD-7_Anxiety-updated_0.pdf)
-[^2]: [Patient Health Questionnaire (PHQ-9)](https://med.stanford.edu/fastlab/research/imapp/msrs/_jcr_content/main/accordion/accordion_content3/download_256324296/file.res/PHQ9%20id%20date%2008.03.pdf)
+:::: {.columns}
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="80%"}
+<div style="text-align: center;">
+
+<img src="bns_statewide_logo_array.svg" alt="CHC Logo" width="auto" height="auto">
+
+</div>
+:::
+
+::: {.column width="10%"}
+
+
+:::
+
+::::
+
