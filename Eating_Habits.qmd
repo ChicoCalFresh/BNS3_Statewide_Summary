@@ -94,7 +94,7 @@ plot_frq(bns$q77, geom.colors = plot_color) + xlab('Daily Fruit & Vegetable Serv
 ```
 
 
-**Survey Question:** *How many servings of fruits and vegetables do you usually consume per day? (1 serving= 1 medium piece of fruit; 1/2 cup fresh, frozen, or canned fruits/vegetables; 1 cup salad greens; or 1/4 cup dried fruit). Do NOT include fruit juices.*[^1]
+**Survey Question:** [*How many servings of fruits and vegetables do you usually consume per day? (1 serving= 1 medium piece of fruit; 1/2 cup fresh, frozen, or canned fruits/vegetables; 1 cup salad greens; or 1/4 cup dried fruit). Do NOT include fruit juices.^1^*](#Footnotes)
 
 
 **Summary:** A total of `r get_count_and_percent(bns$q77, "0 servings")` students reported usually eating zero servings of fruits and vegetables per day, `r get_count_and_percent(bns$q77, "1-2 servings")` reported eating one to two servings per day, `r get_count_and_percent(bns$q77, "3-4 servings")` reported eating three to four servings per day, and only `r get_count_and_percent(bns$q77, "5+ servings")` reported eating five or more servings per day.
@@ -174,7 +174,7 @@ plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + yl
 
 ```
 
-**Survey Question:** *How often do you consume at least one serving of alcohol? (1 serving= 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol).*[^2]
+**Survey Question:** [*How often do you consume at least one serving of alcohol? (1 serving= 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol).^2^*](#Footnotes)
 
 **Summary:** A total of `r count_and_percent(bns$q80, "Zero days")` reported drinking alcohol zero times per week, `r count_and_percent(bns$q80, "1-2 days")` reported drinking alcohol one to two days a week, and the remaining `r count_and_percent(bns$q80, "3-4 days", "5-6 days", "Everyday")` reported drinking alcohol three or more days per week. 
 
@@ -194,7 +194,7 @@ plot_frq(bns$q81, geom.colors = plot_color) + xlab('Alcohol Servings Consumed Wh
 
 ```
 
-**Survey Question:** *Typically, how many servings of alcohol do you consume when you drink alcohol? (1 serving = 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol).*[^2]
+**Survey Question:** [*Typically, how many servings of alcohol do you consume when you drink alcohol? (1 serving = 12 ounces of beer, a 5-ounce glass of wine, or a drink containing 1 shot of liquor or hard alcohol).^2^*](#Footnotes)
 
 **Additional Notes:** This question was displayed only to students who reported drinking alcohol one or more times per week (see [Weekly Alcohol Intake](#Weekly-Alcohol-Intake)).
 
@@ -227,18 +227,44 @@ plot_likert(questions,
 ```
 
 
-**Survey Question:** *The following questions pertain to how comfortable you feel about buying or preparing food:*[^3]
+**Survey Question:** [*The following questions pertain to how comfortable you feel about buying or preparing food:^3^*](#Footnotes)
 
 **Summary:** Overall, the majority of students feel confident in their cooking habits. A notable `r count_and_percent(bns$q82_1, "Not at all confident", "Not very confident", "Neutral")` students were neutral, not very confident, or not at all confident that they can use the same healthy ingredients in more than one meal; `r count_and_percent(bns$q82_2, "Not at all confident", "Not very confident", "Neutral")` were neutral, not very confident, or not at all confident that they can use basic cooking skills; `r count_and_percent(bns$q82_3, "Not at all confident", "Not very confident", "Neutral")` were neutral, not very confident, or not at all confident that they can buy healthy food for their family on a budget; and `r count_and_percent(bns$q82_4, "Not at all confident", "Not very confident", "Neutral")` were neutral, not very confident, or not at all confident that they can cook healthy meals for their family on a budget. 
 
+<br />
+
+--- 
+
+# Footnotes: {#Footnotes}
+
+1. This question was developed from the [Fall 2015-Spring 2019 American College Health Association’s National College Health Assessment](https://www.acha.org/NCHA/About_ACHA_NCHA/Survey/NCHA/About/Survey.aspx?hkey=7e9f6752-2b47-4671-8ce7-ba7a529c9934) which is no longer publicly available.
+
+2. These questions were developed by the [Behavioral Risk Factor Surveillance System](https://www.cdc.gov/brfss/questionnaires/pdf-ques/2018_BRFSS_English_Questionnaire-508.pdf#page=35) screening tool.
+
+3. These questions were developed by the [Share Our Strength’s Cooking Matters survey tool](https://foodsharelc.org/wp-content/uploads/2019/07/2017-Survey.CMF_.English.pdf) (a USDA-SNAP-Ed approved survey).
 
 
-[^1]: This question was developed from the [Fall 2015-Spring 2019 American College Health Association’s National College Health Assessment](https://www.acha.org/NCHA/About_ACHA_NCHA/Survey/NCHA/About/Survey.aspx?hkey=7e9f6752-2b47-4671-8ce7-ba7a529c9934) which is no longer publicly available.
-[^2]: These questions were developed by the [Behavioral Risk Factor Surveillance System](https://www.cdc.gov/brfss/questionnaires/pdf-ques/2018_BRFSS_English_Questionnaire-508.pdf#page=35) screening tool.
-[^3]: These questions were developed by the [Share Our Strength’s Cooking Matters survey tool](https://foodsharelc.org/wp-content/uploads/2019/07/2017-Survey.CMF_.English.pdf) (a USDA-SNAP-Ed approved survey).
+<br />
 
 
+:::: {.columns}
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="80%"}
+<div style="text-align: center;">
+
+<img src="bns_statewide_logo_array.svg" alt="CHC Logo" width="auto" height="auto">
+
+</div>
+:::
+
+::: {.column width="10%"}
 
 
+:::
 
+::::
 

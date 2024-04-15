@@ -431,6 +431,29 @@ kable() %>% kable_styling(bootstrap_options = "striped") %>%  column_spec(2, wid
 
 
 
+<br />
+
+
+:::: {.columns}
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="80%"}
+<div style="text-align: center;">
+
+<img src="bns_statewide_logo_array.svg" alt="CHC Logo" width="auto" height="auto">
+
+</div>
+:::
+
+::: {.column width="10%"}
+
+
+:::
+
+::::
 
 
 
