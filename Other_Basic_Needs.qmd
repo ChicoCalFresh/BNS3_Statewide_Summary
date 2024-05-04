@@ -113,7 +113,6 @@ plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 12) +
 **Because I utilized campus food pantries:**
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Food Pantry Impact.", NextFigure())
 #| fig-height: 8
 #| fig-width: 8.5
 questions <- bns %>% select(starts_with("q55_"))
@@ -148,6 +147,14 @@ plot_likert(questions[1:11],
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 
+```
+
+
+
+```{r}
+#| fig-cap: !expr sprintf("%s Food Pantry Impact.", NextFigure())
+#| fig-height: 8
+#| fig-width: 8.5
 plot_likert(questions[12:22],
             grid.range = c(1.2, 1.2),
             wrap.legend.labels = 20,
@@ -156,8 +163,8 @@ plot_likert(questions[12:22],
             catcount = 5,
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
-```
 
+```
 
 
 **Survey Question:** *For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. Because I utilized campus food pantries:*

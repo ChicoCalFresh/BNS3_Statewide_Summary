@@ -211,9 +211,16 @@ housing_prep %>%
 
 ```
 
-**Survey Question:** *These variables were derived from the questions in the [Past 12 Months](#In_Past_12_Months) section and from the [Sleeping Places](#Sleeping) section.*
+**Survey Question:** *These variables were derived from the questions in the [Past 12 Months](#In_Past_12_Months) section and from the [Sleeping Locations](#Sleeping) section.*
 
-**Additional Notes:** Students who answered "Yes" to 3 or more questions from the [In Past 12 Months](#In_Past_12_Months) section were deemed housing insecure. From the [Sleeping Places](#Sleeping) section, students who reported sleeping in any of the following places in the past 12 months or 30 days were deemed as homeless: *"At a shelter," "Temporarily staying with a relative, friend or couch surfing until I find other housing," "Temporarily at a hotel or motel without a permanent home to return to (not on vacation or business travel)," "In a transitional housing or independent living program," "At a group home such as halfway house or residential program for mental health or substance abuse," "Outdoor location such as street, sidewalk, alley, park, etc.," "In a car, truck, van, RV or camper," and/or "In a closed area/space with a roof not meant for human habitation such as an abandoned building, garage, tent, etc."*
+**Additional Notes:** 
+
+- Housing insecurity was measured using an eight-item scale that included the six items previously used by the [Hope Lab^1^](#Footnotes), and two additional questions that were added after consultation with local stakeholders. 
+    - Students who answered "Yes" to 3 or more questions from the [In Past 12 Months](#In_Past_12_Months) section were deemed housing insecure. 
+
+
+- Homelessness was determined using 9 indicators of homelessness described by the [Researching Basic Needs in Higher Education Report^2^](#Footnotes). The survey questions measure indicators of homelessness in the last 30 days and 12 months based on the definitions of homelessness used by the U.S. Housing and Urban Development (HUD) and the U.S. Department of Education. 
+    - From the [Sleeping Locations](#Sleeping) section, students who reported sleeping in any of the following places in the past 12 months or 30 days were deemed as homeless: *"At a shelter," "Temporarily staying with a relative, friend or couch surfing until I find other housing," "Temporarily at a hotel or motel without a permanent home to return to (not on vacation or business travel)," "In a transitional housing or independent living program," "At a group home such as halfway house or residential program for mental health or substance abuse," "Outdoor location such as street, sidewalk, alley, park, etc.," "In a car, truck, van, RV or camper," and/or "In a closed area/space with a roof not meant for human habitation such as an abandoned building, garage, tent, etc."*
 
 **Summary:** A total of `r get_count_and_percent(bns$housing_insecure, "1")` were deemed as housing insecure while `r get_count_and_percent(bns$homelessness_month, "1")` were deemed as homeless within the past month, and `r get_count_and_percent(bns$homelessness_year, "1")` were deemed as homeless within the past year of taking the survey.
 
@@ -362,6 +369,18 @@ ch_barrier_vars %>%
 **Additional Notes:** This question was shown only to those who answered "Yes" in the [COVID Housing Impact](#COVID_Housing_Impact) section. 
 
 **Summary:** Of those who reported a change in housing stability from the [COVID Housing Impact](#COVID_Housing_Impact) section, `r get_count_and_percent(bns$covid_housing_off_campus_job, "1")` students reported that the reason for the change in their housing stability was because their finances changed due to a lost (or reduced) OFF-campus job, while `r get_count_and_percent(bns$covid_housing_campus_job, "1")` reported their finances changed due to a lost (or reduced) ON-campus job. Additionally, `r get_count_and_percent(bns$covid_housing_unsafe, "1")` reported that they were in unsafe housing, and `r get_count_and_percent(bns$covid_housing_roommate_finances, "1")` reported that their roommate's finances had changed. 
+
+
+
+
+<br />
+
+--- 
+
+# Footnotes: {#Footnotes}
+
+1. [Hope Lab Housing Insecurity Assessment](https://www.bhcc.edu/media/03-documents/voicesofhunger/Wisconsin-HOPE-Lab-Still-Hungry-and-Homeless-April-2018.pdf)
+2. [Researching Basic Needs in Higher Education Report](https://www.calstate.edu/impact-of-the-csu/student-success/basic-needs-initiative/Documents/researching-basic-needs.pdf#page=31)
 
 
 <br />

@@ -38,7 +38,7 @@ bns$for_income_household_reporting <- ifelse(is.na(bns$monthly_hh_income) | is.n
 
 ```
 
-Students were asked to report information relating to the CalFresh Food program and CalFresh Food eligibility. This includes U.S. citizenship (or lawful permanent residency), household size, and monthly household income. Those that were not using CalFresh Food were asked to report any barriers to applying for CalFresh Food, while those that reported currently using CalFresh Food were asked to report their monthly Electronic Benefit Transfer (EBT), whether the EBT received is enough for them, and the perceived impact of CalFresh Food.
+Students were asked to report information relating to the CalFresh Food program and CalFresh Food eligibility. This includes U.S. citizenship (or lawful permanent residency), household size, and monthly household income. Those that were not using CalFresh Food were asked to report any barriers to applying for CalFresh Food, while those that reported currently using CalFresh Food were asked to report their monthly Electronic Benefit Transfer (EBT), whether the EBT received is enough for them, and the perceived impact of CalFresh Food. *Note: EBT is the CalFresh benefits delivery system that holds CalFresh dollars similar to a debit card.*
 
 *As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
 
@@ -209,6 +209,8 @@ bns$EOP <- "Yes"
 -   *Estimate the number of hours you work in a PAID job (e.g. server at a restaurant, office assistant, etc.) or paid internship (e.g. training, shadowing, or practicum) per week.*
 -   *For income and household size survey questions, see [Income and Household Size](#reference1)*
 
+**Additional Notes:** There are many other possible work exemptions for students to be eligible for CalFresh where only the 20 hours/week work exemption was assessed in this survey. 
+
 **Summary:** Based on self-reported data, `r get_count_and_percent(bns$citizenship, "Yes")` students met the citizenship requirement of either being a US Citizen or a lawful permanent resident. A total of `r get_count_and_percent(bns$income_eligible, "Yes")` students met the income/household size requirements, and `r get_count_and_percent(bns$work_eligible, "Yes")` students met the 20 hours/week work exemption. As a reminder, students don't need to meet a work requirement if they are are enrolled in an LPIE such as an approved EOP/EOPS.
 
 <br>
@@ -331,7 +333,6 @@ grid.arrange(p3, p4, nrow = 1)
 **While I received CalFresh benefits:**
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Perceived Impact of CalFresh Food.", NextFigure())
 #| fig-height: 8
 #| fig-width: 8.5
 
@@ -367,6 +368,13 @@ plot_likert(questions[1:11],
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 
+```
+
+```{r}
+#| fig-cap: !expr sprintf("%s Perceived Impact of CalFresh Food.", NextFigure())
+#| fig-height: 8
+#| fig-width: 8.5
+
 plot_likert(questions[12:22],
             grid.range = c(1.2, 1.2),
             wrap.legend.labels = 20,
@@ -375,7 +383,9 @@ plot_likert(questions[12:22],
             catcount = 5,
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+
 ```
+
 
 **Survey Question:** *For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. While you received CalFresh benefits:*
 
@@ -424,7 +434,7 @@ kable() %>% kable_styling(bootstrap_options = "striped") %>%  column_spec(2, wid
 
 **Survey Question:** *What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply)*
 
-**Additional Notes:** Only students who reported that they *Never heard of CalFresh;* *Heard of it, but never used it;* or *Used it before attending college* saw this question (See [Basic Needs section](#cal_status_reference)).
+**Additional Notes:** Only students who reported that they *Never heard of CalFresh;* *Heard of it, but never used it;* or *Used it before attending college* saw this question (See [CalFresh Food Status section](#cal_status_reference)).
 
 **Summary:** The most common reason that students reported not using CalFresh Food was because they do not think they are eligible, where `r get_count_and_percent(bns$calfresh_barrier_do_not_think_eligible, "1")` students selected this option. Meanwhile `r get_count_and_percent(bns$calfresh_barrier_other_students_need, "1")` students reported that they felt other students need CalFresh Food more than they do, and `r get_count_and_percent(bns$calfresh_barrier_no_time_app, "1")` reported that they have no time to complete the application.
 

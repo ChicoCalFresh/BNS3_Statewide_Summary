@@ -50,18 +50,34 @@ Students were asked to report questions related to their eating habits. This inc
 ```
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Food Access and Eating Behaviors.", NextFigure())
-#| fig-height: 8
+#| fig-height: 4
 #| fig-width: 7.5
-questions <- bns %>% select(starts_with("q76_"))
-names(questions) <- c("I do not regularly have access to a kitchen where I can prepare meals.",
-                      "I have a secure place to store fresh food and pantry items.",
-                      "I do not have enough room to store food items.",
+questions1 <- bns %>% select(q76_2, q76_4, q76_5, q76_6, q76_8)
+names(questions1) <- c("I have a secure place to store fresh food and pantry items.",
                       "Thinking about food is stressful/causes anxiety.",
                       "I wish I had more food to eat.",
                       "I almost always skip meals.",
+                      "No one cooks at home.")
+plot_likert(questions1,
+            grid.range = c(1.5, 1.2),
+            wrap.legend.labels = 20,
+            expand.grid = FALSE,
+            values = "sum.outside",
+            catcount = 5,
+            geom.colors = likert.pal.5,
+            show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
+
+
+```
+
+```{r}
+#| fig-cap: !expr sprintf("%s Food Access and Eating Behaviors.", NextFigure())
+#| fig-height: 4
+#| fig-width: 7.5
+questions <- bns %>% select(q76_1, q76_3, q76_7, q76_9)
+names(questions) <- c("I do not regularly have access to a kitchen where I can prepare meals.",
+                      "I do not have enough room to store food items.",
                       "I don't cook or shop for food.",
-                      "No one cooks at home.",
                       "I do not think about my eating/food habits.")
 plot_likert(questions,
             grid.range = c(1.5, 1.2),
@@ -72,6 +88,7 @@ plot_likert(questions,
             geom.colors = likert.pal.5,
             show.prc.sign = TRUE, reverse.scale = TRUE) + theme_bw() + theme(legend.position = "top")
 ```
+
 
 **Survey Question:** *For each of the following statements, indicate how strongly you agree or disagree about your current eating and cooking habits:*
 
