@@ -31,7 +31,7 @@ NextTable <- function() {
 
 Students were asked to report information relating to their personal demographics such as age, gender identity, race/ethnicity, number of dependents (if any), and their parents' education level. 
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 
 ## Age
@@ -94,7 +94,7 @@ plot_frq(tmp$hispanic, geom.colors = plot_color, ylim=c(0, 1800)) + xlab("") + y
 ::: col-md-5
 **Survey Question: ** *Do you identify as Hispanic or Latino or Spanish Origin?*
 
-**Additional Notes: ** Possible answers were pulled from the U.S. Census questionnaire assessing Hispanic Origin: *Mexican, Mexican American, Chicano, Puerto Rican, Cuban, or another Hispanic/Latino/Spanish origin.* 
+**Additional Notes: ** Possible answers were pulled from the U.S. Census questionnaire assessing Hispanic Origin: *Mexican; Mexican American; Chicano; Puerto Rican; Cuban; another Hispanic/Latino/Spanish origin; or not of Hispanic/Latino/Spanish origin.* 
 
 **Summary: ** A total of `r get_count_and_percent(tmp$hispanic, 'Hispanic')` students self-identified as having Hispanic Origins and `r get_count_and_percent(tmp$hispanic, 'Non-Hispanic')` students self-identified as Non-Hispanic. 
 :::
@@ -221,7 +221,7 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 
 **Additional Notes: ** This data is used to determine a student’s first-generation status. First-generation status is defined by neither parent having completed a Bachelor’s degree or higher. The green bars represent first-generation categories and the blue bars represent non-first-generation categories. Other/unknown responses are shown in gray.
 
-**Summary: ** A total of `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because all students in this study were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of `r count_and_percent(bns$q13, "Less than high school")` students reported their parents/guardians did not have a high school diploma or GED while `r count_and_percent(bns$q13, "High school diploma or GED")` reported the highest level of education completed by their parents was high school. 
+**Summary: ** A total of `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because all students in this study were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of `r count_and_percent(bns$q13, "Less than high school")` students reported their parents/guardians did not have a high school diploma or GED, while `r count_and_percent(bns$q13, "High school diploma or GED")` reported the highest level of education completed by their parents was high school. 
 
 
 <br>

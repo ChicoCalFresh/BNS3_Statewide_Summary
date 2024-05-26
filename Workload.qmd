@@ -41,7 +41,7 @@ bns$TotalHours <- tmp2$TotalHours
 
 Students were asked to report information regarding their workload. This includes work from both paid/unpaid jobs, academic work, as well as time spent caregiving for any family members.
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 ## Weekly Paid Work Hours
 
@@ -71,7 +71,7 @@ plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,700), wrap.labels = 19, sor
 
 **Survey Question:** *Have the hours you work in a PAID job or internship changed due to COVID-19?*
 
-**Summary:** A total of `r get_count_and_percent(bns$q20, 'I did not have a job or internship before COVID-19 and I still do not.')` students reported not working prior to COVID while `r get_count_and_percent(bns$q20, 'No, my hours have remained the same.')` reported that their hours have not changed due to COVID. There were `r get_count_and_percent(bns$q20, 'Yes, my hours have decreased but I still have a job.')` students that had their hours decreased, `r get_count_and_percent(bns$q20, 'Yes, I no longer have my job/internship.')` that no longer had a job/internship, and `r get_count_and_percent(bns$q20, 'Yes, my hours have increased and I still have a job or I have a new job.')` that had their hours increased. 
+**Summary:** A total of `r get_count_and_percent(bns$q20, 'I did not have a job or internship before COVID-19 and I still do not.')` students reported not working prior to COVID while, `r get_count_and_percent(bns$q20, 'No, my hours have remained the same.')` reported that their hours have not changed due to COVID. There were `r get_count_and_percent(bns$q20, 'Yes, my hours have decreased but I still have a job.')` students that had their hours decreased, `r get_count_and_percent(bns$q20, 'Yes, I no longer have my job/internship.')` that no longer had a job/internship, and `r get_count_and_percent(bns$q20, 'Yes, my hours have increased and I still have a job or I have a new job.')` that had their hours increased. 
 
 
 <br>
@@ -87,7 +87,7 @@ gghistogram(bns, x = "unpaid_work_hours", add = "mean", fill = plot_color, alpha
 
 **Survey Question:** *Estimate the number of hours you work in an UNPAID internship (e.g. training, shadowing, practicum, and/or volunteer, etc.) per week. Do not combine with answers above.*
 
-**Summary:** The average number of unpaid work hours was `r round(mean(bns$unpaid_work_hours, na.rm = TRUE),1)` (denoted by the dotted line) and the median was `r median(bns$unpaid_work_hours, na.rm = TRUE)`. A total of `r get_count_and_percent(bns$unpaid_work_hours, 0)` students did not work at an unpaid job/internship while `r get_count_and_percent3(bns$unpaid_work_hours, 10)` students reported working 10 or more unpaid hours every week. 
+**Summary:** The average number of unpaid work hours was `r round(mean(bns$unpaid_work_hours, na.rm = TRUE),1)` (denoted by the dotted line) and the median was `r median(bns$unpaid_work_hours, na.rm = TRUE)`. A total of `r get_count_and_percent(bns$unpaid_work_hours, 0)` students did not work at an unpaid job/internship, while `r get_count_and_percent3(bns$unpaid_work_hours, 10)` students reported working 10 or more unpaid hours every week. 
 
 <br>
 
@@ -135,7 +135,7 @@ gghistogram(tmp2, x = "units", add = "mean", fill = plot_color, alpha = 1) +
 ```{r}
 #| fig-cap: !expr sprintf("%s Non-Academic Workload %s.", NextFigure(), print_n_reporting('NonAcademic'))
 gghistogram(tmp2, x = "NonAcademic", add = "mean", fill = plot_color, alpha = 1) + 
-  xlab("Non-academic Hours Per Week") + ylab("Number of Students")
+  xlab("Non-Academic Hours Per Week") + ylab("Number of Students")
 ```
 
 **Survey Question:** *This variable was derived by taking the sum of students' paid work hours, unpaid work hours, and caregiving hours.*
@@ -156,7 +156,7 @@ tmp <- tmp2 %>% filter(TotalHours > 0)
 
 
 ```{r}
-#| fig-cap: !expr sprintf("%s Non-Academic Workload %s.", NextFigure(), print_n_reporting('TotalHours'))
+#| fig-cap: !expr sprintf("%s Total Workload %s.", NextFigure(), print_n_reporting('TotalHours'))
 gghistogram(tmp2, x = "TotalHours", add = "mean", fill = plot_color, alpha = 1) + 
   xlab("Total Hours Per Week") + ylab("Number of Students")
 ```
@@ -167,7 +167,7 @@ gghistogram(tmp2, x = "TotalHours", add = "mean", fill = plot_color, alpha = 1) 
 **Additional Notes:** Total workload was calculated only for students who reported their paid work hours, unpaid work hours, caregiving hours, and units. 
 
 
-**Summary:** The average number of total hours worked per week was `r round(mean(tmp2$TotalHours, na.rm = TRUE), 2)` hours (denoted by the dotted line) while the median was `r median(tmp2$TotalHours, na.rm = TRUE)` hours. A total of `r get_count_and_percent3(tmp2$TotalHours, 40)` students spent 40 or more hours per week on academic and non-academic work, while `r get_count_and_percent3(tmp2$TotalHours, 80)` spent 80 or more hours. 
+**Summary:** The average number of total hours worked per week was `r round(mean(tmp2$TotalHours, na.rm = TRUE), 2)` hours (denoted by the dotted line), while the median was `r median(tmp2$TotalHours, na.rm = TRUE)` hours. A total of `r get_count_and_percent3(tmp2$TotalHours, 40)` students spent 40 or more hours per week on academic and non-academic work, while `r get_count_and_percent3(tmp2$TotalHours, 80)` spent 80 or more hours. 
 
 
 ```{r}

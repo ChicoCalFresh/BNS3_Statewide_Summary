@@ -12,14 +12,14 @@ library(dplyr)
 library(ggplot2)
 
 # 1) Create Vector of Names of Schools
-Names <- c("Allan Hancock CC (n = 108)", "Butte CC (n = 124)" ,
-           "Mt. SAC CC (n = 247)", "Clovis CC (n = 136)", 
-           "Palo Verde CC (n = 35)",
-           "Cal State San Bernardino (n = 183)", 
-           "CSU Bakersfield (n = 105)", "Sacramento State (n = 240)",
-           "CSU Dominguez Hills (n = 56)", 
-           "San Francisco State (n = 250)", 
-           "Cal State LA (n = 320)", "UC Berkeley (n = 167)", NA)
+Names <- c("Allan Hancock CC (n = 112)", "Butte CC (n = 132)" ,
+           "Mt. SAC CC (n = 270)", "Clovis CC (n = 140)", 
+           "Palo Verde CC (n = 36)",
+           "Cal State San Bernardino (n = 191)", 
+           "CSU Bakersfield (n = 114)", "Sacramento State (n = 253)",
+           "CSU Dominguez Hills (n = 58)", 
+           "San Francisco State (n = 279)", 
+           "Cal State LA (n = 343)", "UC Berkeley (n = 182)", NA)
 
 
 # 2) Set Lat (from Google Maps)
@@ -45,8 +45,8 @@ map_and_data <- merge(cali_map, coord_data)
 
 ## Overview
 
-- The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) or the Extended Opportunity Programs and services (EOPS) at 12 colleges across the CSU, CCC and UC systems from 2022 to 2023.
-- This report provides a top level descriptive analysis of each question in the survey.
+- The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs and Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) or the Extended Opportunity Programs and services (EOPS) at 12 colleges across the CSU, CCC and UC systems from 2022 to 2023.
+- This site provides a top level descriptive analysis of each question in the survey.
 
 
 ## Purpose
@@ -86,14 +86,14 @@ ggplot() +
 
 
 
-**Disclaimer on Missing Data:** *Students had the option to select "Prefer not to answer" for all questions or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+**Disclaimer on Missing Data:** *Students had the option to select "Prefer not to answer" for all questions or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 <br />
 
 
 ## Use of Website and Access to Data 
 
-Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-decoration: underline;">sbianco@csuchico.edu</span>, if you would like more information on using or citing this website, access to the data, methods used or survey instrument. Dissemination activities are in progress.
+Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-decoration: underline;">sbianco@csuchico.edu</span>, if you would like more information on using or citing this website, accessing the data, methods used, or survey instruments used. Dissemination activities are in progress.
 
 
 

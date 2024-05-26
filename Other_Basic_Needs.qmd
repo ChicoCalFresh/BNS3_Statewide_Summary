@@ -35,7 +35,7 @@ NextTable <- function() {
 Students were asked to report information relating to their campus food pantry, Medi-Cal, and emergency housing services. Those that have utilized these services were asked to report their perceived impact of these services, while those that were not using them were asked to report any barriers to accessing them. 
 
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 
 
@@ -45,7 +45,7 @@ Students were asked to report information relating to their campus food pantry, 
 ```{r}
 #| fig-cap: !expr sprintf("%s Basic Needs Services Usage.", NextFigure())
 #| fig-height: 4
-#| fig-width: 8
+#| fig-width: 8.2
 questions <- bns %>% select(q46_2 ,q46_3, q46_4)
 
 questions <-
@@ -118,26 +118,26 @@ plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 12) +
 questions <- bns %>% select(starts_with("q55_"))
 names(questions) <- c('I worked fewer hours each week in a PAID position.',
                       'I had more time to do an UNPAID internship or volunteer work.',
+                      'I did not worry about whether I would run out of food or whether my food would last each month.',
                       'I had more money to pay for bills (rent, utility bills, clothes, etc.).',
-                      'I had more money for entertainment and social activities.',
-                      'I shopped more frequently at the farmers market.',
-                      'I had learned more about healthier foods.',
+                      'I had more money for entertainment and social activities (e.g. attending movies, shopping, going to bars or parties, etc.)',
+                      "I shopped more frequently at the farmers' market.",
                       'I purchased healthier foods.',
                       'I cooked more frequently at home.',
                       'I consumed a healthier diet.',
                       'I consumed less fast food.',
                       'I consumed fewer processed foods.',
+                      'I consumed fewer ready-to-eat meals.',
+                      'I consumed less junk food.',
                       'I consumed fewer sugar-sweetened beverages like soda and energy drinks.',
-                      'I consumed less alcohol or fewer alcoholic beverages.',
                       'I concentrated more in class(es).',
                       'My grades had improved.',
-                      'My grades had decreased.',
-                      'I kept up with course materials.',
+                      'I kept up with course materials, for example reading, writing, and preparing for exams and course assignments.',
                       'I had more time to go to my professors office hours and tutoring services when needed.',
-                      'I had more time to attend all classes as they are scheduled.',
+                      'I had more time to attend all my classes',
                       'I had more time to go on field trips or internships.',
                       'My sleep quality had improved.',
-                      'My stress/anxiety level had decreased.')
+                      "My stress/anxiety level had decreased. (eg. I'm not stressed/anxious about having money for food or bills).")
 plot_likert(questions[1:11],
             grid.range = c(1.2, 1.2),
             wrap.legend.labels = 20,
@@ -173,7 +173,7 @@ plot_likert(questions[12:22],
 **Additional Notes:** Only students who reported that they *Currently use the campus food pantry as a student,* or *Used it in the past as a college student* saw this question (See [Basic Needs](#Basic-Needs) section).
 
 
-**Summary:** Some highlights of the results include the following: Because students utilized their campus food pantries, `r count_and_percent(bns$q55_1, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they worked fewer hours in a paid position each week; and `r count_and_percent(bns$q55_6, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they learned more about healthier foods. Meanwhile, `r get_count_and_percent2(bns$q55_8, "Agree", "Strongly agree")` students agreed or strongly agreed that they cooked more frequently at home. 
+**Summary:** Some highlights of the results include the following: Because students utilized their campus food pantries, `r count_and_percent(bns$q55_1, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they worked fewer hours in a paid position each week; and `r count_and_percent(bns$q55_6, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that they shopped more frequently at the farmers' market. Meanwhile, `r get_count_and_percent2(bns$q55_8, "Agree", "Strongly agree")` students agreed or strongly agreed that they cooked more frequently at home; and  `r get_count_and_percent2(bns$q55_3, "Agree", "Strongly agree")` agreed or strongly agreed that they did not worry about food running out each month because of the food pantry. 
 
 
 <br>
@@ -201,7 +201,7 @@ plot_likert(questions[12:22],
              'I feel uncomfortable about receiving help with basic needs, like food.',
              'I would think less of myself If I went to campus food pantries or local food banks.',
              "I don't want my friends to find out I go to campus food pantries or local food banks.",
-             'My friends and peers would think less of me if I went to campus table(food pantries or local food banks.')
+             'My friends and peers would think less of me if I went to food pantries or local food banks.')
  
  pantry_vars <- prep_binary_vars(question, qlabel)
 
@@ -217,7 +217,7 @@ plot_likert(questions[12:22],
 **Additional Notes:** Only students who reported that they *Never heard of the campus food pantry;* *Heard of it, but never used it;* or *Used it before attending college* saw this question (See [Basic Needs](#Basic-Needs) section).
 
 
-**Summary:** The most common reason students reported not using their campus food pantry was because they felt that other students need the food more than them, where `r get_count_and_percent(bns$no_pantry_other_students_need, "1")` students selected this option. Meanwhile, `r get_count_and_percent(bns$no_pantry_dont_need, "1")` reported they did not need to use the food pantry, and `r get_count_and_percent(bns$no_pantry_not_aware, "1")` reported they were not aware of any campus food pantries or local food banks. Please note: Some campuses may not have food pantries on or near their campus. 
+**Summary:** The most common reason students reported not using their campus food pantry was because they felt that other students need the food more than them, where `r get_count_and_percent(bns$no_pantry_other_students_need, "1")` students selected this option. Meanwhile, `r get_count_and_percent(bns$no_pantry_dont_need, "1")` reported they did not need to use the food pantry, and `r get_count_and_percent(bns$no_pantry_not_aware, "1")` reported they were not aware of any campus food pantries or local food banks. Please note, some campuses may not have food pantries on or near their campus. 
 
 <br>
 
@@ -233,7 +233,7 @@ questions <- bns %>% select(starts_with("q59_"))
 names(questions) <- c("My mental health has improved.",
                       "My physical health has improved.",
                       "My sleep quality had improved.",
-                      "My stress/anxiety level had decreased.")
+                      "My stress/anxiety level had decreased. (ex. I’m not stressed/anxious about having money for food or bills).")
                       
 
 plot_likert(questions,
@@ -251,7 +251,7 @@ plot_likert(questions,
 
 **Additional Notes:** Only students who reported that they *Currently use Medi-Cal as a student,* or *Used it in the past as a college student* saw this question (See [Basic Needs](#Basic-Needs)).
 
-**Summary:** Because students used Medi-Cal, `r count_and_percent(bns$q59_1, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their mental health has improved; `r get_count_and_percent2(bns$q59_2, "Agree", "Strongly agree")`agreed or strongly agreed that their physical health had improved; `r count_and_percent(bns$q59_3, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their sleep quality had improved; and `r count_and_percent(bns$q59_4, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their stress/anxiety level had decreased. 
+**Summary:** Because students used Medi-Cal, `r count_and_percent(bns$q59_1, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their mental health has improved; `r get_count_and_percent2(bns$q59_2, "Agree", "Strongly agree")` agreed or strongly agreed that their physical health had improved; `r count_and_percent(bns$q59_3, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their sleep quality had improved; and `r count_and_percent(bns$q59_4, "Disagree", "Strongly disagree", "Neither agree nor disagree")` were neutral, disagreed, or strongly disagreed that their stress/anxiety level had decreased. 
 
 
 
@@ -277,10 +277,10 @@ plot_likert(questions,
              "I am embarrassed or ashamed to apply for Medi-Cal.",
              "I don’t believe in social services like Medi-Cal, CalFresh, WIC, or Welfare/Cash Aid.",
              "Other",
-             "I feel uncomfortable about receiving help with basic needs, like food.",
-             "I would think less of myself If I went to campus food pantries or local food banks.",
-             "I don't want my friends to find out I go to campus food pantries or local food banks.",
-             "My friends and peers would think less of me if I went to campus table(food pantries or local food banks.")
+             "I feel uncomfortable about receiving help with basic needs, like medical care.",
+             "I would think less of myself If I applied for Medi-Cal.",
+             "I don't want my friends to find out I applied for Medi-Cal.",
+             "My friends and peers would think less of me if I applied to Medi-Cal.")
  
  medical_vars <- prep_binary_vars(question, qlabel)
  
@@ -312,13 +312,12 @@ plot_likert(questions,
 questions <- bns %>% select(starts_with("q62_"))
 names(questions) <- c('I concentrated more in class(es).',
                       'My grades had improved.',
-                      'My grades had decreased.',
-                      'I kept up course materials.',
+                      'I kept up with course materials, for example reading, writing, and preparing for exams and course assignments.',
                       'I had more time to go to my professors’ office hours and tutoring services when needed.',
-                      'I had more time to attend all classes as they are scheduled.',
+                      'I had more time to attend all my classes',
                       'I had more time to go on field trips or internships.',
                       'My sleep quality had improved.',
-                      'My stress/anxiety level had decreased.',
+                      'My stress/anxiety level had decreased. (ex. I’m not stressed/anxious about having money for food or bills).',
                       'I’m less concerned about housing issues.',
                       'I felt more confident in my ability to maintain healthy relationships.')
 
@@ -337,7 +336,7 @@ plot_likert(questions,
 
 **Additional Notes:** Only students who reported that they *Currently use Emergency Housing Services as a student,* or *Used it in the past as a college student* saw this question (See [Basic Needs](#Basic-Needs) section).
 
-**Summary:** Some highlights of the results include the following: Because students utilized emergency housing services, `r get_count_and_percent2(bns$q62_1, "Agree", "Strongly agree")` agreed or strongly agreed that they concentrated more in class; `r get_count_and_percent2(bns$q62_2, "Agree", "Strongly agree")` agreed or strongly agreed that their grades had improved; `r get_count_and_percent2(bns$q62_9, "Agree", "Strongly agree")` agreed or strongly agreed that their stress/anxiety had decreased; and `r get_count_and_percent2(bns$q62_10, "Agree", "Strongly agree")` agreed or strongly agreed that they were less concerned about housing issues. 
+**Summary:** Some highlights of the results include the following: Because students utilized emergency housing services, `r get_count_and_percent2(bns$q62_1, "Agree", "Strongly agree")` agreed or strongly agreed that they concentrated more in class; `r get_count_and_percent2(bns$q62_2, "Agree", "Strongly agree")` agreed or strongly agreed that their grades had improved; `r get_count_and_percent2(bns$q62_8, "Agree", "Strongly agree")` agreed or strongly agreed that their stress/anxiety had decreased; and `r get_count_and_percent2(bns$q62_9, "Agree", "Strongly agree")` agreed or strongly agreed that they were less concerned about housing issues. 
 
 
 
@@ -380,7 +379,7 @@ plot_likert(questions,
 
 **Additional Notes:** Only students who reported that they *Never heard of Emergency Housing Services; Heard of it, but never used it; or Used it before attending college* saw this question (See [Basic Needs](#Basic-Needs) section).
 
-**Summary:** A total of `r get_count_and_percent(bns$no_ehs_dont_need, "1")` students did not use Emergency Housing Services because they reported not needing them, while `r get_count_and_percent(bns$no_ehs_not_aware, "1")` did not know that their campus offered emergency housing services. Please note: Some campuses may not offer emergency housing services. 
+**Summary:** A total of `r get_count_and_percent(bns$no_ehs_dont_need, "1")` students did not use Emergency Housing Services because they reported not needing them, while `r get_count_and_percent(bns$no_ehs_not_aware, "1")` did not know that their campus offered emergency housing services. Please note, some campuses may not offer emergency housing services. 
 
 
 

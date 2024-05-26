@@ -34,7 +34,7 @@ NextTable <- function() {
 
 Students were asked to report information relating to their academics. This includes information such as what college they were currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of students they identify as (transfer, international, etc.). 
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 
 
@@ -135,7 +135,7 @@ ggplot(tmp, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() +
 #| fig-cap: !expr sprintf("%s Student Academic Level %s.", NextFigure(), print_n_reporting('q15'))
 bns$q15 <- recode(bns$q15,
               "Freshman (0-29 semester units or 0-44 quarter units)" = "Freshman",
-              "Sophomore (30-59 semester units or 45-89 quarter units)" = "Sophmore",
+              "Sophomore (30-59 semester units or 45-89 quarter units)" = "Sophomore",
               "Junior (60-89 semester units or 90-134 quarter units)" = "Junior",
               "Senior (90+ semester units or 135+ quarter units)" = "Senior")
               
@@ -145,7 +145,7 @@ plot_frq(bns$q15, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xl
 
 **Survey Question: ** *Estimate your class standing by units completed (do not include units from this semester/quarter):*
 
-**Summary: ** The statewide survey captures undergraduate students of all class standing. Of the `r sum(table(bns$q15))` students reporting, `r get_count_and_percent(bns$q15, "Freshman")` were freshmen, `r get_count_and_percent(bns$q15, "Sophmore")` were sophmores, `r get_count_and_percent(bns$q15, "Junior")` were juniors, and `r get_count_and_percent(bns$q15, "Senior")` were seniors.
+**Summary: ** The statewide survey captures undergraduate students of all class standing. Of the `r sum(table(bns$q15))` students reporting, `r get_count_and_percent(bns$q15, "Freshman")` were freshmen, `r get_count_and_percent(bns$q15, "Sophomore")` were sophomores, `r get_count_and_percent(bns$q15, "Junior")` were juniors, and `r get_count_and_percent(bns$q15, "Senior")` were seniors.
 
 <br>
 

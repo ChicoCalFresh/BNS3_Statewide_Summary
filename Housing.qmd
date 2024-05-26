@@ -35,7 +35,7 @@ bns$q35 <- recode(bns$q35, "None" = "Never")
 
 Students were asked to report information relating to their current and past housing conditions. This includes if they were living near their college, the type of home they were currently living in, any hardships they faced in the past year with housing, homelessness, housing insecurity, barriers to accessing housing, and any housing changes due to COVID.
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 ## Living Near College
 
@@ -52,7 +52,7 @@ plot_frq(bns$q24, geom.colors = plot_color, ylim=c(0,1800)) + xlab('') + ylab("N
 ::: col-md-5
 **Survey Question:** *Are you currently living in the city/area in which you are enrolled in college?*
 
-**Summary:** A total of `r get_count_and_percent(bns$q24, "No")` students reported NOT currently living in the city/area of their college while the remaining `r get_count_and_percent(bns$q24, "Yes")` reported currently living in the city/area of their college. While there were many students who answered "No," this could be due to many campuses offering remote classes and students choosing to live at home or in an area with a lower cost of living.
+**Summary:** A total of `r get_count_and_percent(bns$q24, "No")` students reported NOT currently living in the city/area of their college, while the remaining `r get_count_and_percent(bns$q24, "Yes")` reported currently living in the city/area of their college. While there were many students who answered "No," this could be due to many campuses offering remote classes and students choosing to live at home or in an area with a lower cost of living.
 
 
 :::
@@ -83,7 +83,7 @@ question_table('q25', qs, cnames)
 ## In the Past 12 Months... {#In_Past_12_Months}
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Housing Security Screening.", NextTable())
+#| tbl-cap: !expr sprintf("%s Housing Insecurity Screening.", NextTable())
 
 questions <- paste0('q', 26:33)
 rnames <- c('Was there a rent or mortgage increase that made it difficult to pay',
@@ -222,7 +222,7 @@ housing_prep %>%
 - Homelessness was determined using 9 indicators of homelessness described by the [Researching Basic Needs in Higher Education Report^2^](#Footnotes). The survey questions measure indicators of homelessness in the last 30 days and 12 months based on the definitions of homelessness used by the U.S. Housing and Urban Development (HUD) and the U.S. Department of Education. 
     - From the [Sleeping Locations](#Sleeping) section, students who reported sleeping in any of the following places in the past 12 months or 30 days were deemed as homeless: *"At a shelter," "Temporarily staying with a relative, friend or couch surfing until I find other housing," "Temporarily at a hotel or motel without a permanent home to return to (not on vacation or business travel)," "In a transitional housing or independent living program," "At a group home such as halfway house or residential program for mental health or substance abuse," "Outdoor location such as street, sidewalk, alley, park, etc.," "In a car, truck, van, RV or camper," and/or "In a closed area/space with a roof not meant for human habitation such as an abandoned building, garage, tent, etc."*
 
-**Summary:** A total of `r get_count_and_percent(bns$housing_insecure, "1")` were deemed as housing insecure while `r get_count_and_percent(bns$homelessness_month, "1")` were deemed as homeless within the past month, and `r get_count_and_percent(bns$homelessness_year, "1")` were deemed as homeless within the past year of taking the survey.
+**Summary:** A total of `r get_count_and_percent(bns$housing_insecure, "1")` were deemed as housing insecure, while `r get_count_and_percent(bns$homelessness_month, "1")` were deemed as homeless within the past month, and `r get_count_and_percent(bns$homelessness_year, "1")` were deemed as homeless within the past year of taking the survey.
 
 <br>
 
@@ -251,7 +251,7 @@ prep_binary_vars(question, qlabel) %>%
 
 **Survey Question:** *In the past 12 months, what barriers have you experienced in accessing housing? (Select all that apply)*
 
-**Summary: ** A total of `r get_count_and_percent(bns$housing_barrier_none, "1")` students reported not experiencing any barriers to accessing housing while `r get_count_and_percent(bns$housing_barrier_deposit_funds, "1")` reported having a lack of deposit funds, and `r get_count_and_percent(bns$housing_barrier_employment, "1")` reported a lack of employment as a barrier. 
+**Summary: ** A total of `r get_count_and_percent(bns$housing_barrier_none, "1")` students reported not experiencing any barriers to accessing housing, while `r get_count_and_percent(bns$housing_barrier_deposit_funds, "1")` reported having a lack of deposit funds, and `r get_count_and_percent(bns$housing_barrier_employment, "1")` reported a lack of employment as a barrier. 
 
 
 <br />
@@ -269,7 +269,8 @@ plot_frq(bns$q35, geom.colors = plot_color, wrap.labels =10) + xlab('')
 
 **Survey Question:** *In the past 12 months, how many times have you moved?*
 
-**Summary: ** A total of `r get_count_and_percent(bns$q35, "Never")` students reported never moving in the past 12 months, while `r get_count_and_percent(bns$q35, "Once")` reported moving once, and `r get_count_and_percent(bns$q35, "Twice")` reported moving twice. There were `r get_count_and_percent2(bns$q35, "Three to five times", "Six times or more")` students who reported moving three or more times in the past 12 months.
+**Summary:** A total of `r get_count_and_percent(bns$q35, "Never")` students reported never moving in the past 12 months, while `r get_count_and_percent(bns$q35, "Once")` reported moving once, and `r get_count_and_percent(bns$q35, "Twice")` reported moving twice. There were `r get_count_and_percent2(bns$q35, "Three to five times", "Six times or more")` students who reported moving three or more times in the past 12 months.
+
 ---
 
 <br>
@@ -285,7 +286,7 @@ plot_frq(bns$q34, geom.colors = plot_color, wrap.title=40, wrap.labels =12, ylim
 
 **Survey Question:** *In the past 12 months, how many times have you been unsure of where you were going to sleep at night?* 
 
-**Summary: ** A total of `r get_count_and_percent(bns$q34, "Never")` students reported never being unsure of where they are going to sleep in the past 12 months, while `r get_count_and_percent(bns$q34, "Never")` were unsure on one occasion, `r get_count_and_percent(bns$q34, "Never")` were unsure on two occasions, and `r get_count_and_percent(bns$q34, "Never")`, were unsure on three or more occasions. 
+**Summary: ** A total of `r get_count_and_percent(bns$q34, "Never")` students reported never being unsure of where they are going to sleep in the past 12 months, while `r get_count_and_percent(bns$q34, "Once")` were unsure on one occasion, `r get_count_and_percent(bns$q34, "Twice")` were unsure on two occasions, and `r get_count_and_percent(bns$q34, "Three or more times")`, were unsure on three or more occasions. 
 
 ---
 
@@ -302,7 +303,7 @@ plot_frq(bns$q37, geom.colors = plot_color, wrap.labels = 17, ylim=c(0,1600), so
 
 **Survey Question:** *In the past 12 months, if you have experienced unstable housing, what was the most common reason?*
 
-**Summary:** A total of `r get_count_and_percent(bns$q37, "Not applicable")` reported that this question was not applicable while `r get_count_and_percent(bns$q37, "I did not have enough money to cover housing expenses (rent, mortgage, or utility bill)")` reported they did not have enough money to cover housing expenses, and `r get_count_and_percent(bns$q37, "I had a conflict with someone I was living with")` reported that they had a conflict with someone they were living with. 
+**Summary:** A total of `r get_count_and_percent(bns$q37, "Not applicable")` reported that this question was not applicable, while `r get_count_and_percent(bns$q37, "I did not have enough money to cover housing expenses (rent, mortgage, or utility bill)")` reported they did not have enough money to cover housing expenses, and `r get_count_and_percent(bns$q37, "I had a conflict with someone I was living with")` reported that they had a conflict with someone they were living with. 
 
 
 
