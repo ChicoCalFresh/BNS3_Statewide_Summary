@@ -38,7 +38,7 @@ Students were screened for generalized anxiety, depression, and thoughts of suic
 **These next questions are about mental health and suicidal thoughts. Sometimes people feel so depressed about the future that they may consider attempting suicide, that is, taking some action to end their own life. These questions may be upsetting for you, and so we want to be sure that you feel comfortable continuing. Please remember that you may discontinue the survey at any time. Additionally, the following resource is available to you, should you become distressed: National Suicide Prevention Lifeline (1-800-273-8255).**
 
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 
 ## Generalized Anxiety {#Generalized-Anxiety}
@@ -173,7 +173,7 @@ plot_likert(questions,
 
 **Additional Notes:** These questions (from the **validated PHQ-9**) were used to classify depression severity (see [Depression Severity Classification](#Depression-Severity-Classification)).
 
-**Summary:** Some highlights of the results include the following: In the past two weeks, `r count_and_percent(bns$q109_2, "Nearly every day", "More than half the days", "Several days")` students have felt down, depressed or hopeless for several days, more than half the days, or nearly every day; `r count_and_percent(bns$q109_3, "Nearly every day", "More than half the days", "Several days")` students have had trouble falling or staying asleep for several days, more than half the days, or nearly every day; `r count_and_percent(bns$q109_4, "Nearly every day", "More than half the days", "Several days")` students have felt tired or had little energy for several days, more than half the days, or nearly every day; and `r count_and_percent(bns$q109_9, "Nearly every day", "More than half the days", "Several days")` students have had thoughts that they would be better off dead or had thoughts of hurting themselves for several days, more than half the days, or nearly every day.
+**Summary:** Some highlights of the results include the following: In the past two weeks, `r count_and_percent(bns$q109_2, "Nearly every day", "More than half the days", "Several days")` students have felt down, depressed, or hopeless for several days, more than half the days, or nearly every day; `r count_and_percent(bns$q109_3, "Nearly every day", "More than half the days", "Several days")` students have had trouble falling or staying asleep for several days, more than half the days, or nearly every day; `r count_and_percent(bns$q109_4, "Nearly every day", "More than half the days", "Several days")` students have felt tired or had little energy for several days, more than half the days, or nearly every day; and `r count_and_percent(bns$q109_9, "Nearly every day", "More than half the days", "Several days")` students have had thoughts that they would be better off dead or had thoughts of hurting themselves for several days, more than half the days, or nearly every day.
 
 
 
@@ -221,7 +221,7 @@ plot_frq(bns$PHQ9, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 14) + 
 
 **Survey Question:** *This variable was created from the questions in the [Depression](#Depression) section.*
 
-**Additional Notes:** This variable was created using the **validated PHQ-9** severity scoring. "Not at all" was scored as 0, "Several days" was scored as 1, "More than half the days" was scored as 2, and "Nearly every day" was scored as 3. Individuals' scores were added together. Those classified with "None/Minimal depression" had scores of 0-4, "Mild depression" had scores of 5-9, "Moderate depression" had scores of 10-14, "Moderately severe depression" had scores of 15-19, and "Severe depression had scores of 20-27. Anyone who answered "Prefer not to answer" to at least one of the nine questions was not classified. 
+**Additional Notes:** This variable was created using the **validated PHQ-9** severity scoring. "Not at all" was scored as 0, "Several days" was scored as 1, "More than half the days" was scored as 2, and "Nearly every day" was scored as 3. Individuals' scores were added together. Those classified with "None/Minimal depression" had scores of 0-4, "Mild depression" had scores of 5-9, "Moderate depression" had scores of 10-14, "Moderately severe depression" had scores of 15-19, and "Severe depression" had scores of 20-27. Anyone who answered "Prefer not to answer" to at least one of the nine questions was not classified. 
 
 
 **Summary:** A total of `r get_count_and_percent(bns$PHQ9, "None/Minimal depression")` students were classified as having none/minimal depression, `r get_count_and_percent(bns$PHQ9, "Mild depression")` were classified as having mild depression, `r get_count_and_percent(bns$PHQ9, "Moderate depression")` were classified as having moderate depression, `r get_count_and_percent(bns$PHQ9, "Moderately severe depression")` were classified as having moderately severe depression, and `r get_count_and_percent(bns$PHQ9, "Severe depression")` were classified as having severe depression.
@@ -242,7 +242,7 @@ plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, so
 
 **Additional Notes:** Students who reported having thoughts that they would be better off dead or had thoughts of hurting themselves for several days, more than half the days, or nearly every day (see [Depression](#Depression) section) were shown this question. All of these students were also sent an automatic email from Qualtrics containing many mental health resources. Students who responded that they were currently having thoughts of suicide and have a plan of how they might do it were immediately taken to a new page displaying the national suicide hotline.  
 
-**Summary:** Of those who had thoughts that they were better off dead or had thoughts of hurting themselves, `r get_count_and_percent(bns$q110, "I am safe right now (I am not thinking of hurting myself)")` students reported feeling safe right now; `r get_count_and_percent(bns$q110, "I am having thoughts of suicide currently, but am not planning on hurting myself")` students reported having thoughts of suicide, but were not planning on hurting themselves; and `r get_count_and_percent(bns$q110, "I am having thoughts of suicide currently and have a plan for how I might do it")` reported currently having suicidal thoughts with a plan for how they might do it.
+**Summary:** Of those who had thoughts that they were better off dead or had thoughts of hurting themselves, `r get_count_and_percent(bns$q110, "I am safe right now (I am not thinking of hurting myself)")` students reported feeling safe right now; `r get_count_and_percent(bns$q110, "I am having thoughts of suicide currently, but am not planning on hurting myself")` students reported having thoughts of suicide but were not planning on hurting themselves; and `r get_count_and_percent(bns$q110, "I am having thoughts of suicide currently and have a plan for how I might do it")` reported currently having suicidal thoughts with a plan for how they might do it.
 
 <br />
 
@@ -423,7 +423,7 @@ plot_likert(questions2,
 
 # Footnotes: {#Footnotes}
 
-1. [Generalized Anxiety Disorder 7-item (GAD-7](https://adaa.org/sites/default/files/GAD-7_Anxiety-updated_0.pdf)
+1. [Generalized Anxiety Disorder 7-item (GAD-7)](https://adaa.org/sites/default/files/GAD-7_Anxiety-updated_0.pdf)
 
 2. [Patient Health Questionnaire (PHQ-9)](https://med.stanford.edu/fastlab/research/imapp/msrs/_jcr_content/main/accordion/accordion_content3/download_256324296/file.res/PHQ9%20id%20date%2008.03.pdf)
 

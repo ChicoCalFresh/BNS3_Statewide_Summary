@@ -48,7 +48,7 @@ gghistogram(bns, x = "age", add = "mean", alpha = 1,
 
 **Additional Notes: ** Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number. 
 
-**Summary: ** The average age of the students was `r round(mean(bns$age, na.rm = TRUE),1)` years with a range of `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)` and the majority falling between 20-30 years old. A total of `r get_count_and_percent3(bns$age, 21)` students were 21 or older, and `r get_count_and_percent3(bns$age, 30)` students were 30 or older. 
+**Summary: ** The average age of the students was `r round(mean(bns$age, na.rm = TRUE),1)` years with a range of `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)`, and a median age of `r median(bns$age)`. A total of `r get_count_and_percent3(bns$age, 21)` students were 21 or older, and `r get_count_and_percent3(bns$age, 30)` students were 30 or older. 
 
 <br>
 
@@ -219,9 +219,10 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 
 **Survey Question: ** *What is the highest level of education completed by your parents/guardians (for example, if your mother and father both raised you, and your mother has the highest level of education, then indicate her highest level of education)?*
 
-**Additional Notes: ** This data is used to determine a student’s first-generation status. First-generation status is defined by neither parent having completed a Bachelor’s degree or higher. The green bars represent first-generation categories and the blue bars represent non-first-generation categories. Other/unknown responses are shown in gray.
+**Additional Notes: ** This data is used to determine a student’s first-generation status. First-generation status is defined by neither parent having completed a bachelor’s degree or higher. The green bars represent first-generation categories, and the blue bars represent non-first-generation categories. Other/unknown responses are shown in gray.
 
-**Summary: ** A total of `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because all students in this study were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of `r count_and_percent(bns$q13, "Less than high school")` students reported their parents/guardians did not have a high school diploma or GED, while `r count_and_percent(bns$q13, "High school diploma or GED")` reported the highest level of education completed by their parents was high school. 
+**Summary: ** A total of `r get_count_and_percent(bns$firstgen, '1')` students reported first-generation status based on their parent/guardian education level. This outcome is not surprising because all students in this study were either enrolled in EOP or EOPS and both programs recruit students with first-generation status. A total of `r count_and_percent(bns$q13, "Less than high school")` students reported their parents/guardians did not complete high school, while `r count_and_percent(bns$q13, "High school diploma or GED")` reported the highest level of education completed by their parents was high school. 
+ 
 
 
 <br>

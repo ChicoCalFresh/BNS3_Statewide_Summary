@@ -95,9 +95,7 @@ plot_likert(
 bns$q54 <- recode(bns$q54, "Other (Please specify):" = "Other")
 
 plot_frq(bns$q54, geom.colors = plot_color, wrap.labels = 12) + 
-  xlab('\nHow often do you normally use the food pantry?')+ 
-  theme(axis.text=element_text(size=9), #change font size of axis text
-        axis.title=element_text(size=9))
+  xlab('\nHow often do you normally use the food pantry?') + ylab("Number of Students")
 ```
 
 
@@ -133,7 +131,7 @@ names(questions) <- c('I worked fewer hours each week in a PAID position.',
                       'I concentrated more in class(es).',
                       'My grades had improved.',
                       'I kept up with course materials, for example reading, writing, and preparing for exams and course assignments.',
-                      'I had more time to go to my professors office hours and tutoring services when needed.',
+                      "I had more time to go to my professors' office hours and tutoring services when needed.",
                       'I had more time to attend all my classes',
                       'I had more time to go on field trips or internships.',
                       'My sleep quality had improved.',
@@ -167,7 +165,7 @@ plot_likert(questions[12:22],
 ```
 
 
-**Survey Question:** *For the following questions, please choose how much you agree or disagree with the impact CalFresh has or had on your life. Because I utilized campus food pantries:*
+**Survey Question:** *For the following questions, please choose how much you agree or disagree with the impact campus food pantries has or had on your life. Because I utilized campus food pantries:*
 
 
 **Additional Notes:** Only students who reported that they *Currently use the campus food pantry as a student,* or *Used it in the past as a college student* saw this question (See [Basic Needs](#Basic-Needs) section).
@@ -217,7 +215,7 @@ plot_likert(questions[12:22],
 **Additional Notes:** Only students who reported that they *Never heard of the campus food pantry;* *Heard of it, but never used it;* or *Used it before attending college* saw this question (See [Basic Needs](#Basic-Needs) section).
 
 
-**Summary:** The most common reason students reported not using their campus food pantry was because they felt that other students need the food more than them, where `r get_count_and_percent(bns$no_pantry_other_students_need, "1")` students selected this option. Meanwhile, `r get_count_and_percent(bns$no_pantry_dont_need, "1")` reported they did not need to use the food pantry, and `r get_count_and_percent(bns$no_pantry_not_aware, "1")` reported they were not aware of any campus food pantries or local food banks. Please note, some campuses may not have food pantries on or near their campus. 
+**Summary:** The most common reason students reported for not using their campus food pantry was because they felt that other students need the food more than them, where `r get_count_and_percent(bns$no_pantry_other_students_need, "1")` students selected this option. Meanwhile, `r get_count_and_percent(bns$no_pantry_dont_need, "1")` reported they did not need to use the food pantry, and `r get_count_and_percent(bns$no_pantry_not_aware, "1")` reported they were not aware of any campus food pantries or local food banks. Please note, some campuses may not have food pantries on or near their campus. 
 
 <br>
 
@@ -233,7 +231,7 @@ questions <- bns %>% select(starts_with("q59_"))
 names(questions) <- c("My mental health has improved.",
                       "My physical health has improved.",
                       "My sleep quality had improved.",
-                      "My stress/anxiety level had decreased. (ex. I’m not stressed/anxious about having money for food or bills).")
+                      "My stress/anxiety level had decreased. (e.g. I’m not stressed/anxious about having money for food or bills).")
                       
 
 plot_likert(questions,
@@ -272,7 +270,7 @@ plot_likert(questions,
              "No time to complete the Medi-Cal application/Medi-Cal application is too long.",
              "The Medi-Cal application is too difficult to complete.",
              "I do not think I am eligible for Medi-Cal.",
-             "I have heard from other students that it is not worth my time because I wont be eligible.",
+             "I have heard from other students that it is not worth my time because I won't be eligible.",
              "My family or household does not want me to apply for Medi-Cal.",
              "I am embarrassed or ashamed to apply for Medi-Cal.",
              "I don’t believe in social services like Medi-Cal, CalFresh, WIC, or Welfare/Cash Aid.",
@@ -317,7 +315,7 @@ names(questions) <- c('I concentrated more in class(es).',
                       'I had more time to attend all my classes',
                       'I had more time to go on field trips or internships.',
                       'My sleep quality had improved.',
-                      'My stress/anxiety level had decreased. (ex. I’m not stressed/anxious about having money for food or bills).',
+                      'My stress/anxiety level had decreased. (e.g. I’m not stressed/anxious about having money for food or bills).',
                       'I’m less concerned about housing issues.',
                       'I felt more confident in my ability to maintain healthy relationships.')
 

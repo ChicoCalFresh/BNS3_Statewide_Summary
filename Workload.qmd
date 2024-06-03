@@ -71,7 +71,7 @@ plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,700), wrap.labels = 19, sor
 
 **Survey Question:** *Have the hours you work in a PAID job or internship changed due to COVID-19?*
 
-**Summary:** A total of `r get_count_and_percent(bns$q20, 'I did not have a job or internship before COVID-19 and I still do not.')` students reported not working prior to COVID while, `r get_count_and_percent(bns$q20, 'No, my hours have remained the same.')` reported that their hours have not changed due to COVID. There were `r get_count_and_percent(bns$q20, 'Yes, my hours have decreased but I still have a job.')` students that had their hours decreased, `r get_count_and_percent(bns$q20, 'Yes, I no longer have my job/internship.')` that no longer had a job/internship, and `r get_count_and_percent(bns$q20, 'Yes, my hours have increased and I still have a job or I have a new job.')` that had their hours increased. 
+**Summary:** A total of `r get_count_and_percent(bns$q20, 'I did not have a job or internship before COVID-19 and I still do not.')` students reported not working prior to COVID, while `r get_count_and_percent(bns$q20, 'No, my hours have remained the same.')` reported that their hours have not changed due to COVID. There were `r get_count_and_percent(bns$q20, 'Yes, my hours have decreased but I still have a job.')` students that had their hours decreased, `r get_count_and_percent(bns$q20, 'Yes, I no longer have my job/internship.')` that no longer had a job/internship, and `r get_count_and_percent(bns$q20, 'Yes, my hours have increased and I still have a job or I have a new job.')` that had their hours increased. 
 
 
 <br>
@@ -140,7 +140,7 @@ gghistogram(tmp2, x = "NonAcademic", add = "mean", fill = plot_color, alpha = 1)
 
 **Survey Question:** *This variable was derived by taking the sum of students' paid work hours, unpaid work hours, and caregiving hours.*
 
-**Additional Notes:**  Total workload was calculated only for students who reported their paid work hours, unpaid work hours, and caregiving hours. 
+**Additional Notes:** Non-academic workload was calculated only for students who reported their paid work hours, unpaid work hours, and caregiving hours. 
 
 
 **Summary:** The average total number of hours worked per week in non-academic matters was `r round(mean(tmp2$NonAcademic, na.rm = TRUE), 2)` hours (denoted by the dotted line), while the median was `r median(tmp2$NonAcademic, na.rm = TRUE)` hours. A total of `r get_count_and_percent3(tmp2$NonAcademic, 40)` students spent 40 or more hours per week on non-academic work. 

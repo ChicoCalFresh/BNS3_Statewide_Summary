@@ -32,9 +32,9 @@ bns$q77 <- recode(bns$q77, "0 servings per day" = "0 servings", "1-2 servings pe
 ```
 
 
-Students were asked to report questions related to their eating habits. This includes cooking habits, access to kitchens, access to storing food, fruit and vegetable intake, sugar sweetened beverage intake, fast food intake, alcohol intake, and confidence in cooking. 
+Students were asked to report questions related to their eating habits. This includes cooking habits, access to kitchens, access to storing food, fruit and vegetable intake, sugar-sweetened beverage intake, fast food intake, alcohol intake, and confidence in cooking. 
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 
 ## Food Access and Eating Behaviors
@@ -254,11 +254,11 @@ plot_likert(questions,
 
 # Footnotes: {#Footnotes}
 
-1. This question was developed from the [Fall 2015-Spring 2019 American College Health Association’s National College Health Assessment](https://www.acha.org/NCHA/About_ACHA_NCHA/Survey/NCHA/About/Survey.aspx?hkey=7e9f6752-2b47-4671-8ce7-ba7a529c9934) which is no longer publicly available.
+1. This question was developed from the [Fall 2015-Spring 2019 American College Health Association’s National College Health Assessment](https://www.acha.org/NCHA/About_ACHA_NCHA/Survey/NCHA/About/Survey.aspx?hkey=7e9f6752-2b47-4671-8ce7-ba7a529c9934), which is no longer publicly available.
 
 2. These questions were developed by the [Behavioral Risk Factor Surveillance System](https://www.cdc.gov/brfss/questionnaires/pdf-ques/2018_BRFSS_English_Questionnaire-508.pdf#page=35) screening tool.
 
-3. These questions were developed by the [Share Our Strength’s Cooking Matters survey tool](https://foodsharelc.org/wp-content/uploads/2019/07/2017-Survey.CMF_.English.pdf) (a USDA-SNAP-Ed approved survey).
+3. These questions were developed by the [Share Our Strength’s Cooking Matters survey tool](https://foodsharelc.org/wp-content/uploads/2019/07/2017-Survey.CMF_.English.pdf) (a USDA SNAP-Ed approved survey).
 
 
 <br />

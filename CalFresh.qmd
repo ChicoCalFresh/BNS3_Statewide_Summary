@@ -158,10 +158,10 @@ plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plo
 -   Meets household size/income requirements from the California Department of Social Services.
 -   The person is either a U.S. citizen or lawful permanent resident.\
 -   If the person is between the ages of 18 to 49, and is at least a part-time student (enrolled in six or more units), then this person is classified as a student by the California Department of Social Services and needs to meet the following additional criteria:
-    -   Does not get more than half of their meals from meal plans (less than 11 per week). **(All students from this study met this criteria as this was one of the inclusion criteria to take the survey)**
+    -   Does not get more than half of their meals from meal plans (less than 11 per week). **(All students from this study met this criterion as this was one of the inclusion criteria to take the survey)**
     -   Meets one of the possible work requirements such as working 20 or more hours per week or being enrolled in an approved Local Program that Increases Employability (LPIE). At the time of the start of this survey, all EOP/EOPS programs were considered an LIPE, however, campuses now need to apply and receive approval for their program to be considered an LPIE. **When determining eligibility, all students were assumed to meet the work requirement since they were all EOP/EOPS students.**
 
-**Summary:** A total of `r get_count_and_percent(bns$calfresh_eligible, "1")` students were likely eligible for CalFresh Food, while `r get_count_and_percent(bns$calfresh_eligible, "0")` were likely not eligible. Many students selected "Prefer not to answer" when reporting their income. Calfresh Food eligibility was unable to be determined among these students and among any students who answered "Prefer not to answer" to household size.
+**Summary:** A total of `r get_count_and_percent(bns$calfresh_eligible, "1")` students were likely eligible for CalFresh Food, while `r get_count_and_percent(bns$calfresh_eligible, "0")` were likely not eligible. Many students selected "Prefer not to answer" when reporting their income. CalFresh Food eligibility was unable to be determined among these students and among any students who answered "Prefer not to answer" to household size.
 
 <div class = "col-md-5">
 
@@ -213,7 +213,7 @@ bns$EOP <- "Yes"
 
 **Additional Notes:** There are many other possible work exemptions for students to be eligible for CalFresh Food, where only the 20 hours/week work exemption was assessed in this survey. 
 
-**Summary:** Based on self-reported data, `r get_count_and_percent(bns$citizenship, "Yes")` students met the citizenship requirement of either being a US Citizen or a lawful permanent resident. A total of `r get_count_and_percent(bns$income_eligible, "Yes")` students met the income/household size requirements, and `r get_count_and_percent(bns$work_eligible, "Yes")` students met the 20 hours/week work exemption. As a reminder, students don't need to meet a work requirement if they are are enrolled in an LPIE such as an approved EOP/EOPS.
+**Summary:** Based on self-reported data, `r get_count_and_percent(bns$citizenship, "Yes")` students met the citizenship requirement of either being a US Citizen or a lawful permanent resident. A total of `r get_count_and_percent(bns$income_eligible, "Yes")` students met the income/household size requirements, and `r get_count_and_percent(bns$work_eligible, "Yes")` students met the 20 hours/week work exemption. As a reminder, students don't need to meet a work requirement if they are enrolled in an LPIE such as an approved EOP/EOPS.
 
 <br>
 
@@ -360,7 +360,7 @@ names(questions) <- c('I worked fewer hours each week in a PAID position.',
                       'I had more time to attend all my classes',
                       'I had more time to go on field trips or internships.',
                      'My sleep quality had improved.',
-                    "My stress/anxiety level had decreased. (eg. I'm not stressed/anxious about having money for food or bills).")
+                    "My stress/anxiety level had decreased. (e.g. I'm not stressed/anxious about having money for food or bills).")
                       
 plot_likert(questions[1:11],
             grid.range = c(1.2, 1.2),
@@ -418,7 +418,7 @@ qlabel <- c('No time to complete the application/ application is too long.',
 "I don't need CalFresh.", 'Other (Please specify).', 
 'I feel uncomfortable receiving help with basic needs, like food.', 
 'I would think less of myself if I applied for CalFresh.',
-"I don't wan't my friends to find out I'm receiving food assistance.", 
+"I don't want my friends to find out I'm receiving food assistance.", 
 'My friends and peers would think less of me if I apply for CalFresh.')
 
 

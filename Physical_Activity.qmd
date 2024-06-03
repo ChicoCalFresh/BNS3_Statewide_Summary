@@ -32,10 +32,10 @@ NextTable <- function() {
 
 Students were asked to select how many days in the last week they had done any of the following exercise types: [moderate, vigorous, or strength training exercises.^1^](#Footnotes)
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses while the percent reporting reflects the percent of non-missing responses.*
+*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 
-
+## Physical Activity Type {#Physical-Activity-Type}
 
 ```{r, results='asis'}
 #| tbl-cap: !expr sprintf("%s Physical Activity Patterns.", NextTable())
@@ -98,12 +98,48 @@ ggplot(pa.data) +
 
 
 
-**Additional Notes:** For each exercise type, students had the options to select anywhere from zero days per week to seven days per week. In the table, percentages are calculated accross rows. 
+**Additional Notes:** For each exercise type, students had the option to select anywhere from zero days per week to seven days per week. In the table, percentages are calculated across rows. 
 
 **Summary:** The majority of students reported doing moderate-intensity exercises at least once in the past seven days, and `r get_count_and_percent(bns$q83_1, "0 days")` reported doing this zero times. About half the students reported doing strength training exercises at least once in the past 7 days, and `r get_count_and_percent(bns$q83_2, "0 days")` reported doing this zero times. Less than half of the students reported doing vigorous-intensity cardio or aerobic exercises at least once in the past 7 days, and `r get_count_and_percent(bns$q83_3, "0 days")` reported doing this zero times. 
 
 
 
+<br />
+
+
+## Weekly Physical Activity 
+
+```{r}
+#| fig-cap: !expr sprintf("%s Weekly Physical Activity %s", NextFigure(), print_n_reporting("physical_activity"))
+#| fig-height: 4
+#| fig-width: 5
+
+
+# Physical activity indicator
+
+bns <- bns %>% mutate_at(c('q83_1', 'q83_2', 'q83_3'), recode,
+                         "0 days" = 0, "1 day" = 1, "2 days" = 2, "3 days" = 3, "4 days" = 4, "5 days" = 5, "6 days" = 6, "7 days" = 7)
+
+physical_act_temp <- bns %>% select(q83_1, q83_2, q83_3) %>% rowSums()
+
+
+bns$physical_activity <- ifelse(physical_act_temp >= 1, "Yes", "No")
+
+
+# CHeck
+# bns %>% select(physical_activity, q83_1, q83_2, q83_3) %>% cbind()
+
+
+plot_frq(bns$physical_activity, geom.colors = plot_color) + xlab('Weekly Physical Activity') + ylab("Number of Students") + ylim(0, 1.2*max(table(bns$physical_activity)))
+
+```
+
+**Survey Questions:** *See Questions Above*
+
+
+**Additional Notes:** This variable was created using the variables in the [Physical Activity Type](#Physical-Activity-Type) section. Anyone who performed any type of weekly physical activity (moderate-intensity, strength training, or vigorous-intensity) for one or more days was set to "Yes," and anyone who performed no physical activity per week was set to "No."
+
+**Summary:** A total of `r count_and_percent(bns$physical_activity, "Yes")` students performed any type of physical activity at least once per week, while `r count_and_percent(bns$physical_activity, "No")` performed no weekly physical activity. 
 
 <br />
 
@@ -135,7 +171,6 @@ ggplot(pa.data) +
 :::
 
 ::::
-
 
 
 

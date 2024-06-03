@@ -1,5 +1,5 @@
 ---
-title: "Basic Needs & Student Success"
+title: "Basic Needs & Student Success Survey"
 format:
   html:
     anchor-sections: false
@@ -45,7 +45,7 @@ map_and_data <- merge(cali_map, coord_data)
 
 ## Overview
 
-- The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs and Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) or the Extended Opportunity Programs and services (EOPS) at 12 colleges across the CSU, CCC and UC systems from 2022 to 2023.
+- The [Center for Healthy Communities](https://www.csuchico.edu/chc/) (CHC) developed the **Basic Needs and Student Success Survey (BNS3)** and administered it to undergraduate students participating in the [Educational Opportunity Program (EOP)](https://www2.calstate.edu/attend/student-services/eop) or the Extended Opportunity Programs and Services (EOPS) at 12 colleges across the CSU, CCC, and UC systems from 2022 to 2023.
 - This site provides a top level descriptive analysis of each question in the survey.
 
 
@@ -63,7 +63,7 @@ The main purpose of this third cross-sectional study was to evaluate the followi
 ## Participants
 
 - EOP/EOPS offices assisted in the recruitment by emailing interest form links to their EOP/EOPS students. 
-- Students who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criteria when determining CalFresh Food eligibility) were then emailed a survey. 
+- Students who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criterion when determining CalFresh Food eligibility) were then emailed a survey. 
 - Participants were given a \$25 gift card incentive for completing the survey. 
 - EOP/EOPS students were identified as the target population for this survey based on their low-income and first-generation student status, which indicates a higher probability of using CalFresh Food and being likely eligible for CalFresh Food.
 
@@ -86,14 +86,14 @@ ggplot() +
 
 
 
-**Disclaimer on Missing Data:** *Students had the option to select "Prefer not to answer" for all questions or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+**Disclaimer on Missing Data:** *Students had the option to select "Prefer not to answer" for all questions, or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 <br />
 
 
 ## Use of Website and Access to Data 
 
-Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-decoration: underline;">sbianco@csuchico.edu</span>, if you would like more information on using or citing this website, accessing the data, methods used, or survey instruments used. Dissemination activities are in progress.
+Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-decoration: underline;">sbianco@csuchico.edu</span>, if you would like more information on using or citing this website, accessing the data, methods used, or survey instruments used.
 
 
 

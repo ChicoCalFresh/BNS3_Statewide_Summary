@@ -33,7 +33,7 @@ bns$q35 <- recode(bns$q35, "None" = "Never")
 
 ```
 
-Students were asked to report information relating to their current and past housing conditions. This includes if they were living near their college, the type of home they were currently living in, any hardships they faced in the past year with housing, homelessness, housing insecurity, barriers to accessing housing, and any housing changes due to COVID.
+Students were asked to report information relating to their current and past housing conditions. This includes if they were living near their college, the type of home they were currently living in, any hardships they faced in the past year with housing, homelessness, housing insecurity, barriers to accessing housing, and any housing changes due to COVID-19.
 
 *As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
@@ -106,7 +106,7 @@ binary_table(var = questions,
 
 **Additional Notes: ** These eight questions are used to screen for housing insecurity.
 
-**Summary:** A total of `r get_count_and_percent(bns$q26, "Yes")` students reported that there was a rent or mortgage increase that made it difficult to pay rent, while `r get_count_and_percent(bns$q29, "Yes")` reported that they were either unable to pay or underpaid a utility bill. Additionally, `r get_count_and_percent(bns$q28, "Yes")` students reported that they have payed their rent/mortgage late. 
+**Summary:** A total of `r get_count_and_percent(bns$q26, "Yes")` students reported that there was a rent or mortgage increase that made it difficult to pay rent, while `r get_count_and_percent(bns$q29, "Yes")` reported that they were either unable to pay or underpaid a utility bill. Additionally, `r get_count_and_percent(bns$q28, "Yes")` students reported that they have paid their rent/mortgage late. 
 
 
 <br>
@@ -128,11 +128,11 @@ rnames <- c('Campus or University Housing',
             'In a rented or owned house, mobile home, or apartment (alone or with roommates or friends)',
             'In a rented or owned house, mobile home, or apartment with my family (parent, guardian, relative or caretaker)', 
             'At a shelter',
-            'Temporarily staying with a relative, friend or couch surfing until I find other housing',
+            'Temporarily staying with a relative, friend, or couch surfing until I find other housing',
             'Temporarily at a hotel or motel without a permanent home to return to (not on vacation or business travel)', 
             'In a transitional housing or independent living program', 
             'At a group home such as halfway house or residential program for mental health or substance abuse', 
-            'Outdoor location such as street, sidewalk, alley, park, etc.', 'In a car, truck, van, RV or camper',
+            'Outdoor location such as street, sidewalk, alley, park, etc.', 'In a car, truck, van, RV, or camper',
             'In a closed area/space with a roof not meant for human habitation such as an abandoned building, garage, tent, etc.')
 
  
@@ -171,7 +171,7 @@ full_join(get.month.vars, get.year.vars) %>%
 
 **Additional Notes: ** The n count next to each question represents the number of students reporting out of 2,111 students. As a reminder, students had the option to select multiple options for each question. 
 
-**Summary: ** In the past 12 months, `r get_count_and_percent(bns$q36_4_year, "1")` students reported sleeping in a rented/owned property with family, while `r get_count_and_percent(bns$q36_3_year, "1")` reported sleeping in a rented/owned property alone or with roommates. Additionally, in the past 12 months, `r get_count_and_percent(bns$q36_6_year, "1")` reported temporarily staying with a relative, friend or couch surfing until they find other housing, while `r get_count_and_percent(bns$q36_11_year, "1")` reported sleeping in a car, truck, van, RV or camper. 
+**Summary: ** In the past 12 months, `r get_count_and_percent(bns$q36_4_year, "1")` students reported sleeping in a rented/owned property with family, while `r get_count_and_percent(bns$q36_3_year, "1")` reported sleeping in a rented/owned property alone or with roommates. Additionally, in the past 12 months, `r get_count_and_percent(bns$q36_6_year, "1")` reported temporarily staying with a relative/friend or couch surfing until they find other housing, while `r get_count_and_percent(bns$q36_11_year, "1")` reported sleeping in a car, truck, van, RV, or camper. 
 
 
 <br>
@@ -220,9 +220,9 @@ housing_prep %>%
 
 
 - Homelessness was determined using 9 indicators of homelessness described by the [Researching Basic Needs in Higher Education Report^2^](#Footnotes). The survey questions measure indicators of homelessness in the last 30 days and 12 months based on the definitions of homelessness used by the U.S. Housing and Urban Development (HUD) and the U.S. Department of Education. 
-    - From the [Sleeping Locations](#Sleeping) section, students who reported sleeping in any of the following places in the past 12 months or 30 days were deemed as homeless: *"At a shelter," "Temporarily staying with a relative, friend or couch surfing until I find other housing," "Temporarily at a hotel or motel without a permanent home to return to (not on vacation or business travel)," "In a transitional housing or independent living program," "At a group home such as halfway house or residential program for mental health or substance abuse," "Outdoor location such as street, sidewalk, alley, park, etc.," "In a car, truck, van, RV or camper," and/or "In a closed area/space with a roof not meant for human habitation such as an abandoned building, garage, tent, etc."*
+    - From the [Sleeping Locations](#Sleeping) section, students who reported sleeping in any of the following places in the past 12 months or 30 days were deemed as homeless: *"At a shelter," "Temporarily staying with a relative, friend, or couch surfing until I find other housing," "Temporarily at a hotel or motel without a permanent home to return to (not on vacation or business travel)," "In a transitional housing or independent living program," "At a group home such as halfway house or residential program for mental health or substance abuse," "Outdoor location such as street, sidewalk, alley, park, etc.," "In a car, truck, van, RV, or camper," and/or "In a closed area/space with a roof not meant for human habitation such as an abandoned building, garage, tent, etc."*
 
-**Summary:** A total of `r get_count_and_percent(bns$housing_insecure, "1")` were deemed as housing insecure, while `r get_count_and_percent(bns$homelessness_month, "1")` were deemed as homeless within the past month, and `r get_count_and_percent(bns$homelessness_year, "1")` were deemed as homeless within the past year of taking the survey.
+**Summary:** A total of `r get_count_and_percent(bns$housing_insecure, "1")` students were deemed as housing insecure, while `r get_count_and_percent(bns$homelessness_month, "1")` were deemed as homeless within the past month, and `r get_count_and_percent(bns$homelessness_year, "1")` were deemed as homeless within the past year of taking the survey.
 
 <br>
 
@@ -237,7 +237,7 @@ question <- "housing_barrier"
 
 qlabel <- c("Lack of co-signer", 
             "Lack of deposit funds",
-            "Lack first/last month's rent",
+            "Lack of first/last month's rent",
             "Lack of employment",
             "Low/lack of credit score",
             "Eviction on record",
@@ -264,7 +264,8 @@ prep_binary_vars(question, qlabel) %>%
 #| fig-cap: !expr sprintf("%s Number of Times Moved in the Past 12 months %s.", NextFigure(), print_n_reporting('q35'))
 
 
-plot_frq(bns$q35, geom.colors = plot_color, wrap.labels =10) + xlab('')
+plot_frq(bns$q35, geom.colors = plot_color, wrap.labels =10) + xlab('') + ylab("Number of Students")
+
 ```
 
 **Survey Question:** *In the past 12 months, how many times have you moved?*
@@ -286,7 +287,7 @@ plot_frq(bns$q34, geom.colors = plot_color, wrap.title=40, wrap.labels =12, ylim
 
 **Survey Question:** *In the past 12 months, how many times have you been unsure of where you were going to sleep at night?* 
 
-**Summary: ** A total of `r get_count_and_percent(bns$q34, "Never")` students reported never being unsure of where they are going to sleep in the past 12 months, while `r get_count_and_percent(bns$q34, "Once")` were unsure on one occasion, `r get_count_and_percent(bns$q34, "Twice")` were unsure on two occasions, and `r get_count_and_percent(bns$q34, "Three or more times")`, were unsure on three or more occasions. 
+**Summary: ** A total of `r get_count_and_percent(bns$q34, "Never")` students reported never being unsure of where they are going to sleep in the past 12 months, while `r get_count_and_percent(bns$q34, "Once")` were unsure on one occasion, `r get_count_and_percent(bns$q34, "Twice")` were unsure on two occasions, and `r get_count_and_percent(bns$q34, "Three or more times")` were unsure on three or more occasions. 
 
 ---
 
@@ -310,14 +311,14 @@ plot_frq(bns$q37, geom.colors = plot_color, wrap.labels = 17, ylim=c(0,1600), so
 <br>
 
 
-## COVID Housing Impact {#COVID_Housing_Impact}
+## COVID-19 Housing Impact {#COVID_Housing_Impact}
 
 ::: row
 ::: col-md-6
 ```{r}
 #| fig-height: 3
 #| fig-width: 4
-#| fig-cap: !expr sprintf("%s COVID Housing Impact %s.", NextFigure(), print_n_reporting('q23'))
+#| fig-cap: !expr sprintf("%s COVID-19 Housing Impact %s.", NextFigure(), print_n_reporting('q23'))
 
 
 plot_frq(bns$q23, geom.colors = plot_color, ylim=c(0,2150)) + xlab('') + ylab("Number of Students")
@@ -329,7 +330,7 @@ plot_frq(bns$q23, geom.colors = plot_color, ylim=c(0,2150)) + xlab('') + ylab("N
 
 **Survey Question:** *Has your housing stability changed due to COVID-19? (e.g. you are now homeless, you are now sleeping on my friend's couch, you are unable to access campus housing, etc.).*
 
-**Summary:** A total of `r get_count_and_percent(bns$q23, "Yes")` students reported that their housing stability changed due to COVID, while `r get_count_and_percent(bns$q23, "No")` reported that their housing stability did not change. 
+**Summary:** A total of `r get_count_and_percent(bns$q23, "Yes")` students reported that their housing stability changed due to COVID-19, while `r get_count_and_percent(bns$q23, "No")` reported that their housing stability did not change. 
 
 
 :::
@@ -341,7 +342,7 @@ plot_frq(bns$q23, geom.colors = plot_color, ylim=c(0,2150)) + xlab('') + ylab("N
 
 
 ```{r}
-#| tbl-cap: !expr sprintf("%s Reported Reasons for a Change in Housing Stability From COVID %s.", NextTable(), print_n_reporting('covid_housing_off_campus_job'))
+#| tbl-cap: !expr sprintf("%s Reported Reasons for a Change in Housing Stability From COVID-19 %s.", NextTable(), print_n_reporting('covid_housing_off_campus_job'))
 
 question <- "covid_housing"
 
@@ -367,9 +368,9 @@ ch_barrier_vars %>%
 
 **Survey Question:** *If yes, why did your housing stability change due to COVID-19? (Select all that apply)*
 
-**Additional Notes:** This question was shown only to those who answered "Yes" in the [COVID Housing Impact](#COVID_Housing_Impact) section. 
+**Additional Notes:** This question was shown only to those who answered "Yes" in the [COVID-19 Housing Impact](#COVID_Housing_Impact) section. 
 
-**Summary:** Of those who reported a change in housing stability from the [COVID Housing Impact](#COVID_Housing_Impact) section, `r get_count_and_percent(bns$covid_housing_off_campus_job, "1")` students reported that the reason for the change in their housing stability was because their finances changed due to a lost (or reduced) OFF-campus job, while `r get_count_and_percent(bns$covid_housing_campus_job, "1")` reported their finances changed due to a lost (or reduced) ON-campus job. Additionally, `r get_count_and_percent(bns$covid_housing_unsafe, "1")` reported that they were in unsafe housing, and `r get_count_and_percent(bns$covid_housing_roommate_finances, "1")` reported that their roommate's finances had changed. 
+**Summary:** Of those who reported a change in housing stability from the [COVID-19 Housing Impact](#COVID_Housing_Impact) section, `r get_count_and_percent(bns$covid_housing_off_campus_job, "1")` students reported that the reason for the change in their housing stability was because their finances changed due to a lost (or reduced) OFF-campus job, while `r get_count_and_percent(bns$covid_housing_campus_job, "1")` reported their finances changed due to a lost (or reduced) ON-campus job. Additionally, `r get_count_and_percent(bns$covid_housing_unsafe, "1")` reported that they were in unsafe housing, and `r get_count_and_percent(bns$covid_housing_roommate_finances, "1")` reported that their roommate's finances had changed. 
 
 
 

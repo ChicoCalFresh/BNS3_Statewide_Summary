@@ -156,7 +156,7 @@ plot_frq(bns$q15, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xl
 #| fig-width: 8.5
 #| fig-cap: !expr sprintf("%s Academic Majors %s.", NextFigure(), print_n_reporting('q16'))
 bns <- bns %>% mutate(q16=recode(q16, 
-                                 "Science, Technology, Engineering and Math (STEM) (Includes Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition)" = "Science, Technology, Engineering and Math (STEM)"))
+                                 "Science, Technology, Engineering and Math (STEM) (Includes Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition)" = "Science, Technology, Engineering, and Math (STEM)"))
 
 plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students") + theme(axis.text.x = element_text(size = 10))
 
@@ -164,10 +164,10 @@ plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sor
 
 **Survey Question: ** *Which of the following categories best describes your major?*
 
-**Additional Notes: ** Science, Technology, Engineering and Math (STEM) was shortened for the figure above, but also includes the following majors: Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition.
+**Additional Notes: ** Science, Technology, Engineering, and Math (STEM) was shortened for the figure above, but also includes the following majors: Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition.
 
 
-**Summary: ** A total of `r count_and_percent(bns$q16, "Public Health, Social Services, Social Science, and Education")` students were majoring in a Public Health, Social Services, Social Science, or Education program, while `r count_and_percent(bns$q16, "Science, Technology, Engineering and Math (STEM)")` students majored in `r names(sort(table(bns$q16), decreasing=TRUE)[2])`. 
+**Summary: ** A total of `r count_and_percent(bns$q16, "Public Health, Social Services, Social Science, and Education")` students were majoring in a Public Health, Social Services, Social Science, or Education, while `r count_and_percent(bns$q16, "Science, Technology, Engineering, and Math (STEM)")` students majored in STEM.
 
 <br>
 
@@ -204,7 +204,7 @@ plot_frq(bns$units_binned, geom.colors = plot_color) + xlab('Units') + ylab("Num
 
 **Survey Question: ** *How many units are you currently taking?*
 
-**Summary: ** Student were enrolled in an average of `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median was `r median(bns$q18, na.rm = TRUE)`. A total of `r get_count_and_percent(bns$full_time, "Yes")` students were considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the most common response and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second most common.
+**Summary: ** Students were enrolled in an average of `r round(mean(bns$q18, na.rm = TRUE), 2)` units, while the median was `r median(bns$q18, na.rm = TRUE)`. A total of `r get_count_and_percent(bns$full_time, "Yes")` students were considered full-time (12 or more units), with `r names(sort(table(bns$q18), decreasing=TRUE)[1])` units being the most common response and `r names(sort(table(bns$q18), decreasing=TRUE)[2])` units being the second most common.
 
 <br>
 
