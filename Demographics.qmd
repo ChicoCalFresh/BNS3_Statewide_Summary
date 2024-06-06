@@ -39,16 +39,38 @@ Students were asked to report information relating to their personal demographic
 
 ```{r}
 #| fig-cap: !expr sprintf("%s Reported Age %s.", NextFigure(), print_n_reporting('age'))  
+
+
+# Filter different data sets for in line code comparison 
+bns_UC <- bns %>% filter(bns$school == "UC Berkeley")
+
+bns_CSU <- bns %>% filter(bns$school == "Cal State LA" | 
+                  bns$school =="Cal State San Bernardino" |
+                  bns$school == "CSU Bakersfield" | 
+                  bns$school == "CSU Dominguez Hills" | 
+                  bns$school == "Sacramento State" | 
+                  bns$school == "San Francisco State")
+
+bns_CCC <- bns %>% filter(bns$school == "Butte CC" | 
+                  bns$school =="Allan Hancock Community College" |
+                  bns$school == "Clovis CC" | 
+                  bns$school == "Mt. SAC CC" | 
+                  bns$school == "Palo Verde CC")
+
+
+
 gghistogram(bns, x = "age", add = "mean", alpha = 1, 
             fill = plot_color) + 
   xlab("Age (years)") + ylab("Number of Students")
+
+
 ```
 
 **Survey Question: ** *What is your date of birth?*
 
 **Additional Notes: ** Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number. 
 
-**Summary: ** The average age of the students was `r round(mean(bns$age, na.rm = TRUE),1)` years with a range of `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)`, and a median age of `r median(bns$age)`. A total of `r get_count_and_percent3(bns$age, 21)` students were 21 or older, and `r get_count_and_percent3(bns$age, 30)` students were 30 or older. 
+**Summary: ** The average age of the students was `r round(mean(bns$age, na.rm = TRUE),1)` years with a range of `r min(bns$age, na.rm = TRUE)` to `r max(bns$age, na.rm = TRUE)`, and a median age of `r median(bns$age)`. A total of `r get_count_and_percent3(bns$age, 21)` students were 21 or older, and `r get_count_and_percent3(bns$age, 30)` students were 30 or older. Mean ages differed between campus types, where the mean age among CSU students was `r round(mean(bns_CSU$age, na.rm = TRUE),1)`, compared to `r round(mean(bns_CCC$age, na.rm = TRUE),1)` among CCC students, and `r round(mean(bns_UC$age, na.rm = TRUE),1)` among UC students. 
 
 <br>
 
@@ -192,7 +214,7 @@ plot_frq(tmp$q11, geom.colors = plot_color,) + xlab('Number of Dependents') + yl
 
 **Survey Question: ** *If you have dependents, then how many of them receive more than 50% of their financial support from you?*
 
-**Additional Notes: ** A total of `r get_count_and_percent(bns$q11, "I don't have dependents")` students reporting no dependents and `r get_count_and_percent(bns$q11, "0")` reporting dependents with less than 50% financial support were omitted from the chart. 
+**Additional Notes: ** A total of `r get_count_and_percent(bns$q11, "I don't have dependents")` students reporting no dependents and `r get_count_and_percent(bns$q11, "0")` reporting dependents with less than 50% financial support were omitted from the chart. These rates differed between campus types, where `r get_count_and_percent(bns_CSU$q11, "I don't have dependents")` CSU students reported they don't have dependents, compared to `r get_count_and_percent(bns_CCC$q11, "I don't have dependents")` CCC students, and `r get_count_and_percent(bns_UC$q11, "I don't have dependents")` UC students.
 
 
 **Summary: ** A total of `r sum(table(tmp$q11))` students reported having dependents who receive more than 50% of their financial support. Of those with dependents, `r get_count_and_percent(tmp$q11, '1')` had one dependent, `r get_count_and_percent(tmp$q11, '2')` had two, and `r get_count_and_percent3(tmp$q11, '3')` students had 3 or more dependents.
