@@ -97,6 +97,21 @@ Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-deco
 
 
 
+
+## How to Cite This Website
+
+Center for Healthy Communities. (2023). Statewide Basic Needs and Student Success Survey. https://chicocalfresh.github.io/BNS3_Statewide_Summary/ 
+
+
+## Other Sites
+
+[Pilot 1 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/bns-website/index.html)
+
+[Pilot 2 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/bns-pilot2-website/index.html)
+
+
+
+
 <br />
 
 
