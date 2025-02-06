@@ -136,7 +136,7 @@ huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %
 
 <br>
 
-## CalFresh Food Eligibility
+## CalFresh Food Eligibility {#calfresh-food-eligibility}
 
 <div class = "row">
 

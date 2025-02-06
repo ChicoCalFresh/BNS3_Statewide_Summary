@@ -60,7 +60,7 @@ The main purpose of this third cross-sectional study was to evaluate the followi
 
 
 
-## Participants
+## Participants {#ref-md}
 
 - EOP/EOPS offices assisted in the recruitment by emailing interest form links to their EOP/EOPS students. 
 - Students who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criterion when determining CalFresh Food eligibility) were then emailed a survey. 
@@ -85,13 +85,17 @@ ggplot() +
 ```
 
 
+::: {.callout-important}
+## Disclaimer on Missing Data
 
-**Disclaimer on Missing Data:** *Students had the option to select "Prefer not to answer" for all questions, or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+*Students had the option to select "Prefer not to answer" for all questions, or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+
+:::
 
 <br />
 
 
-## Use of Website and Access to Data 
+## Use of Website and Access to Data
 
 Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-decoration: underline;">sbianco@csuchico.edu</span>, if you would like more information on using or citing this website, accessing the data, methods used, or survey instruments used.
 
@@ -103,7 +107,7 @@ Please reach out to our PI, Stephanie Bianco <span style="color: blue; text-deco
 Center for Healthy Communities. (2023). Statewide Basic Needs and Student Success Survey. https://chicocalfresh.github.io/BNS3_Statewide_Summary/ 
 
 
-## Other Sites
+## Related Work
 
 [Pilot 1 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/bns-website/index.html)
 
@@ -114,6 +118,8 @@ Center for Healthy Communities. (2023). Statewide Basic Needs and Student Succes
 [Pilot 2 Basic Needs and Student Success Survey, CSU Northridge Results](https://chicocalfresh.github.io/bns-pilot2-csun/)
 
 [Pilot 2 Basic Needs and Student Success Survey, Fresno State Results](https://chicocalfresh.github.io/bns-pilot2-fresno/)
+
+[Statewide Exploration of Students Eligible for but Not Receiving CalFresh](Related_Work.qmd)
 
 
 <br />

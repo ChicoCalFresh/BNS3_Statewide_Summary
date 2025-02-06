@@ -1,0 +1,339 @@
+---
+title: "Exploration of Students Eligible for but Not Receiving CalFresh"
+format:
+  html:
+    anchor-sections: false
+---
+```{r, include=FALSE}
+source("common_code.R")
+```
+
+```{css}
+figure.quarto-float-tbl figcaption.quarto-float-caption-top {
+  text-align: left;
+}
+```
+
+
+```{r}
+df_cf_eligible <- bns %>% select(age, school, q7, q8, eth_hispanic, race_eth, q13, school, firstgen, q46_1, calfresh_eligible, food_insecure_2item, starts_with("calfresh_barrier"), q53_15_text) %>% 
+  filter(calfresh_eligible == 1)
+
+df_cf_eligible <- df_cf_eligible %>% mutate(
+  CalFresh = if_else(q46_1 == "Currently use as a college student", "Currently use", "Don't use")
+  )
+
+df_eligible_not_using <- df_cf_eligible %>% filter(q46_1 !=  "Currently use as a college student")
+```
+
+```{r, include=FALSE}
+tmp <- df_cf_eligible %>%
+  mutate(school_split = fct_collapse(school,
+                                     "CC" = c("Allan Hancock Community College",
+                                              "Butte CC",
+                                              "Clovis CC",
+                                              "Mt. SAC CC",
+                                              "Palo Verde CC"),
+                                     "State" = c("Cal State LA",
+                                                 "Cal State San Bernardino",
+                                                 "CSU Bakersfield",
+                                                 "CSU Dominguez Hills",
+                                                 "Sacramento State",
+                                                 "San Francisco State"),
+                                     "UC" = c("UC Berkeley")))
+
+#rename to be consistent with code book
+tmp <- tmp %>% 
+  mutate(school_rnm = recode(school, "Butte CC"="Butte College", 
+                       "Mt. SAC CC" = "Mt. San Antonio College",
+                       "Clovis CC" = "Clovis Community College",
+                       "Palo Verde CC" = "Palo Verde College",
+                   "Allan Hancock Community College" = "Allan Hancock College"), 
+         sector = case_when(
+                  school_rnm == "UC Berkeley" ~ "UC",
+                  school_rnm == "San Francisco State" ~ "CSU", 
+                  school_rnm == "Sacramento State" ~ "CSU", 
+                  school_rnm == "CSU Dominguez Hills" ~ "CSU", 
+                  school_rnm == "CSU Bakersfield" ~ "CSU", 
+                  school_rnm == "Cal State San Bernardino" ~ "CSU", 
+                  school_rnm == "Cal State LA" ~ "CSU", 
+                  school_rnm == "Palo Verde College" ~ "CCC", 
+                  school_rnm == "Mt. San Antonio College" ~ "CCC", 
+                  school_rnm == "Clovis Community College" ~ "CCC", 
+                  school_rnm == "Butte College" ~ "CCC", 
+                  school_rnm == "Allan Hancock College" ~ "CCC"), 
+         sector_color = case_when(
+           sector == "UC" ~ 'blue', 
+           sector == "CSU" ~ 'maroon', 
+           sector == "CCC" ~ 'gold'
+         ))
+
+
+
+tmp <- tmp %>% 
+  ungroup() %>%
+  group_by(sector) %>%
+  mutate(school2 = fct_infreq(school_rnm))
+
+```
+
+This page looks at the subset of the 2,110 EOP/EOPS students that were determined to be likely eligible for CalFresh based on self-reported household size and income (see [CalFresh Food Eligibility](CalFresh.qmd#calfresh-food-eligibility) for more information). Of the 1341 students who were likely eligible for CalFresh, 1289 responded to a survey question inquiring about their knowledge/use of CalFresh benefits and `r chcRne::count_and_percent(df_cf_eligible, q46_1, values = c("Used it before attending college", "Heard of it, but never used it", "Used it in the past as a college student", "Never heard of it"))` did not report currently using CalFresh as a college student. 55 of the 1341 students who were likely eligible for CalFresh either did not finish the survey or selected "Prefer not to answer" for this question.
+
+See [Information on Missing Data](index.qmd#ref-md)
+
+## College Campus
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+#| label: fig-campus-breakdown
+#| fig-cap: !expr sprintf("Survey Participants by Campus %s.", chcRne::print_n_reporting(df_cf_eligible, "school"))
+tmp2 <- tmp %>% select(school2, sector, sector_color) %>% na.omit()
+
+school_data <- tmp2 %>% 
+  group_by(school2, sector) %>% 
+  summarize(
+    count = n(),
+    npct = paste0(count, " (", unname(formattable::percent(count/nrow(tmp), digits = 1)), ")")
+  )
+
+school_data %>% ggplot(aes(x = school2, y = count, fill = sector)) +
+  geom_col() + geom_text(aes(label = npct), hjust = -0.05) + 
+  coord_flip() + ylim(0, 250) + theme_bw() + xlab("School") + ylab("Number of Students") + scale_fill_manual(values = c('gold', '#9D2235', '#4895EF'), name = 'School Types', labels = c('CCC', 'CSU', 'UC'))
+```
+
+
+**Survey Question: ** *Which campus do you attend?*
+
+**Additional Notes: ** The University of California (UC) campus (n=1) is shown in blue, the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow (n = 12 campuses total).
+
+**Summary: ** A total of `r chcRne::count_and_percent(df=tmp, var=sector, values="CSU")`, `r chcRne::count_and_percent(df=tmp, var=sector, values="CCC")` and `r chcRne::count_and_percent(df=tmp, var=sector, values="UC")` of likely CalFresh eligible college students were enrolled in CSU, CCC and UC campuses, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS) in the CCC systems.
+
+<br/>
+
+## Students Likely Eligible but Not Receiving CalFresh
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+#| label: fig-likely-eligible-not-receiving
+#| fig-cap: !expr sprintf("Survey Participants Likely Eligible for, but not Receiving CalFresh Benefits by Campus %s.", chcRne::print_n_reporting(df_cf_eligible, "CalFresh"))
+#tmp <- df_cf_eligible %>% select(CalFresh, school) %>% na.omit()
+tmp3 <- tmp %>% select(school2, CalFresh, sector, sector_color) %>% na.omit()
+
+summarized_data <- tmp3 %>% 
+  group_by(school2, sector) %>% 
+  summarize(
+    count = n(),
+    CalFresh = sum(CalFresh == "Don't use"),
+    pct = CalFresh/count,
+    label = formattable::percent(CalFresh/count, digits = 1),
+    npct = paste0(CalFresh, "/", count, " (", unname(formattable::percent(CalFresh/count, digits = 0)), ")")
+  ) %>% 
+  arrange(desc(CalFresh))
+  
+  
+summarized_data |> ggplot(aes(x = school2, y = pct, fill = sector)) +
+  geom_col() + geom_text(aes(label = npct), hjust = -0.05) + 
+  coord_flip() + theme_bw() + xlab("School") + ylab("Students Likely Eligible but Not Receiving CalFresh (%)") +
+  scale_fill_manual(values = c('gold', '#9D2235', '#4895EF'), name = 'School Types', labels = c('CCC', 'CSU', 'UC')) + scale_y_continuous(
+    limits = c(0, 1),
+    labels = scales::percent_format(accuracy = 1),
+    )
+
+# For inline code
+sector_sum <- summarized_data %>%
+  select(school2, sector, count, CalFresh) %>% 
+  group_by(sector) %>% 
+  summarize(count = sum(count),
+         CalFresh = sum(CalFresh),
+         pct = CalFresh/count,
+         label = formattable::percent(CalFresh/count, digits = 1),
+         npct = paste0(unname(formattable::percent(CalFresh/count, digits = 0)), " (", CalFresh, "/", count, ")")
+         )
+```
+**Survey Questions: **
+
+* *Which campus do you attend?*
+* *The CalFresh eligibility variable was derived using self-reported household size and income (See [CalFresh Food Eligibility](CalFresh.qmd#calfresh-food-eligibility)*)
+* *Please mark all the statements that apply to you.* 
+   + *CalFresh (also known as Food Stamps or SNAP benefits)*
+      - Never heard of it
+      - Heard of it, but never used it
+      - Used it in the past as a college student
+      - Used it before attending college
+      - Currently use as a college student
+
+**Additional Notes: ** Students who selected "Currently use as a college student" were marked as currently using CalFresh. Students who selected "Never heard of it", "Heard of it, but never used it", "Used it in the past as a college student", or "Used it before attending college" were marked as not receiving CalFresh.
+
+**Summary: ** Across participating CSU campuses `r sector_sum[sector_sum$sector == "CSU", "npct"]` of likely CalFresh eligible college students reported not currently using CalFresh. These numbers were `r sector_sum[sector_sum$sector == "CCC", "npct"]` and `r sector_sum[sector_sum$sector == "UC", "npct"]` for CCC an UC campuses, respectively.
+
+<br/>
+
+# Demographics
+
+*Note: The below plots are looking at the subset of 836 students that were likely eligible for CalFresh, but not currently using it at the time of the survey.*
+
+
+## Age 
+```{r}
+#| label: fig-age
+#| fig-cap: !expr sprintf("Reported Age %s.", chcRne::print_n_reporting(df_eligible_not_using, "age"))
+# Filter different data sets for in line code comparison 
+bns_UC <- df_cf_eligible %>% filter(school == "UC Berkeley")
+
+bns_CSU <- df_cf_eligible %>% filter(school == "Cal State LA" | 
+                  school =="Cal State San Bernardino" |
+                  school == "CSU Bakersfield" | 
+                  school == "CSU Dominguez Hills" | 
+                  school == "Sacramento State" | 
+                  school == "San Francisco State")
+
+bns_CCC <- df_cf_eligible %>% filter(school == "Butte CC" | 
+                  school =="Allan Hancock Community College" |
+                  school == "Clovis CC" | 
+                  school == "Mt. SAC CC" | 
+                  school == "Palo Verde CC")
+#Age
+gghistogram(df_eligible_not_using, 
+            x = "age", add = "mean", alpha = 1,
+            fill = CF_green) + xlab("") + ylab("Number of Students")
+
+```
+
+
+**Survey Question: ** *What is your date of birth?*
+
+**Additional Notes: ** Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number. 
+
+**Summary: ** The average age of the students was `r round(mean(df_eligible_not_using$age, na.rm = TRUE),1)` years with a range of `r min(df_eligible_not_using$age, na.rm = TRUE)` to `r max(df_eligible_not_using$age, na.rm = TRUE)`, and a median age of `r median(df_eligible_not_using$age)`. A total of `r get_count_and_percent3(df_eligible_not_using$age, 21)` students were 21 or older, and `r get_count_and_percent3(df_eligible_not_using$age, 30)` students were 30 or older. Mean ages differed between campus types, where the mean age among CSU students was `r round(mean(bns_CSU$age, na.rm = TRUE),1)`, compared to `r round(mean(bns_CCC$age, na.rm = TRUE),1)` among CCC students, and `r round(mean(bns_UC$age, na.rm = TRUE),1)` among UC students. 
+
+<br/>
+
+## Gender Identity
+```{r}
+#| label: fig-gender
+#| fig-cap: !expr sprintf("Gender Identity %s.", chcRne::print_n_reporting(df_eligible_not_using, "q7"))
+#Gender
+rec <- df_eligible_not_using %>% mutate(q7=recode(q7, "Gender non-binary"="Non-binary", "Gender Queer or Gender-Nonconforming" = "Queer or Nonconforming", "Gender Unlisted:" = "Unlisted"))
+
+plot_frq(rec$q7, sort.frq="desc", geom.colors = CF_green) + xlab("") + ylab("Number of Students") + theme_bw()
+```
+**Survey question: ** *What is your gender identity?*
+
+**Summary: ** A total of `r chcRne::count_and_percent(df = rec, var = q7, 'Woman')` students identified as a woman, `r chcRne::count_and_percent(df = rec, var = q7, 'Man')` identified as a man, `r chcRne::count_and_percent(df = rec, var = q7, 'Non-binary')` identified as gender non-binary, and `r chcRne::count_and_percent(df = rec, var = q7, 'Queer or Nonconforming')` identified as queer/non-conforming.
+
+<br/>
+
+## Ethnicity (i.e. Identifying with Hispanic Origin)
+```{r}
+#Ethniicity
+tmp <- data.frame(q8=df_eligible_not_using$q8) %>% mutate(hispanic=as.factor(ifelse(is.na(q8), NA, ifelse(grepl("Yes", q8), "Hispanic", "Non-Hispanic")))) %>% select(-q8)
+```
+
+```{r}
+#| label: fig-ethnicity
+#| fig-cap: !expr sprintf("Ethnic/Hispanic Identity %s.", chcRne::print_n_reporting(tmp, "hispanic"))
+
+plot_frq(tmp$hispanic, geom.colors = CF_green) + xlab("") + ylab("Number of Students") + theme_bw()
+```
+**Survey Question: ** *Do you identify as Hispanic or Latino or Spanish Origin?*
+
+**Additional Notes: ** Possible answers were pulled from the U.S. Census questionnaire assessing Hispanic Origin: *Mexican; Mexican American; Chicano; Puerto Rican; Cuban; another Hispanic/Latino/Spanish origin; or not of Hispanic/Latino/Spanish origin.* 
+
+**Summary: ** A total of `r chcRne::count_and_percent(df=tmp, var=hispanic, values='Hispanic')` students self-identified as having Hispanic Origins and `r chcRne::count_and_percent(df=tmp, var=hispanic, values='Non-Hispanic')` students self-identified as Non-Hispanic. 
+
+<br/>
+
+## First-Generation 
+```{r}
+#First Gen
+tmp3 <- data.frame(firstgen=df_eligible_not_using$firstgen) %>% 
+  mutate(firstgen=factor(ifelse(is.na(firstgen), NA, ifelse(firstgen == 0, "Not First Gen", "First Gen")), levels=c("Not First Gen", "First Gen")))
+```
+
+```{r}
+#| label: fig-firstgen
+#| fig-cap: !expr sprintf("First-Generation Students %s.", chcRne::print_n_reporting(tmp3, "firstgen"))
+plot_frq(tmp3$firstgen, geom.colors = CF_green, ylim=c(0, 900)) + xlab('') + ylab("Number of Students") + theme_bw()
+```
+**Survey Question: ** *This variable was derived from the question in the [Parent Education](Demographics.qmd#Parent_Education) section.*
+
+**Additional Notes: ** Students who selected their parents' education  as "Less than high school," "High school diploma or GED," "Some college," "Certificate or technical achievement without Associate's degree," or "Associate's degree" were considered first-generation. The `r chcRne::count_and_percent(df = df_eligible_not_using, q13, 'Other/Unknown')` students who selected "Other/Unknown" were set as missing values. All other responses were considered not first-generation. 
+
+**Summary: ** A total of `r chcRne::count_and_percent(df = tmp3, var = firstgen, 'First Gen')` students reported first-generation status.
+
+<br/>
+
+## CalFresh Food - Barriers
+```{r}
+#| label: tbl-barriers
+#| tbl-cap: "Top 10 Reported Barriers to Using CalFresh for Students who are Likely Eligible but not using CalFresh."
+qlabel <- c('No time to complete the application/ application is too long.', 
+'The application is too difficult.', 
+'The CalFresh outreach team on campus was not helpful or supportive during my application process.',
+'The staff in my local county social services office were not helpful or supportive during my application process.', "It's too difficult to get my verification documents.",
+'No time to call or go to the local social services office for my CalFresh interview.',
+'I feel other students need CalFresh more than I do.', 
+'No transportation to CalFresh office or social services office.',
+'I do not think I am eligible.', 
+"I have heard that it's not worth my time because I won't be eligible or I won't receive much money.", 
+'My family or household does not want to apply for CalFresh.', 
+'I am embarrassed or ashamed to apply for CalFresh.', 
+"I don't believe in social services like CalFresh, WIC, or Welfare.",
+"I don't need CalFresh.", 'Other (Please specify).', 
+'I feel uncomfortable receiving help with basic needs, like food.', 
+'I would think less of myself if I applied for CalFresh.',
+"I don't want my friends to find out I'm receiving food assistance.", 
+'My friends and peers would think less of me if I apply for CalFresh.')
+
+chcRne::nperc_tbl_MATA(df_eligible_not_using, 
+               vars = c(calfresh_barrier_no_time_app:calfresh_barrier_friends_think_less_of_me),
+               row.names = qlabel,
+               value = 1) %>% 
+  rename(Barrier = col, `Yes (%)` = npct) %>% head(10) %>% kable() %>% 
+  kable_styling(bootstrap_options = "striped") %>% 
+  column_spec(2, width='3.5cm')
+```
+**Survey Question:** *What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply)*
+
+**Additional Notes:** Only students who reported that they *Never heard of CalFresh;* *Heard of it, but never used it;* or *Used it before attending college* saw this question (See [CalFresh Food Status section](CalFresh.qmd#cal_status_reference)).
+
+**Summary: ** The most common reason for students who were likely eligible for CalFresh Food, but reported not using CalFresh Food was because they did not think they are eligible, where `r chcRne::count_and_percent(df=df_eligible_not_using, var= calfresh_barrier_do_not_think_eligible, value=1)` students selected this option. Meanwhile `r chcRne::count_and_percent(df=df_eligible_not_using, var= calfresh_barrier_no_time_app, value=1)` reported that they have no time to complete the application and `r chcRne::count_and_percent(df=df_eligible_not_using, var=calfresh_barrier_other_students_need, value=1)` students reported that they felt other students need CalFresh Food more than they do.
+
+<br/>
+
+## Other (Please Specify)
+```{r}
+#| label: tbl-other
+#| tbl-cap: "Text Responses for Students who Selected 'Other'"
+other <- df_eligible_not_using %>% select(q53_15_text)
+names(other) <- "Other barriers"
+other %>% na.omit() %>% DT::datatable(class = 'cell-border stripe',
+                                      options = list(
+                                        columnDefs = list(list(className = 'dt-left', targets = 0:1))))
+```
+**Survey question: ** *What are the reasons you do not have CalFresh or have never used CalFresh?*
+
+**Additional Notes: ** For students who selected 'Other,' we have also included the responses they provided.
+
+<br />
+
+:::: {.columns}
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="80%"}
+<div style="text-align: center;">
+
+<img src="bns_statewide_logo_array.svg" alt="CHC Logo" width="auto" height="auto">
+
+</div>
+:::
+
+::: {.column width="10%"}
+
+
+:::
+
+::::
