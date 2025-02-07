@@ -77,11 +77,17 @@ tmp <- tmp %>%
 
 ```
 
-This page looks at the subset of the 2,110 EOP/EOPS students that were determined to be likely eligible for CalFresh based on self-reported household size and income (see [CalFresh Food Eligibility](CalFresh.qmd#calfresh-food-eligibility) for more information). Of the 1341 students who were likely eligible for CalFresh, 1289 responded to a survey question inquiring about their knowledge/use of CalFresh benefits and `r chcRne::count_and_percent(df_cf_eligible, q46_1, values = c("Used it before attending college", "Heard of it, but never used it", "Used it in the past as a college student", "Never heard of it"))` did not report currently using CalFresh as a college student. 55 of the 1341 students who were likely eligible for CalFresh either did not finish the survey or selected "Prefer not to answer" for this question.
+## Overview
+
+This page provides a brief description of characteristics of 836 students that were determined to be likely eligible for CalFresh but not currently using it at the time of the survey. See the [CalFresh Food Eligibility](CalFresh.qmd#calfresh-food-eligibility) page for eligibility criteria and related survey question text. All participating college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS) in the CCC systems.
+
+Of the 1341 students who were likely eligible for CalFresh, 1289 responded to a survey question inquiring about their knowledge/use of CalFresh benefits and `r chcRne::count_and_percent(df_cf_eligible, q46_1, values = c("Used it before attending college", "Heard of it, but never used it", "Used it in the past as a college student", "Never heard of it"))` did not report currently using CalFresh as a college student. 55 of the 1341 students who were likely eligible for CalFresh either did not finish the survey or selected "Prefer not to answer" for this question.
 
 See [Information on Missing Data](index.qmd#ref-md)
 
-## College Campus
+## College Campus 
+
+Robin wants to remove this question - see additional notes in next question
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
@@ -101,16 +107,20 @@ school_data %>% ggplot(aes(x = school2, y = count, fill = sector)) +
   coord_flip() + ylim(0, 250) + theme_bw() + xlab("School") + ylab("Number of Students") + scale_fill_manual(values = c('gold', '#9D2235', '#4895EF'), name = 'School Types', labels = c('CCC', 'CSU', 'UC'))
 ```
 
-
 **Survey Question: ** *Which campus do you attend?*
 
 **Additional Notes: ** The University of California (UC) campus (n=1) is shown in blue, the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow (n = 12 campuses total).
 
-**Summary: ** A total of `r chcRne::count_and_percent(df=tmp, var=sector, values="CSU")`, `r chcRne::count_and_percent(df=tmp, var=sector, values="CCC")` and `r chcRne::count_and_percent(df=tmp, var=sector, values="UC")` of likely CalFresh eligible college students were enrolled in CSU, CCC and UC campuses, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS) in the CCC systems.
+**Summary: ** A total of `r chcRne::count_and_percent(df=tmp, var=sector, values="CSU")`, `r chcRne::count_and_percent(df=tmp, var=sector, values="CCC")` and `r chcRne::count_and_percent(df=tmp, var=sector, values="UC")` of likely CalFresh eligible college students were enrolled in CSU, CCC and UC campuses, respectively. 
 
 <br/>
 
-## Students Likely Eligible but Not Receiving CalFresh
+## Proportion at each campus not receiving CalFresh
+The distribution of student participation for these  these 836 likely eligible but not receiving - ios the same as thje overall distribution of all participating students from each of the 12 campuses (with clovis and butte swapped in position) then add direct link to  https://chicocalfresh.github.io/BNS3_Statewide_Summary/Academic_Profile.html#college-campus 
+
+
+
+
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
@@ -133,7 +143,7 @@ summarized_data <- tmp3 %>%
   
 summarized_data |> ggplot(aes(x = school2, y = pct, fill = sector)) +
   geom_col() + geom_text(aes(label = npct), hjust = -0.05) + 
-  coord_flip() + theme_bw() + xlab("School") + ylab("Students Likely Eligible but Not Receiving CalFresh (%)") +
+  coord_flip() + theme_bw() + xlab("School") + ylab("Proportion of students likely eligible but not receiving CalFresh (%)") +
   scale_fill_manual(values = c('gold', '#9D2235', '#4895EF'), name = 'School Types', labels = c('CCC', 'CSU', 'UC')) + scale_y_continuous(
     limits = c(0, 1),
     labels = scales::percent_format(accuracy = 1),
@@ -150,27 +160,10 @@ sector_sum <- summarized_data %>%
          npct = paste0(unname(formattable::percent(CalFresh/count, digits = 0)), " (", CalFresh, "/", count, ")")
          )
 ```
-**Survey Questions: **
-
-* *Which campus do you attend?*
-* *The CalFresh eligibility variable was derived using self-reported household size and income (See [CalFresh Food Eligibility](CalFresh.qmd#calfresh-food-eligibility)*)
-* *Please mark all the statements that apply to you.* 
-   + *CalFresh (also known as Food Stamps or SNAP benefits)*
-      - Never heard of it
-      - Heard of it, but never used it
-      - Used it in the past as a college student
-      - Used it before attending college
-      - Currently use as a college student
-
-**Additional Notes: ** Students who selected "Currently use as a college student" were marked as currently using CalFresh. Students who selected "Never heard of it", "Heard of it, but never used it", "Used it in the past as a college student", or "Used it before attending college" were marked as not receiving CalFresh.
 
 **Summary: ** Across participating CSU campuses `r sector_sum[sector_sum$sector == "CSU", "npct"]` of likely CalFresh eligible college students reported not currently using CalFresh. These numbers were `r sector_sum[sector_sum$sector == "CCC", "npct"]` and `r sector_sum[sector_sum$sector == "UC", "npct"]` for CCC an UC campuses, respectively.
 
 <br/>
-
-# Demographics
-
-*Note: The below plots are looking at the subset of 836 students that were likely eligible for CalFresh, but not currently using it at the time of the survey.*
 
 
 ## Age 
@@ -258,6 +251,7 @@ plot_frq(tmp3$firstgen, geom.colors = CF_green, ylim=c(0, 900)) + xlab('') + yla
 **Survey Question: ** *This variable was derived from the question in the [Parent Education](Demographics.qmd#Parent_Education) section.*
 
 **Additional Notes: ** Students who selected their parents' education  as "Less than high school," "High school diploma or GED," "Some college," "Certificate or technical achievement without Associate's degree," or "Associate's degree" were considered first-generation. The `r chcRne::count_and_percent(df = df_eligible_not_using, q13, 'Other/Unknown')` students who selected "Other/Unknown" were set as missing values. All other responses were considered not first-generation. 
+> robin wants to remove these notes since the %missing is essentially the same as the overall sample
 
 **Summary: ** A total of `r chcRne::count_and_percent(df = tmp3, var = firstgen, 'First Gen')` students reported first-generation status.
 
