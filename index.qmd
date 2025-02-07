@@ -109,17 +109,19 @@ Center for Healthy Communities. (2023). Statewide Basic Needs and Student Succes
 
 ## Related Work
 
-[Pilot 1 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/bns-website/index.html)
+*    [Pilot 1 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/BNS-Pilot1-website/index.html)
 
-[Pilot 2 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/bns-pilot2-website/index.html)
+*    [Pilot 2 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/bns-pilot2-website/index.html)
 
-[Pilot 2 Basic Needs and Student Success Survey, CSU Chico Results](https://chicocalfresh.github.io/bns-pilot2-chico/)
+*    [Pilot 2 Basic Needs and Student Success Survey, CSU Chico Results](https://chicocalfresh.github.io/bns-pilot2-chico/)
 
-[Pilot 2 Basic Needs and Student Success Survey, CSU Northridge Results](https://chicocalfresh.github.io/bns-pilot2-csun/)
+*    [Pilot 2 Basic Needs and Student Success Survey, CSU Northridge Results](https://chicocalfresh.github.io/bns-pilot2-csun/)
 
-[Pilot 2 Basic Needs and Student Success Survey, Fresno State Results](https://chicocalfresh.github.io/bns-pilot2-fresno/)
+*    [Pilot 2 Basic Needs and Student Success Survey, Fresno State Results](https://chicocalfresh.github.io/bns-pilot2-fresno/)
 
-[Statewide Exploration of Students Eligible for but Not Receiving CalFresh](Related_Work.qmd)
+*    [Statewide Exploration of Students Eligible for but Not Receiving CalFresh](Related_Work.qmd)
+
+*    [Reducing costs, burden, and risk of human error in large scale survey data collection and Scope of Work reporting using Automation](https://chicocalfresh.github.io/CSP2023/)
 
 
 <br />
