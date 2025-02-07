@@ -656,5 +656,68 @@
     "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
     "section": "Other (Please Specify)",
     "text": "Other (Please Specify)\n\n\n\n\nTable 2: Text Responses for Students who Selected ‘Other’\n\n\n\n\n\n\n\n\n\n\nSurvey question:  What are the reasons you do not have CalFresh or have never used CalFresh?\nAdditional Notes:  For students who selected ‘Other,’ we have also included the responses they provided."
+  },
+  {
+    "objectID": "eligible_not_receiving.html",
+    "href": "eligible_not_receiving.html",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "",
+    "text": "This page looks at the subset of the 2,110 EOP/EOPS students that were determined to be likely eligible for CalFresh based on self-reported household size and income (see CalFresh Food Eligibility for more information). Of the 1341 students who were likely eligible for CalFresh, 1289 responded to a survey question inquiring about their knowledge/use of CalFresh benefits and 836 (64.9%) did not report currently using CalFresh as a college student. 55 of the 1341 students who were likely eligible for CalFresh either did not finish the survey or selected “Prefer not to answer” for this question.\nSee Information on Missing Data"
+  },
+  {
+    "objectID": "eligible_not_receiving.html#college-campus",
+    "href": "eligible_not_receiving.html#college-campus",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "College Campus",
+    "text": "College Campus\n\n\n\n\n\n\n\n\nFigure 1: Survey Participants by Campus (n=1341, 100.0% of 1341 reporting).\n\n\n\n\n\nSurvey Question:  Which campus do you attend?\nAdditional Notes:  The University of California (UC) campus (n=1) is shown in blue, the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow (n = 12 campuses total).\nSummary:  A total of 736 (54.9%), 488 (36.4%) and 117 (8.7%) of likely CalFresh eligible college students were enrolled in CSU, CCC and UC campuses, respectively. All college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS) in the CCC systems."
+  },
+  {
+    "objectID": "eligible_not_receiving.html#students-likely-eligible-but-not-receiving-calfresh",
+    "href": "eligible_not_receiving.html#students-likely-eligible-but-not-receiving-calfresh",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "Students Likely Eligible but Not Receiving CalFresh",
+    "text": "Students Likely Eligible but Not Receiving CalFresh\n\n\n\n\n\n\n\n\nFigure 2: Survey Participants Likely Eligible for, but not Receiving CalFresh Benefits by Campus (n=1289, 96.1% of 1341 reporting).\n\n\n\n\n\nSurvey Questions: \n\nWhich campus do you attend?\nThe CalFresh eligibility variable was derived using self-reported household size and income (See CalFresh Food Eligibility)\nPlease mark all the statements that apply to you.\n\nCalFresh (also known as Food Stamps or SNAP benefits)\n\nNever heard of it\nHeard of it, but never used it\nUsed it in the past as a college student\nUsed it before attending college\nCurrently use as a college student\n\n\n\nAdditional Notes:  Students who selected “Currently use as a college student” were marked as currently using CalFresh. Students who selected “Never heard of it”, “Heard of it, but never used it”, “Used it in the past as a college student”, or “Used it before attending college” were marked as not receiving CalFresh.\nSummary:  Across participating CSU campuses 75% (528/706) of likely CalFresh eligible college students reported not currently using CalFresh. These numbers were 51% (241/469) and 59% (67/114) for CCC an UC campuses, respectively."
+  },
+  {
+    "objectID": "eligible_not_receiving.html#age",
+    "href": "eligible_not_receiving.html#age",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "Age",
+    "text": "Age\n\n\n\n\n\n\n\n\nFigure 3: Reported Age (n=836, 100.0% of 836 reporting).\n\n\n\n\n\nSurvey Question:  What is your date of birth?\nAdditional Notes:  Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number.\nSummary:  The average age of the students was 23.9 years with a range of 18 to 63, and a median age of 21. A total of 531 (63.5%) students were 21 or older, and 131 (15.7%) students were 30 or older. Mean ages differed between campus types, where the mean age among CSU students was 23.9, compared to 28.7 among CCC students, and 21.1 among UC students."
+  },
+  {
+    "objectID": "eligible_not_receiving.html#gender-identity",
+    "href": "eligible_not_receiving.html#gender-identity",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "Gender Identity",
+    "text": "Gender Identity\n\n\n\n\n\n\n\n\nFigure 4: Gender Identity (n=832, 99.5% of 836 reporting).\n\n\n\n\n\nSurvey question:  What is your gender identity?\nSummary:  A total of 673 (80.9%) students identified as a woman, 144 (17.3%) identified as a man, 10 (1.2%) identified as gender non-binary, and 5 (0.6%) identified as queer/non-conforming."
+  },
+  {
+    "objectID": "eligible_not_receiving.html#ethnicity-i.e.-identifying-with-hispanic-origin",
+    "href": "eligible_not_receiving.html#ethnicity-i.e.-identifying-with-hispanic-origin",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "Ethnicity (i.e. Identifying with Hispanic Origin)",
+    "text": "Ethnicity (i.e. Identifying with Hispanic Origin)\n\n\n\n\n\n\n\n\nFigure 5: Ethnic/Hispanic Identity (n=825, 98.7% of 836 reporting).\n\n\n\n\n\nSurvey Question:  Do you identify as Hispanic or Latino or Spanish Origin?\nAdditional Notes:  Possible answers were pulled from the U.S. Census questionnaire assessing Hispanic Origin: Mexican; Mexican American; Chicano; Puerto Rican; Cuban; another Hispanic/Latino/Spanish origin; or not of Hispanic/Latino/Spanish origin.\nSummary:  A total of 575 (69.7%) students self-identified as having Hispanic Origins and 250 (30.3%) students self-identified as Non-Hispanic."
+  },
+  {
+    "objectID": "eligible_not_receiving.html#first-generation",
+    "href": "eligible_not_receiving.html#first-generation",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "First-Generation",
+    "text": "First-Generation\n\n\n\n\n\n\n\n\nFigure 6: First-Generation Students (n=811, 97.0% of 836 reporting).\n\n\n\n\n\nSurvey Question:  This variable was derived from the question in the Parent Education section.\nAdditional Notes:  Students who selected their parents’ education as “Less than high school,” “High school diploma or GED,” “Some college,” “Certificate or technical achievement without Associate’s degree,” or “Associate’s degree” were considered first-generation. The 22 (2.6%) students who selected “Other/Unknown” were set as missing values. All other responses were considered not first-generation.\nSummary:  A total of 773 (95.3%) students reported first-generation status."
+  },
+  {
+    "objectID": "eligible_not_receiving.html#calfresh-food---barriers",
+    "href": "eligible_not_receiving.html#calfresh-food---barriers",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "CalFresh Food - Barriers",
+    "text": "CalFresh Food - Barriers\n\n\n\n\nTable 1: Top 10 Reported Barriers to Using CalFresh for Students who are Likely Eligible but not using CalFresh.\n\n\n\n\n\n\nBarrier\nYes (%)\n\n\n\n\nI do not think I am eligible. (n = 697)\n242 (34.7%)\n\n\nNo time to complete the application/ application is too long. (n = 697)\n131 (18.8%)\n\n\nI feel other students need CalFresh more than I do. (n = 697)\n113 (16.2%)\n\n\nNo time to call or go to the local social services office for my CalFresh interview. (n = 697)\n105 (15.1%)\n\n\nOther (Please specify). (n = 697)\n102 (14.6%)\n\n\nThe application is too difficult. (n = 697)\n99 (14.2%)\n\n\nI don't need CalFresh. (n = 697)\n93 (13.3%)\n\n\nIt's too difficult to get my verification documents. (n = 697)\n75 (10.8%)\n\n\nThe staff in my local county social services office were not helpful or supportive during my application process. (n = 697)\n53 (7.6%)\n\n\nI feel uncomfortable receiving help with basic needs, like food. (n = 697)\n45 (6.5%)\n\n\n\n\n\n\n\n\n\n\nSurvey Question: What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply)\nAdditional Notes: Only students who reported that they Never heard of CalFresh; Heard of it, but never used it; or Used it before attending college saw this question (See CalFresh Food Status section).\nSummary:  The most common reason for students who were likely eligible for CalFresh Food, but reported not using CalFresh Food was because they did not think they are eligible, where 242 (34.7%) students selected this option. Meanwhile 131 (18.8%) reported that they have no time to complete the application and 113 (16.2%) students reported that they felt other students need CalFresh Food more than they do."
+  },
+  {
+    "objectID": "eligible_not_receiving.html#other-please-specify",
+    "href": "eligible_not_receiving.html#other-please-specify",
+    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
+    "section": "Other (Please Specify)",
+    "text": "Other (Please Specify)\n\n\n\n\nTable 2: Text Responses for Students who Selected ‘Other’\n\n\n\n\n\n\n\n\n\n\nSurvey question:  What are the reasons you do not have CalFresh or have never used CalFresh?\nAdditional Notes:  For students who selected ‘Other,’ we have also included the responses they provided."
   }
 ]
