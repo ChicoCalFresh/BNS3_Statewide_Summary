@@ -84,14 +84,14 @@ ggplot() +
 ```
 
 
-::: {.callout-important}
+::: {.callout-important #md}
 ## Disclaimer on Missing Data
 
 *Students had the option to select "Prefer not to answer" for all questions, or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
 
 :::
 
-<br />
+<br/>
 
 
 ## Use of Website and Access to Data
@@ -117,7 +117,7 @@ Center for Healthy Communities. (2023). Statewide Basic Needs and Student Succes
 *    [Presentation at the Conference for Statistical Practice (2023): Reducing costs, burden, and risk of human error in large scale survey data collection and Scope of Work reporting using Automation](https://chicocalfresh.github.io/CSP2023/)
 
 
-<br />
+<br/>
 
 
 :::: {.columns}

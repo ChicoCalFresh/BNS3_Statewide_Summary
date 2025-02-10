@@ -83,7 +83,7 @@ This page provides a brief description of characteristics of 836 students that w
 
 Of the 1341 students who were likely eligible for CalFresh, 1289 responded to a survey question inquiring about their knowledge/use of CalFresh benefits and `r chcRne::count_and_percent(df_cf_eligible, q46_1, values = c("Used it before attending college", "Heard of it, but never used it", "Used it in the past as a college student", "Never heard of it"))` did not report currently using CalFresh as a college student. 55 of the 1341 students who were likely eligible for CalFresh either did not finish the survey or selected "Prefer not to answer" for this question.
 
-See [Information on Missing Data](index.qmd#ref-md)
+See [Information on Missing Data](index.qmd#md)
 
 ## College Campus 
 
@@ -116,7 +116,7 @@ school_data %>% ggplot(aes(x = school2, y = count, fill = sector)) +
 <br/>
 
 ## Proportion at each campus not receiving CalFresh
-The distribution of student participation for these  these 836 likely eligible but not receiving - ios the same as thje overall distribution of all participating students from each of the 12 campuses (with clovis and butte swapped in position) then add direct link to  https://chicocalfresh.github.io/BNS3_Statewide_Summary/Academic_Profile.html#college-campus 
+The distribution of student participation for these 836 likely eligible but not receiving is the same as the overall distribution of all participating students from each of the 12 campuses (with Clovis and Butte swapped in position). See [College Campus](Academic_Profile.qmd#college-campus) for the distribution of all participating students.
 
 
 
@@ -257,10 +257,10 @@ plot_frq(tmp3$firstgen, geom.colors = CF_green, ylim=c(0, 900)) + xlab('') + yla
 
 <br/>
 
-## CalFresh Food - Barriers
+## CalFresh Food - Barriers {#ref-food-barriers}
 ```{r}
 #| label: tbl-barriers
-#| tbl-cap: "Top 10 Reported Barriers to Using CalFresh for Students who are Likely Eligible but not using CalFresh."
+#| tbl-cap: "Top 10 Reported Barriers to using CalFresh for Students who are Likely Eligible but not Receiving CalFresh."
 qlabel <- c('No time to complete the application/ application is too long.', 
 'The application is too difficult.', 
 'The CalFresh outreach team on campus was not helpful or supportive during my application process.',
@@ -298,7 +298,7 @@ chcRne::nperc_tbl_MATA(df_eligible_not_using,
 ## Other (Please Specify)
 ```{r}
 #| label: tbl-other
-#| tbl-cap: "Text Responses for Students who Selected 'Other'"
+#| tbl-cap: "Text Responses for Students who Selected 'Other'."
 other <- df_eligible_not_using %>% select(q53_15_text)
 names(other) <- "Other barriers"
 other %>% na.omit() %>% DT::datatable(class = 'cell-border stripe',
@@ -307,7 +307,7 @@ other %>% na.omit() %>% DT::datatable(class = 'cell-border stripe',
 ```
 **Survey question: ** *What are the reasons you do not have CalFresh or have never used CalFresh?*
 
-**Additional Notes: ** For students who selected 'Other,' we have also included the responses they provided.
+**Additional Notes: ** @tbl-other includes responses from students who selected "Other" as a reason for not having or never using CalFresh.
 
 <br />
 
