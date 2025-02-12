@@ -38,7 +38,7 @@ Students were screened for generalized anxiety, depression, and thoughts of suic
 **These next questions are about mental health and suicidal thoughts. Sometimes people feel so depressed about the future that they may consider attempting suicide, that is, taking some action to end their own life. These questions may be upsetting for you, and so we want to be sure that you feel comfortable continuing. Please remember that you may discontinue the survey at any time. Additionally, the following resource is available to you, should you become distressed: National Suicide Prevention Lifeline (1-800-273-8255).**
 
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+*See [Information on Missing Data](index.qmd#md)*
 
 
 ## Generalized Anxiety {#Generalized-Anxiety}

@@ -34,7 +34,7 @@ NextTable <- function() {
 
 Students were asked to report information relating to their academics. This includes information such as what college they were currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of students they identify as (transfer, international, etc.). 
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+*See [Information on Missing Data](index.qmd#md)*
 
 
 
@@ -92,7 +92,7 @@ tmp <- tmp %>%
 
 
 
-## College Campus
+## College Campus {#ref-campus}
 
 <div class = "row">
 
