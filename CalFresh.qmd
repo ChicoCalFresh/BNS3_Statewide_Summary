@@ -42,7 +42,7 @@ Students were asked to report information relating to the CalFresh Food Program 
 
 *Note: EBT is the CalFresh benefits delivery system that holds CalFresh dollars similar to a debit card. The California CalFresh Food Program is known federally as the Supplemental Nutrition Assistance Program (SNAP).*
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+*See [Information on Missing Data](index.qmd#md)*
 
 ## CalFresh Food Status {#cal_status_reference}
 

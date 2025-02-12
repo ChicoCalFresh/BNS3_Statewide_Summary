@@ -83,41 +83,12 @@ This page provides a brief description of characteristics of 836 students that w
 
 Of the 1341 students who were likely eligible for CalFresh, 1289 responded to a survey question inquiring about their knowledge/use of CalFresh benefits and `r chcRne::count_and_percent(df_cf_eligible, q46_1, values = c("Used it before attending college", "Heard of it, but never used it", "Used it in the past as a college student", "Never heard of it"))` did not report currently using CalFresh as a college student. 55 of the 1341 students who were likely eligible for CalFresh either did not finish the survey or selected "Prefer not to answer" for this question.
 
-See [Information on Missing Data](index.qmd#md)
+*See [Information on Missing Data](index.qmd#md)*
 
-## College Campus 
 
-Robin wants to remove this question - see additional notes in next question
-```{r}
-#| fig-height: 6
-#| fig-width: 8
-#| label: fig-campus-breakdown
-#| fig-cap: !expr sprintf("Survey Participants by Campus %s.", chcRne::print_n_reporting(df_cf_eligible, "school"))
-tmp2 <- tmp %>% select(school2, sector, sector_color) %>% na.omit()
+## Proportion of students likely eligible but not receiving CalFresh by campus
 
-school_data <- tmp2 %>% 
-  group_by(school2, sector) %>% 
-  summarize(
-    count = n(),
-    npct = paste0(count, " (", unname(formattable::percent(count/nrow(tmp), digits = 1)), ")")
-  )
-
-school_data %>% ggplot(aes(x = school2, y = count, fill = sector)) +
-  geom_col() + geom_text(aes(label = npct), hjust = -0.05) + 
-  coord_flip() + ylim(0, 250) + theme_bw() + xlab("School") + ylab("Number of Students") + scale_fill_manual(values = c('gold', '#9D2235', '#4895EF'), name = 'School Types', labels = c('CCC', 'CSU', 'UC'))
-```
-
-**Survey Question: ** *Which campus do you attend?*
-
-**Additional Notes: ** The University of California (UC) campus (n=1) is shown in blue, the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow (n = 12 campuses total).
-
-**Summary: ** A total of `r chcRne::count_and_percent(df=tmp, var=sector, values="CSU")`, `r chcRne::count_and_percent(df=tmp, var=sector, values="CCC")` and `r chcRne::count_and_percent(df=tmp, var=sector, values="UC")` of likely CalFresh eligible college students were enrolled in CSU, CCC and UC campuses, respectively. 
-
-<br/>
-
-## Proportion at each campus not receiving CalFresh
-The distribution of student participation for these 836 likely eligible but not receiving is the same as the overall distribution of all participating students from each of the 12 campuses (with Clovis and Butte swapped in position). See [College Campus](Academic_Profile.qmd#college-campus) for the distribution of all participating students.
-
+The participation distribution for these 836 likely eligible but not receiving students is the same as the overall distribution of all participating students from each of the 12 campuses. The only exceptions are Clovis Community College and Butte College. See [College Campus](Academic_Profile.qmd#college-campus) for the distribution of all participating students.
 
 
 
@@ -125,7 +96,7 @@ The distribution of student participation for these 836 likely eligible but not 
 #| fig-height: 6
 #| fig-width: 8
 #| label: fig-likely-eligible-not-receiving
-#| fig-cap: !expr sprintf("Survey Participants Likely Eligible for, but not Receiving CalFresh Benefits by Campus %s.", chcRne::print_n_reporting(df_cf_eligible, "CalFresh"))
+#| fig-cap: !expr sprintf("Students Likely Eligible but not Receiving CalFresh by Campus %s.", chcRne::print_n_reporting(df_cf_eligible, "CalFresh"))
 #tmp <- df_cf_eligible %>% select(CalFresh, school) %>% na.omit()
 tmp3 <- tmp %>% select(school2, CalFresh, sector, sector_color) %>% na.omit()
 
@@ -169,7 +140,7 @@ sector_sum <- summarized_data %>%
 ## Age 
 ```{r}
 #| label: fig-age
-#| fig-cap: !expr sprintf("Reported Age %s.", chcRne::print_n_reporting(df_eligible_not_using, "age"))
+#| fig-cap: !expr sprintf("Students Likely Eligible but not Receiving CalFresh by Age %s.", chcRne::print_n_reporting(df_eligible_not_using, "age"))
 # Filter different data sets for in line code comparison 
 bns_UC <- df_cf_eligible %>% filter(school == "UC Berkeley")
 
@@ -204,7 +175,7 @@ gghistogram(df_eligible_not_using,
 ## Gender Identity
 ```{r}
 #| label: fig-gender
-#| fig-cap: !expr sprintf("Gender Identity %s.", chcRne::print_n_reporting(df_eligible_not_using, "q7"))
+#| fig-cap: !expr sprintf("Students Likely Eligible but not Receiving CalFresh by Gender Identity %s.", chcRne::print_n_reporting(df_eligible_not_using, "q7"))
 #Gender
 rec <- df_eligible_not_using %>% mutate(q7=recode(q7, "Gender non-binary"="Non-binary", "Gender Queer or Gender-Nonconforming" = "Queer or Nonconforming", "Gender Unlisted:" = "Unlisted"))
 
@@ -224,7 +195,7 @@ tmp <- data.frame(q8=df_eligible_not_using$q8) %>% mutate(hispanic=as.factor(ife
 
 ```{r}
 #| label: fig-ethnicity
-#| fig-cap: !expr sprintf("Ethnic/Hispanic Identity %s.", chcRne::print_n_reporting(tmp, "hispanic"))
+#| fig-cap: !expr sprintf("Students Likely Eligible but not Receiving CalFresh by Ethnic/Hispanic Identity %s.", chcRne::print_n_reporting(tmp, "hispanic"))
 
 plot_frq(tmp$hispanic, geom.colors = CF_green) + xlab("") + ylab("Number of Students") + theme_bw()
 ```
@@ -245,13 +216,12 @@ tmp3 <- data.frame(firstgen=df_eligible_not_using$firstgen) %>%
 
 ```{r}
 #| label: fig-firstgen
-#| fig-cap: !expr sprintf("First-Generation Students %s.", chcRne::print_n_reporting(tmp3, "firstgen"))
+#| fig-cap: !expr sprintf("Students Likely Eligible but not Receiving CalFresh by First-Generation Status %s.", chcRne::print_n_reporting(tmp3, "firstgen"))
 plot_frq(tmp3$firstgen, geom.colors = CF_green, ylim=c(0, 900)) + xlab('') + ylab("Number of Students") + theme_bw()
 ```
 **Survey Question: ** *This variable was derived from the question in the [Parent Education](Demographics.qmd#Parent_Education) section.*
 
-**Additional Notes: ** Students who selected their parents' education  as "Less than high school," "High school diploma or GED," "Some college," "Certificate or technical achievement without Associate's degree," or "Associate's degree" were considered first-generation. The `r chcRne::count_and_percent(df = df_eligible_not_using, q13, 'Other/Unknown')` students who selected "Other/Unknown" were set as missing values. All other responses were considered not first-generation. 
-> robin wants to remove these notes since the %missing is essentially the same as the overall sample
+**Additional Notes: ** Students who selected their parents' education  as "Less than high school," "High school diploma or GED," "Some college," "Certificate or technical achievement without Associate's degree," or "Associate's degree" were considered first-generation.
 
 **Summary: ** A total of `r chcRne::count_and_percent(df = tmp3, var = firstgen, 'First Gen')` students reported first-generation status.
 
@@ -298,7 +268,7 @@ chcRne::nperc_tbl_MATA(df_eligible_not_using,
 ## Other (Please Specify)
 ```{r}
 #| label: tbl-other
-#| tbl-cap: "Text Responses for Students who Selected 'Other'."
+#| tbl-cap: "Additional Barriers for Students who are Likely Eligible but not Receiving CalFresh."
 other <- df_eligible_not_using %>% select(q53_15_text)
 names(other) <- "Other barriers"
 other %>% na.omit() %>% DT::datatable(class = 'cell-border stripe',

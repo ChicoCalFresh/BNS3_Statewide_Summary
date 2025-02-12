@@ -32,7 +32,7 @@ NextTable <- function() {
 
 Students were asked to select how many days in the last week they had done any of the following exercise types: [moderate, vigorous, or strength training exercises.^1^](#Footnotes)
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+*See [Information on Missing Data](index.qmd#md)*
 
 
 ## Physical Activity Type {#Physical-Activity-Type}

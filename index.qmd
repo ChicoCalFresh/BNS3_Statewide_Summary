@@ -69,8 +69,8 @@ The main purpose of this third cross-sectional study was to evaluate the followi
 
 A total of 2,110 EOP/EOPS students in California were surveyed from the following campuses:
 
+<a id="md"></a>
 ```{r, fig.width=6, fig.height=4}
-
 
 ggplot() + 
   geom_polygon(data=map_and_data, aes(x=long, y=lat, group=group),
@@ -84,7 +84,7 @@ ggplot() +
 ```
 
 
-::: {.callout-important #md}
+::: {.callout-important}
 ## Disclaimer on Missing Data
 
 *Students had the option to select "Prefer not to answer" for all questions, or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*

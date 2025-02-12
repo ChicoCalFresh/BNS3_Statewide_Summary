@@ -35,7 +35,7 @@ bns$q35 <- recode(bns$q35, "None" = "Never")
 
 Students were asked to report information relating to their current and past housing conditions. This includes if they were living near their college, the type of home they were currently living in, any hardships they faced in the past year with housing, homelessness, housing insecurity, barriers to accessing housing, and any housing changes due to COVID-19.
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+*See [Information on Missing Data](index.qmd#md)*
 
 ## Living Near College
 

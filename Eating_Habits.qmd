@@ -34,7 +34,7 @@ bns$q77 <- recode(bns$q77, "0 servings per day" = "0 servings", "1-2 servings pe
 
 Students were asked to report questions related to their eating habits. This includes cooking habits, access to kitchens, access to storing food, fruit and vegetable intake, sugar-sweetened beverage intake, fast food intake, alcohol intake, and confidence in cooking. 
 
-*As a reminder, students had the option to select "Prefer not to answer" for all questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+*See [Information on Missing Data](index.qmd#md)*
 
 
 ## Food Access and Eating Behaviors

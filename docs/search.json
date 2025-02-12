@@ -4,7 +4,7 @@
     "href": "Workload.html",
     "title": "Workload",
     "section": "",
-    "text": "Students were asked to report information regarding their workload. This includes work from both paid/unpaid jobs, academic work, as well as time spent caregiving for any family members.\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were asked to report information regarding their workload. This includes work from both paid/unpaid jobs, academic work, as well as time spent caregiving for any family members.\nSee Information on Missing Data"
   },
   {
     "objectID": "Workload.html#weekly-paid-work-hours",
@@ -60,7 +60,7 @@
     "href": "Other_Basic_Needs.html",
     "title": "Other Basic Needs",
     "section": "",
-    "text": "Students were asked to report information relating to their campus food pantry, Medi-Cal, and emergency housing services. Those that have utilized these services were asked to report their perceived impact of these services, while those that were not using them were asked to report any barriers to accessing them.\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were asked to report information relating to their campus food pantry, Medi-Cal, and emergency housing services. Those that have utilized these services were asked to report their perceived impact of these services, while those that were not using them were asked to report any barriers to accessing them.\nSee Information on Missing Data"
   },
   {
     "objectID": "Other_Basic_Needs.html#Basic-Needs",
@@ -144,7 +144,7 @@
     "href": "index.html#ref-md",
     "title": "Basic Needs & Student Success Survey",
     "section": "Participants",
-    "text": "Participants\n\nEOP/EOPS offices assisted in the recruitment by emailing interest form links to their EOP/EOPS students.\nStudents who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criterion when determining CalFresh Food eligibility) were then emailed a survey.\nParticipants were given a $25 gift card incentive for completing the survey.\nEOP/EOPS students were identified as the target population for this survey based on their low-income and first-generation student status, which indicates a higher probability of using CalFresh Food and being likely eligible for CalFresh Food.\n\nA total of 2,110 EOP/EOPS students in California were surveyed from the following campuses:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclaimer on Missing Data\n\n\n\nStudents had the option to select “Prefer not to answer” for all questions, or options such as “I don’t know” for a small subset of questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Participants\n\nEOP/EOPS offices assisted in the recruitment by emailing interest form links to their EOP/EOPS students.\nStudents who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criterion when determining CalFresh Food eligibility) were then emailed a survey.\nParticipants were given a $25 gift card incentive for completing the survey.\nEOP/EOPS students were identified as the target population for this survey based on their low-income and first-generation student status, which indicates a higher probability of using CalFresh Food and being likely eligible for CalFresh Food.\n\nA total of 2,110 EOP/EOPS students in California were surveyed from the following campuses:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDisclaimer on Missing Data\n\n\n\nStudents had the option to select “Prefer not to answer” for all questions, or options such as “I don’t know” for a small subset of questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
   },
   {
     "objectID": "index.html#use-of-website-and-access-to-data",
@@ -189,46 +189,39 @@
     "text": "Overview\nThis page provides a brief description of characteristics of 836 students that were determined to be likely eligible for CalFresh but not currently using it at the time of the survey. See the CalFresh Food Eligibility page for eligibility criteria and related survey question text. All participating college students were either in the Educational Opportunity Program (EOP) at the UC or CSU systems or in the Extended Opportunity Programs and Services (EOPS) in the CCC systems.\nOf the 1341 students who were likely eligible for CalFresh, 1289 responded to a survey question inquiring about their knowledge/use of CalFresh benefits and 836 (64.9%) did not report currently using CalFresh as a college student. 55 of the 1341 students who were likely eligible for CalFresh either did not finish the survey or selected “Prefer not to answer” for this question.\nSee Information on Missing Data"
   },
   {
-    "objectID": "eligible_not_receiving.html#college-campus",
-    "href": "eligible_not_receiving.html#college-campus",
+    "objectID": "eligible_not_receiving.html#proportion-of-students-likely-eligible-but-not-receiving-calfresh-by-campus",
+    "href": "eligible_not_receiving.html#proportion-of-students-likely-eligible-but-not-receiving-calfresh-by-campus",
     "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
-    "section": "College Campus",
-    "text": "College Campus\nRobin wants to remove this question - see additional notes in next question\n\n\n\n\n\n\n\n\nFigure 1: Survey Participants by Campus (n=1341, 100.0% of 1341 reporting).\n\n\n\n\n\nSurvey Question:  Which campus do you attend?\nAdditional Notes:  The University of California (UC) campus (n=1) is shown in blue, the California State University (CSU) campuses (n=6) are shown in red, and the California Community College (CCC) campuses (n=5) are shown in yellow (n = 12 campuses total).\nSummary:  A total of 736 (54.9%), 488 (36.4%) and 117 (8.7%) of likely CalFresh eligible college students were enrolled in CSU, CCC and UC campuses, respectively."
-  },
-  {
-    "objectID": "eligible_not_receiving.html#proportion-at-each-campus-not-receiving-calfresh",
-    "href": "eligible_not_receiving.html#proportion-at-each-campus-not-receiving-calfresh",
-    "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
-    "section": "Proportion at each campus not receiving CalFresh",
-    "text": "Proportion at each campus not receiving CalFresh\nThe distribution of student participation for these 836 likely eligible but not receiving is the same as the overall distribution of all participating students from each of the 12 campuses (with Clovis and Butte swapped in position). See College Campus for the distribution of all participating students.\n\n\n\n\n\n\n\n\nFigure 2: Survey Participants Likely Eligible for, but not Receiving CalFresh Benefits by Campus (n=1289, 96.1% of 1341 reporting).\n\n\n\n\n\nSummary:  Across participating CSU campuses 75% (528/706) of likely CalFresh eligible college students reported not currently using CalFresh. These numbers were 51% (241/469) and 59% (67/114) for CCC an UC campuses, respectively."
+    "section": "Proportion of students likely eligible but not receiving CalFresh by campus",
+    "text": "Proportion of students likely eligible but not receiving CalFresh by campus\nThe participation distribution for these 836 likely eligible but not receiving students is the same as the overall distribution of all participating students from each of the 12 campuses. The only exceptions are Clovis Community College and Butte College. See College Campus for the distribution of all participating students.\n\n\n\n\n\n\n\n\nFigure 1: Students Likely Eligible but not Receiving CalFresh by Campus (n=1289, 96.1% of 1341 reporting).\n\n\n\n\n\nSummary:  Across participating CSU campuses 75% (528/706) of likely CalFresh eligible college students reported not currently using CalFresh. These numbers were 51% (241/469) and 59% (67/114) for CCC an UC campuses, respectively."
   },
   {
     "objectID": "eligible_not_receiving.html#age",
     "href": "eligible_not_receiving.html#age",
     "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
     "section": "Age",
-    "text": "Age\n\n\n\n\n\n\n\n\nFigure 3: Reported Age (n=836, 100.0% of 836 reporting).\n\n\n\n\n\nSurvey Question:  What is your date of birth?\nAdditional Notes:  Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number.\nSummary:  The average age of the students was 23.9 years with a range of 18 to 63, and a median age of 21. A total of 531 (63.5%) students were 21 or older, and 131 (15.7%) students were 30 or older. Mean ages differed between campus types, where the mean age among CSU students was 23.9, compared to 28.7 among CCC students, and 21.1 among UC students."
+    "text": "Age\n\n\n\n\n\n\n\n\nFigure 2: Students Likely Eligible but not Receiving CalFresh by Age (n=836, 100.0% of 836 reporting).\n\n\n\n\n\nSurvey Question:  What is your date of birth?\nAdditional Notes:  Student age was determined by the difference between birth date and the time in which the survey was completed. Values were rounded down to the nearest whole number.\nSummary:  The average age of the students was 23.9 years with a range of 18 to 63, and a median age of 21. A total of 531 (63.5%) students were 21 or older, and 131 (15.7%) students were 30 or older. Mean ages differed between campus types, where the mean age among CSU students was 23.9, compared to 28.7 among CCC students, and 21.1 among UC students."
   },
   {
     "objectID": "eligible_not_receiving.html#gender-identity",
     "href": "eligible_not_receiving.html#gender-identity",
     "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
     "section": "Gender Identity",
-    "text": "Gender Identity\n\n\n\n\n\n\n\n\nFigure 4: Gender Identity (n=832, 99.5% of 836 reporting).\n\n\n\n\n\nSurvey question:  What is your gender identity?\nSummary:  A total of 673 (80.9%) students identified as a woman, 144 (17.3%) identified as a man, 10 (1.2%) identified as gender non-binary, and 5 (0.6%) identified as queer/non-conforming."
+    "text": "Gender Identity\n\n\n\n\n\n\n\n\nFigure 3: Students Likely Eligible but not Receiving CalFresh by Gender Identity (n=832, 99.5% of 836 reporting).\n\n\n\n\n\nSurvey question:  What is your gender identity?\nSummary:  A total of 673 (80.9%) students identified as a woman, 144 (17.3%) identified as a man, 10 (1.2%) identified as gender non-binary, and 5 (0.6%) identified as queer/non-conforming."
   },
   {
     "objectID": "eligible_not_receiving.html#ethnicity-i.e.-identifying-with-hispanic-origin",
     "href": "eligible_not_receiving.html#ethnicity-i.e.-identifying-with-hispanic-origin",
     "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
     "section": "Ethnicity (i.e. Identifying with Hispanic Origin)",
-    "text": "Ethnicity (i.e. Identifying with Hispanic Origin)\n\n\n\n\n\n\n\n\nFigure 5: Ethnic/Hispanic Identity (n=825, 98.7% of 836 reporting).\n\n\n\n\n\nSurvey Question:  Do you identify as Hispanic or Latino or Spanish Origin?\nAdditional Notes:  Possible answers were pulled from the U.S. Census questionnaire assessing Hispanic Origin: Mexican; Mexican American; Chicano; Puerto Rican; Cuban; another Hispanic/Latino/Spanish origin; or not of Hispanic/Latino/Spanish origin.\nSummary:  A total of 575 (69.7%) students self-identified as having Hispanic Origins and 250 (30.3%) students self-identified as Non-Hispanic."
+    "text": "Ethnicity (i.e. Identifying with Hispanic Origin)\n\n\n\n\n\n\n\n\nFigure 4: Students Likely Eligible but not Receiving CalFresh by Ethnic/Hispanic Identity (n=825, 98.7% of 836 reporting).\n\n\n\n\n\nSurvey Question:  Do you identify as Hispanic or Latino or Spanish Origin?\nAdditional Notes:  Possible answers were pulled from the U.S. Census questionnaire assessing Hispanic Origin: Mexican; Mexican American; Chicano; Puerto Rican; Cuban; another Hispanic/Latino/Spanish origin; or not of Hispanic/Latino/Spanish origin.\nSummary:  A total of 575 (69.7%) students self-identified as having Hispanic Origins and 250 (30.3%) students self-identified as Non-Hispanic."
   },
   {
     "objectID": "eligible_not_receiving.html#first-generation",
     "href": "eligible_not_receiving.html#first-generation",
     "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
     "section": "First-Generation",
-    "text": "First-Generation\n\n\n\n\n\n\n\n\nFigure 6: First-Generation Students (n=811, 97.0% of 836 reporting).\n\n\n\n\n\nSurvey Question:  This variable was derived from the question in the Parent Education section.\nAdditional Notes:  Students who selected their parents’ education as “Less than high school,” “High school diploma or GED,” “Some college,” “Certificate or technical achievement without Associate’s degree,” or “Associate’s degree” were considered first-generation. The 22 (2.6%) students who selected “Other/Unknown” were set as missing values. All other responses were considered not first-generation. &gt; robin wants to remove these notes since the %missing is essentially the same as the overall sample\nSummary:  A total of 773 (95.3%) students reported first-generation status."
+    "text": "First-Generation\n\n\n\n\n\n\n\n\nFigure 5: Students Likely Eligible but not Receiving CalFresh by First-Generation Status (n=811, 97.0% of 836 reporting).\n\n\n\n\n\nSurvey Question:  This variable was derived from the question in the Parent Education section.\nAdditional Notes:  Students who selected their parents’ education as “Less than high school,” “High school diploma or GED,” “Some college,” “Certificate or technical achievement without Associate’s degree,” or “Associate’s degree” were considered first-generation.\nSummary:  A total of 773 (95.3%) students reported first-generation status."
   },
   {
     "objectID": "eligible_not_receiving.html#ref-food-barriers",
@@ -242,14 +235,14 @@
     "href": "eligible_not_receiving.html#other-please-specify",
     "title": "Exploration of Students Eligible for but Not Receiving CalFresh",
     "section": "Other (Please Specify)",
-    "text": "Other (Please Specify)\n\n\n\n\nTable 2: Text Responses for Students who Selected ‘Other’.\n\n\n\n\n\n\n\n\n\n\nSurvey question:  What are the reasons you do not have CalFresh or have never used CalFresh?\nAdditional Notes:  Table 2 includes responses from students who selected “Other” as a reason for not having or never using CalFresh."
+    "text": "Other (Please Specify)\n\n\n\n\nTable 2: Additional Barriers for Students who are Likely Eligible but not Receiving CalFresh.\n\n\n\n\n\n\n\n\n\n\nSurvey question:  What are the reasons you do not have CalFresh or have never used CalFresh?\nAdditional Notes:  Table 2 includes responses from students who selected “Other” as a reason for not having or never using CalFresh."
   },
   {
     "objectID": "Demographics.html",
     "href": "Demographics.html",
     "title": "Demographics",
     "section": "",
-    "text": "Students were asked to report information relating to their personal demographics such as age, gender identity, race/ethnicity, number of dependents (if any), and their parents’ education level.\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were asked to report information relating to their personal demographics such as age, gender identity, race/ethnicity, number of dependents (if any), and their parents’ education level.\nSee Information on Missing Data"
   },
   {
     "objectID": "Demographics.html#age",
@@ -305,7 +298,7 @@
     "href": "Academic_Profile.html",
     "title": "Academic Profile",
     "section": "",
-    "text": "Students were asked to report information relating to their academics. This includes information such as what college they were currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of students they identify as (transfer, international, etc.).\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were asked to report information relating to their academics. This includes information such as what college they were currently enrolled in, their class standing, major, GPA, and enrolled units. They were also asked questions about programs they participate in as well as what type of students they identify as (transfer, international, etc.).\nSee Information on Missing Data"
   },
   {
     "objectID": "Academic_Profile.html#ref-campus",
@@ -361,7 +354,7 @@
     "href": "CalFresh.html",
     "title": "CalFresh Food Program",
     "section": "",
-    "text": "Students were asked to report information relating to the CalFresh Food Program and CalFresh Food eligibility. This includes U.S. citizenship (or lawful permanent residency), household size, and monthly household income. Those that were not using CalFresh Food were asked to report any barriers to applying for CalFresh Food, while those that reported currently using CalFresh Food were asked to report their monthly Electronic Benefit Transfer (EBT), whether the EBT received is enough for them, and their perceived impact of CalFresh Food.\nNote: EBT is the CalFresh benefits delivery system that holds CalFresh dollars similar to a debit card. The California CalFresh Food Program is known federally as the Supplemental Nutrition Assistance Program (SNAP).\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were asked to report information relating to the CalFresh Food Program and CalFresh Food eligibility. This includes U.S. citizenship (or lawful permanent residency), household size, and monthly household income. Those that were not using CalFresh Food were asked to report any barriers to applying for CalFresh Food, while those that reported currently using CalFresh Food were asked to report their monthly Electronic Benefit Transfer (EBT), whether the EBT received is enough for them, and their perceived impact of CalFresh Food.\nNote: EBT is the CalFresh benefits delivery system that holds CalFresh dollars similar to a debit card. The California CalFresh Food Program is known federally as the Supplemental Nutrition Assistance Program (SNAP).\nSee Information on Missing Data"
   },
   {
     "objectID": "CalFresh.html#cal_status_reference",
@@ -431,7 +424,7 @@
     "href": "Eating_Habits.html",
     "title": "Eating Habits",
     "section": "",
-    "text": "Students were asked to report questions related to their eating habits. This includes cooking habits, access to kitchens, access to storing food, fruit and vegetable intake, sugar-sweetened beverage intake, fast food intake, alcohol intake, and confidence in cooking.\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were asked to report questions related to their eating habits. This includes cooking habits, access to kitchens, access to storing food, fruit and vegetable intake, sugar-sweetened beverage intake, fast food intake, alcohol intake, and confidence in cooking.\nSee Information on Missing Data"
   },
   {
     "objectID": "Eating_Habits.html#food-access-and-eating-behaviors",
@@ -487,7 +480,7 @@
     "href": "Food_Security.html",
     "title": "Food Security",
     "section": "",
-    "text": "Students were screened for food insecurity using a two-item version of the USDA’s screener for food insecurity. Additionally, students were asked how they handled situations when they had run out of money for food, if applicable.\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were screened for food insecurity using a two-item version of the USDA’s screener for food insecurity. Additionally, students were asked how they handled situations when they had run out of money for food, if applicable.\nSee Information on Missing Data"
   },
   {
     "objectID": "Food_Security.html#Food-Insecurity-Screening",
@@ -515,7 +508,7 @@
     "href": "Housing.html",
     "title": "Housing",
     "section": "",
-    "text": "Students were asked to report information relating to their current and past housing conditions. This includes if they were living near their college, the type of home they were currently living in, any hardships they faced in the past year with housing, homelessness, housing insecurity, barriers to accessing housing, and any housing changes due to COVID-19.\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were asked to report information relating to their current and past housing conditions. This includes if they were living near their college, the type of home they were currently living in, any hardships they faced in the past year with housing, homelessness, housing insecurity, barriers to accessing housing, and any housing changes due to COVID-19.\nSee Information on Missing Data"
   },
   {
     "objectID": "Housing.html#living-near-college",
@@ -578,7 +571,7 @@
     "href": "Mental_Health.html",
     "title": "Mental Health",
     "section": "",
-    "text": "Students were screened for generalized anxiety, depression, and thoughts of suicide. Students were also asked if they had access to mental health services, as well as their experience with and barriers to mental health services on their campus. Please note: All students were shown the following disclaimer before viewing any of the anxiety or depression screening questions and had the option to skip these entire sections:\nThese next questions are about mental health and suicidal thoughts. Sometimes people feel so depressed about the future that they may consider attempting suicide, that is, taking some action to end their own life. These questions may be upsetting for you, and so we want to be sure that you feel comfortable continuing. Please remember that you may discontinue the survey at any time. Additionally, the following resource is available to you, should you become distressed: National Suicide Prevention Lifeline (1-800-273-8255).\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were screened for generalized anxiety, depression, and thoughts of suicide. Students were also asked if they had access to mental health services, as well as their experience with and barriers to mental health services on their campus. Please note: All students were shown the following disclaimer before viewing any of the anxiety or depression screening questions and had the option to skip these entire sections:\nThese next questions are about mental health and suicidal thoughts. Sometimes people feel so depressed about the future that they may consider attempting suicide, that is, taking some action to end their own life. These questions may be upsetting for you, and so we want to be sure that you feel comfortable continuing. Please remember that you may discontinue the survey at any time. Additionally, the following resource is available to you, should you become distressed: National Suicide Prevention Lifeline (1-800-273-8255).\nSee Information on Missing Data"
   },
   {
     "objectID": "Mental_Health.html#Generalized-Anxiety",
@@ -641,7 +634,7 @@
     "href": "Physical_Activity.html",
     "title": "Physical Activity",
     "section": "",
-    "text": "Students were asked to select how many days in the last week they had done any of the following exercise types: moderate, vigorous, or strength training exercises.1\nAs a reminder, students had the option to select “Prefer not to answer” for all questions, and these responses were set as missing values. In addition, 186 (8.8%) students did not finish the survey. The n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses."
+    "text": "Students were asked to select how many days in the last week they had done any of the following exercise types: moderate, vigorous, or strength training exercises.1\nSee Information on Missing Data"
   },
   {
     "objectID": "Physical_Activity.html#Physical-Activity-Type",
