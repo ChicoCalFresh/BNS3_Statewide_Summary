@@ -129,7 +129,7 @@ sector_sum <- summarized_data %>%
          pct = CalFresh/count,
          label = formattable::percent(CalFresh/count, digits = 1),
          npct = paste0(unname(formattable::percent(CalFresh/count, digits = 0)), " (", CalFresh, "/", count, ")")
-         )
+         ) |> as.data.frame()
 ```
 
 **Summary: ** Across participating CSU campuses `r sector_sum[sector_sum$sector == "CSU", "npct"]` of likely CalFresh eligible college students reported not currently using CalFresh. These numbers were `r sector_sum[sector_sum$sector == "CCC", "npct"]` and `r sector_sum[sector_sum$sector == "UC", "npct"]` for CCC an UC campuses, respectively.
@@ -267,17 +267,17 @@ chcRne::nperc_tbl_MATA(df_eligible_not_using,
 
 ## Other (Please Specify)
 ```{r}
-#| label: tbl-other
-#| tbl-cap: "Additional Barriers for Students who are Likely Eligible but not Receiving CalFresh."
+
 other <- df_eligible_not_using %>% select(q53_15_text)
 names(other) <- "Other barriers"
 other %>% na.omit() %>% DT::datatable(class = 'cell-border stripe',
+                                      caption = "Table 2: Additional Barriers for Students who are Likely Eligible but not Receiving CalFresh.",
                                       options = list(
                                         columnDefs = list(list(className = 'dt-left', targets = 0:1))))
 ```
 **Survey question: ** *What are the reasons you do not have CalFresh or have never used CalFresh?*
 
-**Additional Notes: ** @tbl-other includes responses from students who selected "Other" as a reason for not having or never using CalFresh.
+**Additional Notes: ** Table 2 includes responses from students who selected "Other" as a reason for not having or never using CalFresh.
 
 <br />
 
