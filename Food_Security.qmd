@@ -30,13 +30,11 @@ NextTable <- function() {
 
 ```
 
-Students were screened for food insecurity using a two-item version of the USDA's screener for food insecurity. Additionally, students were asked how they handled situations when they had run out of money for food, if applicable. 
-
+Students were screened for food insecurity using a two-item version of the USDA's screener for food insecurity. Additionally, students were asked how they handled situations when they had run out of money for food, if applicable.
 
 *See [Information on Missing Data](index.qmd#md)*
 
 ## Food Insecurity Screening {#Food-Insecurity-Screening}
-
 
 ```{r}
 #| fig-cap: !expr sprintf("%s Food Insecurity Screening.", NextFigure())
@@ -56,10 +54,9 @@ plot_likert(questions,
 
 **Survey Question:** *These next questions are about the food eaten in your household. Remember that household is determined by the number of people you purchase and prepare food with. This may or may not include your roommates. For the following statements, please state whether they were often true, sometimes true, or never true for you/your household in the last 30 days.*
 
-**Additional Notes:** A two-item version of the validated [USDA 10-item food insecurity screening tool^1^](#Footnotes) was used, which has been [validated among low-income families^2^](#Footnotes), and has accurately identified household food insecurity in a [nationally representative sample^3^](#Footnotes). Students who responded with "Sometimes true" or "Often true" to any of the questions were deemed food insecure. Students also had the option to select "I don't know," and these responses were set to missing values. 
+**Additional Notes:** A two-item version of the validated [USDA 10-item food insecurity screening tool^1^](#Footnotes) was used, which has been [validated among low-income families^2^](#Footnotes), and has accurately identified household food insecurity in a [nationally representative sample^3^](#Footnotes). Students who responded with "Sometimes true" or "Often true" to any of the questions were deemed food insecure. Students also had the option to select "I don't know," and these responses were set to missing values.
 
-**Summary:** In the last 30 days of taking the survey, `r get_count_and_percent2(bns$q64, "Sometimes true", "Often true")` students reported they worried about food running out before getting money to buy more food. Meanwhile, `r get_count_and_percent2(bns$q65, "Sometimes true", "Often true")` students reported that the food they bought did not last, and they did not have money to get more. 
-
+**Summary:** In the last 30 days of taking the survey, `r get_count_and_percent2(bns$q64, "Sometimes true", "Often true")` students reported they worried about food running out before getting money to buy more food. Meanwhile, `r get_count_and_percent2(bns$q65, "Sometimes true", "Often true")` students reported that the food they bought did not last, and they did not have money to get more.
 
 <br>
 
@@ -83,21 +80,17 @@ plot_frq(bns$two.item, geom.colors = plot_color, ylim=c(0,1250)) + xlab('Food In
 :::
 
 ::: col-md-4
-
 **Survey Question:** *This variable was derived from the questions in [Food Insecurity Screening](#Food-Insecurity-Screening).*
 
 **Additional Notes:** Students who responded with "Sometimes true" or "Often true" to one or both of the questions in the [Food Insecurity Screening](#Food-Insecurity-Screening) section were deemed food insecure.
 
-**Summary:** A total of `r get_count_and_percent(bns$food_insecure_2item, "1")` students were deemed food insecure. Please note: The majority of the study sample were low-income students, and these rates are not generalizable to all college students. 
-
+**Summary:** A total of `r get_count_and_percent(bns$food_insecure_2item, "1")` students were deemed food insecure. Please note: The majority of the study sample were low-income students, and these rates are not generalizable to all college students.
 :::
 :::
 
 <br>
 
 ## Ran Out of Money
-
-
 
 ```{r}
 #| tbl-cap: !expr sprintf("%s Ran Out of Money %s.", NextTable(), print_n_reporting('fs_not_run_out'))
@@ -121,47 +114,34 @@ food_vars %>%
   kable() %>% kable_styling(bootstrap_options = "striped")
 ```
 
-
 **Survey Question:** *In the last 30 days, if you ran out of money for food, what did you do? (Select all that apply):*
 
 **Summary:** A total of `r get_count_and_percent(bns$fs_not_run_out, "1")` students reported not running out of money for food in the last 30 days. Meanwhile, when students ran out of money for food, `r get_count_and_percent(bns$fs_skip_meal, "1")` reported that they started skipping meals, `r get_count_and_percent(bns$fs_credit_card, "1")` reported using their credit card to buy food, `r get_count_and_percent(bns$fs_given_money, "1")` were given money from friends/family/roommates, and only `r get_count_and_percent(bns$fs_organization, "1")` reported going to the food pantry or other free food organizations.
 
 <br />
 
---- 
+------------------------------------------------------------------------
 
 # Footnotes: {#Footnotes}
 
-1. [USDA's 10-item screener for food insecurity](https://www.ers.usda.gov/media/8279/ad2012.pdf)
+1.  [USDA's 10-item screener for food insecurity](https://www.ers.usda.gov/sites/default/files/_laserfiche/DataFiles/50764/26623_ad2012.pdf?v=3672.4)
 
-2. [Validation of a 2-item screener for food insecurity among low-income families](https://pubmed.ncbi.nlm.nih.gov/20595453/)
+2.  [Validation of a 2-item screener for food insecurity among low-income families](https://pubmed.ncbi.nlm.nih.gov/20595453/)
 
-3. [Brief assessment of food insecurity accurately identifies high-risk US adults](https://pubmed.ncbi.nlm.nih.gov/28215190/)
-
+3.  [Brief assessment of food insecurity accurately identifies high-risk US adults](https://pubmed.ncbi.nlm.nih.gov/28215190/)
 
 <br />
 
-
-
-:::: {.columns}
-
+::: columns
 ::: {.column width="10%"}
-
 :::
 
 ::: {.column width="80%"}
-<div style="text-align: center;">
-
-<img src="bns_statewide_logo_array.svg" alt="CHC Logo" width="auto" height="auto">
-
-</div>
+::: {style="text-align: center;"}
+<img src="bns_statewide_logo_array.svg" alt="CHC Logo" width="auto" height="auto"/>
+:::
 :::
 
 ::: {.column width="10%"}
-
-
 :::
-
-::::
-
-
+:::
