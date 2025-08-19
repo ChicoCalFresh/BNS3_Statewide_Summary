@@ -38,7 +38,9 @@ website:
             text: Physical Activity
           - href: Mental_Health.qmd
             text: Mental Health
-
+    right: 
+    - href: Methods.qmd
+      text: Methods
 format:
   html:
     theme: 

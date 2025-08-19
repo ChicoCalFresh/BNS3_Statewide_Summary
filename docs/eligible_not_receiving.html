@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BNS3 Statewide - Exploration of Students Eligible for but Not Receiving CalFresh</title>
+<title>Exploration of Students Eligible for but Not Receiving CalFresh – BNS3 Statewide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,7 +44,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -53,24 +59,36 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 <link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
 <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
 <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+
 <script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
 <link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
 <link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
 <script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
 <link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
 <script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
 
 
 </head>
@@ -79,81 +97,87 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">BNS3 Statewide</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-demographics" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-demographics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Demographics</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-demographics">    
         <li>
-    <a class="dropdown-item" href="./Demographics.html" rel="" target="">
+    <a class="dropdown-item" href="./Demographics.html">
  <span class="dropdown-text">Personal Demographics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Academic_Profile.html" rel="" target="">
+    <a class="dropdown-item" href="./Academic_Profile.html">
  <span class="dropdown-text">Academic Profile</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./Workload.html" rel="" target="">
- <span class="menu-text">Workload</span></a>
+    <a class="nav-link" href="./Workload.html"> 
+<span class="menu-text">Workload</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Housing.html" rel="" target="">
- <span class="menu-text">Housing</span></a>
+    <a class="nav-link" href="./Housing.html"> 
+<span class="menu-text">Housing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./CalFresh.html" rel="" target="">
- <span class="menu-text">CalFresh Food</span></a>
+    <a class="nav-link" href="./CalFresh.html"> 
+<span class="menu-text">CalFresh Food</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Other_Basic_Needs.html" rel="" target="">
- <span class="menu-text">Other Basic Needs</span></a>
+    <a class="nav-link" href="./Other_Basic_Needs.html"> 
+<span class="menu-text">Other Basic Needs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Food_Security.html" rel="" target="">
- <span class="menu-text">Food Security</span></a>
+    <a class="nav-link" href="./Food_Security.html"> 
+<span class="menu-text">Food Security</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other-health-variables" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other-health-variables" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Other Health Variables</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-other-health-variables">    
         <li>
-    <a class="dropdown-item" href="./Eating_Habits.html" rel="" target="">
+    <a class="dropdown-item" href="./Eating_Habits.html">
  <span class="dropdown-text">Eating Habits</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Physical_Activity.html" rel="" target="">
+    <a class="dropdown-item" href="./Physical_Activity.html">
  <span class="dropdown-text">Physical Activity</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Mental_Health.html" rel="" target="">
+    <a class="dropdown-item" href="./Mental_Health.html">
  <span class="dropdown-text">Mental Health</span></a>
   </li>  
     </ul>
   </li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./Methods.html"> 
+<span class="menu-text">Methods</span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -195,7 +219,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <div class="cell" data-layout-align="center">
 <style type="text/css">
@@ -215,10 +241,14 @@ figure.quarto-float-tbl figcaption.quarto-float-caption-top {
 <p>The participation distribution for these 836 likely eligible but not receiving students is the same as the overall distribution of all participating students from each of the 12 campuses. The only exceptions are Clovis Community College and Butte College. See <a href="./Academic_Profile.html#college-campus">College Campus</a> for the distribution of all participating students.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-likely-eligible-not-receiving" class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eligible_not_receiving_files/figure-html/fig-likely-eligible-not-receiving-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Students Likely Eligible but not Receiving CalFresh by Campus (n=1289, 96.1% of 1341 reporting).</figcaption>
+<div id="fig-likely-eligible-not-receiving" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-likely-eligible-not-receiving-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="eligible_not_receiving_files/figure-html/fig-likely-eligible-not-receiving-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-likely-eligible-not-receiving-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Students Likely Eligible but not Receiving CalFresh by Campus (n=1289, 96.1% of 1341 reporting).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -230,10 +260,14 @@ figure.quarto-float-tbl figcaption.quarto-float-caption-top {
 <h2 data-anchor-id="age">Age</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-age" class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eligible_not_receiving_files/figure-html/fig-age-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Students Likely Eligible but not Receiving CalFresh by Age (n=836, 100.0% of 836 reporting).</figcaption>
+<div id="fig-age" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="eligible_not_receiving_files/figure-html/fig-age-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Students Likely Eligible but not Receiving CalFresh by Age (n=836, 100.0% of 836 reporting).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -247,10 +281,14 @@ figure.quarto-float-tbl figcaption.quarto-float-caption-top {
 <h2 data-anchor-id="gender-identity">Gender Identity</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-gender" class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eligible_not_receiving_files/figure-html/fig-gender-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: Students Likely Eligible but not Receiving CalFresh by Gender Identity (n=832, 99.5% of 836 reporting).</figcaption>
+<div id="fig-gender" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="eligible_not_receiving_files/figure-html/fig-gender-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Students Likely Eligible but not Receiving CalFresh by Gender Identity (n=832, 99.5% of 836 reporting).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -263,10 +301,14 @@ figure.quarto-float-tbl figcaption.quarto-float-caption-top {
 <h2 data-anchor-id="ethnicity-i.e.-identifying-with-hispanic-origin">Ethnicity (i.e.&nbsp;Identifying with Hispanic Origin)</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-ethnicity" class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eligible_not_receiving_files/figure-html/fig-ethnicity-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;4: Students Likely Eligible but not Receiving CalFresh by Ethnic/Hispanic Identity (n=825, 98.7% of 836 reporting).</figcaption>
+<div id="fig-ethnicity" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ethnicity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="eligible_not_receiving_files/figure-html/fig-ethnicity-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ethnicity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Students Likely Eligible but not Receiving CalFresh by Ethnic/Hispanic Identity (n=825, 98.7% of 836 reporting).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -280,10 +322,14 @@ figure.quarto-float-tbl figcaption.quarto-float-caption-top {
 <h2 data-anchor-id="first-generation">First-Generation</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-firstgen" class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eligible_not_receiving_files/figure-html/fig-firstgen-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figure&nbsp;5: Students Likely Eligible but not Receiving CalFresh by First-Generation Status (n=811, 97.0% of 836 reporting).</figcaption>
+<div id="fig-firstgen" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-firstgen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="eligible_not_receiving_files/figure-html/fig-firstgen-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-firstgen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Students Likely Eligible but not Receiving CalFresh by First-Generation Status (n=811, 97.0% of 836 reporting).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -296,10 +342,14 @@ figure.quarto-float-tbl figcaption.quarto-float-caption-top {
 <section id="ref-food-barriers" class="level2">
 <h2 data-anchor-id="ref-food-barriers">CalFresh Food - Barriers</h2>
 <div class="cell" data-layout-align="center">
+<div id="tbl-barriers" class="cell quarto-float quarto-figure quarto-figure-center" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-barriers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Top 10 Reported Barriers to using CalFresh for Students who are Likely Eligible but not Receiving CalFresh.
+</figcaption>
+<div aria-describedby="tbl-barriers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-barriers">
-<table class="table table-striped table-sm small" data-quarto-postprocess="true">
-<caption>Table&nbsp;1: Top 10 Reported Barriers to using CalFresh for Students who are Likely Eligible but not Receiving CalFresh.</caption>
+<table class="table table-striped do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Barrier</th>
@@ -349,9 +399,11 @@ figure.quarto-float-tbl figcaption.quarto-float-caption-top {
 </tr>
 </tbody>
 </table>
+
+
 </div>
-
-
+</div>
+</figure>
 </div>
 </div>
 <p><strong>Survey Question:</strong> <em>What are the reasons you do not have CalFresh or have never used CalFresh? (Select all that apply)</em></p>
@@ -363,9 +415,8 @@ figure.quarto-float-tbl figcaption.quarto-float-caption-top {
 <h2 data-anchor-id="other-please-specify">Other (Please Specify)</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-7d958ecb0105250cce81" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7d958ecb0105250cce81">{"x":{"filter":"none","vertical":false,"caption":"<caption>Table 2: Additional Barriers for Students who are Likely Eligible but not Receiving CalFresh.<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102"],["Waiting for approval after submitting application","I was denied because my husbands monthly income is too high for a family of four for food stamps","They say income to high","I have used Calfresh","I heard that my status change if I use CalFresh, like I will be thought of as poor and not be able to sponsor a family member's immigration visa","I applied and did not qualify","I live with parents","Due to undocument parent, they don't want me to apply to CalFresh due to the verifications and documents they ask us which we don't have. I want to apply on my own now that I dorm.","I can’t apply on my own (need parents to do it for me and they don’t want to do it)","My dad receives CalFresh for my little brother, but in the application still reports us and I wouldn’t want to affects any of his current benefits","Tries to apply but the rules are wonky so my mom doesn't know if we will get accepted.","I had food stamps growing up, but once I started attending college and working part-time, they stop offering. So, I’m not sure if I can apply myself since my mom had an account with them.","My mom already has calfresh and I have tried applying before and it did not work out","My mom gets government assistance (I think CalFresh) but I don’t","My mom has it and says I can’t apply because she uses it and puts me under dependent","Said i didn’t qualify because I have no dependents","I try to apply but i have to be 23 but i am 18. I want my own because i am not home often","I did not know this was available on my campus.","they were not helpful and according to them i didnt benefit","Applied once but was told I did not qualify","My family doesn’t qualify for Calfresh","Wasn’t accepted due to application issue but will reapply","I have my application filled out, I just haven’t had time to turn it in","not eligible","I already applied, but I'm not eligible","Application pending","I reive it","I am not eligible","Do not qualify even though I need it","ineligible","i do have cal fresh","not approved","I do not qualify","I currently applied and I’m waiting for answer","Applied, never received an interview. Then denied.","Over income","I haven't really looked into it","I was told twice the application was done wrong","Didn't need it in the past but now that prices are up I can barely afford a weeks worth of groceries. I am currently in the aplication process","I applied but dropped the application and never reach out to, again","I have and use ca;fresh","I’m on the process of the application, I need to show some prove of documentation.","I have used CalFresh before my college journey. I wanted to apply now but the application process feels too much.","I do not meet the requieres age limit in my county will be applying again once I’m 22 which is the minimum age limit to have your own Cal Fresh case","Do not qualify","I applied but was rejected.","Heard of it but didn't know what it was or how it worked","I was told I make too much money","My petition sponsor will be made to pay back Calfresh","They only approved $9 a month for food. It wasn’t worth the whole hassle","They say I make to much money","I get child support that pays my car payment and if i get cal fresh they will take my child support and i wont have a car","Currently waiting in the application process","Because I’m a resident and not a citizen, that’s why I didn’t qualify","I’m using cal fresh","Still in Application Process","Not sure how to apply","I don’t know how to apply and I need help applying","I do","They said we are not eligible even though we don't make enough money.","I have applied and they told me I am not eligible.","I would like too apply for it, but I do not know how.","Parent has welfare and I live with them.","Never thought of applying","I applied but they told me that I was not eligible for it.","I get Calfresh and Medi-cal","I have been waiting to get a call, but have not received any.","application denied","Two members in my household already use it for food contribution.","Turned in an application, still waiting for a response.","I need to transfer my benefits from my previous county to this one, and I haven't gotten around to it yet","Don’t have anyone that can take me","I do not qualify","the worker of calfresh said that i dont qualify because i didn't have a job. so they didn't want me to get calfresh","I applied","I’m getting it already","they said i didn't quality even though my pay stubs show i don't make enough money to sustain myself","I have not sent my documents yet so it’s still in progress","I have Cal Fresh","My income is too high and I've been declined more than once","I'm waiting for my ebt card.","Don’t qualify","applied but got denied","I should leave it for those who really need it","I applied and was denied","I did not qualify for much, waste of time","They say that U make too much money","Waiting until I am 22, so I apply on my own since I rent with my parents.","would not qualify","Not 21, still living with parent","I've applied and they told me I was only eligible for fifteen dollars a month.","I applied. Currently in progress of trying to get it.","my application was denied","Have kids I use it","wasn't eligible due to income, although all my income goes to tuition and rent","My mom obtains cal fresh and i dont want to take from her and my siblings while im at college","I was not eligible","Recently applied","They haven’t gotten back to me after my application was sent, and I don’t have time to call in and ask.","I applied and was rejected from calfresh","I was denied even though I qualify, there is an issue with calfresh in my household and other members","I’ll be transferring out of Hancock in May so it feels like there’s no point in applying now"]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Other barriers<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-left","targets":[0,1]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Other barriers","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-eaca925b9de5430a3c20" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-eaca925b9de5430a3c20">{"x":{"filter":"none","vertical":false,"caption":"<caption>Table 2: Additional Barriers for Students who are Likely Eligible but not Receiving CalFresh.<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102"],["Waiting for approval after submitting application","I was denied because my husbands monthly income is too high for a family of four for food stamps","They say income to high","I have used Calfresh","I heard that my status change if I use CalFresh, like I will be thought of as poor and not be able to sponsor a family member's immigration visa","I applied and did not qualify","I live with parents","Due to undocument parent, they don't want me to apply to CalFresh due to the verifications and documents they ask us which we don't have. I want to apply on my own now that I dorm.","I can’t apply on my own (need parents to do it for me and they don’t want to do it)","My dad receives CalFresh for my little brother, but in the application still reports us and I wouldn’t want to affects any of his current benefits","Tries to apply but the rules are wonky so my mom doesn't know if we will get accepted.","I had food stamps growing up, but once I started attending college and working part-time, they stop offering. So, I’m not sure if I can apply myself since my mom had an account with them.","My mom already has calfresh and I have tried applying before and it did not work out","My mom gets government assistance (I think CalFresh) but I don’t","My mom has it and says I can’t apply because she uses it and puts me under dependent","Said i didn’t qualify because I have no dependents","I try to apply but i have to be 23 but i am 18. I want my own because i am not home often","I did not know this was available on my campus.","they were not helpful and according to them i didnt benefit","Applied once but was told I did not qualify","My family doesn’t qualify for Calfresh","Wasn’t accepted due to application issue but will reapply","I have my application filled out, I just haven’t had time to turn it in","not eligible","I already applied, but I'm not eligible","Application pending","I reive it","I am not eligible","Do not qualify even though I need it","ineligible","i do have cal fresh","not approved","I do not qualify","I currently applied and I’m waiting for answer","Applied, never received an interview. Then denied.","Over income","I haven't really looked into it","I was told twice the application was done wrong","Didn't need it in the past but now that prices are up I can barely afford a weeks worth of groceries. I am currently in the aplication process","I applied but dropped the application and never reach out to, again","I have and use ca;fresh","I’m on the process of the application, I need to show some prove of documentation.","I have used CalFresh before my college journey. I wanted to apply now but the application process feels too much.","I do not meet the requieres age limit in my county will be applying again once I’m 22 which is the minimum age limit to have your own Cal Fresh case","Do not qualify","I applied but was rejected.","Heard of it but didn't know what it was or how it worked","I was told I make too much money","My petition sponsor will be made to pay back Calfresh","They only approved $9 a month for food. It wasn’t worth the whole hassle","They say I make to much money","I get child support that pays my car payment and if i get cal fresh they will take my child support and i wont have a car","Currently waiting in the application process","Because I’m a resident and not a citizen, that’s why I didn’t qualify","I’m using cal fresh","Still in Application Process","Not sure how to apply","I don’t know how to apply and I need help applying","I do","They said we are not eligible even though we don't make enough money.","I have applied and they told me I am not eligible.","I would like too apply for it, but I do not know how.","Parent has welfare and I live with them.","Never thought of applying","I applied but they told me that I was not eligible for it.","I get Calfresh and Medi-cal","I have been waiting to get a call, but have not received any.","application denied","Two members in my household already use it for food contribution.","Turned in an application, still waiting for a response.","I need to transfer my benefits from my previous county to this one, and I haven't gotten around to it yet","Don’t have anyone that can take me","I do not qualify","the worker of calfresh said that i dont qualify because i didn't have a job. so they didn't want me to get calfresh","I applied","I’m getting it already","they said i didn't quality even though my pay stubs show i don't make enough money to sustain myself","I have not sent my documents yet so it’s still in progress","I have Cal Fresh","My income is too high and I've been declined more than once","I'm waiting for my ebt card.","Don’t qualify","applied but got denied","I should leave it for those who really need it","I applied and was denied","I did not qualify for much, waste of time","They say that U make too much money","Waiting until I am 22, so I apply on my own since I rent with my parents.","would not qualify","Not 21, still living with parent","I've applied and they told me I was only eligible for fifteen dollars a month.","I applied. Currently in progress of trying to get it.","my application was denied","Have kids I use it","wasn't eligible due to income, although all my income goes to tuition and rent","My mom obtains cal fresh and i dont want to take from her and my siblings while im at college","I was not eligible","Recently applied","They haven’t gotten back to me after my application was sent, and I don’t have time to call in and ask.","I applied and was rejected from calfresh","I was denied even though I qualify, there is an issue with calfresh in my household and other members","I’ll be transferring out of Hancock in May so it feels like there’s no point in applying now"]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Other barriers<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-left","targets":[0,1]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Other barriers","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>Survey question: </strong> <em>What are the reasons you do not have CalFresh or have never used CalFresh?</em></p>
@@ -415,18 +466,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -458,11 +498,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -472,8 +551,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -485,7 +573,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -529,6 +740,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -554,6 +766,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -614,6 +852,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
