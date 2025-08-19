@@ -1,0 +1,106 @@
+---
+title: "Methods"
+format:
+  html:
+    anchor-sections: false
+cv:
+  pdf: "BNS3 Statewide qualtrics export final.pdf"
+---
+
+```{r, include=FALSE}
+source("common_code.R")
+```
+
+## Data Collection
+
+The following methods were performed for collecting data during the statewide study (similar methods were performed for the second pilot study). Each campus’ Institutional Review Board (IRB) was contacted, and each IRB office determined what materials were needed to approve of the research (either entering a reliance agreement with Chico State, applying to their own IRB application, or nothing will be needed). In order to ensure students were in the EOP/EOPS, EOP/EOPS staff were contacted and asked to provide us with a list of their EOP/EOPS students’ names and emails, which were also used to send the students their $25 gift card incentives upon completing the survey. In past pilots, students have sent the survey link to their friends who may not be part of the EOP/EOPS, may not be eligible for basic needs services, and/or are less likely to have used them. Using a list of EOP/EOPS students’ names/emails for an eligibility check was implemented to help recruit our target population.
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Particpants**
+
+-   EOP/EOPS offices assisted in the recruitment by emailing interest form links to their EOP/EOPS students.
+-   Students who met the eligibility criteria of being undergraduate EOP/EOPS students and receiving less than 11 meals per week from other services (used as an eligibility criterion when determining CalFresh Food eligibility) were then emailed a survey.
+-   Participants were given a \$25 gift card incentive for completing the survey.
+-   EOP/EOPS students were identified as the target population for this survey based on their low-income and first-generation student status, which indicates a higher probability of using CalFresh Food and being likely eligible for CalFresh Food.
+-   A total of 2,110 EOP/EOPS students in California were surveyed from the following campuses.
+
+:::
+
+::: {.column width="50%"}
+
+![](consort_diagram.png){width=100%}
+
+:::
+
+::::
+
+![](automated_process.png)
+
+<br>
+
+## Data Management
+
+For all questions in the survey, students had the option to decline to answer by selecting “Prefer not to answer.” All of these “Prefer not to answer” responses were coded as missing and then later imputed. Race and ethnicity were asked using the US census tool where students were first asked about their ethnicity in a single-selection multiple choice question and then their race in a select all that apply question.
+
+::: callout-important
+## Disclaimer on Missing Data
+
+*Students had the option to select "Prefer not to answer" for all questions, or options such as "I don't know" for a small subset of questions, and these responses were set as missing values. In addition, `r get_count_and_percent(bns$finished, 'FALSE')` students did not finish the survey. These two factors are the cause of missing data (i.e., not 100% of respondents reporting). In each table/figure, the n reporting refers to the total number of non-missing responses, while the percent reporting reflects the percent of non-missing responses.*
+:::
+
+<br>
+
+## Mental Health Skip Logic Flowchart
+
+Due to the sensitive nature of our mental health questions we provided a specific skip logic and supporting resources. See details below.
+
+![](BNS_Mental_Health_Flowchart.png)
+
+<br>
+
+## Survey Questions
+
+All survey questions administered are shown on this page.
+
+```{css}
+#title-block-header .description {
+    display: none;
+}
+```
+
+```{css}
+.embed-container {
+    position: relative;
+    padding-bottom: 129%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+```
+
+```{=html}
+<p class="text-center">
+  <a class="btn btn-primary btn-lg download" href="`r rmarkdown::metadata$cv$pdf`" target="_blank">
+    <i class="fa-solid fa-file-arrow-down"></i>&ensp;Download
+  </a>
+</p>
+
+<div class="embed-container">
+  <iframe src="`r rmarkdown::metadata$cv$pdf`" style="border: 0.5px"></iframe>
+</div>
+```
