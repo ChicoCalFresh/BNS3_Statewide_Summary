@@ -94,9 +94,6 @@ tmp <- tmp %>%
 
 ## College Campus {#ref-campus}
 
-<div class = "row">
-
-<div class = "col-md-7">
 
 ```{r}
 #| fig-height: 6
@@ -125,9 +122,6 @@ ggplot(tmp, aes(x=school2, fill = sector_color)) + geom_bar() + coord_flip() +
 
 ## Academic Level 
 
-<div class = "row">
-
-<div class = "col-md-7">
 
 ```{r}
 #| fig-height: 4.5

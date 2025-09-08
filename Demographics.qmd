@@ -76,8 +76,6 @@ gghistogram(bns, x = "age", add = "mean", alpha = 1,
 
 ## Gender Identity
 
-<div class = "row">
-
 ::: col-md-7
 ```{r}
 #| fig-height: 3.5
