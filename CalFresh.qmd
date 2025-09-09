@@ -138,7 +138,6 @@ huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %
 
 ## CalFresh Food Eligibility {#calfresh-food-eligibility}
 
-<div class = "row">
 
 ::: col-md-6
 ```{r}
@@ -162,8 +161,6 @@ plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plo
     -   Meets one of the possible work requirements such as working 20 or more hours per week or being enrolled in an approved Local Program that Increases Employability (LPIE). At the time of the start of this survey, all EOP/EOPS programs were considered an LIPE, however, campuses now need to apply and receive approval for their program to be considered an LPIE. **When determining eligibility, all students were assumed to meet the work requirement since they were all EOP/EOPS students.**
 
 **Summary:** A total of `r get_count_and_percent(bns$calfresh_eligible, "1")` students were likely eligible for CalFresh Food, while `r get_count_and_percent(bns$calfresh_eligible, "0")` were likely not eligible. Many students selected "Prefer not to answer" when reporting their income. CalFresh Food eligibility was unable to be determined among these students and among any students who answered "Prefer not to answer" to household size.
-
-<div class = "col-md-5">
 
 
 ---
