@@ -39,6 +39,111 @@ The following methods were performed for collecting data during the statewide st
 
 ::::
 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg th{border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-9d8n{border-color:inherit;font-size:22px;text-align:center;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+
+<table class="tg" border="1">
+<thead>
+  <tr>
+    <th class="tg-9d8n" colspan="4"><span style="font-weight:bold">EOP Response Rate by Campus</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky"><strong>Campus</strong></td>
+    <td class="tg-0pky"><strong>Emails Sent</strong></td>
+    <td class="tg-0pky"><strong>Survey Responses</strong></td>
+    <td class="tg-0pky"><strong>Response Rate</strong></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Allan Hancock CC</td>
+    <td class="tg-0pky">858</td>
+    <td class="tg-0pky">112</td>
+    <td class="tg-0pky">13.1%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Butte CC</td>
+    <td class="tg-0pky">387</td>
+    <td class="tg-0pky">132</td>
+    <td class="tg-0pky">34.1%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Clovis CC</td>
+    <td class="tg-0pky">481</td>
+    <td class="tg-0pky">140</td>
+    <td class="tg-0pky">29.1%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Palo Verde CC</td>
+    <td class="tg-0pky">159</td>
+    <td class="tg-0pky">36</td>
+    <td class="tg-0pky">22.6%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Mt. Sac CC</td>
+    <td class="tg-0pky">1,129</td>
+    <td class="tg-0pky">270</td>
+    <td class="tg-0pky">23.9%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">CSU Bakersfield</td>
+    <td class="tg-0pky">702</td>
+    <td class="tg-0pky">114</td>
+    <td class="tg-0pky">16.2%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">CSU Dominguez Hills</td>
+    <td class="tg-0pky">1,764</td>
+    <td class="tg-0pky">58</td>
+    <td class="tg-0pky">3.3%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Cal State LA</td>
+    <td class="tg-0pky">2,663</td>
+    <td class="tg-0pky">343</td>
+    <td class="tg-0pky">12.9%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Cal State San Bernadino</td>
+    <td class="tg-0pky">1,135</td>
+    <td class="tg-0pky">191</td>
+    <td class="tg-0pky">16.8%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Sacramento State</td>
+    <td class="tg-0pky">1,229</td>
+    <td class="tg-0pky">253</td>
+    <td class="tg-0pky">20.1%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">San Francisco State</td>
+    <td class="tg-0pky">2,743</td>
+    <td class="tg-0pky">279</td>
+    <td class="tg-0pky">10.2%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">UC Berkley</td>
+    <td class="tg-0pky">600</td>
+    <td class="tg-0pky">182</td>
+    <td class="tg-0pky">30.3%</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"><span style="font-weight:bold">Total</span></td>
+    <td class="tg-0pky"><span style="font-weight:bold">13,850</span></td>
+    <td class="tg-0pky"><span style="font-weight:bold">2,110</span></td>
+    <td class="tg-0pky"><span style="font-weight:bold">15.2%</span></td>
+  </tr>
+</tbody></table border="1">
+
+<br>
+
 ![](automated_process.png)
 
 <br>
