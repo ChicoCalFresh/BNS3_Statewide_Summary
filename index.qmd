@@ -83,16 +83,6 @@ Please reach out to our PI, Stephanie Bianco [sbianco\@csuchico.edu]{style="colo
 
 Center for Healthy Communities. (2023). Statewide Basic Needs and Student Success Survey. https://chicocalfresh.github.io/BNS3_Statewide_Summary/
 
-## Related Work
-
--   [Pilot 1 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/BNS-Pilot1-website/index.html)
--   [Pilot 2 Basic Needs and Student Success Survey](https://chicocalfresh.github.io/bns-pilot2-website/index.html)
--   [Pilot 2 Basic Needs and Student Success Survey, CSU Chico Results](https://chicocalfresh.github.io/bns-pilot2-chico/)
--   [Pilot 2 Basic Needs and Student Success Survey, CSU Northridge Results](https://chicocalfresh.github.io/bns-pilot2-csun/)
--   [Pilot 2 Basic Needs and Student Success Survey, Fresno State Results](https://chicocalfresh.github.io/bns-pilot2-fresno/)
--   [Statewide Exploration of Students Eligible for but Not Receiving CalFresh](eligible_not_receiving.html)
--   [Presentation at the Conference for Statistical Practice (2023): Reducing costs, burden, and risk of human error in large scale survey data collection and Scope of Work reporting using Automation](https://chicocalfresh.github.io/CSP2023/)
-
 <br/>
 
 ::: columns

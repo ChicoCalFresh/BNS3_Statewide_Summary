@@ -39,6 +39,8 @@ website:
           - href: Mental_Health.qmd
             text: Mental Health
     right: 
+    - href: https://chcchicostate.org/research-evaluation/
+      text: Related Works
     - href: Methods.qmd
       text: Methods
 format:
