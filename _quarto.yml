@@ -41,6 +41,8 @@ website:
     right: 
     - href: Methods.qmd
       text: Methods
+    - href: https://chcchicostate.org/research-evaluation/
+      text: Related Works
 format:
   html:
     theme: 
